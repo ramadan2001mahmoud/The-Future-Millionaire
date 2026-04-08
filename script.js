@@ -22,10 +22,10 @@ function buildDropdowns() {
             const link = document.createElement("a");
             link.href = "#";
             link.textContent = cat;
-            link.onclick = (e) => {
+            link.addEventListener("click", (e) => {
                 e.preventDefault();
                 filterToolsByCategory(cat);
-            };
+            });
             dropdownContainer.appendChild(link);
         });
     }
@@ -35,13 +35,29 @@ function buildDropdowns() {
 function buildFilterButtons() {
     const categories = ["الكل", ...new Set(tools.map(t => t.category))];
     const filterSection = document.querySelector(".filter-section");
-    filterSection.innerHTML = '<button class="filter-btn active" data-category="all">الكل</button>';
-    categories.slice(1).forEach(cat => {
+    filterSection.innerHTML = "";
+    
+    categories.forEach(cat => {
         const btn = document.createElement("button");
         btn.className = "filter-btn";
+        if (cat === "الكل") btn.classList.add("active");
         btn.textContent = cat;
-        btn.dataset.category = cat;
-        btn.onclick = () => filterToolsByCategory(cat);
+        btn.setAttribute("data-category", cat === "الكل" ? "all" : cat);
+        
+        btn.addEventListener("click", () => {
+            // إزالة الكلاس active من جميع الأزرار
+            document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+            
+            // تصفية الأدوات
+            if (cat === "الكل") {
+                displayTools(tools);
+            } else {
+                const filtered = tools.filter(t => t.category === cat);
+                displayTools(filtered);
+            }
+        });
+        
         filterSection.appendChild(btn);
     });
 }
@@ -50,6 +66,10 @@ function buildFilterButtons() {
 function displayTools(toolsArray) {
     const container = document.getElementById("toolsContainer");
     container.innerHTML = "";
+    if (toolsArray.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding:50px; color:#D4AF37;">😅 لا توجد أدوات في هذه الفئة حالياً</div>`;
+        return;
+    }
     toolsArray.forEach(tool => {
         const card = document.createElement("div");
         card.className = "tool-card";
@@ -64,23 +84,6 @@ function displayTools(toolsArray) {
     });
 }
 
-// تصفية حسب الفئة
-function filterToolsByCategory(category) {
-    if (category === "الكل") {
-        displayTools(tools);
-    } else {
-        const filtered = tools.filter(t => t.category === category);
-        displayTools(filtered);
-    }
-    // تحديث الزر النشط
-    document.querySelectorAll(".filter-btn").forEach(btn => {
-        btn.classList.remove("active");
-        if (btn.textContent === category || (category === "الكل" && btn.textContent === "الكل")) {
-            btn.classList.add("active");
-        }
-    });
-}
-
 // البحث
 function setupSearch() {
     const searchInput = document.getElementById("searchInput");
@@ -92,6 +95,12 @@ function setupSearch() {
             tool.category.toLowerCase().includes(query)
         );
         displayTools(filtered);
+        
+        // إعادة تعيين الأزرار النشطة
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.classList.remove("active");
+            if (btn.textContent === "الكل") btn.classList.add("active");
+        });
     });
 }
 
@@ -99,9 +108,11 @@ function setupSearch() {
 function setupMobileMenu() {
     const toggle = document.getElementById("mobileMenu");
     const navLinks = document.getElementById("navLinks");
-    toggle.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-    });
+    if (toggle && navLinks) {
+        toggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+    }
 }
 
 // زر استكشف
@@ -111,6 +122,28 @@ function setupExploreBtn() {
         btn.addEventListener("click", () => {
             document.querySelector(".tools-container").scrollIntoView({ behavior: "smooth" });
         });
+    }
+}
+
+// تصفية حسب الفئة (للقوائم المنسدلة)
+function filterToolsByCategory(category) {
+    // تحديث الأزرار لتظهر الفعال
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.classList.remove("active");
+        if (btn.textContent === category) {
+            btn.classList.add("active");
+        }
+        if (category === "الكل" && btn.textContent === "الكل") {
+            btn.classList.add("active");
+        }
+    });
+    
+    // عرض الأدوات
+    if (category === "الكل") {
+        displayTools(tools);
+    } else {
+        const filtered = tools.filter(t => t.category === category);
+        displayTools(filtered);
     }
 }
 
@@ -124,4 +157,5 @@ function init() {
     setupExploreBtn();
 }
 
-init();
+// تشغيل التهيئة عند تحميل الصفحة
+document.addEventListener("DOMContentLoaded", init);
