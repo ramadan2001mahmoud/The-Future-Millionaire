@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Future Millionaire | أدوات الذكاء الاصطناعي</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <!-- ضع اسم ملف اللوجو هنا: logo.png أو logo.jpg أو logo.webp -->
+                <img src="logo.png" alt="The Future Millionaire Logo" class="logo-img">
+                <span class="logo-text">The Future Millionaire</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#">الرئيسية</a>
+                <div class="dropdown">
+                    <button class="dropbtn">أدوات الذكاء الاصطناعي <i class="fas fa-chevron-down"></i></button>
+                    <div class="dropdown-content" id="mainDropdown">
+                        <!-- سيتم تعبئة القوائم المنسدلة تلقائيًا عبر JavaScript -->
+                    </div>
+                </div>
+                <a href="#">المدونة</a>
+                <a href="#">تواصل معنا</a>
+            </div>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="ابحث عن أداة...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="menu-toggle" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- القسم الرئيسي (Hero) -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>مستقبل الذكاء الاصطناعي <span class="gold">بين يديك</span></h1>
+            <p>أكثر من 50+ أداة ذكاء اصطناعي متطورة في مكان واحد. اختر، جرب، وابدع.</p>
+            <button class="cta-btn" id="exploreBtn">استكشف الأدوات <i class="fas fa-arrow-left"></i></button>
+        </div>
+    </section>
+
+    <!-- أزرار التصفية -->
+    <div class="filter-section">
+        <button class="filter-btn active" data-category="all">الكل</button>
+        <!-- سيتم إضافة أزرار الفئات تلقائيًا -->
+    </div>
+
+    <!-- حاوية عرض الأدوات -->
+    <div class="tools-container" id="toolsContainer">
+        <!-- سيتم عرض البطاقات هنا عبر JavaScript -->
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 The Future Millionaire - جميع الحقوق محفوظة</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
