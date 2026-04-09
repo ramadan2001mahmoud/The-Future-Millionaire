@@ -67,7 +67,6 @@ let tools = [
 //  إدارة الإحصائيات والنقرات (LocalStorage)
 // ============================================
 
-// تحميل عدد النقرات المحفوظة
 function loadClicksFromStorage() {
     const savedClicks = localStorage.getItem("toolsClicks");
     if (savedClicks) {
@@ -79,7 +78,6 @@ function loadClicksFromStorage() {
     }
 }
 
-// حفظ عدد النقرات
 function saveClicksToStorage() {
     const clicksData = {};
     tools.forEach(tool => {
@@ -88,7 +86,6 @@ function saveClicksToStorage() {
     localStorage.setItem("toolsClicks", JSON.stringify(clicksData));
 }
 
-// تسجيل نقرة على أداة
 function recordClick(toolName) {
     const tool = tools.find(t => t.name === toolName);
     if (tool) {
@@ -96,17 +93,16 @@ function recordClick(toolName) {
         saveClicksToStorage();
         updateStatsDisplay();
         
-        // تسجيل النقرة في حساب المستخدم إذا كان مسجلاً
         const currentUser = JSON.parse(localStorage.getItem("currentUser"));
         if (currentUser) {
             let userClicks = JSON.parse(localStorage.getItem(`userClicks_${currentUser.id}`) || "{}");
             userClicks[toolName] = (userClicks[toolName] || 0) + 1;
             localStorage.setItem(`userClicks_${currentUser.id}`, JSON.stringify(userClicks));
+            updateNavbarStats();
         }
     }
 }
 
-// تحديث شريط الإحصائيات
 function updateStatsDisplay() {
     const totalToolsSpan = document.getElementById("totalTools");
     const totalClicksSpan = document.getElementById("totalClicks");
@@ -124,6 +120,59 @@ function updateStatsDisplay() {
 }
 
 // ============================================
+//  نظام المفضلة (Favorites)
+// ============================================
+
+function addToFavorites(toolName) {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (!currentUser) {
+        if (confirm("يجب تسجيل الدخول لإضافة أدوات للمفضلة. هل تريد الذهاب لتسجيل الدخول؟")) {
+            window.location.href = "login.html";
+        }
+        return false;
+    }
+    
+    let favorites = JSON.parse(localStorage.getItem(`favorites_${currentUser.id}`) || "[]");
+    if (!favorites.includes(toolName)) {
+        favorites.push(toolName);
+        localStorage.setItem(`favorites_${currentUser.id}`, JSON.stringify(favorites));
+        alert(`✅ تم إضافة ${toolName} إلى المفضلة`);
+        return true;
+    } else {
+        favorites = favorites.filter(f => f !== toolName);
+        localStorage.setItem(`favorites_${currentUser.id}`, JSON.stringify(favorites));
+        alert(`🗑️ تم إزالة ${toolName} من المفضلة`);
+        return false;
+    }
+}
+
+function isFavorite(toolName) {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (!currentUser) return false;
+    const favorites = JSON.parse(localStorage.getItem(`favorites_${currentUser.id}`) || "[]");
+    return favorites.includes(toolName);
+}
+
+function getUserStats() {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (!currentUser) return { clicks: 0, favorites: 0 };
+    
+    const userClicks = JSON.parse(localStorage.getItem(`userClicks_${currentUser.id}`) || "{}");
+    const totalClicks = Object.values(userClicks).reduce((a, b) => a + b, 0);
+    const favorites = JSON.parse(localStorage.getItem(`favorites_${currentUser.id}`) || "[]");
+    
+    return { clicks: totalClicks, favorites: favorites.length };
+}
+
+function updateNavbarStats() {
+    const stats = getUserStats();
+    const statsSpan = document.getElementById("userStats");
+    if (statsSpan) {
+        statsSpan.innerHTML = `<i class="fas fa-heart"></i> ${stats.favorites} | <i class="fas fa-mouse-pointer"></i> ${stats.clicks}`;
+    }
+}
+
+// ============================================
 //  إدارة المستخدمين والجلسة
 // ============================================
 
@@ -132,6 +181,8 @@ function updateAuthUI() {
     const authLink = document.getElementById("authLink");
     const userGreeting = document.getElementById("userGreeting");
     const logoutBtn = document.getElementById("logoutBtn");
+    const dashboardLink = document.getElementById("dashboardLink");
+    const userStatsSpan = document.getElementById("userStats");
     
     if (currentUser) {
         if (authLink) authLink.style.display = "none";
@@ -140,10 +191,18 @@ function updateAuthUI() {
             userGreeting.textContent = `مرحباً ${currentUser.name}`;
         }
         if (logoutBtn) logoutBtn.style.display = "inline";
+        if (dashboardLink) dashboardLink.style.display = "inline";
+        if (userStatsSpan) {
+            userStatsSpan.style.display = "inline";
+            const stats = getUserStats();
+            userStatsSpan.innerHTML = `<i class="fas fa-heart"></i> ${stats.favorites} | <i class="fas fa-mouse-pointer"></i> ${stats.clicks}`;
+        }
     } else {
         if (authLink) authLink.style.display = "inline";
         if (userGreeting) userGreeting.style.display = "none";
         if (logoutBtn) logoutBtn.style.display = "none";
+        if (dashboardLink) dashboardLink.style.display = "none";
+        if (userStatsSpan) userStatsSpan.style.display = "none";
     }
 }
 
@@ -221,10 +280,19 @@ function displayTools(toolsArray) {
     }
     
     toolsArray.forEach(tool => {
+        const isFav = isFavorite(tool.name);
+        const starClass = isFav ? "fas fa-star" : "far fa-star";
+        const starColor = isFav ? "#D4AF37" : "#666";
+        
         const card = document.createElement("div");
         card.className = "tool-card";
         card.innerHTML = `
-            <div class="tool-icon"><i class="fas ${tool.icon}"></i></div>
+            <div style="position: relative;">
+                <div class="tool-icon"><i class="fas ${tool.icon}"></i></div>
+                <button class="favorite-btn" data-tool="${tool.name}" style="position: absolute; top: 5px; left: 5px; background: none; border: none; cursor: pointer; font-size: 1.3rem; color: ${starColor};">
+                    <i class="${starClass}"></i>
+                </button>
+            </div>
             <h3>${tool.name}</h3>
             <div class="tool-category">${tool.category}</div>
             <p class="tool-description">${tool.description}</p>
@@ -234,11 +302,29 @@ function displayTools(toolsArray) {
         container.appendChild(card);
     });
     
-    // إضافة مستمعي النقرات للأزرار
     document.querySelectorAll(".tool-link").forEach(link => {
         link.addEventListener("click", (e) => {
             const toolName = link.getAttribute("data-tool");
             recordClick(toolName);
+        });
+    });
+    
+    document.querySelectorAll(".favorite-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const toolName = btn.getAttribute("data-tool");
+            addToFavorites(toolName);
+            const isNowFav = isFavorite(toolName);
+            const icon = btn.querySelector("i");
+            if (isNowFav) {
+                icon.className = "fas fa-star";
+                btn.style.color = "#D4AF37";
+            } else {
+                icon.className = "far fa-star";
+                btn.style.color = "#666";
+            }
+            updateNavbarStats();
         });
     });
 }
