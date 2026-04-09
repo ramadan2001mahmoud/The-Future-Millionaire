@@ -14,20 +14,19 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <!-- ضع اسم ملف اللوجو هنا: logo.png أو logo.jpg أو logo.webp -->
-                <img src="logo.png" alt="Logo" class="logo-img">
+                <img src="logo.png" alt="The Future Millionaire Logo" class="logo-img">
                 <span class="logo-text">The Future Millionaire</span>
             </div>
             <div class="nav-links" id="navLinks">
-                <a href="#">الرئيسية</a>
+                <a href="index.html" class="active">الرئيسية</a>
                 <div class="dropdown">
                     <button class="dropbtn">أدوات الذكاء الاصطناعي <i class="fas fa-chevron-down"></i></button>
-                    <div class="dropdown-content" id="mainDropdown">
-                        <!-- سيتم تعبئة القوائم المنسدلة تلقائيًا عبر JavaScript -->
-                    </div>
+                    <div class="dropdown-content" id="mainDropdown"></div>
                 </div>
-                <a href="#">المدونة</a>
-                <a href="#">تواصل معنا</a>
+                <a href="blog.html">المدونة</a>
+                <a href="login.html" id="authLink">تسجيل الدخول</a>
+                <span id="userGreeting" style="display:none; color:#D4AF37;"></span>
+                <a href="#" id="logoutBtn" style="display:none;">تسجيل خروج</a>
             </div>
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="ابحث عن أداة...">
@@ -48,16 +47,32 @@
         </div>
     </section>
 
+    <!-- إحصائيات سريعة -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <i class="fas fa-robot"></i>
+            <span id="totalTools">0</span>
+            <p>أداة ذكاء اصطناعي</p>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-mouse-pointer"></i>
+            <span id="totalClicks">0</span>
+            <p>إجمالي النقرات</p>
+        </div>
+        <div class="stat-item">
+            <i class="fas fa-users"></i>
+            <span id="totalUsers">0</span>
+            <p>مستخدم نشط</p>
+        </div>
+    </div>
+
     <!-- أزرار التصفية -->
     <div class="filter-section">
         <button class="filter-btn active" data-category="all">الكل</button>
-        <!-- سيتم إضافة أزرار الفئات تلقائيًا -->
     </div>
 
     <!-- حاوية عرض الأدوات -->
-    <div class="tools-container" id="toolsContainer">
-        <!-- سيتم عرض البطاقات هنا عبر JavaScript -->
-    </div>
+    <div class="tools-container" id="toolsContainer"></div>
 
     <!-- الفوتر -->
     <footer class="footer">
