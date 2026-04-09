@@ -1,1 +1,210 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المدونة | The Future Millionaire</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .blog-header {
+            text-align: center;
+            padding: 60px 20px 30px;
+            background: linear-gradient(135deg, #0A0A0A, #1A1A1A);
+        }
+        .blog-header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .blog-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .blog-card {
+            background: #1A1A1A;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid #2A2A2A;
+        }
+        .blog-card:hover { transform: translateY(-5px); border-color: #D4AF37; }
+        .blog-card img { width: 100%; height: 200px; object-fit: cover; }
+        .blog-card-content { padding: 20px; }
+        .blog-date { color: #D4AF37; font-size: 0.8rem; display: block; margin-bottom: 10px; }
+        .blog-card h3 { margin: 10px 0; font-size: 1.3rem; }
+        .blog-card p { color: #CCCCCC; margin-bottom: 15px; }
+        .read-more { color: #D4AF37; text-decoration: none; font-weight: bold; }
+        .read-more:hover { text-decoration: underline; }
+        .nav-links a.active { color: #D4AF37; border-bottom: 2px solid #D4AF37; }
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 20px;
+        }
+        .category-btn {
+            background: #1A1A1A;
+            border: 1px solid #333;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .category-btn.active, .category-btn:hover {
+            background: #D4AF37;
+            color: #0A0A0A;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo" class="logo-img">
+                <span class="logo-text">The Future Millionaire</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">الرئيسية</a>
+                <a href="blog.html" class="active">المدونة</a>
+                <a href="login.html" id="authLink">تسجيل الدخول</a>
+                <span id="userGreeting" style="display:none; color:#D4AF37;"></span>
+                <a href="#" id="logoutBtn" style="display:none;">تسجيل خروج</a>
+            </div>
+            <div class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <section class="blog-header">
+        <h1>مدونة <span class="gold">The Future Millionaire</span></h1>
+        <p>مقالات حصرية عن الذكاء الاصطناعي، ريادة الأعمال، والثراء الرقمي</p>
+    </section>
+
+    <div class="category-filter" id="categoryFilter"></div>
+
+    <div class="blog-container" id="blogContainer"></div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 The Future Millionaire - جميع الحقوق محفوظة</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // مقالات المدونة
+        const posts = [
+            { title: "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026", date: "2026-04-01", excerpt: "5 استراتيجيات ذكية لتضخيم دخلك باستخدام أدوات AI...", image: "https://picsum.photos/300/200?random=1", category: "ريادة أعمال", link: "#" },
+            { title: "أفضل 10 أدوات AI لتوليد الفيديو", date: "2026-03-28", excerpt: "من Runway إلى Pika... تعرف على أدوات صناعة الفيديو بالذكاء الاصطناعي", image: "https://picsum.photos/300/200?random=2", category: "أدوات", link: "#" },
+            { title: "ChatGPT vs Claude: أيهما أفضل للبرمجة؟", date: "2026-03-25", excerpt: "مقارنة شاملة بين أقوى نموذجين للذكاء الاصطناعي", image: "https://picsum.photos/300/200?random=3", category: "مقارنات", link: "#" },
+            { title: "عقلية المليونير: كيف تفكر كالأغنياء", date: "2026-03-20", excerpt: "7 عادات يومية تغير طريقة تفكيرك تجاه المال", image: "https://picsum.photos/300/200?random=4", category: "تطوير ذات", link: "#" },
+            { title: "دليلك الشامل لتعلم البرمجة بالذكاء الاصطناعي", date: "2026-03-15", excerpt: "كيف تستخدم GitHub Copilot وCursor لتصبح مبرمجاً محترفاً", image: "https://picsum.photos/300/200?random=5", category: "برمجة", link: "#" },
+            { title: "أفضل 5 أدوات لتحليل البيانات بالذكاء الاصطناعي", date: "2026-03-10", excerpt: "من Tableau إلى Julius AI.. اختر الأداة المناسبة لعملك", image: "https://picsum.photos/300/200?random=6", category: "أدوات", link: "#" },
+            { title: "الاستثمار في الذكاء الاصطناعي: فرص العقد القادم", date: "2026-03-05", excerpt: "كيف تستثمر في شركات AI قبل فوات الأوان", image: "https://picsum.photos/300/200?random=7", category: "استثمار", link: "#" },
+            { title: "10 مهارات مطلوبة في عصر الذكاء الاصطناعي", date: "2026-02-28", excerpt: "المهارات التي تضمن لك وظيفة المستقبل", image: "https://picsum.photos/300/200?random=8", category: "تطوير ذات", link: "#" }
+        ];
+
+        let currentCategory = "الكل";
+
+        function getCategories() {
+            const cats = ["الكل", ...new Set(posts.map(p => p.category))];
+            return cats;
+        }
+
+        function buildCategoryButtons() {
+            const container = document.getElementById("categoryFilter");
+            const categories = getCategories();
+            container.innerHTML = "";
+            categories.forEach(cat => {
+                const btn = document.createElement("button");
+                btn.className = "category-btn";
+                if (cat === currentCategory) btn.classList.add("active");
+                btn.textContent = cat;
+                btn.addEventListener("click", () => {
+                    currentCategory = cat;
+                    buildCategoryButtons();
+                    displayPosts();
+                });
+                container.appendChild(btn);
+            });
+        }
+
+        function displayPosts() {
+            const container = document.getElementById("blogContainer");
+            let filteredPosts = posts;
+            if (currentCategory !== "الكل") {
+                filteredPosts = posts.filter(p => p.category === currentCategory);
+            }
+            container.innerHTML = filteredPosts.map(post => `
+                <div class="blog-card">
+                    <img src="${post.image}" alt="${post.title}">
+                    <div class="blog-card-content">
+                        <span class="blog-date">${post.date} | ${post.category}</span>
+                        <h3>${post.title}</h3>
+                        <p>${post.excerpt}</p>
+                        <a href="${post.link}" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // إدارة المستخدمين
+        function updateAuthUI() {
+            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            const authLink = document.getElementById("authLink");
+            const userGreeting = document.getElementById("userGreeting");
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (currentUser) {
+                if (authLink) authLink.style.display = "none";
+                if (userGreeting) {
+                    userGreeting.style.display = "inline";
+                    userGreeting.textContent = `مرحباً ${currentUser.name}`;
+                }
+                if (logoutBtn) logoutBtn.style.display = "inline";
+            } else {
+                if (authLink) authLink.style.display = "inline";
+                if (userGreeting) userGreeting.style.display = "none";
+                if (logoutBtn) logoutBtn.style.display = "none";
+            }
+        }
+
+        function setupLogout() {
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("currentUser");
+                    updateAuthUI();
+                    window.location.reload();
+                });
+            }
+        }
+
+        function setupMobileMenu() {
+            const toggle = document.getElementById("mobileMenu");
+            const navLinks = document.getElementById("navLinks");
+            if (toggle && navLinks) {
+                toggle.addEventListener("click", () => {
+                    navLinks.classList.toggle("active");
+                });
+            }
+        }
+
+        buildCategoryButtons();
+        displayPosts();
+        updateAuthUI();
+        setupLogout();
+        setupMobileMenu();
+    </script>
+</body>
+</html>
