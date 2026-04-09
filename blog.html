@@ -58,6 +58,18 @@
             background: #D4AF37;
             color: #0A0A0A;
         }
+        .footer-links {
+            margin-top: 15px;
+        }
+        .footer-links a {
+            color: #D4AF37;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 0.9rem;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -92,25 +104,29 @@
         <div class="footer-content">
             <p>&copy; 2026 The Future Millionaire - جميع الحقوق محفوظة</p>
             <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://linkedin.com/in/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="terms.html">شروط الاستخدام</a>
+                <a href="terms.html#privacy">سياسة الخصوصية</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // مقالات المدونة مع روابط حقيقية
+        // مقالات المدونة مع صور حقيقية
         const posts = [
-            { title: "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026", date: "2026-04-01", excerpt: "5 استراتيجيات ذكية لتضخيم دخلك باستخدام أدوات AI...", image: "https://picsum.photos/300/200?random=1", category: "ريادة أعمال" },
-            { title: "أفضل 10 أدوات AI لتوليد الفيديو", date: "2026-03-28", excerpt: "من Runway إلى Pika... تعرف على أدوات صناعة الفيديو بالذكاء الاصطناعي", image: "https://picsum.photos/300/200?random=2", category: "أدوات" },
-            { title: "ChatGPT vs Claude: أيهما أفضل للبرمجة؟", date: "2026-03-25", excerpt: "مقارنة شاملة بين أقوى نموذجين للذكاء الاصطناعي", image: "https://picsum.photos/300/200?random=3", category: "مقارنات" },
-            { title: "عقلية المليونير: كيف تفكر كالأغنياء", date: "2026-03-20", excerpt: "7 عادات يومية تغير طريقة تفكيرك تجاه المال", image: "https://picsum.photos/300/200?random=4", category: "تطوير ذات" },
-            { title: "دليلك الشامل لتعلم البرمجة بالذكاء الاصطناعي", date: "2026-03-15", excerpt: "كيف تستخدم GitHub Copilot وCursor لتصبح مبرمجاً محترفاً", image: "https://picsum.photos/300/200?random=5", category: "برمجة" },
-            { title: "أفضل 5 أدوات لتحليل البيانات بالذكاء الاصطناعي", date: "2026-03-10", excerpt: "من Tableau إلى Julius AI.. اختر الأداة المناسبة لعملك", image: "https://picsum.photos/300/200?random=6", category: "أدوات" },
-            { title: "الاستثمار في الذكاء الاصطناعي: فرص العقد القادم", date: "2026-03-05", excerpt: "كيف تستثمر في شركات AI قبل فوات الأوان", image: "https://picsum.photos/300/200?random=7", category: "استثمار" },
-            { title: "10 مهارات مطلوبة في عصر الذكاء الاصطناعي", date: "2026-02-28", excerpt: "المهارات التي تضمن لك وظيفة المستقبل", image: "https://picsum.photos/300/200?random=8", category: "تطوير ذات" }
+            { title: "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026", date: "2026-04-01", excerpt: "5 استراتيجيات ذكية لتضخيم دخلك باستخدام أدوات AI...", image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400&h=250&fit=crop", category: "ريادة أعمال" },
+            { title: "أفضل 10 أدوات AI لتوليد الفيديو", date: "2026-03-28", excerpt: "من Runway إلى Pika... تعرف على أدوات صناعة الفيديو بالذكاء الاصطناعي", image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4dde1?w=400&h=250&fit=crop", category: "أدوات" },
+            { title: "ChatGPT vs Claude: أيهما أفضل للبرمجة؟", date: "2026-03-25", excerpt: "مقارنة شاملة بين أقوى نموذجين للذكاء الاصطناعي", image: "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=400&h=250&fit=crop", category: "مقارنات" },
+            { title: "عقلية المليونير: كيف تفكر كالأغنياء", date: "2026-03-20", excerpt: "7 عادات يومية تغير طريقة تفكيرك تجاه المال", image: "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=400&h=250&fit=crop", category: "تطوير ذات" },
+            { title: "دليلك الشامل لتعلم البرمجة بالذكاء الاصطناعي", date: "2026-03-15", excerpt: "كيف تستخدم GitHub Copilot وCursor لتصبح مبرمجاً محترفاً", image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&h=250&fit=crop", category: "برمجة" },
+            { title: "أفضل 5 أدوات لتحليل البيانات بالذكاء الاصطناعي", date: "2026-03-10", excerpt: "من Tableau إلى Julius AI.. اختر الأداة المناسبة لعملك", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop", category: "أدوات" },
+            { title: "الاستثمار في الذكاء الاصطناعي: فرص العقد القادم", date: "2026-03-05", excerpt: "كيف تستثمر في شركات AI قبل فوات الأوان", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop", category: "استثمار" },
+            { title: "10 مهارات مطلوبة في عصر الذكاء الاصطناعي", date: "2026-02-28", excerpt: "المهارات التي تضمن لك وظيفة المستقبل", image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=250&fit=crop", category: "تطوير ذات" }
         ];
 
         let currentCategory = "الكل";
