@@ -41,10 +41,6 @@
             margin: 25px 0 15px;
             font-size: 1.5rem;
         }
-        .post-content h3 {
-            color: #D4AF37;
-            margin: 20px 0 10px;
-        }
         .post-content ul, .post-content ol {
             margin: 15px 0;
             padding-right: 25px;
@@ -72,11 +68,22 @@
             border-top: 1px solid #333;
             display: flex;
             gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
         }
         .share-buttons a {
             color: #D4AF37;
             text-decoration: none;
             font-size: 1.2rem;
+        }
+        .footer-links {
+            margin-top: 15px;
+        }
+        .footer-links a {
+            color: #D4AF37;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -106,18 +113,28 @@
 
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2026 The Future Millionaire</p>
+            <p>&copy; 2026 The Future Millionaire - جميع الحقوق محفوظة</p>
+            <div class="social-icons">
+                <a href="https://linkedin.com/in/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="terms.html">شروط الاستخدام</a>
+                <a href="terms.html#privacy">سياسة الخصوصية</a>
+            </div>
         </div>
     </footer>
 
     <script>
-        // قاعدة بيانات المقالات الكاملة
+        // قاعدة بيانات المقالات الكاملة مع صور حقيقية
         const fullPosts = {
             "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026": {
                 title: "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026",
                 date: "2026-04-01",
                 category: "ريادة أعمال",
-                image: "https://picsum.photos/800/400?random=1",
+                image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&h=400&fit=crop",
                 content: `<p>الذكاء الاصطناعي ليس مجرد تقنية عابرة، بل هو ثورة حقيقية تخلق مليارديرات جدد كل يوم. في هذا المقال، نستعرض 5 استراتيجيات ذكية لتضخيم دخلك باستخدام أدوات AI:</p>
                 <h2>🇸​🇦​ 1. أتمتة المحتوى</h2>
                 <p>استخدم ChatGPT وJasper لإنشاء محتوى تسويقي، مقالات، منشورات سوشيال ميديا بكميات هائلة وبجودة عالية. يمكنك إنتاج ما يعادل عمل فريق كامل في ساعات قليلة.</p>
@@ -130,69 +147,64 @@
                 <h2>💰 5. الاستثمار في شركات AI</h2>
                 <p>تابع الشركات الناشئة في مجال الذكاء الاصطناعي واستثمر مبكراً. بعض هذه الشركات قد تكون الـ Google القادمة.</p>
                 <hr>
-                <p><strong>الخلاصة:</strong> المستقبل لمن يستخدم الذكاء الاصطناعي كأداة لتضخيم جهوده. ابدأ اليوم ولا تنتظر. المليونير القادم قد تكون أنت.</p>
-                <p><em>كتبه: فريق The Future Millionaire</em></p>`
+                <p><strong>الخلاصة:</strong> المستقبل لمن يستخدم الذكاء الاصطناعي كأداة لتضخيم جهوده. ابدأ اليوم ولا تنتظر. المليونير القادم قد تكون أنت.</p>`
             },
             "أفضل 10 أدوات AI لتوليد الفيديو": {
                 title: "أفضل 10 أدوات AI لتوليد الفيديو",
                 date: "2026-03-28",
                 category: "أدوات",
-                image: "https://picsum.photos/800/400?random=2",
+                image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4dde1?w=800&h=400&fit=crop",
                 content: `<p>صناعة الفيديو أصبحت أسهل من أي وقت مضى بفضل الذكاء الاصطناعي. إليك أفضل 10 أدوات:</p>
                 <ul>
-                    <li><strong>Runway ML:</strong> تحرير وتوليد فيديوهات احترافية - مثالي لصناع الأفلام</li>
-                    <li><strong>HeyGen:</strong> إنشاء أفلام بصور رمزية متحركة واقعية - رائع للتعليم والتسويق</li>
-                    <li><strong>Pika Labs:</strong> تحويل النص إلى فيديو قصير - ممتاز للسوشيال ميديا</li>
-                    <li><strong>Kaiber:</strong> تحويل الصور إلى فيديوهات متحركة - إبداعي وفني</li>
-                    <li><strong>Sora:</strong> أحدث إصدار من OpenAI - يغير قواعد اللعبة (قيد الإصدار)</li>
-                    <li><strong>Descript:</strong> تحرير الفيديو كأنك تحرر نصاً - سهل جداً للمبتدئين</li>
-                    <li><strong>Fliki:</strong> تحويل المدونات إلى فيديوهات - مثالي لصناع المحتوى</li>
-                    <li><strong>Synthesia:</strong> إنشاء فيديوهات تدريبية بأفاتار رقمي - احترافي للشركات</li>
-                    <li><strong>Elai.io:</strong> إنشاء فيديوهات من النص فقط - سريع وسهل</li>
-                    <li><strong>Pictory.ai:</strong> تحويل المقالات الطويلة إلى فيديوهات قصيرة - رائع لليوتيوب</li>
+                    <li><strong>Runway ML:</strong> تحرير وتوليد فيديوهات احترافية</li>
+                    <li><strong>HeyGen:</strong> إنشاء أفلام بصور رمزية متحركة واقعية</li>
+                    <li><strong>Pika Labs:</strong> تحويل النص إلى فيديو قصير</li>
+                    <li><strong>Kaiber:</strong> تحويل الصور إلى فيديوهات متحركة</li>
+                    <li><strong>Sora:</strong> أحدث إصدار من OpenAI (قيد الإصدار)</li>
+                    <li><strong>Descript:</strong> تحرير الفيديو كأنك تحرر نصاً</li>
+                    <li><strong>Fliki:</strong> تحويل المدونات إلى فيديوهات</li>
+                    <li><strong>Synthesia:</strong> إنشاء فيديوهات تدريبية بأفاتار رقمي</li>
+                    <li><strong>Elai.io:</strong> إنشاء فيديوهات من النص فقط</li>
+                    <li><strong>Pictory.ai:</strong> تحويل المقالات الطويلة إلى فيديوهات قصيرة</li>
                 </ul>
-                <p>كل هذه الأدوات توفر نسخ مجانية لتجربتها قبل الاشتراك. ابدأ بتجربة 2-3 أدوات واختر ما يناسب احتياجاتك.</p>`
+                <p>كل هذه الأدوات توفر نسخ مجانية لتجربتها قبل الاشتراك.</p>`
             },
             "ChatGPT vs Claude: أيهما أفضل للبرمجة؟": {
                 title: "ChatGPT vs Claude: أيهما أفضل للبرمجة؟",
                 date: "2026-03-25",
                 category: "مقارنات",
-                image: "https://picsum.photos/800/400?random=3",
+                image: "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=800&h=400&fit=crop",
                 content: `<p>مقارنة شاملة بين أقوى نموذجين للذكاء الاصطناعي في مجال البرمجة:</p>
                 <h2>🤖 ChatGPT (GPT-4):</h2>
-                <p><strong>مميزات:</strong> يفهم السياق جيداً، يكتب كود نظيف، يدعم أكثر من 50 لغة برمجة، قاعدة مستخدمين ضخمة يعني دعم ومحتوى تعليمي أكثر.</p>
-                <p><strong>عيوب:</strong> أحياناً يهلوس في الكود المعقد، قد يحتاج لتوجيه دقيق للمشاريع الكبيرة.</p>
+                <p><strong>مميزات:</strong> يفهم السياق جيداً، يكتب كود نظيف، يدعم أكثر من 50 لغة برمجة، قاعدة مستخدمين ضخمة.</p>
+                <p><strong>عيوب:</strong> أحياناً يهلوس في الكود المعقد.</p>
                 <h2>🧠 Claude 3 (Opus):</h2>
-                <p><strong>مميزات:</strong> دقة عالية في الكود الطويل، فهم ممتاز للمشاريع الكبيرة، يدخل ملفات PDF وصور، أقل هلوسة من ChatGPT.</p>
-                <p><strong>عيوب:</strong> أقل شيوعاً من ChatGPT (مجتمع ودروس أقل)، سعر أعلى لـ API.</p>
+                <p><strong>مميزات:</strong> دقة عالية في الكود الطويل، فهم ممتاز للمشاريع الكبيرة.</p>
+                <p><strong>عيوب:</strong> أقل شيوعاً، سعر أعلى لـ API.</p>
                 <h2>🏆 الخلاصة:</h2>
-                <p>للمشاريع الصغيرة والمتوسطة والبدء في التعلم → <strong>ChatGPT</strong> (مجتمع أكبر).<br>
-                للمشاريع الكبيرة والمعقدة والدقة العالية → <strong>Claude 3</strong>.<br>
-                <strong>الأفضل على الإطلاق:</strong> استخدامهما معاً والاستفادة من نقاط قوة كل منهما.</p>`
+                <p>للمشاريع الصغيرة → ChatGPT. للمشاريع الكبيرة → Claude 3. الأفضل: استخدامهما معاً.</p>`
             },
             "عقلية المليونير: كيف تفكر كالأغنياء": {
                 title: "عقلية المليونير: كيف تفكر كالأغنياء",
                 date: "2026-03-20",
                 category: "تطوير ذات",
-                image: "https://picsum.photos/800/400?random=4",
-                content: `<p>الفرق بين الأغنياء والفقراء ليس في المال فقط، بل في العقلية. إليك 7 عادات يومية تغير طريقة تفكيرك:</p>
+                image: "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&h=400&fit=crop",
+                content: `<p>الفرق بين الأغنياء والفقراء ليس في المال فقط، بل في العقلية. إليك 7 عادات يومية:</p>
                 <ol>
-                    <li><strong>التفكير في الحلول وليس المشاكل:</strong> بدلاً من التركيز على العقبات، ابحث عن الفرص. كل مشكلة تحمل فرصة لشخص ذكي.</li>
-                    <li><strong>الاستثمار في نفسك:</strong> أغنى استثمار هو تطوير مهاراتك ومعرفتك. اقرأ، تعلم، احضر دورات.</li>
-                    <li><strong>تحمل المخاطر المحسوبة:</strong> الخوف من الفشل هو أكبر عدو للنجاح. الأغنياء يخاطرون ولكن بعد دراسة.</li>
-                    <li><strong>بناء شبكة علاقات قوية:</strong> أنت متوسط الخمسة أشخاص المحيطين بك. اختر من تصاحب بحكمة.</li>
-                    <li><strong>الانضباط المالي:</strong> ادخر واستثمر قبل أن تنفق. قاعدة: 20% استثمار، 30% ادخار، 50% مصاريف.</li>
-                    <li><strong>التعلم المستمر:</strong> اقرأ كتاباً واحداً على الأقل شهرياً. الأغنياء يقرأون 50+ كتاب سنوياً.</li>
-                    <li><strong>العمل على المشروع وليس في المشروع:</strong> ابنِ نظاماً يعمل بدونك. لا تكن عبداً لعملك.</li>
+                    <li><strong>التفكير في الحلول وليس المشاكل</strong></li>
+                    <li><strong>الاستثمار في نفسك</strong></li>
+                    <li><strong>تحمل المخاطر المحسوبة</strong></li>
+                    <li><strong>بناء شبكة علاقات قوية</strong></li>
+                    <li><strong>الانضباط المالي</strong></li>
+                    <li><strong>التعلم المستمر</strong></li>
+                    <li><strong>العمل على المشروع وليس في المشروع</strong></li>
                 </ol>
-                <p>ابدأ بتطبيق هذه العادات اليوم، وستلاحظ الفرق خلال 6 أشهر. النجاح ليس صدفة، إنه نتيجة لعادات يومية صحيحة.</p>`
+                <p>ابدأ بتطبيق هذه العادات اليوم، وستلاحظ الفرق خلال 6 أشهر.</p>`
             }
         };
 
-        // الحصول على عنوان المقال من الرابط
         const urlParams = new URLSearchParams(window.location.search);
         const postTitle = decodeURIComponent(urlParams.get('title') || '');
-        
         const post = fullPosts[postTitle];
         const container = document.getElementById("postContent");
         
@@ -208,13 +220,13 @@
                     <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}" target="_blank"><i class="fab fa-twitter"></i></a>
                     <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://wa.me/?text=${encodeURIComponent(post.title + ' ' + window.location.href)}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             `;
         } else {
             container.innerHTML = `<p style="color:#ff6b6b;">😅 عذراً، المقال غير موجود</p><a href="blog.html" style="color:#D4AF37;">العودة إلى المدونة</a>`;
         }
 
-        // إدارة المستخدمين
         function updateAuthUI() {
             const currentUser = JSON.parse(localStorage.getItem("currentUser"));
             const authLink = document.getElementById("authLink");
