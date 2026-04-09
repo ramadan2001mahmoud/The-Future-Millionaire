@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -56,6 +55,28 @@
         .auth-card a:hover { text-decoration: underline; }
         .error-msg { color: #ff6b6b; font-size: 0.8rem; margin-top: 10px; display: none; }
         .success-msg { color: #51cf66; font-size: 0.8rem; margin-top: 10px; display: none; }
+        .google-btn {
+            background: #4285F4 !important;
+            color: white !important;
+            margin-top: 15px;
+        }
+        .google-btn:hover { background: #357ae8 !important; }
+        .divider {
+            margin: 20px 0;
+            position: relative;
+            text-align: center;
+        }
+        .divider::before, .divider::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #333;
+        }
+        .divider::before { left: 0; }
+        .divider::after { right: 0; }
+        .divider span { background: #1A1A1A; padding: 0 10px; color: #888; }
     </style>
 </head>
 <body>
@@ -86,8 +107,14 @@
                 <div class="error-msg" id="loginError"></div>
                 <button type="submit">تسجيل الدخول <i class="fas fa-sign-in-alt"></i></button>
             </form>
+
+            <div class="divider"><span>أو</span></div>
+
+            <button id="googleSignInBtn" class="google-btn">
+                <i class="fab fa-google"></i> تسجيل الدخول بحساب Google
+            </button>
             
-            <p>ليس لديك حساب؟ <a href="#" id="showRegister">إنشاء حساب جديد</a></p>
+            <p style="margin-top: 25px;">ليس لديك حساب؟ <a href="#" id="showRegister">إنشاء حساب جديد</a></p>
         </div>
 
         <div class="auth-card" id="registerCard" style="display: none;">
@@ -101,7 +128,14 @@
                 <div class="success-msg" id="registerSuccess"></div>
                 <button type="submit">إنشاء الحساب <i class="fas fa-user-plus"></i></button>
             </form>
-            <p>لديك حساب؟ <a href="#" id="showLogin">تسجيل الدخول</a></p>
+            
+            <div class="divider"><span>أو</span></div>
+
+            <button id="googleSignUpBtn" class="google-btn">
+                <i class="fab fa-google"></i> إنشاء حساب بـ Google
+            </button>
+
+            <p style="margin-top: 25px;">لديك حساب؟ <a href="#" id="showLogin">تسجيل الدخول</a></p>
         </div>
     </div>
 
@@ -112,7 +146,41 @@
     </footer>
 
     <script>
-        // تسجيل الدخول
+        // دالة موحدة لتسجيل الدخول/إنشاء حساب بـ Google
+        function handleGoogleAuth() {
+            const googleEmail = prompt("📧 أدخل بريدك الإلكتروني على Google:", "example@gmail.com");
+            if (googleEmail && googleEmail.includes("@") && googleEmail.includes(".")) {
+                let users = JSON.parse(localStorage.getItem("users") || "[]");
+                let user = users.find(u => u.email === googleEmail);
+                
+                if (!user) {
+                    // إنشاء حساب تلقائي للمستخدم الجديد
+                    const name = googleEmail.split("@")[0];
+                    user = {
+                        id: Date.now(),
+                        name: name,
+                        email: googleEmail,
+                        password: "google_oauth_" + Date.now(),
+                        role: users.length === 0 ? "admin" : "user",
+                        favorites: [],
+                        createdAt: new Date().toISOString(),
+                        authProvider: "google"
+                    };
+                    users.push(user);
+                    localStorage.setItem("users", JSON.stringify(users));
+                    alert(`✅ تم إنشاء حسابك بنجاح! مرحباً ${name}`);
+                } else {
+                    alert(`👋 مرحباً بعودتك ${user.name}!`);
+                }
+                
+                localStorage.setItem("currentUser", JSON.stringify(user));
+                window.location.href = "dashboard.html";
+            } else {
+                alert("❌ الرجاء إدخال بريد إلكتروني صحيح (example@gmail.com)");
+            }
+        }
+
+        // تسجيل الدخول العادي
         document.getElementById("loginForm").addEventListener("submit", (e) => {
             e.preventDefault();
             const email = document.getElementById("loginEmail").value;
@@ -132,7 +200,7 @@
             }
         });
 
-        // إنشاء حساب
+        // إنشاء حساب عادي
         document.getElementById("registerForm").addEventListener("submit", (e) => {
             e.preventDefault();
             const name = document.getElementById("regName").value;
@@ -163,7 +231,8 @@
                 password, 
                 role: users.length === 0 ? "admin" : "user", 
                 favorites: [],
-                createdAt: new Date().toISOString()
+                createdAt: new Date().toISOString(),
+                authProvider: "local"
             };
             
             users.push(newUser);
@@ -178,6 +247,10 @@
                 window.location.href = "dashboard.html";
             }, 1500);
         });
+
+        // أزرار Google
+        document.getElementById("googleSignInBtn").addEventListener("click", handleGoogleAuth);
+        document.getElementById("googleSignUpBtn").addEventListener("click", handleGoogleAuth);
 
         // التبديل بين النماذج
         document.getElementById("showRegister").addEventListener("click", (e) => {
