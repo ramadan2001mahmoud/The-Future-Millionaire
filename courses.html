@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>كورسات الذكاء الاصطناعي | The Future Millionaire</title>
+    <meta name="description" content="أفضل كورسات الذكاء الاصطناعي وريادة الأعمال الرقمية. تعلم كيف تستخدم أدوات AI لتحقيق أرباح حقيقية.">
+    <meta name="keywords" content="كورسات الذكاء الاصطناعي, تعلم AI, كورسات أونلاين, ربح المال">
+    <meta name="author" content="Ramadan Mahmoud">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="كورسات الذكاء الاصطناعي | The Future Millionaire">
+    <meta property="og:description" content="أفضل كورسات الذكاء الاصطناعي وريادة الأعمال الرقمية">
+    <meta property="og:image" content="https://ramadan2001mahmoud.github.io/logo.png">
+    <meta property="og:url" content="https://ramadan2001mahmoud.github.io/courses.html">
+    <meta property="og:type" content="website">
+    
+    <link rel="canonical" href="https://ramadan2001mahmoud.github.io/courses.html">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        .courses-header {
+            text-align: center;
+            padding: 60px 20px 30px;
+            background: linear-gradient(135deg, #0A0A0A, #1A1A1A);
+        }
+        .courses-header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .courses-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .course-card {
+            background: #1A1A1A;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid #2A2A2A;
+            text-align: center;
+        }
+        .course-card:hover { transform: translateY(-5px); border-color: #D4AF37; }
+        .course-card img { width: 100%; height: 200px; object-fit: cover; }
+        .course-card-content { padding: 20px; }
+        .course-price {
+            font-size: 1.8rem;
+            color: #D4AF37;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .course-price small { font-size: 0.8rem; color: #888; }
+        .course-description { color: #CCCCCC; margin-bottom: 20px; line-height: 1.6; }
+        .buy-btn {
+            background: #D4AF37;
+            color: #0A0A0A;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        .buy-btn:hover { background: #FFF2B2; transform: scale(1.02); }
+        .features-list {
+            text-align: right;
+            margin: 20px 0;
+            padding-right: 20px;
+        }
+        .features-list li { margin: 8px 0; color: #CCCCCC; }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #20b859; }
+        @media (max-width: 600px) {
+            .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; bottom: 20px; right: 20px; }
+        }
+        .footer-links { margin-top: 15px; }
+        .footer-links a { color: #D4AF37; text-decoration: none; margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo" class="logo-img">
+                <span class="logo-text">The Future Millionaire</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">الرئيسية</a>
+                <a href="blog.html">المدونة</a>
+                <a href="courses.html" class="active">الكورسات</a>
+                <a href="login.html" id="authLink">تسجيل الدخول</a>
+                <span id="userGreeting" style="display:none; color:#D4AF37;"></span>
+                <a href="#" id="logoutBtn" style="display:none;">تسجيل خروج</a>
+            </div>
+            <div class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <section class="courses-header">
+        <h1>كورسات <span class="gold">The Future Millionaire</span></h1>
+        <p>تعلم الذكاء الاصطناعي وريادة الأعمال الرقمية مع أفضل الخبراء</p>
+    </section>
+
+    <div class="courses-container">
+        <!-- كورس 1 -->
+        <div class="course-card">
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=400&h=200&fit=crop" alt="كورس الذكاء الاصطناعي">
+            <div class="course-card-content">
+                <h3>🎓 أساسيات الذكاء الاصطناعي</h3>
+                <div class="course-price">$49 <small>USD</small></div>
+                <p class="course-description">تعلم أساسيات الذكاء الاصطناعي وكيفية استخدام أدوات AI في عملك اليومي.</p>
+                <ul class="features-list">
+                    <li>✅ مقدمة في الذكاء الاصطناعي</li>
+                    <li>✅ استخدام ChatGPT بشكل احترافي</li>
+                    <li>✅ توليد الصور بـ Midjourney</li>
+                    <li>✅ شهادة إتمام معتمدة</li>
+                </ul>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                    <input type="hidden" name="cmd" value="_xclick">
+                    <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@example.com">
+                    <input type="hidden" name="item_name" value="أساسيات الذكاء الاصطناعي - The Future Millionaire">
+                    <input type="hidden" name="amount" value="49.00">
+                    <input type="hidden" name="currency_code" value="USD">
+                    <input type="hidden" name="return" value="https://ramadan2001mahmoud.github.io/thankyou.html">
+                    <input type="hidden" name="cancel_return" value="https://ramadan2001mahmoud.github.io/courses.html">
+                    <button type="submit" class="buy-btn"><i class="fab fa-paypal"></i> اشتر الآن بـ PayPal</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- كورس 2 -->
+        <div class="course-card">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=200&fit=crop" alt="كورس متقدم">
+            <div class="course-card-content">
+                <h3>🚀 متقدم: الذكاء الاصطناعي للأعمال</h3>
+                <div class="course-price">$99 <small>USD</small></div>
+                <p class="course-description">كيف تبني مشروعاً رقمياً مربحاً باستخدام الذكاء الاصطناعي.</p>
+                <ul class="features-list">
+                    <li>✅ أتمتة التسويق والمبيعات</li>
+                    <li>✅ تحليل البيانات بالذكاء الاصطناعي</li>
+                    <li>✅ بناء تطبيقات بدون برمجة</li>
+                    <li>✅ دعم فني لمدة شهر</li>
+                </ul>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                    <input type="hidden" name="cmd" value="_xclick">
+                    <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@example.com">
+                    <input type="hidden" name="item_name" value="متقدم: الذكاء الاصطناعي للأعمال - The Future Millionaire">
+                    <input type="hidden" name="amount" value="99.00">
+                    <input type="hidden" name="currency_code" value="USD">
+                    <input type="hidden" name="return" value="https://ramadan2001mahmoud.github.io/thankyou.html">
+                    <input type="hidden" name="cancel_return" value="https://ramadan2001mahmoud.github.io/courses.html">
+                    <button type="submit" class="buy-btn"><i class="fab fa-paypal"></i> اشتر الآن بـ PayPal</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- كورس 3 -->
+        <div class="course-card">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop" alt="ريادة الأعمال">
+            <div class="course-card-content">
+                <h3>💼 ريادة الأعمال الرقمية</h3>
+                <div class="course-price">$149 <small>USD</small></div>
+                <p class="course-description">من الصفر إلى أول مليون: دليل شامل لريادة الأعمال في العصر الرقمي.</p>
+                <ul class="features-list">
+                    <li>✅ كيف تبدأ مشروعك من الصفر</li>
+                    <li>✅ استراتيجيات التسويق الرقمي</li>
+                    <li>✅ إدارة الفريق والعمل عن بعد</li>
+                    <li>✅ جلسات استشارية أسبوعية</li>
+                </ul>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                    <input type="hidden" name="cmd" value="_xclick">
+                    <input type="hidden" name="business" value="YOUR_PAYPAL_EMAIL@example.com">
+                    <input type="hidden" name="item_name" value="ريادة الأعمال الرقمية - The Future Millionaire">
+                    <input type="hidden" name="amount" value="149.00">
+                    <input type="hidden" name="currency_code" value="USD">
+                    <input type="hidden" name="return" value="https://ramadan2001mahmoud.github.io/thankyou.html">
+                    <input type="hidden" name="cancel_return" value="https://ramadan2001mahmoud.github.io/courses.html">
+                    <button type="submit" class="buy-btn"><i class="fab fa-paypal"></i> اشتر الآن بـ PayPal</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/201069302075" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 The Future Millionaire - جميع الحقوق محفوظة</p>
+            <div class="social-icons">
+                <a href="https://linkedin.com/in/ramadanm200110" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://twitter.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/ra_mah077" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://facebook.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="terms.html">شروط الاستخدام</a>
+                <a href="terms.html#privacy">سياسة الخصوصية</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function updateAuthUI() {
+            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            const authLink = document.getElementById("authLink");
+            const userGreeting = document.getElementById("userGreeting");
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (currentUser) {
+                if (authLink) authLink.style.display = "none";
+                if (userGreeting) {
+                    userGreeting.style.display = "inline";
+                    userGreeting.textContent = `مرحباً ${currentUser.name}`;
+                }
+                if (logoutBtn) logoutBtn.style.display = "inline";
+            } else {
+                if (authLink) authLink.style.display = "inline";
+                if (userGreeting) userGreeting.style.display = "none";
+                if (logoutBtn) logoutBtn.style.display = "none";
+            }
+        }
+
+        function setupLogout() {
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("currentUser");
+                    updateAuthUI();
+                    window.location.href = "index.html";
+                });
+            }
+        }
+
+        function setupMobileMenu() {
+            const toggle = document.getElementById("mobileMenu");
+            const navLinks = document.getElementById("navLinks");
+            if (toggle && navLinks) {
+                toggle.addEventListener("click", () => {
+                    navLinks.classList.toggle("active");
+                });
+            }
+        }
+
+        updateAuthUI();
+        setupLogout();
+        setupMobileMenu();
+    </script>
+</body>
+</html>
