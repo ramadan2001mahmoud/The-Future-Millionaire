@@ -145,6 +145,11 @@ function recordClick(toolName) {
             userClicks[toolName] = (userClicks[toolName] || 0) + 1;
             localStorage.setItem(`userClicks_${currentUser.id}`, JSON.stringify(userClicks));
             updateNavbarStats();
+        } else {
+            let tempClicks = parseInt(localStorage.getItem("tempClicks") || "0");
+            tempClicks++;
+            localStorage.setItem("tempClicks", tempClicks.toString());
+            updateNavbarStats();
         }
     }
 }
@@ -213,8 +218,42 @@ function getUserStats() {
 function updateNavbarStats() {
     const stats = getUserStats();
     const statsSpan = document.getElementById("userStats");
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    
     if (statsSpan) {
-        statsSpan.innerHTML = `<i class="fas fa-heart"></i> ${stats.favorites} | <i class="fas fa-mouse-pointer"></i> ${stats.clicks}`;
+        if (currentUser) {
+            statsSpan.style.display = "inline";
+            statsSpan.innerHTML = `<i class="fas fa-heart"></i> ${stats.favorites} | <i class="fas fa-mouse-pointer"></i> ${stats.clicks}`;
+        } else {
+            let tempClicks = localStorage.getItem("tempClicks") || "0";
+            statsSpan.style.display = "inline";
+            statsSpan.innerHTML = `<i class="fas fa-heart"></i> 0 | <i class="fas fa-mouse-pointer"></i> ${tempClicks}`;
+        }
+    }
+}
+
+// ============================================
+//  عداد زوار الموقع (Visitors Counter)
+// ============================================
+
+function updateVisitorCounter() {
+    let visitorCount = localStorage.getItem("visitorCount");
+    if (visitorCount === null) {
+        visitorCount = 1;
+        localStorage.setItem("visitorCount", visitorCount);
+    } else {
+        const lastVisit = localStorage.getItem("lastVisit");
+        const now = new Date().getTime();
+        if (!lastVisit || (now - parseInt(lastVisit)) > 24 * 60 * 60 * 1000) {
+            visitorCount = parseInt(visitorCount) + 1;
+            localStorage.setItem("visitorCount", visitorCount);
+            localStorage.setItem("lastVisit", now.toString());
+        }
+    }
+    
+    const visitorSpan = document.getElementById("visitorCount");
+    if (visitorSpan) {
+        visitorSpan.textContent = visitorCount;
     }
 }
 
@@ -248,7 +287,11 @@ function updateAuthUI() {
         if (userGreeting) userGreeting.style.display = "none";
         if (logoutBtn) logoutBtn.style.display = "none";
         if (dashboardLink) dashboardLink.style.display = "none";
-        if (userStatsSpan) userStatsSpan.style.display = "none";
+        if (userStatsSpan) {
+            userStatsSpan.style.display = "inline";
+            let tempClicks = localStorage.getItem("tempClicks") || "0";
+            userStatsSpan.innerHTML = `<i class="fas fa-heart"></i> 0 | <i class="fas fa-mouse-pointer"></i> ${tempClicks}`;
+        }
     }
 }
 
@@ -435,6 +478,7 @@ function setupExploreBtn() {
 
 function init() {
     loadClicksFromStorage();
+    updateVisitorCounter();
     updateAuthUI();
     setupLogout();
     buildDropdowns();
