@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شكراً لشرائك | The Future Millionaire</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .thankyou-container {
+            min-height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #0A0A0A, #1A1A1A);
+        }
+        .thankyou-card {
+            background: #1A1A1A;
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid #D4AF37;
+            max-width: 600px;
+        }
+        .thankyou-card i { font-size: 4rem; color: #D4AF37; margin-bottom: 20px; }
+        .thankyou-card h1 { margin-bottom: 20px; }
+        .thankyou-card p { color: #CCCCCC; margin-bottom: 30px; line-height: 1.8; }
+        .btn-home {
+            background: #D4AF37;
+            color: #0A0A0A;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #20b859; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo" class="logo-img">
+                <span class="logo-text">The Future Millionaire</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">الرئيسية</a>
+                <a href="blog.html">المدونة</a>
+                <a href="courses.html">الكورسات</a>
+                <a href="login.html" id="authLink">تسجيل الدخول</a>
+                <span id="userGreeting" style="display:none; color:#D4AF37;"></span>
+                <a href="#" id="logoutBtn" style="display:none;">تسجيل خروج</a>
+            </div>
+            <div class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <div class="thankyou-container">
+        <div class="thankyou-card">
+            <i class="fas fa-check-circle"></i>
+            <h1>شكراً لثقتك! 🎉</h1>
+            <p>تم استلام طلبك بنجاح. سيتم إرسال تفاصيل الدورة إلى بريدك الإلكتروني خلال 24 ساعة.</p>
+            <p>للحصول على الدعم الفني أو أي استفسار، تواصل معنا على واتساب.</p>
+            <a href="index.html" class="btn-home">العودة إلى الرئيسية <i class="fas fa-arrow-left"></i></a>
+        </div>
+    </div>
+
+    <a href="https://wa.me/201069302075" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        function updateAuthUI() {
+            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            const authLink = document.getElementById("authLink");
+            const userGreeting = document.getElementById("userGreeting");
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (currentUser) {
+                if (authLink) authLink.style.display = "none";
+                if (userGreeting) {
+                    userGreeting.style.display = "inline";
+                    userGreeting.textContent = `مرحباً ${currentUser.name}`;
+                }
+                if (logoutBtn) logoutBtn.style.display = "inline";
+            } else {
+                if (authLink) authLink.style.display = "inline";
+                if (userGreeting) userGreeting.style.display = "none";
+                if (logoutBtn) logoutBtn.style.display = "none";
+            }
+        }
+
+        function setupLogout() {
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("currentUser");
+                    updateAuthUI();
+                    window.location.href = "index.html";
+                });
+            }
+        }
+
+        function setupMobileMenu() {
+            const toggle = document.getElementById("mobileMenu");
+            const navLinks = document.getElementById("navLinks");
+            if (toggle && navLinks) {
+                toggle.addEventListener("click", () => {
+                    navLinks.classList.toggle("active");
+                });
+            }
+        }
+
+        updateAuthUI();
+        setupLogout();
+        setupMobileMenu();
+    </script>
+</body>
+</html>
