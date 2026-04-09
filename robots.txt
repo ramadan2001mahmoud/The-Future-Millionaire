@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard.html
+Disallow: /admin.html
+Disallow: /login.html
+Disallow: /thankyou.html
+
+Sitemap: https://ramadan2001mahmoud.github.io/sitemap.xml
