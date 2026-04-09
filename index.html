@@ -22,22 +22,23 @@
     
     <meta property="og:title" content="The Future Millionaire - دليل أدوات الذكاء الاصطناعي">
     <meta property="og:description" content="أكبر دليل عربي لأدوات الذكاء الاصطناعي. اكتشف أفضل أدوات AI لزيادة إنتاجيتك وأرباحك.">
-    <meta property="og:image" content="https://ramadan2001mahmoud.github.io/logo.png">
-    <meta property="og:url" content="https://ramadan2001mahmoud.github.io">
+    <meta property="og:image" content="https://ramadan2001mahmoud.github.io/The-Future-Millionaire/logo.png">
+    <meta property="og:url" content="https://ramadan2001mahmoud.github.io/The-Future-Millionaire/">
     <meta property="og:type" content="website">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Future Millionaire - دليل أدوات الذكاء الاصطناعي">
     <meta name="twitter:description" content="أكبر دليل عربي لأدوات الذكاء الاصطناعي. اكتشف أفضل أدوات AI.">
-    <meta name="twitter:image" content="https://ramadan2001mahmoud.github.io/logo.png">
+    <meta name="twitter:image" content="https://ramadan2001mahmoud.github.io/The-Future-Millionaire/logo.png">
     
-    <link rel="canonical" href="https://ramadan2001mahmoud.github.io">
+    <link rel="canonical" href="https://ramadan2001mahmoud.github.io/The-Future-Millionaire/">
     
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
+        /* زر واتساب الثابت */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -56,14 +57,24 @@
             z-index: 1000;
             text-decoration: none;
         }
-        .whatsapp-float:hover { transform: scale(1.1); background-color: #20b859; }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20b859;
+        }
         @media (max-width: 600px) {
-            .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; bottom: 20px; right: 20px; }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.6rem;
+                bottom: 20px;
+                right: 20px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- شريط التنقل -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -94,6 +105,7 @@
         </div>
     </nav>
 
+    <!-- القسم الرئيسي (Hero) -->
     <section class="hero">
         <div class="hero-content">
             <h1>مستقبل الذكاء الاصطناعي <span class="gold">بين يديك</span></h1>
@@ -102,6 +114,7 @@
         </div>
     </section>
 
+    <!-- إحصائيات سريعة -->
     <div class="stats-bar">
         <div class="stat-item">
             <i class="fas fa-robot"></i>
@@ -120,16 +133,20 @@
         </div>
     </div>
 
+    <!-- أزرار التصفية -->
     <div class="filter-section">
         <button class="filter-btn active" data-category="all">الكل</button>
     </div>
 
+    <!-- حاوية عرض الأدوات -->
     <div class="tools-container" id="toolsContainer"></div>
 
+    <!-- زر واتساب الثابت -->
     <a href="https://wa.me/201069302075" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- الفوتر -->
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2026 The Future Millionaire - جميع الحقوق محفوظة</p>
@@ -143,6 +160,10 @@
             <div class="footer-links" style="margin-top: 15px;">
                 <a href="terms.html" style="color:#D4AF37; text-decoration:none; margin:0 10px;">شروط الاستخدام</a>
                 <a href="terms.html#privacy" style="color:#D4AF37; text-decoration:none; margin:0 10px;">سياسة الخصوصية</a>
+            </div>
+            <!-- عداد الزوار -->
+            <div class="visitor-counter" style="margin-top: 10px; font-size: 0.8rem; color: #888;">
+                <i class="fas fa-eye"></i> عدد زوار الموقع: <span id="visitorCount">0</span>
             </div>
         </div>
     </footer>
