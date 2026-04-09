@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -102,16 +101,16 @@
     </footer>
 
     <script>
-        // مقالات المدونة
+        // مقالات المدونة مع روابط حقيقية
         const posts = [
-            { title: "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026", date: "2026-04-01", excerpt: "5 استراتيجيات ذكية لتضخيم دخلك باستخدام أدوات AI...", image: "https://picsum.photos/300/200?random=1", category: "ريادة أعمال", link: "#" },
-            { title: "أفضل 10 أدوات AI لتوليد الفيديو", date: "2026-03-28", excerpt: "من Runway إلى Pika... تعرف على أدوات صناعة الفيديو بالذكاء الاصطناعي", image: "https://picsum.photos/300/200?random=2", category: "أدوات", link: "#" },
-            { title: "ChatGPT vs Claude: أيهما أفضل للبرمجة؟", date: "2026-03-25", excerpt: "مقارنة شاملة بين أقوى نموذجين للذكاء الاصطناعي", image: "https://picsum.photos/300/200?random=3", category: "مقارنات", link: "#" },
-            { title: "عقلية المليونير: كيف تفكر كالأغنياء", date: "2026-03-20", excerpt: "7 عادات يومية تغير طريقة تفكيرك تجاه المال", image: "https://picsum.photos/300/200?random=4", category: "تطوير ذات", link: "#" },
-            { title: "دليلك الشامل لتعلم البرمجة بالذكاء الاصطناعي", date: "2026-03-15", excerpt: "كيف تستخدم GitHub Copilot وCursor لتصبح مبرمجاً محترفاً", image: "https://picsum.photos/300/200?random=5", category: "برمجة", link: "#" },
-            { title: "أفضل 5 أدوات لتحليل البيانات بالذكاء الاصطناعي", date: "2026-03-10", excerpt: "من Tableau إلى Julius AI.. اختر الأداة المناسبة لعملك", image: "https://picsum.photos/300/200?random=6", category: "أدوات", link: "#" },
-            { title: "الاستثمار في الذكاء الاصطناعي: فرص العقد القادم", date: "2026-03-05", excerpt: "كيف تستثمر في شركات AI قبل فوات الأوان", image: "https://picsum.photos/300/200?random=7", category: "استثمار", link: "#" },
-            { title: "10 مهارات مطلوبة في عصر الذكاء الاصطناعي", date: "2026-02-28", excerpt: "المهارات التي تضمن لك وظيفة المستقبل", image: "https://picsum.photos/300/200?random=8", category: "تطوير ذات", link: "#" }
+            { title: "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026", date: "2026-04-01", excerpt: "5 استراتيجيات ذكية لتضخيم دخلك باستخدام أدوات AI...", image: "https://picsum.photos/300/200?random=1", category: "ريادة أعمال" },
+            { title: "أفضل 10 أدوات AI لتوليد الفيديو", date: "2026-03-28", excerpt: "من Runway إلى Pika... تعرف على أدوات صناعة الفيديو بالذكاء الاصطناعي", image: "https://picsum.photos/300/200?random=2", category: "أدوات" },
+            { title: "ChatGPT vs Claude: أيهما أفضل للبرمجة؟", date: "2026-03-25", excerpt: "مقارنة شاملة بين أقوى نموذجين للذكاء الاصطناعي", image: "https://picsum.photos/300/200?random=3", category: "مقارنات" },
+            { title: "عقلية المليونير: كيف تفكر كالأغنياء", date: "2026-03-20", excerpt: "7 عادات يومية تغير طريقة تفكيرك تجاه المال", image: "https://picsum.photos/300/200?random=4", category: "تطوير ذات" },
+            { title: "دليلك الشامل لتعلم البرمجة بالذكاء الاصطناعي", date: "2026-03-15", excerpt: "كيف تستخدم GitHub Copilot وCursor لتصبح مبرمجاً محترفاً", image: "https://picsum.photos/300/200?random=5", category: "برمجة" },
+            { title: "أفضل 5 أدوات لتحليل البيانات بالذكاء الاصطناعي", date: "2026-03-10", excerpt: "من Tableau إلى Julius AI.. اختر الأداة المناسبة لعملك", image: "https://picsum.photos/300/200?random=6", category: "أدوات" },
+            { title: "الاستثمار في الذكاء الاصطناعي: فرص العقد القادم", date: "2026-03-05", excerpt: "كيف تستثمر في شركات AI قبل فوات الأوان", image: "https://picsum.photos/300/200?random=7", category: "استثمار" },
+            { title: "10 مهارات مطلوبة في عصر الذكاء الاصطناعي", date: "2026-02-28", excerpt: "المهارات التي تضمن لك وظيفة المستقبل", image: "https://picsum.photos/300/200?random=8", category: "تطوير ذات" }
         ];
 
         let currentCategory = "الكل";
@@ -152,7 +151,7 @@
                         <span class="blog-date">${post.date} | ${post.category}</span>
                         <h3>${post.title}</h3>
                         <p>${post.excerpt}</p>
-                        <a href="${post.link}" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        <a href="post.html?title=${encodeURIComponent(post.title)}" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
             `).join('');
