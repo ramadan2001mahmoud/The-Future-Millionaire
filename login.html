@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Identity Services SDK -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <style>
         .auth-container {
             min-height: 70vh;
@@ -59,6 +61,10 @@
             background: #4285F4 !important;
             color: white !important;
             margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         .google-btn:hover { background: #357ae8 !important; }
         .divider {
@@ -77,6 +83,10 @@
         .divider::before { left: 0; }
         .divider::after { right: 0; }
         .divider span { background: #1A1A1A; padding: 0 10px; color: #888; }
+        #googleSignInBtn {
+            background: #4285F4;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -110,9 +120,8 @@
 
             <div class="divider"><span>أو</span></div>
 
-            <button id="googleSignInBtn" class="google-btn">
-                <i class="fab fa-google"></i> تسجيل الدخول بحساب Google
-            </button>
+            <!-- زر تسجيل الدخول بجوجل - الحقيقي -->
+            <div id="googleSignInBtn"></div>
             
             <p style="margin-top: 25px;">ليس لديك حساب؟ <a href="#" id="showRegister">إنشاء حساب جديد</a></p>
         </div>
@@ -131,9 +140,8 @@
             
             <div class="divider"><span>أو</span></div>
 
-            <button id="googleSignUpBtn" class="google-btn">
-                <i class="fab fa-google"></i> إنشاء حساب بـ Google
-            </button>
+            <!-- زر إنشاء حساب بجوجل - الحقيقي -->
+            <div id="googleSignUpBtn"></div>
 
             <p style="margin-top: 25px;">لديك حساب؟ <a href="#" id="showLogin">تسجيل الدخول</a></p>
         </div>
@@ -146,41 +154,115 @@
     </footer>
 
     <script>
-        // دالة موحدة لتسجيل الدخول/إنشاء حساب بـ Google
-        function handleGoogleAuth() {
-            const googleEmail = prompt("📧 أدخل بريدك الإلكتروني على Google:", "example@gmail.com");
-            if (googleEmail && googleEmail.includes("@") && googleEmail.includes(".")) {
-                let users = JSON.parse(localStorage.getItem("users") || "[]");
-                let user = users.find(u => u.email === googleEmail);
+        // ============================================
+        // Google Sign-In الحقيقي
+        // ============================================
+        
+        const GOOGLE_CLIENT_ID = "655451768999-3p7u213diffbiu50mjjq43ct99fraufk.apps.googleusercontent.com";
+        
+        function initializeGoogleSignIn() {
+            // تهيئة زر تسجيل الدخول
+            google.accounts.id.initialize({
+                client_id: GOOGLE_CLIENT_ID,
+                callback: handleGoogleCredentialResponse,
+                auto_select: false,
+                cancel_on_tap_outside: true
+            });
+            
+            // عرض زر تسجيل الدخول
+            google.accounts.id.renderButton(
+                document.getElementById("googleSignInBtn"),
+                { 
+                    theme: "filled_black", 
+                    size: "large", 
+                    width: "100%",
+                    text: "signin_with",
+                    shape: "rectangular",
+                    locale: "ar"
+                }
+            );
+            
+            // عرض زر إنشاء حساب (نفس الزر لكن بنص مختلف)
+            google.accounts.id.renderButton(
+                document.getElementById("googleSignUpBtn"),
+                { 
+                    theme: "filled_black", 
+                    size: "large", 
+                    width: "100%",
+                    text: "signup_with",
+                    shape: "rectangular",
+                    locale: "ar"
+                }
+            );
+        }
+        
+        function handleGoogleCredentialResponse(response) {
+            const id_token = response.credential;
+            
+            // فك تشفير الـ JWT للحصول على بيانات المستخدم
+            const payload = parseJwt(id_token);
+            
+            if (payload) {
+                const googleUser = {
+                    id: payload.sub,
+                    name: payload.name,
+                    email: payload.email,
+                    picture: payload.picture
+                };
                 
-                if (!user) {
-                    // إنشاء حساب تلقائي للمستخدم الجديد
-                    const name = googleEmail.split("@")[0];
-                    user = {
+                // حفظ أو تحديث المستخدم في localStorage
+                let users = JSON.parse(localStorage.getItem("users") || "[]");
+                let existingUser = users.find(u => u.email === googleUser.email);
+                
+                if (!existingUser) {
+                    // مستخدم جديد
+                    const newUser = {
                         id: Date.now(),
-                        name: name,
-                        email: googleEmail,
-                        password: "google_oauth_" + Date.now(),
+                        name: googleUser.name,
+                        email: googleUser.email,
+                        password: "google_oauth_" + googleUser.id,
                         role: users.length === 0 ? "admin" : "user",
                         favorites: [],
                         createdAt: new Date().toISOString(),
-                        authProvider: "google"
+                        authProvider: "google",
+                        googleId: googleUser.id,
+                        picture: googleUser.picture
                     };
-                    users.push(user);
+                    users.push(newUser);
                     localStorage.setItem("users", JSON.stringify(users));
-                    alert(`✅ تم إنشاء حسابك بنجاح! مرحباً ${name}`);
+                    localStorage.setItem("currentUser", JSON.stringify(newUser));
+                    alert(`✅ مرحباً ${googleUser.name}! تم إنشاء حسابك بنجاح`);
                 } else {
-                    alert(`👋 مرحباً بعودتك ${user.name}!`);
+                    // مستخدم موجود
+                    existingUser.name = googleUser.name; // تحديث الاسم لو تغير
+                    localStorage.setItem("users", JSON.stringify(users));
+                    localStorage.setItem("currentUser", JSON.stringify(existingUser));
+                    alert(`👋 مرحباً بعودتك ${existingUser.name}!`);
                 }
                 
-                localStorage.setItem("currentUser", JSON.stringify(user));
                 window.location.href = "dashboard.html";
-            } else {
-                alert("❌ الرجاء إدخال بريد إلكتروني صحيح (example@gmail.com)");
             }
         }
-
+        
+        // دالة لفك تشفير JWT
+        function parseJwt(token) {
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+                return JSON.parse(jsonPayload);
+            } catch (e) {
+                console.error("خطأ في فك التشفير", e);
+                return null;
+            }
+        }
+        
+        // ============================================
         // تسجيل الدخول العادي
+        // ============================================
+        
         document.getElementById("loginForm").addEventListener("submit", (e) => {
             e.preventDefault();
             const email = document.getElementById("loginEmail").value;
@@ -199,8 +281,11 @@
                 errorDiv.style.display = "block";
             }
         });
-
+        
+        // ============================================
         // إنشاء حساب عادي
+        // ============================================
+        
         document.getElementById("registerForm").addEventListener("submit", (e) => {
             e.preventDefault();
             const name = document.getElementById("regName").value;
@@ -247,27 +332,32 @@
                 window.location.href = "dashboard.html";
             }, 1500);
         });
-
-        // أزرار Google
-        document.getElementById("googleSignInBtn").addEventListener("click", handleGoogleAuth);
-        document.getElementById("googleSignUpBtn").addEventListener("click", handleGoogleAuth);
-
-        // التبديل بين النماذج
+        
+        // ============================================
+        // التبديل بين النماذج والقائمة
+        // ============================================
+        
         document.getElementById("showRegister").addEventListener("click", (e) => {
             e.preventDefault();
             document.getElementById("loginCard").style.display = "none";
             document.getElementById("registerCard").style.display = "block";
         });
+        
         document.getElementById("showLogin").addEventListener("click", (e) => {
             e.preventDefault();
             document.getElementById("registerCard").style.display = "none";
             document.getElementById("loginCard").style.display = "block";
         });
-
-        // القائمة للموبايل
+        
         document.getElementById("mobileMenu")?.addEventListener("click", () => {
             document.getElementById("navLinks").classList.toggle("active");
         });
+        
+        // ============================================
+        // تشغيل Google Sign-In عند تحميل الصفحة
+        // ============================================
+        
+        initializeGoogleSignIn();
     </script>
 </body>
 </html>
