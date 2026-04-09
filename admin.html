@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -98,3 +97,231 @@
             font-size: 0.8rem;
         }
     </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo" class="logo-img">
+                <span class="logo-text">The Future Millionaire</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">الرئيسية</a>
+                <a href="blog.html">المدونة</a>
+                <a href="dashboard.html">لوحة التحكم</a>
+                <a href="#" id="logoutBtn">تسجيل خروج</a>
+            </div>
+            <div class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <div class="admin-container" id="adminContainer">
+        <!-- سيتم تعبئة المحتوى عبر JavaScript -->
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 The Future Millionaire - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script>
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        
+        if (!currentUser || currentUser.role !== "admin") {
+            window.location.href = "index.html";
+        }
+
+        // تحميل البيانات
+        let users = JSON.parse(localStorage.getItem("users") || "[]");
+        let toolsClicks = JSON.parse(localStorage.getItem("toolsClicks") || "{}");
+        
+        // قائمة الأدوات الافتراضية
+        const defaultToolsList = [
+            "ChatGPT", "Claude", "Perplexity AI", "Gemini", "DeepSeek", "Copy.ai", "Jasper",
+            "Midjourney", "DALL-E 3", "Leonardo.ai", "Stable Diffusion", "Adobe Firefly",
+            "Runway ML", "HeyGen", "Pika Labs", "ElevenLabs", "Murf",
+            "GitHub Copilot", "Cursor", "Replit AI", "Tabnine",
+            "Tableau AI", "Polymer", "Julius AI", "Notion AI"
+        ];
+        
+        let tools = defaultToolsList.map(name => ({
+            name: name,
+            clicks: toolsClicks[name] || 0
+        }));
+
+        function renderAdminPanel() {
+            const container = document.getElementById("adminContainer");
+            const totalClicks = tools.reduce((sum, t) => sum + t.clicks, 0);
+            
+            container.innerHTML = `
+                <div class="admin-header">
+                    <h1>لوحة تحكم المشرف <span class="gold">${currentUser.name}</span></h1>
+                    <p><span class="admin-badge"><i class="fas fa-crown"></i> صلاحيات كاملة</span></p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <div class="number">${users.length}</div>
+                        <div>إجمالي المستخدمين</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-tools"></i>
+                        <div class="number">${tools.length}</div>
+                        <div>إجمالي الأدوات</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-mouse-pointer"></i>
+                        <div class="number">${totalClicks}</div>
+                        <div>إجمالي النقرات</div>
+                    </div>
+                </div>
+
+                <h2 class="section-title"><i class="fas fa-users"></i> إدارة المستخدمين</h2>
+                <div class="users-table">
+                    <table>
+                        <thead>
+                            <tr><th>الاسم</th><th>البريد الإلكتروني</th><th>الدور</th><th>تاريخ التسجيل</th><th>إجراء</th></tr>
+                        </thead>
+                        <tbody id="usersTableBody"></tbody>
+                    </table>
+                </div>
+
+                <h2 class="section-title"><i class="fas fa-chart-bar"></i> إحصائيات الأدوات (الأكثر نقراً)</h2>
+                <div class="tools-table">
+                    <table>
+                        <thead>
+                            <tr><th>الأداة</th><th>عدد النقرات</th><th>إجراء</th></tr>
+                        </thead>
+                        <tbody id="toolsTableBody"></tbody>
+                    </table>
+                </div>
+
+                <h2 class="section-title"><i class="fas fa-plus"></i> إضافة أداة جديدة</h2>
+                <div class="add-tool-form">
+                    <input type="text" id="newToolName" placeholder="اسم الأداة">
+                    <input type="text" id="newToolCategory" placeholder="الفئة (نصوص/صور/فيديو/برمجة)">
+                    <input type="text" id="newToolUrl" placeholder="رابط الأداة">
+                    <input type="text" id="newToolDesc" placeholder="وصف قصير">
+                    <button id="addToolBtn"><i class="fas fa-plus"></i> إضافة أداة</button>
+                </div>
+                <p id="addToolMsg" style="color:#D4AF37; margin-top:10px;"></p>
+            `;
+            
+            // عرض المستخدمين
+            const usersBody = document.getElementById("usersTableBody");
+            usersBody.innerHTML = users.map(user => `
+                <tr>
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.role === 'admin' ? '<span class="admin-badge">مدير</span>' : 'مستخدم'}</td>
+                    <td>${new Date(user.createdAt || Date.now()).toLocaleDateString('ar-EG')}</td>
+                    <td>${user.id !== currentUser.id ? `<button class="delete-user-btn" data-id="${user.id}">حذف</button>` : 'أنت'}</td>
+                </tr>
+            `).join('');
+            
+            document.querySelectorAll(".delete-user-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const userId = parseInt(btn.getAttribute("data-id"));
+                    if (confirm("هل أنت متأكد من حذف هذا المستخدم؟")) {
+                        users = users.filter(u => u.id !== userId);
+                        localStorage.setItem("users", JSON.stringify(users));
+                        localStorage.removeItem(`userClicks_${userId}`);
+                        localStorage.removeItem(`favorites_${userId}`);
+                        renderAdminPanel();
+                    }
+                });
+            });
+            
+            // عرض الأدوات (مرتبة حسب النقرات)
+            const sortedTools = [...tools].sort((a, b) => b.clicks - a.clicks);
+            const toolsBody = document.getElementById("toolsTableBody");
+            toolsBody.innerHTML = sortedTools.map(tool => `
+                <tr>
+                    <td>${tool.name}</td>
+                    <td>${tool.clicks}</td>
+                    <td><button class="delete-tool-btn" data-tool="${tool.name}">حذف</button></td>
+                </tr>
+            `).join('');
+            
+            document.querySelectorAll(".delete-tool-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const toolName = btn.getAttribute("data-tool");
+                    if (confirm(`هل أنت متأكد من حذف أداة ${toolName}؟`)) {
+                        tools = tools.filter(t => t.name !== toolName);
+                        // حذف من localStorage
+                        const newClicks = {};
+                        tools.forEach(t => { newClicks[t.name] = t.clicks; });
+                        localStorage.setItem("toolsClicks", JSON.stringify(newClicks));
+                        renderAdminPanel();
+                    }
+                });
+            });
+            
+            // إضافة أداة جديدة
+            document.getElementById("addToolBtn").addEventListener("click", () => {
+                const name = document.getElementById("newToolName").value;
+                const category = document.getElementById("newToolCategory").value;
+                const url = document.getElementById("newToolUrl").value;
+                const desc = document.getElementById("newToolDesc").value;
+                const msg = document.getElementById("addToolMsg");
+                
+                if (!name || !category || !url) {
+                    msg.textContent = "الرجاء ملء جميع الحقول";
+                    msg.style.color = "#ff6b6b";
+                    return;
+                }
+                
+                if (tools.find(t => t.name === name)) {
+                    msg.textContent = "هذه الأداة موجودة بالفعل";
+                    msg.style.color = "#ff6b6b";
+                    return;
+                }
+                
+                // إضافة الأداة الجديدة
+                tools.push({ name, category, url, description: desc, icon: "fa-cog", clicks: 0 });
+                const newClicks = {};
+                tools.forEach(t => { newClicks[t.name] = t.clicks; });
+                localStorage.setItem("toolsClicks", JSON.stringify(newClicks));
+                
+                msg.textContent = `✅ تم إضافة أداة ${name} بنجاح`;
+                msg.style.color = "#51cf66";
+                
+                document.getElementById("newToolName").value = "";
+                document.getElementById("newToolCategory").value = "";
+                document.getElementById("newToolUrl").value = "";
+                document.getElementById("newToolDesc").value = "";
+                
+                setTimeout(() => { renderAdminPanel(); }, 1000);
+            });
+        }
+        
+        function setupLogout() {
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("currentUser");
+                    window.location.href = "index.html";
+                });
+            }
+        }
+        
+        function setupMobileMenu() {
+            const toggle = document.getElementById("mobileMenu");
+            const navLinks = document.getElementById("navLinks");
+            if (toggle && navLinks) {
+                toggle.addEventListener("click", () => {
+                    navLinks.classList.toggle("active");
+                });
+            }
+        }
+        
+        renderAdminPanel();
+        setupLogout();
+        setupMobileMenu();
+    </script>
+</body>
+</html>
