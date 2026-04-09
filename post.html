@@ -3,10 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المقال | The Future Millionaire</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>The Future Millionaire | مقالة: الذكاء الاصطناعي وريادة الأعمال</title>
+    <meta name="description" content="اقرأ أحدث المقالات عن الذكاء الاصطناعي، أدوات AI، وريادة الأعمال الرقمية. تعلم كيف تحقق أرباحاً باستخدام التكنولوجيا الحديثة.">
+    <meta name="keywords" content="مقالات الذكاء الاصطناعي, مدونة AI, تعلم الذكاء الاصطناعي, ريادة الأعمال الرقمية">
+    <meta name="author" content="Ramadan Mahmoud">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="The Future Millionaire | مقالة عن الذكاء الاصطناعي">
+    <meta property="og:description" content="اقرأ أحدث المقالات عن الذكاء الاصطناعي وأدوات AI">
+    <meta property="og:image" content="https://ramadan2001mahmoud.github.io/logo.png">
+    <meta property="og:url" content="https://ramadan2001mahmoud.github.io/post.html">
+    <meta property="og:type" content="article">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Future Millionaire | مقالة">
+    <meta name="twitter:description" content="اقرأ أحدث المقالات عن الذكاء الاصطناعي">
+    <meta name="twitter:image" content="https://ramadan2001mahmoud.github.io/logo.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ramadan2001mahmoud.github.io/post.html">
+    
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
         .post-container {
             max-width: 900px;
@@ -40,6 +64,10 @@
             color: #D4AF37;
             margin: 25px 0 15px;
             font-size: 1.5rem;
+        }
+        .post-content h3 {
+            color: #D4AF37;
+            margin: 20px 0 10px;
         }
         .post-content ul, .post-content ol {
             margin: 15px 0;
@@ -75,6 +103,11 @@
             color: #D4AF37;
             text-decoration: none;
             font-size: 1.2rem;
+            transition: 0.3s;
+        }
+        .share-buttons a:hover {
+            transform: scale(1.1);
+            color: #FFF2B2;
         }
         .footer-links {
             margin-top: 15px;
@@ -85,7 +118,6 @@
             margin: 0 10px;
             font-size: 0.9rem;
         }
-        /* زر واتساب الثابت */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -116,6 +148,10 @@
                 bottom: 20px;
                 right: 20px;
             }
+            .post-container {
+                margin: 30px 15px;
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -130,6 +166,7 @@
             <div class="nav-links" id="navLinks">
                 <a href="index.html">الرئيسية</a>
                 <a href="blog.html">المدونة</a>
+                <a href="courses.html">الكورسات</a>
                 <a href="login.html" id="authLink">تسجيل الدخول</a>
                 <span id="userGreeting" style="display:none; color:#D4AF37;"></span>
                 <a href="#" id="logoutBtn" style="display:none;">تسجيل خروج</a>
@@ -166,7 +203,7 @@
     </footer>
 
     <script>
-        // قاعدة بيانات المقالات الكاملة مع صور حقيقية
+        // قاعدة بيانات المقالات الكاملة
         const fullPosts = {
             "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026": {
                 title: "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026",
@@ -174,7 +211,7 @@
                 category: "ريادة أعمال",
                 image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&h=400&fit=crop",
                 content: `<p>الذكاء الاصطناعي ليس مجرد تقنية عابرة، بل هو ثورة حقيقية تخلق مليارديرات جدد كل يوم. في هذا المقال، نستعرض 5 استراتيجيات ذكية لتضخيم دخلك باستخدام أدوات AI:</p>
-                <h2>🇸​🇦​ 1. أتمتة المحتوى</h2>
+                <h2>🇸🇦 1. أتمتة المحتوى</h2>
                 <p>استخدم ChatGPT وJasper لإنشاء محتوى تسويقي، مقالات، منشورات سوشيال ميديا بكميات هائلة وبجودة عالية. يمكنك إنتاج ما يعادل عمل فريق كامل في ساعات قليلة.</p>
                 <h2>🎓 2. إنشاء دورات تعليمية بالذكاء الاصطناعي</h2>
                 <p>باستخدام HeyGen وElevenLabs، يمكنك إنشاء فيديوهات تعليمية كاملة بصوتك وصورتك الرقمية. تخيل أن تقدم دورة كاملة بدون تصوير حقيقي!</p>
@@ -185,7 +222,8 @@
                 <h2>💰 5. الاستثمار في شركات AI</h2>
                 <p>تابع الشركات الناشئة في مجال الذكاء الاصطناعي واستثمر مبكراً. بعض هذه الشركات قد تكون الـ Google القادمة.</p>
                 <hr>
-                <p><strong>الخلاصة:</strong> المستقبل لمن يستخدم الذكاء الاصطناعي كأداة لتضخيم جهوده. ابدأ اليوم ولا تنتظر. المليونير القادم قد تكون أنت.</p>`
+                <p><strong>الخلاصة:</strong> المستقبل لمن يستخدم الذكاء الاصطناعي كأداة لتضخيم جهوده. ابدأ اليوم ولا تنتظر. المليونير القادم قد تكون أنت.</p>
+                <p><em>📝 كتبه: فريق The Future Millionaire</em></p>`
             },
             "أفضل 10 أدوات AI لتوليد الفيديو": {
                 title: "أفضل 10 أدوات AI لتوليد الفيديو",
@@ -194,18 +232,19 @@
                 image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4dde1?w=800&h=400&fit=crop",
                 content: `<p>صناعة الفيديو أصبحت أسهل من أي وقت مضى بفضل الذكاء الاصطناعي. إليك أفضل 10 أدوات:</p>
                 <ul>
-                    <li><strong>Runway ML:</strong> تحرير وتوليد فيديوهات احترافية</li>
-                    <li><strong>HeyGen:</strong> إنشاء أفلام بصور رمزية متحركة واقعية</li>
-                    <li><strong>Pika Labs:</strong> تحويل النص إلى فيديو قصير</li>
-                    <li><strong>Kaiber:</strong> تحويل الصور إلى فيديوهات متحركة</li>
-                    <li><strong>Sora:</strong> أحدث إصدار من OpenAI (قيد الإصدار)</li>
-                    <li><strong>Descript:</strong> تحرير الفيديو كأنك تحرر نصاً</li>
-                    <li><strong>Fliki:</strong> تحويل المدونات إلى فيديوهات</li>
-                    <li><strong>Synthesia:</strong> إنشاء فيديوهات تدريبية بأفاتار رقمي</li>
-                    <li><strong>Elai.io:</strong> إنشاء فيديوهات من النص فقط</li>
-                    <li><strong>Pictory.ai:</strong> تحويل المقالات الطويلة إلى فيديوهات قصيرة</li>
+                    <li><strong>Runway ML:</strong> تحرير وتوليد فيديوهات احترافية - مثالي لصناع الأفلام</li>
+                    <li><strong>HeyGen:</strong> إنشاء أفلام بصور رمزية متحركة واقعية - رائع للتعليم والتسويق</li>
+                    <li><strong>Pika Labs:</strong> تحويل النص إلى فيديو قصير - ممتاز للسوشيال ميديا</li>
+                    <li><strong>Kaiber:</strong> تحويل الصور إلى فيديوهات متحركة - إبداعي وفني</li>
+                    <li><strong>Sora:</strong> أحدث إصدار من OpenAI - يغير قواعد اللعبة (قيد الإصدار)</li>
+                    <li><strong>Descript:</strong> تحرير الفيديو كأنك تحرر نصاً - سهل جداً للمبتدئين</li>
+                    <li><strong>Fliki:</strong> تحويل المدونات إلى فيديوهات - مثالي لصناع المحتوى</li>
+                    <li><strong>Synthesia:</strong> إنشاء فيديوهات تدريبية بأفاتار رقمي - احترافي للشركات</li>
+                    <li><strong>Elai.io:</strong> إنشاء فيديوهات من النص فقط - سريع وسهل</li>
+                    <li><strong>Pictory.ai:</strong> تحويل المقالات الطويلة إلى فيديوهات قصيرة - رائع لليوتيوب</li>
                 </ul>
-                <p>كل هذه الأدوات توفر نسخ مجانية لتجربتها قبل الاشتراك.</p>`
+                <p>كل هذه الأدوات توفر نسخ مجانية لتجربتها قبل الاشتراك. ابدأ بتجربة 2-3 أدوات واختر ما يناسب احتياجاتك.</p>
+                <p><strong>💡 نصيحة:</strong> استخدم مزيج من هذه الأدوات للحصول على أفضل النتائج.</p>`
             },
             "ChatGPT vs Claude: أيهما أفضل للبرمجة؟": {
                 title: "ChatGPT vs Claude: أيهما أفضل للبرمجة؟",
@@ -214,39 +253,67 @@
                 image: "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=800&h=400&fit=crop",
                 content: `<p>مقارنة شاملة بين أقوى نموذجين للذكاء الاصطناعي في مجال البرمجة:</p>
                 <h2>🤖 ChatGPT (GPT-4):</h2>
-                <p><strong>مميزات:</strong> يفهم السياق جيداً، يكتب كود نظيف، يدعم أكثر من 50 لغة برمجة، قاعدة مستخدمين ضخمة.</p>
-                <p><strong>عيوب:</strong> أحياناً يهلوس في الكود المعقد.</p>
+                <p><strong>مميزات:</strong> يفهم السياق جيداً، يكتب كود نظيف، يدعم أكثر من 50 لغة برمجة، قاعدة مستخدمين ضخمة تعني دعم ومحتوى تعليمي أكثر.</p>
+                <p><strong>عيوب:</strong> أحياناً يهلوس في الكود المعقد، قد يحتاج لتوجيه دقيق للمشاريع الكبيرة.</p>
                 <h2>🧠 Claude 3 (Opus):</h2>
-                <p><strong>مميزات:</strong> دقة عالية في الكود الطويل، فهم ممتاز للمشاريع الكبيرة.</p>
-                <p><strong>عيوب:</strong> أقل شيوعاً، سعر أعلى لـ API.</p>
+                <p><strong>مميزات:</strong> دقة عالية في الكود الطويل، فهم ممتاز للمشاريع الكبيرة، يدخل ملفات PDF وصور، أقل هلوسة من ChatGPT.</p>
+                <p><strong>عيوب:</strong> أقل شيوعاً من ChatGPT (مجتمع ودروس أقل)، سعر أعلى لـ API.</p>
                 <h2>🏆 الخلاصة:</h2>
-                <p>للمشاريع الصغيرة → ChatGPT. للمشاريع الكبيرة → Claude 3. الأفضل: استخدامهما معاً.</p>`
+                <p>للمشاريع الصغيرة والمتوسطة والبدء في التعلم → <strong>ChatGPT</strong> (مجتمع أكبر).<br>
+                للمشاريع الكبيرة والمعقدة والدقة العالية → <strong>Claude 3</strong>.<br>
+                <strong>الأفضل على الإطلاق:</strong> استخدامهما معاً والاستفادة من نقاط قوة كل منهما.</p>`
             },
             "عقلية المليونير: كيف تفكر كالأغنياء": {
                 title: "عقلية المليونير: كيف تفكر كالأغنياء",
                 date: "2026-03-20",
                 category: "تطوير ذات",
                 image: "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&h=400&fit=crop",
-                content: `<p>الفرق بين الأغنياء والفقراء ليس في المال فقط، بل في العقلية. إليك 7 عادات يومية:</p>
+                content: `<p>الفرق بين الأغنياء والفقراء ليس في المال فقط، بل في العقلية. إليك 7 عادات يومية تغير طريقة تفكيرك:</p>
                 <ol>
-                    <li><strong>التفكير في الحلول وليس المشاكل</strong></li>
-                    <li><strong>الاستثمار في نفسك</strong></li>
-                    <li><strong>تحمل المخاطر المحسوبة</strong></li>
-                    <li><strong>بناء شبكة علاقات قوية</strong></li>
-                    <li><strong>الانضباط المالي</strong></li>
-                    <li><strong>التعلم المستمر</strong></li>
-                    <li><strong>العمل على المشروع وليس في المشروع</strong></li>
+                    <li><strong>التفكير في الحلول وليس المشاكل:</strong> بدلاً من التركيز على العقبات، ابحث عن الفرص. كل مشكلة تحمل فرصة لشخص ذكي.</li>
+                    <li><strong>الاستثمار في نفسك:</strong> أغنى استثمار هو تطوير مهاراتك ومعرفتك. اقرأ، تعلم، احضر دورات.</li>
+                    <li><strong>تحمل المخاطر المحسوبة:</strong> الخوف من الفشل هو أكبر عدو للنجاح. الأغنياء يخاطرون ولكن بعد دراسة.</li>
+                    <li><strong>بناء شبكة علاقات قوية:</strong> أنت متوسط الخمسة أشخاص المحيطين بك. اختر من تصاحب بحكمة.</li>
+                    <li><strong>الانضباط المالي:</strong> ادخر واستثمر قبل أن تنفق. قاعدة: 20% استثمار، 30% ادخار، 50% مصاريف.</li>
+                    <li><strong>التعلم المستمر:</strong> اقرأ كتاباً واحداً على الأقل شهرياً. الأغنياء يقرأون 50+ كتاب سنوياً.</li>
+                    <li><strong>العمل على المشروع وليس في المشروع:</strong> ابنِ نظاماً يعمل بدونك. لا تكن عبداً لعملك.</li>
                 </ol>
-                <p>ابدأ بتطبيق هذه العادات اليوم، وستلاحظ الفرق خلال 6 أشهر.</p>`
+                <p>ابدأ بتطبيق هذه العادات اليوم، وستلاحظ الفرق خلال 6 أشهر. النجاح ليس صدفة، إنه نتيجة لعادات يومية صحيحة.</p>
+                <hr>
+                <p><strong>📖 للاستزادة:</strong> اقرأ كتب "الأب الغني الأب الفقير" و"أسرار عقلية المليونير".</p>`
+            },
+            "دليلك الشامل لتعلم البرمجة بالذكاء الاصطناعي": {
+                title: "دليلك الشامل لتعلم البرمجة بالذكاء الاصطناعي",
+                date: "2026-03-15",
+                category: "برمجة",
+                image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=400&fit=crop",
+                content: `<p>البرمجة لم تعد حكراً على الخبراء. بفضل الذكاء الاصطناعي، أي شخص يمكنه تعلم البرمجة وبناء تطبيقات احترافية. هذا دليلك الشامل:</p>
+                <h2>1. ابدأ بأساسيات البرمجة</h2>
+                <p>تعلم الأساسيات مثل المتغيرات، الحلقات، والدوال باستخدام ChatGPT. اطلب منه شرح أي مفهوم لا تفهمه.</p>
+                <h2>2. استخدم مساعد البرمجة الذكي</h2>
+                <p>جرب <strong>GitHub Copilot</strong> أو <strong>Cursor</strong>. هذه الأدوات تكتب الكود لك بناءً على التعليقات التي تكتبها.</p>
+                <h2>3. حل المشكلات العملية</h2>
+                <p>اطلب من ChatGPT حل مشكلات برمجية حقيقية. ابدأ بمشاريع صغيرة مثل "حاسبة بسيطة" أو "تطبيق مهام".</p>
+                <h2>4. تعلم تصحيح الأخطاء (Debugging)</h2>
+                <p>عندما يظهر خطأ، انسخه وضعه في ChatGPT واطلب منه شرح الخطأ وكيفية إصلاحه.</p>
+                <h2>5. ابدأ مشروعك الخاص</h2>
+                <p>بعد شهر من التعلم، ابدأ مشروعاً خاصاً بك. استخدم الذكاء الاصطناعي لمساعدتك في كل خطوة.</p>
+                <p><strong>⭐ الخلاصة:</strong> الذكاء الاصطناعي هو المعلم والمساعد الأفضل لتعلم البرمجة. ابدأ اليوم ولا تؤجل.</p>`
             }
         };
 
+        // الحصول على عنوان المقال من الرابط
         const urlParams = new URLSearchParams(window.location.search);
         const postTitle = decodeURIComponent(urlParams.get('title') || '');
         const post = fullPosts[postTitle];
         const container = document.getElementById("postContent");
         
         if (post) {
+            // تحديث عنوان الصفحة SEO ديناميكياً
+            document.title = `The Future Millionaire | ${post.title}`;
+            document.querySelector('meta[name="description"]').setAttribute('content', post.content.substring(0, 150).replace(/<[^>]*>/g, '') + '...');
+            document.querySelector('meta[property="og:title"]').setAttribute('content', `The Future Millionaire | ${post.title}`);
+            
             container.innerHTML = `
                 <h1>${post.title}</h1>
                 <div class="post-category"><i class="fas fa-folder-open"></i> ${post.category}</div>
@@ -262,9 +329,13 @@
                 </div>
             `;
         } else {
-            container.innerHTML = `<p style="color:#ff6b6b;">😅 عذراً، المقال غير موجود</p><a href="blog.html" style="color:#D4AF37;">العودة إلى المدونة</a>`;
+            container.innerHTML = `
+                <p style="color:#ff6b6b;">😅 عذراً، المقال غير موجود</p>
+                <a href="blog.html" style="color:#D4AF37;">العودة إلى المدونة</a>
+            `;
         }
 
+        // إدارة المستخدمين
         function updateAuthUI() {
             const currentUser = JSON.parse(localStorage.getItem("currentUser"));
             const authLink = document.getElementById("authLink");
