@@ -3,10 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المدونة | The Future Millionaire</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>مدونة The Future Millionaire | مقالات الذكاء الاصطناعي وريادة الأعمال</title>
+    <meta name="description" content="مدونة The Future Millionaire - مقالات حصرية عن الذكاء الاصطناعي، أدوات AI، ريادة الأعمال، وكيفية تحقيق الثروة الرقمية.">
+    <meta name="keywords" content="مدونة الذكاء الاصطناعي, مقالات AI, تعلم الذكاء الاصطناعي, ريادة الأعمال الرقمية">
+    <meta name="author" content="Ramadan Mahmoud">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:title" content="مدونة The Future Millionaire">
+    <meta property="og:description" content="مقالات حصرية عن الذكاء الاصطناعي وريادة الأعمال">
+    <meta property="og:image" content="https://ramadan2001mahmoud.github.io/logo.png">
+    <meta property="og:url" content="https://ramadan2001mahmoud.github.io/blog.html">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="مدونة The Future Millionaire">
+    <meta name="twitter:description" content="مقالات حصرية عن الذكاء الاصطناعي وريادة الأعمال">
+    <meta name="twitter:image" content="https://ramadan2001mahmoud.github.io/logo.png">
+    
+    <link rel="canonical" href="https://ramadan2001mahmoud.github.io/blog.html">
+    
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
         .blog-header {
             text-align: center;
@@ -58,16 +79,8 @@
             background: #D4AF37;
             color: #0A0A0A;
         }
-        .footer-links {
-            margin-top: 15px;
-        }
-        .footer-links a {
-            color: #D4AF37;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 0.9rem;
-        }
-        /* زر واتساب الثابت */
+        .footer-links { margin-top: 15px; }
+        .footer-links a { color: #D4AF37; text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -86,18 +99,9 @@
             z-index: 1000;
             text-decoration: none;
         }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background-color: #20b859;
-        }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #20b859; }
         @media (max-width: 600px) {
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.6rem;
-                bottom: 20px;
-                right: 20px;
-            }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; bottom: 20px; right: 20px; }
         }
     </style>
 </head>
@@ -112,6 +116,7 @@
             <div class="nav-links" id="navLinks">
                 <a href="index.html">الرئيسية</a>
                 <a href="blog.html" class="active">المدونة</a>
+                <a href="courses.html">الكورسات</a>
                 <a href="login.html" id="authLink">تسجيل الدخول</a>
                 <span id="userGreeting" style="display:none; color:#D4AF37;"></span>
                 <a href="#" id="logoutBtn" style="display:none;">تسجيل خروج</a>
@@ -129,7 +134,6 @@
 
     <div class="blog-container" id="blogContainer"></div>
 
-    <!-- زر واتساب الثابت -->
     <a href="https://wa.me/201069302075" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -152,7 +156,6 @@
     </footer>
 
     <script>
-        // مقالات المدونة مع صور حقيقية
         const posts = [
             { title: "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026", date: "2026-04-01", excerpt: "5 استراتيجيات ذكية لتضخيم دخلك باستخدام أدوات AI...", image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400&h=250&fit=crop", category: "ريادة أعمال" },
             { title: "أفضل 10 أدوات AI لتوليد الفيديو", date: "2026-03-28", excerpt: "من Runway إلى Pika... تعرف على أدوات صناعة الفيديو بالذكاء الاصطناعي", image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4dde1?w=400&h=250&fit=crop", category: "أدوات" },
@@ -167,8 +170,7 @@
         let currentCategory = "الكل";
 
         function getCategories() {
-            const cats = ["الكل", ...new Set(posts.map(p => p.category))];
-            return cats;
+            return ["الكل", ...new Set(posts.map(p => p.category))];
         }
 
         function buildCategoryButtons() {
@@ -208,7 +210,6 @@
             `).join('');
         }
 
-        // إدارة المستخدمين
         function updateAuthUI() {
             const currentUser = JSON.parse(localStorage.getItem("currentUser"));
             const authLink = document.getElementById("authLink");
