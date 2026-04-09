@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         .post-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 60px auto;
-            padding: 30px;
+            padding: 40px;
             background: #1A1A1A;
             border-radius: 20px;
             border: 1px solid #2A2A2A;
@@ -19,26 +19,64 @@
         .post-container img {
             width: 100%;
             border-radius: 15px;
-            margin: 20px 0;
+            margin: 25px 0;
         }
         .post-category {
             color: #D4AF37;
             font-size: 0.9rem;
+            margin-top: 15px;
         }
         .post-date {
             color: #888;
             font-size: 0.8rem;
+            margin: 5px 0;
         }
         .post-content {
-            line-height: 1.8;
-            color: #CCCCCC;
+            line-height: 1.9;
+            color: #DDD;
             margin-top: 30px;
+        }
+        .post-content h2 {
+            color: #D4AF37;
+            margin: 25px 0 15px;
+            font-size: 1.5rem;
+        }
+        .post-content h3 {
+            color: #D4AF37;
+            margin: 20px 0 10px;
+        }
+        .post-content ul, .post-content ol {
+            margin: 15px 0;
+            padding-right: 25px;
+        }
+        .post-content li {
+            margin: 8px 0;
+        }
+        .post-content hr {
+            margin: 30px 0;
+            border-color: #333;
         }
         .back-btn {
             display: inline-block;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: #D4AF37;
             text-decoration: none;
+            font-weight: bold;
+        }
+        .back-btn:hover {
+            text-decoration: underline;
+        }
+        .share-buttons {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            display: flex;
+            gap: 15px;
+        }
+        .share-buttons a {
+            color: #D4AF37;
+            text-decoration: none;
+            font-size: 1.2rem;
         }
     </style>
 </head>
@@ -81,18 +119,19 @@
                 category: "ريادة أعمال",
                 image: "https://picsum.photos/800/400?random=1",
                 content: `<p>الذكاء الاصطناعي ليس مجرد تقنية عابرة، بل هو ثورة حقيقية تخلق مليارديرات جدد كل يوم. في هذا المقال، نستعرض 5 استراتيجيات ذكية لتضخيم دخلك باستخدام أدوات AI:</p>
-                <h2>1. أتمتة المحتوى</h2>
-                <p>استخدم ChatGPT وJasper لإنشاء محتوى تسويقي، مقالات، منشورات سوشيال ميديا بكميات هائلة وبجودة عالية.</p>
-                <h2>2. إنشاء دورات تعليمية بالذكاء الاصطناعي</h2>
-                <p>باستخدام HeyGen وElevenLabs، يمكنك إنشاء فيديوهات تعليمية كاملة بصوتك وصورتك الرقمية.</p>
-                <h2>3. بناء تطبيقات بدون برمجة</h2>
-                <p>أدوات مثل Cursor وReplit AI تسمح لأي شخص ببناء تطبيقات ويب كاملة بدون خبرة برمجية عميقة.</p>
-                <h2>4. التسويق بالذكاء الاصطناعي</h2>
-                <p>استخدم Perplexity AI لتحليل السوق، وMidjourney لتصميم إعلانات جذابة.</p>
-                <h2>5. الاستثمار في شركات AI</h2>
-                <p>تابع الشركات الناشئة في مجال الذكاء الاصطناعي واستثمر مبكراً.</p>
+                <h2>🇸​🇦​ 1. أتمتة المحتوى</h2>
+                <p>استخدم ChatGPT وJasper لإنشاء محتوى تسويقي، مقالات، منشورات سوشيال ميديا بكميات هائلة وبجودة عالية. يمكنك إنتاج ما يعادل عمل فريق كامل في ساعات قليلة.</p>
+                <h2>🎓 2. إنشاء دورات تعليمية بالذكاء الاصطناعي</h2>
+                <p>باستخدام HeyGen وElevenLabs، يمكنك إنشاء فيديوهات تعليمية كاملة بصوتك وصورتك الرقمية. تخيل أن تقدم دورة كاملة بدون تصوير حقيقي!</p>
+                <h2>💻 3. بناء تطبيقات بدون برمجة</h2>
+                <p>أدوات مثل Cursor وReplit AI تسمح لأي شخص ببناء تطبيقات ويب كاملة بدون خبرة برمجية عميقة. ابدأ مشروعك التقني اليوم.</p>
+                <h2>📢 4. التسويق بالذكاء الاصطناعي</h2>
+                <p>استخدم Perplexity AI لتحليل السوق، وMidjourney لتصميم إعلانات جذابة، وCopy.ai لكتابة نصوص إعلانية مقنعة.</p>
+                <h2>💰 5. الاستثمار في شركات AI</h2>
+                <p>تابع الشركات الناشئة في مجال الذكاء الاصطناعي واستثمر مبكراً. بعض هذه الشركات قد تكون الـ Google القادمة.</p>
                 <hr>
-                <p><strong>الخلاصة:</strong> المستقبل لمن يستخدم الذكاء الاصطناعي كأداة لتضخيم جهوده. ابدأ اليوم ولا تنتظر.</p>`
+                <p><strong>الخلاصة:</strong> المستقبل لمن يستخدم الذكاء الاصطناعي كأداة لتضخيم جهوده. ابدأ اليوم ولا تنتظر. المليونير القادم قد تكون أنت.</p>
+                <p><em>كتبه: فريق The Future Millionaire</em></p>`
             },
             "أفضل 10 أدوات AI لتوليد الفيديو": {
                 title: "أفضل 10 أدوات AI لتوليد الفيديو",
@@ -101,18 +140,18 @@
                 image: "https://picsum.photos/800/400?random=2",
                 content: `<p>صناعة الفيديو أصبحت أسهل من أي وقت مضى بفضل الذكاء الاصطناعي. إليك أفضل 10 أدوات:</p>
                 <ul>
-                    <li><strong>Runway ML:</strong> تحرير وتوليد فيديوهات احترافية</li>
-                    <li><strong>HeyGen:</strong> إنشاء أفلام بصور رمزية متحركة واقعية</li>
-                    <li><strong>Pika Labs:</strong> تحويل النص إلى فيديو قصير</li>
-                    <li><strong>Kaiber:</strong> تحويل الصور إلى فيديوهات متحركة</li>
-                    <li><strong>Sora:</strong> أحدث إصدار من OpenAI (قيد الإصدار)</li>
-                    <li><strong>Descript:</strong> تحرير الفيديو كأنك تحرر نصاً</li>
-                    <li><strong>Fliki:</strong> تحويل المدونات إلى فيديوهات</li>
-                    <li><strong>Synthesia:</strong> إنشاء فيديوهات تدريبية بأفاتار رقمي</li>
-                    <li><strong>Elai.io:</strong> إنشاء فيديوهات من النص فقط</li>
-                    <li><strong>Pictory.ai:</strong> تحويل المقالات الطويلة إلى فيديوهات قصيرة</li>
+                    <li><strong>Runway ML:</strong> تحرير وتوليد فيديوهات احترافية - مثالي لصناع الأفلام</li>
+                    <li><strong>HeyGen:</strong> إنشاء أفلام بصور رمزية متحركة واقعية - رائع للتعليم والتسويق</li>
+                    <li><strong>Pika Labs:</strong> تحويل النص إلى فيديو قصير - ممتاز للسوشيال ميديا</li>
+                    <li><strong>Kaiber:</strong> تحويل الصور إلى فيديوهات متحركة - إبداعي وفني</li>
+                    <li><strong>Sora:</strong> أحدث إصدار من OpenAI - يغير قواعد اللعبة (قيد الإصدار)</li>
+                    <li><strong>Descript:</strong> تحرير الفيديو كأنك تحرر نصاً - سهل جداً للمبتدئين</li>
+                    <li><strong>Fliki:</strong> تحويل المدونات إلى فيديوهات - مثالي لصناع المحتوى</li>
+                    <li><strong>Synthesia:</strong> إنشاء فيديوهات تدريبية بأفاتار رقمي - احترافي للشركات</li>
+                    <li><strong>Elai.io:</strong> إنشاء فيديوهات من النص فقط - سريع وسهل</li>
+                    <li><strong>Pictory.ai:</strong> تحويل المقالات الطويلة إلى فيديوهات قصيرة - رائع لليوتيوب</li>
                 </ul>
-                <p>كل هذه الأدوات توفر نسخ مجانية لتجربتها قبل الاشتراك.</p>`
+                <p>كل هذه الأدوات توفر نسخ مجانية لتجربتها قبل الاشتراك. ابدأ بتجربة 2-3 أدوات واختر ما يناسب احتياجاتك.</p>`
             },
             "ChatGPT vs Claude: أيهما أفضل للبرمجة؟": {
                 title: "ChatGPT vs Claude: أيهما أفضل للبرمجة؟",
@@ -120,12 +159,16 @@
                 category: "مقارنات",
                 image: "https://picsum.photos/800/400?random=3",
                 content: `<p>مقارنة شاملة بين أقوى نموذجين للذكاء الاصطناعي في مجال البرمجة:</p>
-                <h2>ChatGPT (GPT-4):</h2>
-                <p>مميزات: يفهم السياق جيداً، يكتب كود نظيف، يدعم أكثر من 50 لغة برمجة. عيوب: أحياناً يهلوس في الكود المعقد.</p>
-                <h2>Claude 3:</h2>
-                <p>مميزات: دقة عالية في الكود الطويل، فهم ممتاز للمشاريع الكبيرة، يدخل ملفات PDF. عيوب: أقل شيوعاً من ChatGPT.</p>
-                <h2>الخلاصة:</h2>
-                <p>للمشاريع الصغيرة والمتوسطة → ChatGPT. للمشاريع الكبيرة والمعقدة → Claude 3. الأفضل: استخدامهما معاً.</p>`
+                <h2>🤖 ChatGPT (GPT-4):</h2>
+                <p><strong>مميزات:</strong> يفهم السياق جيداً، يكتب كود نظيف، يدعم أكثر من 50 لغة برمجة، قاعدة مستخدمين ضخمة يعني دعم ومحتوى تعليمي أكثر.</p>
+                <p><strong>عيوب:</strong> أحياناً يهلوس في الكود المعقد، قد يحتاج لتوجيه دقيق للمشاريع الكبيرة.</p>
+                <h2>🧠 Claude 3 (Opus):</h2>
+                <p><strong>مميزات:</strong> دقة عالية في الكود الطويل، فهم ممتاز للمشاريع الكبيرة، يدخل ملفات PDF وصور، أقل هلوسة من ChatGPT.</p>
+                <p><strong>عيوب:</strong> أقل شيوعاً من ChatGPT (مجتمع ودروس أقل)، سعر أعلى لـ API.</p>
+                <h2>🏆 الخلاصة:</h2>
+                <p>للمشاريع الصغيرة والمتوسطة والبدء في التعلم → <strong>ChatGPT</strong> (مجتمع أكبر).<br>
+                للمشاريع الكبيرة والمعقدة والدقة العالية → <strong>Claude 3</strong>.<br>
+                <strong>الأفضل على الإطلاق:</strong> استخدامهما معاً والاستفادة من نقاط قوة كل منهما.</p>`
             },
             "عقلية المليونير: كيف تفكر كالأغنياء": {
                 title: "عقلية المليونير: كيف تفكر كالأغنياء",
@@ -134,15 +177,15 @@
                 image: "https://picsum.photos/800/400?random=4",
                 content: `<p>الفرق بين الأغنياء والفقراء ليس في المال فقط، بل في العقلية. إليك 7 عادات يومية تغير طريقة تفكيرك:</p>
                 <ol>
-                    <li><strong>التفكير في الحلول وليس المشاكل:</strong> بدلاً من التركيز على العقبات، ابحث عن الفرص.</li>
-                    <li><strong>الاستثمار في نفسك:</strong> أغنى استثمار هو تطوير مهاراتك ومعرفتك.</li>
-                    <li><strong>تحمل المخاطر المحسوبة:</strong> الخوف من الفشل هو أكبر عدو للنجاح.</li>
-                    <li><strong>بناء شبكة علاقات قوية:</strong> أنت متوسط الخمسة أشخاص المحيطين بك.</li>
-                    <li><strong>الانضباط المالي:</strong> ادخر واستثمر قبل أن تنفق.</li>
-                    <li><strong>التعلم المستمر:</strong> اقرأ كتاباً واحداً على الأقل شهرياً.</li>
-                    <li><strong>العمل على المشروع وليس في المشروع:</strong> ابنِ نظاماً يعمل بدونك.</li>
+                    <li><strong>التفكير في الحلول وليس المشاكل:</strong> بدلاً من التركيز على العقبات، ابحث عن الفرص. كل مشكلة تحمل فرصة لشخص ذكي.</li>
+                    <li><strong>الاستثمار في نفسك:</strong> أغنى استثمار هو تطوير مهاراتك ومعرفتك. اقرأ، تعلم، احضر دورات.</li>
+                    <li><strong>تحمل المخاطر المحسوبة:</strong> الخوف من الفشل هو أكبر عدو للنجاح. الأغنياء يخاطرون ولكن بعد دراسة.</li>
+                    <li><strong>بناء شبكة علاقات قوية:</strong> أنت متوسط الخمسة أشخاص المحيطين بك. اختر من تصاحب بحكمة.</li>
+                    <li><strong>الانضباط المالي:</strong> ادخر واستثمر قبل أن تنفق. قاعدة: 20% استثمار، 30% ادخار، 50% مصاريف.</li>
+                    <li><strong>التعلم المستمر:</strong> اقرأ كتاباً واحداً على الأقل شهرياً. الأغنياء يقرأون 50+ كتاب سنوياً.</li>
+                    <li><strong>العمل على المشروع وليس في المشروع:</strong> ابنِ نظاماً يعمل بدونك. لا تكن عبداً لعملك.</li>
                 </ol>
-                <p>ابدأ بتطبيق هذه العادات اليوم، وستلاحظ الفرق خلال 6 أشهر.</p>`
+                <p>ابدأ بتطبيق هذه العادات اليوم، وستلاحظ الفرق خلال 6 أشهر. النجاح ليس صدفة، إنه نتيجة لعادات يومية صحيحة.</p>`
             }
         };
 
@@ -156,13 +199,19 @@
         if (post) {
             container.innerHTML = `
                 <h1>${post.title}</h1>
-                <div class="post-category">📁 ${post.category}</div>
-                <div class="post-date">📅 ${post.date}</div>
+                <div class="post-category"><i class="fas fa-folder-open"></i> ${post.category}</div>
+                <div class="post-date"><i class="fas fa-calendar-alt"></i> ${post.date}</div>
                 <img src="${post.image}" alt="${post.title}">
                 <div class="post-content">${post.content}</div>
+                <div class="share-buttons">
+                    <span style="color:#888;">شارك المقال:</span>
+                    <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/?text=${encodeURIComponent(post.title + ' ' + window.location.href)}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
             `;
         } else {
-            container.innerHTML = `<p style="color:red;">عذراً، المقال غير موجود</p><a href="blog.html">العودة إلى المدونة</a>`;
+            container.innerHTML = `<p style="color:#ff6b6b;">😅 عذراً، المقال غير موجود</p><a href="blog.html" style="color:#D4AF37;">العودة إلى المدونة</a>`;
         }
 
         // إدارة المستخدمين
