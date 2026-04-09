@@ -68,6 +68,38 @@
             text-decoration: none;
             margin: 0 10px;
         }
+        /* زر واتساب الثابت */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20b859;
+        }
+        @media (max-width: 600px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.6rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -104,9 +136,6 @@
             </ul>
         </div>
 
-        <!-- ============================================ -->
-        <!-- شروط الاستخدام -->
-        <!-- ============================================ -->
         <h2 id="terms">📋 شروط الاستخدام</h2>
         
         <h3>1. قبول الشروط</h3>
@@ -129,9 +158,6 @@
 
         <hr style="margin: 40px 0; border-color: #333;">
 
-        <!-- ============================================ -->
-        <!-- سياسة الخصوصية -->
-        <!-- ============================================ -->
         <h2 id="privacy">🔒 سياسة الخصوصية</h2>
         
         <h3>1. المعلومات التي نجمعها</h3>
@@ -176,35 +202,35 @@
 
         <hr style="margin: 40px 0; border-color: #333;">
 
-        <!-- ============================================ -->
-        <!-- حقوق الملكية الفكرية -->
-        <!-- ============================================ -->
         <h2 id="copyright">© حقوق الملكية الفكرية</h2>
         <p>جميع المحتويات المنشورة على موقع "The Future Millionaire"، بما في ذلك النصوص والصور والشعارات والتصميم، هي ملك للموقع ما لم يُذكر خلاف ذلك. لا يُسمح بنسخ أو إعادة نشر أو توزيع أي محتوى دون إذن خطي مسبق.</p>
         <p>الأسماء التجارية والعلامات التجارية لأدوات الذكاء الاصطناعي المذكورة هي ملك لأصحابها الأصليين.</p>
 
         <hr style="margin: 40px 0; border-color: #333;">
 
-        <!-- ============================================ -->
-        <!-- التواصل معنا -->
-        <!-- ============================================ -->
         <h2 id="contact">📧 التواصل معنا</h2>
         <p>إذا كان لديك أي استفسار بخصوص شروط الاستخدام أو سياسة الخصوصية، يمكنك التواصل معنا عبر:</p>
         <ul>
-            <li><strong>البريد الإلكتروني:</strong> <a href="mailto:support@thefuturemillionaire.com" style="color:#D4AF37;">support@thefuturemillionaire.com</a></li>
-            <li><strong>عبر GitHub:</strong> <a href="https://github.com/" style="color:#D4AF37;">إنشاء Issue في المشروع</a></li>
+            <li><strong>واتساب:</strong> <a href="https://wa.me/201069302075" style="color:#D4AF37;">+20 106 930 2075</a></li>
+            <li><strong>عبر GitHub:</strong> <a href="https://github.com/ramadan2001mahmoud" style="color:#D4AF37;">ramadan2001mahmoud</a></li>
         </ul>
         <p>نحن ملتزمون بالرد على استفسارك في غضون 3-5 أيام عمل.</p>
     </div>
+
+    <!-- زر واتساب الثابت -->
+    <a href="https://wa.me/201069302075" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2026 The Future Millionaire - جميع الحقوق محفوظة</p>
             <div class="social-icons">
-                <a href="https://linkedin.com/in/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/ramadanm200110" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://twitter.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/ra_mah077" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://facebook.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-facebook-f"></i></a>
             </div>
             <div class="footer-links">
                 <a href="terms.html">شروط الاستخدام</a>
