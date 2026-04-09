@@ -4,50 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LEQF7LQ0WY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-LEQF7LQ0WY');
+    </script>
+    
     <!-- SEO Meta Tags -->
     <title>The Future Millionaire | أكبر دليل أدوات الذكاء الاصطناعي في العالم العربي</title>
-    <meta name="description" content="أكبر دليل عربي لأدوات الذكاء الاصطناعي - أكثر من 50 أداة AI في مكان واحد. ChatGPT، Midjourney، Runway، وأكثر. مجاني بالكامل.">
+    <meta name="description" content="أكبر دليل عربي لأدوات الذكاء الاصطناعي - أكثر من 90 أداة AI في مكان واحد. ChatGPT، Midjourney، Runway، وأكثر. مجاني بالكامل.">
     <meta name="keywords" content="الذكاء الاصطناعي, أدوات AI, ChatGPT, Midjourney, تعلم الذكاء الاصطناعي, ربح المال بالذكاء الاصطناعي">
     <meta name="author" content="Ramadan Mahmoud">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph / Facebook -->
     <meta property="og:title" content="The Future Millionaire - دليل أدوات الذكاء الاصطناعي">
     <meta property="og:description" content="أكبر دليل عربي لأدوات الذكاء الاصطناعي. اكتشف أفضل أدوات AI لزيادة إنتاجيتك وأرباحك.">
     <meta property="og:image" content="https://ramadan2001mahmoud.github.io/logo.png">
     <meta property="og:url" content="https://ramadan2001mahmoud.github.io">
     <meta property="og:type" content="website">
     
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="The Future Millionaire - دليل أدوات الذكاء الاصطناعي">
     <meta name="twitter:description" content="أكبر دليل عربي لأدوات الذكاء الاصطناعي. اكتشف أفضل أدوات AI.">
     <meta name="twitter:image" content="https://ramadan2001mahmoud.github.io/logo.png">
     
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://ramadan2001mahmoud.github.io">
     
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <!-- Structured Data / Schema.org -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "The Future Millionaire",
-        "url": "https://ramadan2001mahmoud.github.io",
-        "description": "أكبر دليل عربي لأدوات الذكاء الاصطناعي",
-        "creator": {
-            "@type": "Person",
-            "name": "Ramadan Mahmoud"
-        }
-    }
-    </script>
-    
     <style>
-        /* زر واتساب الثابت */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -66,24 +56,14 @@
             z-index: 1000;
             text-decoration: none;
         }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background-color: #20b859;
-        }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #20b859; }
         @media (max-width: 600px) {
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.6rem;
-                bottom: 20px;
-                right: 20px;
-            }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; bottom: 20px; right: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- شريط التنقل -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -114,16 +94,14 @@
         </div>
     </nav>
 
-    <!-- القسم الرئيسي (Hero) -->
     <section class="hero">
         <div class="hero-content">
             <h1>مستقبل الذكاء الاصطناعي <span class="gold">بين يديك</span></h1>
-            <p>أكثر من 50+ أداة ذكاء اصطناعي متطورة في مكان واحد. اختر، جرب، وابدع.</p>
+            <p>أكثر من 90+ أداة ذكاء اصطناعي متطورة في مكان واحد. اختر، جرب، وابدع.</p>
             <button class="cta-btn" id="exploreBtn">استكشف الأدوات <i class="fas fa-arrow-left"></i></button>
         </div>
     </section>
 
-    <!-- إحصائيات سريعة -->
     <div class="stats-bar">
         <div class="stat-item">
             <i class="fas fa-robot"></i>
@@ -142,20 +120,16 @@
         </div>
     </div>
 
-    <!-- أزرار التصفية -->
     <div class="filter-section">
         <button class="filter-btn active" data-category="all">الكل</button>
     </div>
 
-    <!-- حاوية عرض الأدوات -->
     <div class="tools-container" id="toolsContainer"></div>
 
-    <!-- زر واتساب الثابت -->
     <a href="https://wa.me/201069302075" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- الفوتر -->
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2026 The Future Millionaire - جميع الحقوق محفوظة</p>
