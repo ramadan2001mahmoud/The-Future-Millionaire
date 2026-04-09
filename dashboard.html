@@ -1,13 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LEQF7LQ0WY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-LEQF7LQ0WY');
+    </script>
+    
+    <!-- SEO Meta Tags -->
     <title>لوحة التحكم | The Future Millionaire</title>
+    <meta name="description" content="لوحة تحكم المستخدم في The Future Millionaire - تتبع إحصائياتك وأدواتك المفضلة">
+    <meta name="robots" content="noindex, nofollow">
+    
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
         .dashboard-container {
             max-width: 1200px;
@@ -81,6 +95,30 @@
             font-size: 0.8rem;
             margin-right: 10px;
         }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #20b859; }
+        @media (max-width: 600px) {
+            .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; bottom: 20px; right: 20px; }
+        }
+        .footer-links { margin-top: 15px; }
+        .footer-links a { color: #D4AF37; text-decoration: none; margin: 0 10px; }
     </style>
 </head>
 <body>
@@ -94,19 +132,33 @@
             <div class="nav-links" id="navLinks">
                 <a href="index.html">الرئيسية</a>
                 <a href="blog.html">المدونة</a>
+                <a href="courses.html">الكورسات</a>
                 <a href="#" id="logoutBtn">تسجيل خروج</a>
             </div>
             <div class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></div>
         </div>
     </nav>
 
-    <div class="dashboard-container" id="dashboardContainer">
-        <!-- سيتم تعبئة المحتوى عبر JavaScript -->
-    </div>
+    <div class="dashboard-container" id="dashboardContainer"></div>
+
+    <a href="https://wa.me/201069302075" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2026 The Future Millionaire - جميع الحقوق محفوظة</p>
+            <div class="social-icons">
+                <a href="https://linkedin.com/in/ramadanm200110" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://twitter.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/ra_mah077" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://facebook.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="terms.html">شروط الاستخدام</a>
+                <a href="terms.html#privacy">سياسة الخصوصية</a>
+            </div>
         </div>
     </footer>
 
@@ -117,13 +169,11 @@
             window.location.href = "login.html";
         }
 
-        // جلب جميع الأدوات من localStorage (من script.js)
         let tools = [];
         try {
             const savedClicks = localStorage.getItem("toolsClicks");
             if (savedClicks) {
                 const clicksData = JSON.parse(savedClicks);
-                // قائمة الأدوات الأساسية
                 const defaultTools = [
                     "ChatGPT", "Claude", "Perplexity AI", "Gemini", "DeepSeek", "Midjourney", 
                     "DALL-E 3", "Leonardo.ai", "Runway ML", "HeyGen", "ElevenLabs", "GitHub Copilot"
@@ -135,10 +185,7 @@
             }
         } catch(e) { console.log(e); }
 
-        // جلب نقرات المستخدم
         const userClicks = JSON.parse(localStorage.getItem(`userClicks_${currentUser.id}`) || "{}");
-        
-        // جلب المفضلة
         let favorites = JSON.parse(localStorage.getItem(`favorites_${currentUser.id}`) || "[]");
 
         function renderDashboard() {
@@ -184,7 +231,6 @@
                 </div>
             `;
             
-            // عرض المفضلة
             const favContainer = document.getElementById("favoritesList");
             if (favorites.length === 0) {
                 favContainer.innerHTML = '<p style="padding: 20px; text-align: center; color: #666;">لا توجد أدوات مفضلة بعد. اذهب إلى الرئيسية وأضف أدواتك المفضلة! ⭐</p>';
@@ -206,7 +252,6 @@
                 });
             }
             
-            // عرض النقرات
             const clicksContainer = document.getElementById("clicksList");
             const sortedClicks = Object.entries(userClicks).sort((a, b) => b[1] - a[1]);
             if (sortedClicks.length === 0) {
@@ -220,7 +265,6 @@
                 `).join('');
             }
             
-            // حذف الحساب
             document.getElementById("deleteAccountBtn").addEventListener("click", () => {
                 if (confirm("هل أنت متأكد من حذف حسابك؟ سيتم حذف جميع بياناتك نهائياً.")) {
                     let users = JSON.parse(localStorage.getItem("users") || "[]");
