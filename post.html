@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المقال | The Future Millionaire</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .post-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 30px;
+            background: #1A1A1A;
+            border-radius: 20px;
+            border: 1px solid #2A2A2A;
+        }
+        .post-container img {
+            width: 100%;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        .post-category {
+            color: #D4AF37;
+            font-size: 0.9rem;
+        }
+        .post-date {
+            color: #888;
+            font-size: 0.8rem;
+        }
+        .post-content {
+            line-height: 1.8;
+            color: #CCCCCC;
+            margin-top: 30px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #D4AF37;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo" class="logo-img">
+                <span class="logo-text">The Future Millionaire</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">الرئيسية</a>
+                <a href="blog.html">المدونة</a>
+                <a href="login.html" id="authLink">تسجيل الدخول</a>
+                <span id="userGreeting" style="display:none; color:#D4AF37;"></span>
+                <a href="#" id="logoutBtn" style="display:none;">تسجيل خروج</a>
+            </div>
+            <div class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <div class="post-container" id="postContainer">
+        <a href="blog.html" class="back-btn"><i class="fas fa-arrow-right"></i> العودة إلى المدونة</a>
+        <div id="postContent"></div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 The Future Millionaire</p>
+        </div>
+    </footer>
+
+    <script>
+        // قاعدة بيانات المقالات الكاملة
+        const fullPosts = {
+            "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026": {
+                title: "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026",
+                date: "2026-04-01",
+                category: "ريادة أعمال",
+                image: "https://picsum.photos/800/400?random=1",
+                content: `<p>الذكاء الاصطناعي ليس مجرد تقنية عابرة، بل هو ثورة حقيقية تخلق مليارديرات جدد كل يوم. في هذا المقال، نستعرض 5 استراتيجيات ذكية لتضخيم دخلك باستخدام أدوات AI:</p>
+                <h2>1. أتمتة المحتوى</h2>
+                <p>استخدم ChatGPT وJasper لإنشاء محتوى تسويقي، مقالات، منشورات سوشيال ميديا بكميات هائلة وبجودة عالية.</p>
+                <h2>2. إنشاء دورات تعليمية بالذكاء الاصطناعي</h2>
+                <p>باستخدام HeyGen وElevenLabs، يمكنك إنشاء فيديوهات تعليمية كاملة بصوتك وصورتك الرقمية.</p>
+                <h2>3. بناء تطبيقات بدون برمجة</h2>
+                <p>أدوات مثل Cursor وReplit AI تسمح لأي شخص ببناء تطبيقات ويب كاملة بدون خبرة برمجية عميقة.</p>
+                <h2>4. التسويق بالذكاء الاصطناعي</h2>
+                <p>استخدم Perplexity AI لتحليل السوق، وMidjourney لتصميم إعلانات جذابة.</p>
+                <h2>5. الاستثمار في شركات AI</h2>
+                <p>تابع الشركات الناشئة في مجال الذكاء الاصطناعي واستثمر مبكراً.</p>
+                <hr>
+                <p><strong>الخلاصة:</strong> المستقبل لمن يستخدم الذكاء الاصطناعي كأداة لتضخيم جهوده. ابدأ اليوم ولا تنتظر.</p>`
+            },
+            "أفضل 10 أدوات AI لتوليد الفيديو": {
+                title: "أفضل 10 أدوات AI لتوليد الفيديو",
+                date: "2026-03-28",
+                category: "أدوات",
+                image: "https://picsum.photos/800/400?random=2",
+                content: `<p>صناعة الفيديو أصبحت أسهل من أي وقت مضى بفضل الذكاء الاصطناعي. إليك أفضل 10 أدوات:</p>
+                <ul>
+                    <li><strong>Runway ML:</strong> تحرير وتوليد فيديوهات احترافية</li>
+                    <li><strong>HeyGen:</strong> إنشاء أفلام بصور رمزية متحركة واقعية</li>
+                    <li><strong>Pika Labs:</strong> تحويل النص إلى فيديو قصير</li>
+                    <li><strong>Kaiber:</strong> تحويل الصور إلى فيديوهات متحركة</li>
+                    <li><strong>Sora:</strong> أحدث إصدار من OpenAI (قيد الإصدار)</li>
+                    <li><strong>Descript:</strong> تحرير الفيديو كأنك تحرر نصاً</li>
+                    <li><strong>Fliki:</strong> تحويل المدونات إلى فيديوهات</li>
+                    <li><strong>Synthesia:</strong> إنشاء فيديوهات تدريبية بأفاتار رقمي</li>
+                    <li><strong>Elai.io:</strong> إنشاء فيديوهات من النص فقط</li>
+                    <li><strong>Pictory.ai:</strong> تحويل المقالات الطويلة إلى فيديوهات قصيرة</li>
+                </ul>
+                <p>كل هذه الأدوات توفر نسخ مجانية لتجربتها قبل الاشتراك.</p>`
+            },
+            "ChatGPT vs Claude: أيهما أفضل للبرمجة؟": {
+                title: "ChatGPT vs Claude: أيهما أفضل للبرمجة؟",
+                date: "2026-03-25",
+                category: "مقارنات",
+                image: "https://picsum.photos/800/400?random=3",
+                content: `<p>مقارنة شاملة بين أقوى نموذجين للذكاء الاصطناعي في مجال البرمجة:</p>
+                <h2>ChatGPT (GPT-4):</h2>
+                <p>مميزات: يفهم السياق جيداً، يكتب كود نظيف، يدعم أكثر من 50 لغة برمجة. عيوب: أحياناً يهلوس في الكود المعقد.</p>
+                <h2>Claude 3:</h2>
+                <p>مميزات: دقة عالية في الكود الطويل، فهم ممتاز للمشاريع الكبيرة، يدخل ملفات PDF. عيوب: أقل شيوعاً من ChatGPT.</p>
+                <h2>الخلاصة:</h2>
+                <p>للمشاريع الصغيرة والمتوسطة → ChatGPT. للمشاريع الكبيرة والمعقدة → Claude 3. الأفضل: استخدامهما معاً.</p>`
+            },
+            "عقلية المليونير: كيف تفكر كالأغنياء": {
+                title: "عقلية المليونير: كيف تفكر كالأغنياء",
+                date: "2026-03-20",
+                category: "تطوير ذات",
+                image: "https://picsum.photos/800/400?random=4",
+                content: `<p>الفرق بين الأغنياء والفقراء ليس في المال فقط، بل في العقلية. إليك 7 عادات يومية تغير طريقة تفكيرك:</p>
+                <ol>
+                    <li><strong>التفكير في الحلول وليس المشاكل:</strong> بدلاً من التركيز على العقبات، ابحث عن الفرص.</li>
+                    <li><strong>الاستثمار في نفسك:</strong> أغنى استثمار هو تطوير مهاراتك ومعرفتك.</li>
+                    <li><strong>تحمل المخاطر المحسوبة:</strong> الخوف من الفشل هو أكبر عدو للنجاح.</li>
+                    <li><strong>بناء شبكة علاقات قوية:</strong> أنت متوسط الخمسة أشخاص المحيطين بك.</li>
+                    <li><strong>الانضباط المالي:</strong> ادخر واستثمر قبل أن تنفق.</li>
+                    <li><strong>التعلم المستمر:</strong> اقرأ كتاباً واحداً على الأقل شهرياً.</li>
+                    <li><strong>العمل على المشروع وليس في المشروع:</strong> ابنِ نظاماً يعمل بدونك.</li>
+                </ol>
+                <p>ابدأ بتطبيق هذه العادات اليوم، وستلاحظ الفرق خلال 6 أشهر.</p>`
+            }
+        };
+
+        // الحصول على عنوان المقال من الرابط
+        const urlParams = new URLSearchParams(window.location.search);
+        const postTitle = decodeURIComponent(urlParams.get('title') || '');
+        
+        const post = fullPosts[postTitle];
+        const container = document.getElementById("postContent");
+        
+        if (post) {
+            container.innerHTML = `
+                <h1>${post.title}</h1>
+                <div class="post-category">📁 ${post.category}</div>
+                <div class="post-date">📅 ${post.date}</div>
+                <img src="${post.image}" alt="${post.title}">
+                <div class="post-content">${post.content}</div>
+            `;
+        } else {
+            container.innerHTML = `<p style="color:red;">عذراً، المقال غير موجود</p><a href="blog.html">العودة إلى المدونة</a>`;
+        }
+
+        // إدارة المستخدمين
+        function updateAuthUI() {
+            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            const authLink = document.getElementById("authLink");
+            const userGreeting = document.getElementById("userGreeting");
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (currentUser) {
+                if (authLink) authLink.style.display = "none";
+                if (userGreeting) {
+                    userGreeting.style.display = "inline";
+                    userGreeting.textContent = `مرحباً ${currentUser.name}`;
+                }
+                if (logoutBtn) logoutBtn.style.display = "inline";
+            } else {
+                if (authLink) authLink.style.display = "inline";
+                if (userGreeting) userGreeting.style.display = "none";
+                if (logoutBtn) logoutBtn.style.display = "none";
+            }
+        }
+
+        function setupLogout() {
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("currentUser");
+                    window.location.href = "index.html";
+                });
+            }
+        }
+
+        function setupMobileMenu() {
+            const toggle = document.getElementById("mobileMenu");
+            const navLinks = document.getElementById("navLinks");
+            if (toggle && navLinks) {
+                toggle.addEventListener("click", () => {
+                    navLinks.classList.toggle("active");
+                });
+            }
+        }
+
+        updateAuthUI();
+        setupLogout();
+        setupMobileMenu();
+    </script>
+</body>
+</html>
