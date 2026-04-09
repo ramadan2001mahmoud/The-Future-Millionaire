@@ -1,1 +1,263 @@
 
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم | The Future Millionaire</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .welcome-card {
+            background: linear-gradient(135deg, #1A1A1A, #0A0A0A);
+            border: 1px solid #D4AF37;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .welcome-card h1 { margin-bottom: 10px; }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .stat-box {
+            background: #1A1A1A;
+            border: 1px solid #2A2A2A;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .stat-box:hover { border-color: #D4AF37; }
+        .stat-box i { font-size: 2.5rem; color: #D4AF37; margin-bottom: 15px; }
+        .stat-box .number { font-size: 2rem; font-weight: bold; color: #D4AF37; }
+        .stat-box .label { color: #CCCCCC; margin-top: 10px; }
+        .section-title {
+            font-size: 1.5rem;
+            margin: 30px 0 20px;
+            color: #D4AF37;
+            border-right: 3px solid #D4AF37;
+            padding-right: 15px;
+        }
+        .favorites-list, .clicks-list {
+            background: #1A1A1A;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .favorite-item, .click-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            border-bottom: 1px solid #2A2A2A;
+        }
+        .favorite-item:last-child, .click-item:last-child { border-bottom: none; }
+        .favorite-name, .click-name { font-weight: bold; }
+        .favorite-count, .click-count { color: #D4AF37; }
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .btn-danger:hover { background: #c82333; }
+        .admin-badge {
+            background: #D4AF37;
+            color: #0A0A0A;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo" class="logo-img">
+                <span class="logo-text">The Future Millionaire</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">الرئيسية</a>
+                <a href="blog.html">المدونة</a>
+                <a href="#" id="logoutBtn">تسجيل خروج</a>
+            </div>
+            <div class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container" id="dashboardContainer">
+        <!-- سيتم تعبئة المحتوى عبر JavaScript -->
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 The Future Millionaire - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script>
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        
+        if (!currentUser) {
+            window.location.href = "login.html";
+        }
+
+        // جلب جميع الأدوات من localStorage (من script.js)
+        let tools = [];
+        try {
+            const savedClicks = localStorage.getItem("toolsClicks");
+            if (savedClicks) {
+                const clicksData = JSON.parse(savedClicks);
+                // قائمة الأدوات الأساسية
+                const defaultTools = [
+                    "ChatGPT", "Claude", "Perplexity AI", "Gemini", "DeepSeek", "Midjourney", 
+                    "DALL-E 3", "Leonardo.ai", "Runway ML", "HeyGen", "ElevenLabs", "GitHub Copilot"
+                ];
+                tools = defaultTools.map(name => ({
+                    name: name,
+                    clicks: clicksData[name] || 0
+                }));
+            }
+        } catch(e) { console.log(e); }
+
+        // جلب نقرات المستخدم
+        const userClicks = JSON.parse(localStorage.getItem(`userClicks_${currentUser.id}`) || "{}");
+        
+        // جلب المفضلة
+        let favorites = JSON.parse(localStorage.getItem(`favorites_${currentUser.id}`) || "[]");
+
+        function renderDashboard() {
+            const container = document.getElementById("dashboardContainer");
+            const totalUserClicks = Object.values(userClicks).reduce((a, b) => a + b, 0);
+            const favoriteCount = favorites.length;
+            
+            container.innerHTML = `
+                <div class="welcome-card">
+                    <h1>مرحباً ${currentUser.name} <span class="gold">👋</span></h1>
+                    <p>هذه هي لوحة تحكمك الشخصية. تابع تقدمك وأدواتك المفضلة.</p>
+                    ${currentUser.role === 'admin' ? '<p><span class="admin-badge"><i class="fas fa-crown"></i> مدير النظام</span> <a href="admin.html" style="color:#D4AF37;">اذهب إلى لوحة التحكم الإدارية →</a></p>' : ''}
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <i class="fas fa-mouse-pointer"></i>
+                        <div class="number">${totalUserClicks}</div>
+                        <div class="label">إجمالي نقراتك</div>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-heart"></i>
+                        <div class="number">${favoriteCount}</div>
+                        <div class="label">الأدوات المفضلة</div>
+                    </div>
+                    <div class="stat-box">
+                        <i class="fas fa-calendar-alt"></i>
+                        <div class="number">${new Date(currentUser.createdAt || Date.now()).toLocaleDateString('ar-EG')}</div>
+                        <div class="label">تاريخ الانضمام</div>
+                    </div>
+                </div>
+
+                <h2 class="section-title"><i class="fas fa-heart"></i> أدواتي المفضلة</h2>
+                <div class="favorites-list" id="favoritesList"></div>
+
+                <h2 class="section-title"><i class="fas fa-chart-line"></i> إحصائيات نقراتي</h2>
+                <div class="clicks-list" id="clicksList"></div>
+
+                <h2 class="section-title"><i class="fas fa-trash-alt"></i> حذف الحساب</h2>
+                <div class="favorites-list">
+                    <p style="margin-bottom: 15px; color:#ff6b6b;">تحذير: هذا الإجراء لا يمكن التراجع عنه.</p>
+                    <button class="btn-danger" id="deleteAccountBtn">حذف حسابي نهائياً</button>
+                </div>
+            `;
+            
+            // عرض المفضلة
+            const favContainer = document.getElementById("favoritesList");
+            if (favorites.length === 0) {
+                favContainer.innerHTML = '<p style="padding: 20px; text-align: center; color: #666;">لا توجد أدوات مفضلة بعد. اذهب إلى الرئيسية وأضف أدواتك المفضلة! ⭐</p>';
+            } else {
+                favContainer.innerHTML = favorites.map(fav => `
+                    <div class="favorite-item">
+                        <span class="favorite-name"><i class="fas fa-star" style="color:#D4AF37;"></i> ${fav}</span>
+                        <button class="remove-fav-btn" data-tool="${fav}" style="background:#dc3545; color:white; border:none; padding:5px 15px; border-radius:5px; cursor:pointer;">إزالة</button>
+                    </div>
+                `).join('');
+                
+                document.querySelectorAll(".remove-fav-btn").forEach(btn => {
+                    btn.addEventListener("click", () => {
+                        const toolName = btn.getAttribute("data-tool");
+                        favorites = favorites.filter(f => f !== toolName);
+                        localStorage.setItem(`favorites_${currentUser.id}`, JSON.stringify(favorites));
+                        renderDashboard();
+                    });
+                });
+            }
+            
+            // عرض النقرات
+            const clicksContainer = document.getElementById("clicksList");
+            const sortedClicks = Object.entries(userClicks).sort((a, b) => b[1] - a[1]);
+            if (sortedClicks.length === 0) {
+                clicksContainer.innerHTML = '<p style="padding: 20px; text-align: center; color: #666;">لم تقم بتجربة أي أداة بعد. ابدأ الآن! 🚀</p>';
+            } else {
+                clicksContainer.innerHTML = sortedClicks.map(([tool, count]) => `
+                    <div class="click-item">
+                        <span class="click-name"><i class="fas fa-cursor"></i> ${tool}</span>
+                        <span class="click-count">${count} نقرة</span>
+                    </div>
+                `).join('');
+            }
+            
+            // حذف الحساب
+            document.getElementById("deleteAccountBtn").addEventListener("click", () => {
+                if (confirm("هل أنت متأكد من حذف حسابك؟ سيتم حذف جميع بياناتك نهائياً.")) {
+                    let users = JSON.parse(localStorage.getItem("users") || "[]");
+                    users = users.filter(u => u.id !== currentUser.id);
+                    localStorage.setItem("users", JSON.stringify(users));
+                    localStorage.removeItem("currentUser");
+                    localStorage.removeItem(`userClicks_${currentUser.id}`);
+                    localStorage.removeItem(`favorites_${currentUser.id}`);
+                    window.location.href = "index.html";
+                }
+            });
+        }
+        
+        function setupLogout() {
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("currentUser");
+                    window.location.href = "index.html";
+                });
+            }
+        }
+        
+        function setupMobileMenu() {
+            const toggle = document.getElementById("mobileMenu");
+            const navLinks = document.getElementById("navLinks");
+            if (toggle && navLinks) {
+                toggle.addEventListener("click", () => {
+                    navLinks.classList.toggle("active");
+                });
+            }
+        }
+        
+        renderDashboard();
+        setupLogout();
+        setupMobileMenu();
+    </script>
+</body>
+</html>
