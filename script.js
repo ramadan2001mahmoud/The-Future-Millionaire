@@ -1,18 +1,168 @@
-// قائمة الأدوات (أضف أي أداة جديدة هنا بسهولة)
-const tools = [
-    { name: "ChatGPT", category: "نصوص", url: "https://chat.openai.com", description: "نموذج لغوي متقدم للمحادثة والكتابة", icon: "fa-comments" },
-    { name: "Midjourney", category: "صور", url: "https://www.midjourney.com", description: "توليد صور فائقة الجودة من النصوص", icon: "fa-palette" },
-    { name: "DALL-E 3", category: "صور", url: "https://openai.com/dall-e-3", description: "توليد صور إبداعية من وصف نصي", icon: "fa-image" },
-    { name: "Runway ML", category: "فيديو", url: "https://runwayml.com", description: "تحرير وتوليد الفيديو بالذكاء الاصطناعي", icon: "fa-video" },
-    { name: "ElevenLabs", category: "صوت", url: "https://elevenlabs.io", description: "توليد أصوات واقعية من النص", icon: "fa-microphone-alt" },
-    { name: "GitHub Copilot", category: "برمجة", url: "https://github.com/features/copilot", description: "مساعد برمجي ذكي", icon: "fa-code" },
-    { name: "Perplexity AI", category: "نصوص", url: "https://www.perplexity.ai", description: "محرك بحث ذكي بالإجابات", icon: "fa-globe" },
-    { name: "Leonardo.ai", category: "صور", url: "https://leonardo.ai", description: "توليد صور وفيديوهات إبداعية", icon: "fa-dragon" },
-    { name: "HeyGen", category: "فيديو", url: "https://www.heygen.com", description: "إنشاء أفلام بالذكاء الاصطناعي", icon: "fa-film" },
-    { name: "Cursor", category: "برمجة", url: "https://cursor.sh", description: "محرر كود مع AI مدمج", icon: "fa-laptop-code" }
+// ============================================
+//  قائمة الأدوات (50+ أداة ذكاء اصطناعي)
+// ============================================
+let tools = [
+    // 📝 أدوات النصوص (12 أداة)
+    { name: "ChatGPT", category: "نصوص", url: "https://chat.openai.com", description: "نموذج لغوي متقدم للمحادثة والكتابة والبرمجة", icon: "fa-comments", clicks: 0 },
+    { name: "Claude", category: "نصوص", url: "https://claude.ai", description: "ذكاء اصطناعي أخلاقي من Anthropic للكتابة المتقدمة", icon: "fa-message", clicks: 0 },
+    { name: "Perplexity AI", category: "نصوص", url: "https://www.perplexity.ai", description: "محرك بحث ذكي يجمع بين ChatGPT والبحث المباشر", icon: "fa-globe", clicks: 0 },
+    { name: "Gemini", category: "نصوص", url: "https://gemini.google.com", description: "نموذج جوجل المتعدد الوسائط", icon: "fa-star-of-life", clicks: 0 },
+    { name: "DeepSeek", category: "نصوص", url: "https://deepseek.com", description: "نموذج صيني قوي مجاني للبرمجة والتحليل", icon: "fa-chart-line", clicks: 0 },
+    { name: "Copy.ai", category: "نصوص", url: "https://www.copy.ai", description: "كتابة محتوى تسويقي وإعلانات", icon: "fa-copy", clicks: 0 },
+    { name: "Jasper", category: "نصوص", url: "https://www.jasper.ai", description: "مساعد كتابة احترافي للشركات", icon: "fa-feather-alt", clicks: 0 },
+    { name: "Writesonic", category: "نصوص", url: "https://writesonic.com", description: "كتابة مقالات وسيو وإعلانات", icon: "fa-pen-fancy", clicks: 0 },
+    { name: "Rytr", category: "نصوص", url: "https://rytr.me", description: "كتابة محتوى بأسعار اقتصادية", icon: "fa-pen", clicks: 0 },
+    { name: "Wordtune", category: "نصوص", url: "https://www.wordtune.com", description: "إعادة صياغة وتحسين النصوص", icon: "fa-paragraph", clicks: 0 },
+    { name: "QuillBot", category: "نصوص", url: "https://quillbot.com", description: "تلخيص وإعادة صياغة النصوص", icon: "fa-robot", clicks: 0 },
+    { name: "Grammarly", category: "نصوص", url: "https://www.grammarly.com", description: "تصحيح الأخطاء اللغوية والنحوية", icon: "fa-spell-check", clicks: 0 },
+    
+    // 🎨 أدوات الصور (12 أداة)
+    { name: "Midjourney", category: "صور", url: "https://www.midjourney.com", description: "أقوى أداة لتوليد صور فائقة الجودة", icon: "fa-palette", clicks: 0 },
+    { name: "DALL-E 3", category: "صور", url: "https://openai.com/dall-e-3", description: "توليد صور إبداعية من وصف نصي", icon: "fa-image", clicks: 0 },
+    { name: "Leonardo.ai", category: "صور", url: "https://leonardo.ai", description: "توليد صور وفيديوهات إبداعية مجاناً", icon: "fa-dragon", clicks: 0 },
+    { name: "Stable Diffusion", category: "صور", url: "https://stability.ai", description: "نموذج مفتوح المصدر لتوليد الصور", icon: "fa-cube", clicks: 0 },
+    { name: "Adobe Firefly", category: "صور", url: "https://firefly.adobe.com", description: "توليد وتحرير الصور بأسلوب أدوبي", icon: "fa-fire", clicks: 0 },
+    { name: "Canva AI", category: "صور", url: "https://www.canva.com/ai-image-generator", description: "توليد صور داخل كانفا", icon: "fa-paintbrush", clicks: 0 },
+    { name: "Playground AI", category: "صور", url: "https://playgroundai.com", description: "تحرير الصور بالذكاء الاصطناعي", icon: "fa-sliders-h", clicks: 0 },
+    { name: "Ideogram", category: "صور", url: "https://ideogram.ai", description: "توليد صور مع نصوص مضمنة بدقة", icon: "fa-font", clicks: 0 },
+    { name: "Pixelcut", category: "صور", url: "https://pixelcut.ai", description: "إزالة الخلفية وتحرير المنتجات", icon: "fa-eraser", clicks: 0 },
+    { name: "Remove.bg", category: "صور", url: "https://www.remove.bg", description: "إزالة خلفية الصور بضغطة واحدة", icon: "fa-magic", clicks: 0 },
+    { name: "Clipdrop", category: "صور", url: "https://clipdrop.co", description: "تحرير الصور وإعادة الإضاءة", icon: "fa-sun", clicks: 0 },
+    { name: "Lexica", category: "صور", url: "https://lexica.art", description: "محرك بحث للصور المولدة بالـ AI", icon: "fa-search", clicks: 0 },
+    
+    // 🎥 أدوات الفيديو والصوت (10 أدوات)
+    { name: "Runway ML", category: "فيديو", url: "https://runwayml.com", description: "تحرير وتوليد الفيديو بالذكاء الاصطناعي", icon: "fa-video", clicks: 0 },
+    { name: "HeyGen", category: "فيديو", url: "https://www.heygen.com", description: "إنشاء أفلام بصور رمزية متحركة", icon: "fa-film", clicks: 0 },
+    { name: "Pika Labs", category: "فيديو", url: "https://pika.art", description: "توليد فيديوهات قصيرة من النص", icon: "fa-play-circle", clicks: 0 },
+    { name: "Kaiber", category: "فيديو", url: "https://kaiber.ai", description: "تحويل الصور إلى فيديوهات متحركة", icon: "fa-music", clicks: 0 },
+    { name: "Sora", category: "فيديو", url: "https://openai.com/sora", description: "توليد فيديوهات واقعية من النص (قيد الإصدار)", icon: "fa-cloud", clicks: 0 },
+    { name: "ElevenLabs", category: "صوت", url: "https://elevenlabs.io", description: "توليد أصوات واقعية من النص", icon: "fa-microphone-alt", clicks: 0 },
+    { name: "Murf", category: "صوت", url: "https://murf.ai", description: "تعليق صوتي احترافي", icon: "fa-headphones", clicks: 0 },
+    { name: "Resemble AI", category: "صوت", url: "https://www.resemble.ai", description: "نسخ صوتي احترافي", icon: "fa-voice", clicks: 0 },
+    { name: "Play.ht", category: "صوت", url: "https://play.ht", description: "تحويل النص إلى صوت عالي الجودة", icon: "fa-volume-up", clicks: 0 },
+    { name: "Descript", category: "صوت", url: "https://www.descript.com", description: "تحرير الصوت والفيديو بالنص", icon: "fa-edit", clicks: 0 },
+    
+    // 💻 أدوات البرمجة (8 أدوات)
+    { name: "GitHub Copilot", category: "برمجة", url: "https://github.com/features/copilot", description: "مساعد برمجي ذكي", icon: "fa-code", clicks: 0 },
+    { name: "Cursor", category: "برمجة", url: "https://cursor.sh", description: "محرر كود مع AI مدمج", icon: "fa-laptop-code", clicks: 0 },
+    { name: "Replit AI", category: "برمجة", url: "https://replit.com", description: "بيئة تطوير سحابية مع AI", icon: "fa-cloud-upload-alt", clicks: 0 },
+    { name: "Tabnine", category: "برمجة", url: "https://www.tabnine.com", description: "إكمال الكود بالذكاء الاصطناعي", icon: "fa-terminal", clicks: 0 },
+    { name: "Codeium", category: "برمجة", url: "https://codeium.com", description: "مساعد برمجي مجاني", icon: "fa-code-branch", clicks: 0 },
+    { name: "Amazon CodeWhisperer", category: "برمجة", url: "https://aws.amazon.com/codewhisperer", description: "مساعد برمجي من أمازون", icon: "fa-cloud", clicks: 0 },
+    { name: "Mutable.ai", category: "برمجة", url: "https://mutable.ai", description: "توليد كود سريع من الوصف", icon: "fa-bolt", clicks: 0 },
+    { name: "AskCodi", category: "برمجة", url: "https://www.askcodi.com", description: "مساعد برمجي متعدد اللغات", icon: "fa-question-circle", clicks: 0 },
+    
+    // 📊 أدوات التحليل والإنتاجية (8 أدوات)
+    { name: "Tableau AI", category: "تحليل", url: "https://www.tableau.com", description: "تحليل بيانات وتصور ذكي", icon: "fa-chart-bar", clicks: 0 },
+    { name: "Polymer", category: "تحليل", url: "https://www.polymersearch.com", description: "تحليل بيانات بدون كود", icon: "fa-chart-pie", clicks: 0 },
+    { name: "Julius AI", category: "تحليل", url: "https://julius.ai", description: "تحليل بيانات بالمحادثة", icon: "fa-robot", clicks: 0 },
+    { name: "Notion AI", category: "إنتاجية", url: "https://www.notion.so", description: "مساعد ذكي داخل نوتيون", icon: "fa-book", clicks: 0 },
+    { name: "Mem AI", category: "إنتاجية", url: "https://mem.ai", description: "تدوين ذكي بالذكاء الاصطناعي", icon: "fa-brain", clicks: 0 },
+    { name: "Otter.ai", category: "إنتاجية", url: "https://otter.ai", description: "تفريغ المحادثات والاجتماعات", icon: "fa-file-alt", clicks: 0 },
+    { name: "Fireflies.ai", category: "إنتاجية", url: "https://fireflies.ai", description: "تسجيل وتفريغ اجتماعات الزوم", icon: "fa-video", clicks: 0 },
+    { name: "Tome", category: "إنتاجية", url: "https://tome.app", description: "إنشاء عروض تقديمية بالذكاء الاصطناعي", icon: "fa-chalkboard", clicks: 0 }
 ];
 
-// بناء القوائم المنسدلة ديناميكيًا
+// ============================================
+//  إدارة الإحصائيات والنقرات (LocalStorage)
+// ============================================
+
+// تحميل عدد النقرات المحفوظة
+function loadClicksFromStorage() {
+    const savedClicks = localStorage.getItem("toolsClicks");
+    if (savedClicks) {
+        const clicksData = JSON.parse(savedClicks);
+        tools = tools.map(tool => ({
+            ...tool,
+            clicks: clicksData[tool.name] || 0
+        }));
+    }
+}
+
+// حفظ عدد النقرات
+function saveClicksToStorage() {
+    const clicksData = {};
+    tools.forEach(tool => {
+        clicksData[tool.name] = tool.clicks;
+    });
+    localStorage.setItem("toolsClicks", JSON.stringify(clicksData));
+}
+
+// تسجيل نقرة على أداة
+function recordClick(toolName) {
+    const tool = tools.find(t => t.name === toolName);
+    if (tool) {
+        tool.clicks++;
+        saveClicksToStorage();
+        updateStatsDisplay();
+        
+        // تسجيل النقرة في حساب المستخدم إذا كان مسجلاً
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        if (currentUser) {
+            let userClicks = JSON.parse(localStorage.getItem(`userClicks_${currentUser.id}`) || "{}");
+            userClicks[toolName] = (userClicks[toolName] || 0) + 1;
+            localStorage.setItem(`userClicks_${currentUser.id}`, JSON.stringify(userClicks));
+        }
+    }
+}
+
+// تحديث شريط الإحصائيات
+function updateStatsDisplay() {
+    const totalToolsSpan = document.getElementById("totalTools");
+    const totalClicksSpan = document.getElementById("totalClicks");
+    const totalUsersSpan = document.getElementById("totalUsers");
+    
+    if (totalToolsSpan) totalToolsSpan.textContent = tools.length;
+    if (totalClicksSpan) {
+        const totalClicks = tools.reduce((sum, t) => sum + t.clicks, 0);
+        totalClicksSpan.textContent = totalClicks;
+    }
+    if (totalUsersSpan) {
+        const users = JSON.parse(localStorage.getItem("users") || "[]");
+        totalUsersSpan.textContent = users.length;
+    }
+}
+
+// ============================================
+//  إدارة المستخدمين والجلسة
+// ============================================
+
+function updateAuthUI() {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    const authLink = document.getElementById("authLink");
+    const userGreeting = document.getElementById("userGreeting");
+    const logoutBtn = document.getElementById("logoutBtn");
+    
+    if (currentUser) {
+        if (authLink) authLink.style.display = "none";
+        if (userGreeting) {
+            userGreeting.style.display = "inline";
+            userGreeting.textContent = `مرحباً ${currentUser.name}`;
+        }
+        if (logoutBtn) logoutBtn.style.display = "inline";
+    } else {
+        if (authLink) authLink.style.display = "inline";
+        if (userGreeting) userGreeting.style.display = "none";
+        if (logoutBtn) logoutBtn.style.display = "none";
+    }
+}
+
+function setupLogout() {
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            localStorage.removeItem("currentUser");
+            updateAuthUI();
+            window.location.reload();
+        });
+    }
+}
+
+// ============================================
+//  بناء واجهة الموقع
+// ============================================
+
 function buildDropdowns() {
     const categories = [...new Set(tools.map(t => t.category))];
     const dropdownContainer = document.getElementById("mainDropdown");
@@ -31,10 +181,10 @@ function buildDropdowns() {
     }
 }
 
-// بناء أزرار التصفية
 function buildFilterButtons() {
     const categories = ["الكل", ...new Set(tools.map(t => t.category))];
     const filterSection = document.querySelector(".filter-section");
+    if (!filterSection) return;
     filterSection.innerHTML = "";
     
     categories.forEach(cat => {
@@ -45,11 +195,9 @@ function buildFilterButtons() {
         btn.setAttribute("data-category", cat === "الكل" ? "all" : cat);
         
         btn.addEventListener("click", () => {
-            // إزالة الكلاس active من جميع الأزرار
             document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
             
-            // تصفية الأدوات
             if (cat === "الكل") {
                 displayTools(tools);
             } else {
@@ -62,14 +210,16 @@ function buildFilterButtons() {
     });
 }
 
-// عرض الأدوات
 function displayTools(toolsArray) {
     const container = document.getElementById("toolsContainer");
+    if (!container) return;
     container.innerHTML = "";
+    
     if (toolsArray.length === 0) {
         container.innerHTML = `<div style="text-align:center; padding:50px; color:#D4AF37;">😅 لا توجد أدوات في هذه الفئة حالياً</div>`;
         return;
     }
+    
     toolsArray.forEach(tool => {
         const card = document.createElement("div");
         card.className = "tool-card";
@@ -78,15 +228,40 @@ function displayTools(toolsArray) {
             <h3>${tool.name}</h3>
             <div class="tool-category">${tool.category}</div>
             <p class="tool-description">${tool.description}</p>
-            <a href="${tool.url}" target="_blank" class="tool-link">تجربة الآن <i class="fas fa-external-link-alt"></i></a>
+            <a href="${tool.url}" target="_blank" class="tool-link" data-tool="${tool.name}">تجربة الآن <i class="fas fa-external-link-alt"></i></a>
+            <div class="tool-clicks">👆 ${tool.clicks} نقرة</div>
         `;
         container.appendChild(card);
     });
+    
+    // إضافة مستمعي النقرات للأزرار
+    document.querySelectorAll(".tool-link").forEach(link => {
+        link.addEventListener("click", (e) => {
+            const toolName = link.getAttribute("data-tool");
+            recordClick(toolName);
+        });
+    });
 }
 
-// البحث
+function filterToolsByCategory(category) {
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.classList.remove("active");
+        if (btn.textContent === category || (category === "الكل" && btn.textContent === "الكل")) {
+            btn.classList.add("active");
+        }
+    });
+    
+    if (category === "الكل") {
+        displayTools(tools);
+    } else {
+        const filtered = tools.filter(t => t.category === category);
+        displayTools(filtered);
+    }
+}
+
 function setupSearch() {
     const searchInput = document.getElementById("searchInput");
+    if (!searchInput) return;
     searchInput.addEventListener("input", (e) => {
         const query = e.target.value.toLowerCase();
         const filtered = tools.filter(tool => 
@@ -96,7 +271,6 @@ function setupSearch() {
         );
         displayTools(filtered);
         
-        // إعادة تعيين الأزرار النشطة
         document.querySelectorAll(".filter-btn").forEach(btn => {
             btn.classList.remove("active");
             if (btn.textContent === "الكل") btn.classList.add("active");
@@ -104,7 +278,6 @@ function setupSearch() {
     });
 }
 
-// القائمة للموبايل
 function setupMobileMenu() {
     const toggle = document.getElementById("mobileMenu");
     const navLinks = document.getElementById("navLinks");
@@ -115,7 +288,6 @@ function setupMobileMenu() {
     }
 }
 
-// زر استكشف
 function setupExploreBtn() {
     const btn = document.getElementById("exploreBtn");
     if (btn) {
@@ -125,37 +297,21 @@ function setupExploreBtn() {
     }
 }
 
-// تصفية حسب الفئة (للقوائم المنسدلة)
-function filterToolsByCategory(category) {
-    // تحديث الأزرار لتظهر الفعال
-    document.querySelectorAll(".filter-btn").forEach(btn => {
-        btn.classList.remove("active");
-        if (btn.textContent === category) {
-            btn.classList.add("active");
-        }
-        if (category === "الكل" && btn.textContent === "الكل") {
-            btn.classList.add("active");
-        }
-    });
-    
-    // عرض الأدوات
-    if (category === "الكل") {
-        displayTools(tools);
-    } else {
-        const filtered = tools.filter(t => t.category === category);
-        displayTools(filtered);
-    }
-}
+// ============================================
+//  التهيئة
+// ============================================
 
-// تهيئة كل شيء
 function init() {
+    loadClicksFromStorage();
+    updateAuthUI();
+    setupLogout();
     buildDropdowns();
     buildFilterButtons();
     displayTools(tools);
     setupSearch();
     setupMobileMenu();
     setupExploreBtn();
+    updateStatsDisplay();
 }
 
-// تشغيل التهيئة عند تحميل الصفحة
 document.addEventListener("DOMContentLoaded", init);
