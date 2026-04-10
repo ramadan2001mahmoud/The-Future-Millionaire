@@ -233,28 +233,35 @@ function updateNavbarStats() {
 }
 
 // ============================================
-//  عداد زوار الموقع (Visitors Counter)
+//  عداد زوار ثابت باستخدام Google Sheets (حل احترافي)
 // ============================================
 
-function updateVisitorCounter() {
-    let visitorCount = localStorage.getItem("visitorCount");
-    if (visitorCount === null) {
-        visitorCount = 1;
-        localStorage.setItem("visitorCount", visitorCount);
-    } else {
-        const lastVisit = localStorage.getItem("lastVisit");
-        const now = new Date().getTime();
-        if (!lastVisit || (now - parseInt(lastVisit)) > 24 * 60 * 60 * 1000) {
-            visitorCount = parseInt(visitorCount) + 1;
-            localStorage.setItem("visitorCount", visitorCount);
-            localStorage.setItem("lastVisit", now.toString());
-        }
-    }
-    
+const GAS_URL = "https://script.google.com/macros/s/AKfycbyGri-e8pequyYJ-DkwCyHsk17NsozvxLtbahssbXqVnTyfXjiHETSNHtlWDq2vaDXV4w/exec";
+
+async function updateGlobalVisitorCounter() {
+  try {
+    // أولاً: نجيب الرقم الحالي من Google Sheets
+    const getResponse = await fetch(GAS_URL);
+    const currentData = await getResponse.json();
+    let currentCount = currentData.count;
+
+    // ثانياً: نطلب من Google Sheets تزيد العداد بواحد
+    const postResponse = await fetch(GAS_URL, { method: "POST" });
+    const newData = await postResponse.json();
+
+    // ثالثاً: نعرض العداد الجديد في الموقع
     const visitorSpan = document.getElementById("visitorCount");
     if (visitorSpan) {
-        visitorSpan.textContent = visitorCount;
+      visitorSpan.textContent = newData.count;
     }
+  } catch (error) {
+    console.error("خطأ في تحديث عداد الزوار:", error);
+    // إذا حدث خطأ، نعرض آخر رقم محفوظ في متصفح المستخدم (احتياطي)
+    const visitorSpan = document.getElementById("visitorCount");
+    if (visitorSpan && visitorSpan.textContent === "0") {
+      visitorSpan.textContent = "---";
+    }
+  }
 }
 
 // ============================================
@@ -478,7 +485,7 @@ function setupExploreBtn() {
 
 function init() {
     loadClicksFromStorage();
-    updateVisitorCounter();
+    updateGlobalVisitorCounter(); // عداد الزوار الثابت
     updateAuthUI();
     setupLogout();
     buildDropdowns();
