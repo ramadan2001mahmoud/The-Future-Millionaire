@@ -265,14 +265,36 @@ async function recordNewUser() {
     }
 }
 
-// عداد الزوار (يعمل في الخلفية بدون انتظار)
+// ============================================
+//  عداد الزوار - يزيد مرة واحدة كل 24 ساعة لكل متصفح
+// ============================================
+
 function updateVisitorCounter() {
-    updateGlobalCounter("visitor", true).then(visitorCount => {
-        const visitorSpan = document.getElementById("visitorCount");
-        if (visitorSpan && visitorCount) {
-            visitorSpan.textContent = visitorCount;
-        }
-    });
+    // نجيب آخر توقيت تم فيه تحديث العداد من هذا المتصفح
+    const lastVisit = localStorage.getItem("lastVisitorUpdate");
+    const now = new Date().getTime();
+    const oneDay = 24 * 60 * 60 * 1000; // 24 ساعة بالمللي ثانية
+    
+    // لو مفيش توقيت مسجل، أو مر أكتر من 24 ساعة
+    if (!lastVisit || (now - parseInt(lastVisit)) > oneDay) {
+        // نطلب من Google Sheets تزيد العداد بواحد
+        updateGlobalCounter("visitor", true).then(visitorCount => {
+            const visitorSpan = document.getElementById("visitorCount");
+            if (visitorSpan && visitorCount) {
+                visitorSpan.textContent = visitorCount;
+            }
+        });
+        // نسجل توقيت آخر تحديث
+        localStorage.setItem("lastVisitorUpdate", now.toString());
+    } else {
+        // لو لسه 24 ساعة مرتحتش، نجيب العداد الحالي بس من غير ما نزوده
+        updateGlobalCounter("visitor", false).then(visitorCount => {
+            const visitorSpan = document.getElementById("visitorCount");
+            if (visitorSpan && visitorCount) {
+                visitorSpan.textContent = visitorCount;
+            }
+        });
+    }
 }
 
 // ============================================
@@ -491,12 +513,11 @@ function setupExploreBtn() {
 }
 
 // ============================================
-//  التهيئة (Init) - النسخة السريعة ⚡
-//  الموقع يظهر فوراً والأرقام تتحمل في الخلفية
+//  التهيئة (Init) - نسخة سريعة ⚡
 // ============================================
 
 function init() {
-    // ========== 1. المحتوى الرئيسي يظهر فوراً (بدون انتظار) ==========
+    // 1. المحتوى الرئيسي يظهر فوراً
     loadClicksFromStorage();
     updateAuthUI();
     setupLogout();
@@ -508,8 +529,8 @@ function init() {
     setupExploreBtn();
     updateStatsDisplay();
 
-    // ========== 2. الأرقام تتحمل في الخلفية (لا تؤثر على سرعة ظهور الصفحة) ==========
-    updateVisitorCounter();                                    // عداد الزوار
+    // 2. الأرقام تتحمل في الخلفية
+    updateVisitorCounter();                                    // عداد الزوار (مرة كل 24 ساعة)
     updateGlobalCounter("click", false).then(count => {       // إجمالي النقرات
         const span = document.getElementById("totalClicks");
         if (span && count !== null) span.textContent = count;
@@ -520,5 +541,4 @@ function init() {
     });
 }
 
-// تشغيل التهيئة عند تحميل الصفحة
 document.addEventListener("DOMContentLoaded", init);
