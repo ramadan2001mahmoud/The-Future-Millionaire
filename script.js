@@ -233,12 +233,13 @@ async function recordGlobalClick(toolName) {
         saveClicksToStorage();
     }
     
-    // ثانياً: تحديث العداد المركزي لإجمالي النقرات
-    const totalClicks = await updateGlobalCounter("click", true);
-    const totalClicksSpan = document.getElementById("totalClicks");
-    if (totalClicksSpan && totalClicks) {
-        totalClicksSpan.textContent = totalClicks;
-    }
+    // ثانياً: تحديث العداد المركزي لإجمالي النقرات (في الخلفية)
+    updateGlobalCounter("click", true).then(totalClicks => {
+        const totalClicksSpan = document.getElementById("totalClicks");
+        if (totalClicksSpan && totalClicks) {
+            totalClicksSpan.textContent = totalClicks;
+        }
+    });
     
     // ثالثاً: تحديث إحصائيات المستخدم
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -264,13 +265,14 @@ async function recordNewUser() {
     }
 }
 
-// عداد الزوار
-async function updateVisitorCounter() {
-    const visitorCount = await updateGlobalCounter("visitor", true);
-    const visitorSpan = document.getElementById("visitorCount");
-    if (visitorSpan && visitorCount) {
-        visitorSpan.textContent = visitorCount;
-    }
+// عداد الزوار (يعمل في الخلفية بدون انتظار)
+function updateVisitorCounter() {
+    updateGlobalCounter("visitor", true).then(visitorCount => {
+        const visitorSpan = document.getElementById("visitorCount");
+        if (visitorSpan && visitorCount) {
+            visitorSpan.textContent = visitorCount;
+        }
+    });
 }
 
 // ============================================
@@ -489,25 +491,13 @@ function setupExploreBtn() {
 }
 
 // ============================================
-//  التهيئة (Init)
+//  التهيئة (Init) - النسخة السريعة ⚡
+//  الموقع يظهر فوراً والأرقام تتحمل في الخلفية
 // ============================================
 
-async function init() {
+function init() {
+    // ========== 1. المحتوى الرئيسي يظهر فوراً (بدون انتظار) ==========
     loadClicksFromStorage();
-    
-    // تحديث عداد الزوار
-    await updateVisitorCounter();
-    
-    // جلب إجمالي النقرات والمستخدمين من Google Sheets
-    const totalClicks = await updateGlobalCounter("click", false);
-    const totalUsers = await updateGlobalCounter("user", false);
-    
-    const totalClicksSpan = document.getElementById("totalClicks");
-    const totalUsersSpan = document.getElementById("totalUsers");
-    
-    if (totalClicksSpan && totalClicks) totalClicksSpan.textContent = totalClicks;
-    if (totalUsersSpan && totalUsers) totalUsersSpan.textContent = totalUsers;
-    
     updateAuthUI();
     setupLogout();
     buildDropdowns();
@@ -517,6 +507,18 @@ async function init() {
     setupMobileMenu();
     setupExploreBtn();
     updateStatsDisplay();
+
+    // ========== 2. الأرقام تتحمل في الخلفية (لا تؤثر على سرعة ظهور الصفحة) ==========
+    updateVisitorCounter();                                    // عداد الزوار
+    updateGlobalCounter("click", false).then(count => {       // إجمالي النقرات
+        const span = document.getElementById("totalClicks");
+        if (span && count !== null) span.textContent = count;
+    });
+    updateGlobalCounter("user", false).then(count => {        // عدد المستخدمين
+        const span = document.getElementById("totalUsers");
+        if (span && count !== null) span.textContent = count;
+    });
 }
 
+// تشغيل التهيئة عند تحميل الصفحة
 document.addEventListener("DOMContentLoaded", init);
