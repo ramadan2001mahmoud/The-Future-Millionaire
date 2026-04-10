@@ -110,7 +110,7 @@ let tools = [
 ];
 
 // ============================================
-//  إدارة الإحصائيات والنقرات (LocalStorage)
+//  إدارة الإحصائيات المحلية (LocalStorage)
 // ============================================
 
 function loadClicksFromStorage() {
@@ -132,42 +132,9 @@ function saveClicksToStorage() {
     localStorage.setItem("toolsClicks", JSON.stringify(clicksData));
 }
 
-function recordClick(toolName) {
-    const tool = tools.find(t => t.name === toolName);
-    if (tool) {
-        tool.clicks++;
-        saveClicksToStorage();
-        updateStatsDisplay();
-        
-        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-        if (currentUser) {
-            let userClicks = JSON.parse(localStorage.getItem(`userClicks_${currentUser.id}`) || "{}");
-            userClicks[toolName] = (userClicks[toolName] || 0) + 1;
-            localStorage.setItem(`userClicks_${currentUser.id}`, JSON.stringify(userClicks));
-            updateNavbarStats();
-        } else {
-            let tempClicks = parseInt(localStorage.getItem("tempClicks") || "0");
-            tempClicks++;
-            localStorage.setItem("tempClicks", tempClicks.toString());
-            updateNavbarStats();
-        }
-    }
-}
-
 function updateStatsDisplay() {
     const totalToolsSpan = document.getElementById("totalTools");
-    const totalClicksSpan = document.getElementById("totalClicks");
-    const totalUsersSpan = document.getElementById("totalUsers");
-    
     if (totalToolsSpan) totalToolsSpan.textContent = tools.length;
-    if (totalClicksSpan) {
-        const totalClicks = tools.reduce((sum, t) => sum + t.clicks, 0);
-        totalClicksSpan.textContent = totalClicks;
-    }
-    if (totalUsersSpan) {
-        const users = JSON.parse(localStorage.getItem("users") || "[]");
-        totalUsersSpan.textContent = users.length;
-    }
 }
 
 // ============================================
@@ -233,35 +200,77 @@ function updateNavbarStats() {
 }
 
 // ============================================
-//  عداد زوار ثابت باستخدام Google Sheets (حل احترافي)
+//  الأرقام المركزية (Google Sheets API)
 // ============================================
 
 const GAS_URL = "https://script.google.com/macros/s/AKfycbyGri-e8pequyYJ-DkwCyHsk17NsozvxLtbahssbXqVnTyfXjiHETSNHtlWDq2vaDXV4w/exec";
 
-async function updateGlobalVisitorCounter() {
-  try {
-    // أولاً: نجيب الرقم الحالي من Google Sheets
-    const getResponse = await fetch(GAS_URL);
-    const currentData = await getResponse.json();
-    let currentCount = currentData.count;
-
-    // ثانياً: نطلب من Google Sheets تزيد العداد بواحد
-    const postResponse = await fetch(GAS_URL, { method: "POST" });
-    const newData = await postResponse.json();
-
-    // ثالثاً: نعرض العداد الجديد في الموقع
-    const visitorSpan = document.getElementById("visitorCount");
-    if (visitorSpan) {
-      visitorSpan.textContent = newData.count;
+async function updateGlobalCounter(type, shouldIncrement = true) {
+    try {
+        let url = `${GAS_URL}?type=${type}`;
+        
+        if (shouldIncrement) {
+            const postResponse = await fetch(url, { method: "POST" });
+            const newData = await postResponse.json();
+            return newData.count;
+        } else {
+            const getResponse = await fetch(url);
+            const currentData = await getResponse.json();
+            return currentData.count;
+        }
+    } catch (error) {
+        console.error(`Error updating ${type}:`, error);
+        return null;
     }
-  } catch (error) {
-    console.error("خطأ في تحديث عداد الزوار:", error);
-    // إذا حدث خطأ، نعرض آخر رقم محفوظ في متصفح المستخدم (احتياطي)
-    const visitorSpan = document.getElementById("visitorCount");
-    if (visitorSpan && visitorSpan.textContent === "0") {
-      visitorSpan.textContent = "---";
+}
+
+// تسجيل نقرة مركزية
+async function recordGlobalClick(toolName) {
+    // أولاً: تحديث العداد المحلي للأداة
+    const tool = tools.find(t => t.name === toolName);
+    if (tool) {
+        tool.clicks++;
+        saveClicksToStorage();
     }
-  }
+    
+    // ثانياً: تحديث العداد المركزي لإجمالي النقرات
+    const totalClicks = await updateGlobalCounter("click", true);
+    const totalClicksSpan = document.getElementById("totalClicks");
+    if (totalClicksSpan && totalClicks) {
+        totalClicksSpan.textContent = totalClicks;
+    }
+    
+    // ثالثاً: تحديث إحصائيات المستخدم
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+        let userClicks = JSON.parse(localStorage.getItem(`userClicks_${currentUser.id}`) || "{}");
+        userClicks[toolName] = (userClicks[toolName] || 0) + 1;
+        localStorage.setItem(`userClicks_${currentUser.id}`, JSON.stringify(userClicks));
+        updateNavbarStats();
+    } else {
+        let tempClicks = parseInt(localStorage.getItem("tempClicks") || "0");
+        tempClicks++;
+        localStorage.setItem("tempClicks", tempClicks.toString());
+        updateNavbarStats();
+    }
+}
+
+// تسجيل مستخدم جديد
+async function recordNewUser() {
+    const totalUsers = await updateGlobalCounter("user", true);
+    const totalUsersSpan = document.getElementById("totalUsers");
+    if (totalUsersSpan && totalUsers) {
+        totalUsersSpan.textContent = totalUsers;
+    }
+}
+
+// عداد الزوار
+async function updateVisitorCounter() {
+    const visitorCount = await updateGlobalCounter("visitor", true);
+    const visitorSpan = document.getElementById("visitorCount");
+    if (visitorSpan && visitorCount) {
+        visitorSpan.textContent = visitorCount;
+    }
 }
 
 // ============================================
@@ -401,7 +410,7 @@ function displayTools(toolsArray) {
     document.querySelectorAll(".tool-link").forEach(link => {
         link.addEventListener("click", (e) => {
             const toolName = link.getAttribute("data-tool");
-            recordClick(toolName);
+            recordGlobalClick(toolName);
         });
     });
     
@@ -480,12 +489,25 @@ function setupExploreBtn() {
 }
 
 // ============================================
-//  التهيئة
+//  التهيئة (Init)
 // ============================================
 
-function init() {
+async function init() {
     loadClicksFromStorage();
-    updateGlobalVisitorCounter(); // عداد الزوار الثابت
+    
+    // تحديث عداد الزوار
+    await updateVisitorCounter();
+    
+    // جلب إجمالي النقرات والمستخدمين من Google Sheets
+    const totalClicks = await updateGlobalCounter("click", false);
+    const totalUsers = await updateGlobalCounter("user", false);
+    
+    const totalClicksSpan = document.getElementById("totalClicks");
+    const totalUsersSpan = document.getElementById("totalUsers");
+    
+    if (totalClicksSpan && totalClicks) totalClicksSpan.textContent = totalClicks;
+    if (totalUsersSpan && totalUsers) totalUsersSpan.textContent = totalUsers;
+    
     updateAuthUI();
     setupLogout();
     buildDropdowns();
