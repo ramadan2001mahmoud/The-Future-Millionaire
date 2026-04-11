@@ -102,6 +102,14 @@
             margin-bottom: 20px;
             font-size: 1.3rem;
         }
+        /* تنسيق خاص بـ Cusdis ليتناسب مع الموقع */
+        .cusdis-dark {
+            --cusdis-bg-color: #1A1A1A;
+            --cusdis-text-color: #FFFFFF;
+            --cusdis-color-primary: #D4AF37;
+            --cusdis-color-secondary: #888;
+            --cusdis-border-color: #2A2A2A;
+        }
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -164,24 +172,30 @@
         <a href="blog.html" class="back-btn"><i class="fas fa-arrow-right"></i> العودة إلى المدونة</a>
         <div id="postContent"></div>
         
-        <!-- قسم التعليقات -->
+        <!-- قسم التعليقات باستخدام Cusdis -->
         <div class="comments-section">
             <h3>💬 التعليقات</h3>
-            <script src="https://giscus.app/client.js"
-                    data-repo="ramadan2001mahmoud/The-Future-Millionaire"
-                    data-repo-id="R_kgDOR8z1hA"
-                    data-category="Announcements"
-                    data-category-id="DIC_kwDOR8z1hM4C6mJj"
-                    data-mapping="title"
-                    data-strict="0"
-                    data-reactions-enabled="1"
-                    data-emit-metadata="0"
-                    data-input-position="top"
-                    data-theme="dark"
-                    data-lang="ar"
-                    data-loading="lazy"
-                    crossorigin="anonymous"
-                    async>
+            <div id="cusdis_thread"
+                data-host="https://cusdis.com"
+                data-app-id="9059bdc5-fb60-4f5a-96c2-043d58a86299"
+                data-page-id=""
+                data-page-url=""
+                data-page-title=""
+                data-theme="dark"
+            ></div>
+            <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+            <script>
+                // تحديد بيانات الصفحة الحالية
+                const pageId = window.location.pathname + window.location.search;
+                const pageUrl = window.location.href;
+                const pageTitle = document.title;
+                
+                const cusdisDiv = document.getElementById("cusdis_thread");
+                if (cusdisDiv) {
+                    cusdisDiv.setAttribute("data-page-id", pageId);
+                    cusdisDiv.setAttribute("data-page-url", pageUrl);
+                    cusdisDiv.setAttribute("data-page-title", pageTitle);
+                }
             </script>
         </div>
     </div>
