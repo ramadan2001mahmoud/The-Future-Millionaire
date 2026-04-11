@@ -5,6 +5,11 @@ on:
     - cron: '0 0 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pages: write
+  actions: write
+
 jobs:
   update-apps:
     runs-on: ubuntu-latest
@@ -12,6 +17,9 @@ jobs:
     steps:
       - name: نسخ المستودع
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
       
       - name: إعداد Node.js
         uses: actions/setup-node@v4
@@ -24,10 +32,13 @@ jobs:
       - name: تشغيل سكريبت جلب البيانات
         run: node scripts/fetch-apps.js
       
+      - name: إعداد Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+      
       - name: رفع التغييرات
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: data
-          target-folder: data
-          branch: main
-          commit-message: "🤖 تحديث تلقائي لبيانات التطبيقات"
+        run: |
+          git add data/apps-data-complete.js
+          git commit -m "🤖 تحديث تلقائي لبيانات التطبيقات" || echo "No changes to commit"
+          git push
