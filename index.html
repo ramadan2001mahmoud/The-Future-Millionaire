@@ -89,10 +89,20 @@
                 <a href="courses.html">الكورسات</a>
                 <a href="apps.html">تطبيقات وألعاب</a>
                 <a href="login.html" id="authLink">تسجيل الدخول</a>
-                <span id="userGreeting" style="display:none; color:#D4AF37;"></span>
-                <span id="userStats" style="display:none; color:#D4AF37; margin-left: 15px;"></span>
+                <span id="userGreeting" style="display:none; color:var(--gold);"></span>
+                <span id="userStats" style="display:none; color:var(--gold); margin-left: 15px;"></span>
                 <a href="dashboard.html" id="dashboardLink" style="display:none;"><i class="fas fa-tachometer-alt"></i> لوحة التحكم</a>
                 <a href="#" id="logoutBtn" style="display:none;">تسجيل خروج</a>
+                
+                <!-- زر تبديل الوضع -->
+                <div class="theme-switch-wrapper">
+                    <span class="theme-icon"><i class="fas fa-sun"></i></span>
+                    <label class="theme-switch">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="theme-icon"><i class="fas fa-moon"></i></span>
+                </div>
             </div>
             <div class="search-box">
                 <input type="text" id="searchInput" placeholder="ابحث عن أداة...">
@@ -151,10 +161,10 @@
                 <a href="https://facebook.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-facebook-f"></i></a>
             </div>
             <div class="footer-links" style="margin-top: 15px;">
-                <a href="terms.html" style="color:#D4AF37; text-decoration:none; margin:0 10px;">شروط الاستخدام</a>
-                <a href="terms.html#privacy" style="color:#D4AF37; text-decoration:none; margin:0 10px;">سياسة الخصوصية</a>
+                <a href="terms.html" style="color:var(--gold); text-decoration:none; margin:0 10px;">شروط الاستخدام</a>
+                <a href="terms.html#privacy" style="color:var(--gold); text-decoration:none; margin:0 10px;">سياسة الخصوصية</a>
             </div>
-            <div class="visitor-counter" style="margin-top: 10px; font-size: 0.8rem; color: #888;">
+            <div class="visitor-counter" style="margin-top: 10px; font-size: 0.8rem; color: var(--text-muted);">
                 <i class="fas fa-eye"></i> عدد زوار الموقع: <span id="visitorCount">0</span>
             </div>
         </div>
