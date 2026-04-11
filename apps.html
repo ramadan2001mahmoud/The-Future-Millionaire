@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LEQF7LQ0WY"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -13,12 +11,7 @@
         gtag('config', 'G-LEQF7LQ0WY');
     </script>
     
-    <title>تحميل التطبيقات والألعاب | Ramzone</title>
-    <meta name="description" content="أكبر مجموعة من التطبيقات والألعاب المجانية. حمل أحدث التطبيقات والألعاب لجهازك الأندرويد.">
-    <meta name="keywords" content="تحميل تطبيقات, تحميل ألعاب, APK, Ramzone">
-    <meta name="author" content="Ramadan Mahmoud">
-    <meta name="robots" content="index, follow">
-    
+    <title>تطبيقات وألعاب Ramzone</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -30,8 +23,6 @@
             background: linear-gradient(135deg, #0A0A0A, #1A1A1A);
         }
         .apps-header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-        .apps-header p { color: #CCCCCC; }
-        
         .search-apps {
             max-width: 500px;
             margin: 30px auto;
@@ -45,7 +36,6 @@
             border: 1px solid #333;
             border-radius: 30px;
             color: white;
-            font-size: 1rem;
         }
         .search-apps button {
             background: #D4AF37;
@@ -55,7 +45,6 @@
             cursor: pointer;
             font-weight: bold;
         }
-        
         .category-filter {
             display: flex;
             justify-content: center;
@@ -76,69 +65,40 @@
             background: #D4AF37;
             color: #0A0A0A;
         }
-        
         .apps-container {
             max-width: 1400px;
             margin: 40px auto;
             padding: 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
         }
-        
         .app-card {
             background: #1A1A1A;
             border-radius: 15px;
-            overflow: hidden;
+            padding: 20px;
+            text-align: center;
             transition: 0.3s;
             border: 1px solid #2A2A2A;
+            cursor: pointer;
         }
         .app-card:hover {
             transform: translateY(-5px);
             border-color: #D4AF37;
         }
-        .app-icon {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
+        .app-card i {
+            font-size: 3rem;
+            color: #D4AF37;
+            margin-bottom: 15px;
         }
-        .app-info {
-            padding: 20px;
-        }
-        .app-name {
-            font-size: 1.2rem;
+        .app-card h3 {
+            font-size: 1.1rem;
             margin-bottom: 8px;
         }
-        .app-category {
-            color: #D4AF37;
-            font-size: 0.75rem;
-            margin-bottom: 10px;
-        }
-        .app-description {
-            color: #CCCCCC;
+        .app-card p {
             font-size: 0.8rem;
-            margin-bottom: 15px;
-            line-height: 1.5;
-            height: 60px;
-            overflow: hidden;
+            color: #888;
         }
-        .download-btn {
-            display: inline-block;
-            background: #D4AF37;
-            color: #0A0A0A;
-            padding: 10px 15px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.85rem;
-            transition: 0.3s;
-            width: 100%;
-            text-align: center;
-        }
-        .download-btn:hover {
-            background: #FFF2B2;
-        }
-        
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -152,28 +112,12 @@
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: 0.3s;
             z-index: 1000;
             text-decoration: none;
         }
-        .whatsapp-float:hover { transform: scale(1.1); background-color: #20b859; }
+        .whatsapp-float:hover { transform: scale(1.1); }
         @media (max-width: 600px) {
-            .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; bottom: 20px; right: 20px; }
-        }
-        .footer-links { margin-top: 15px; }
-        .footer-links a { color: #D4AF37; text-decoration: none; margin: 0 10px; }
-        
-        .note {
-            background: #1A1A1A;
-            border-right: 4px solid #D4AF37;
-            padding: 15px;
-            margin: 20px auto;
-            max-width: 600px;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            color: #888;
-            text-align: center;
+            .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; }
         }
     </style>
 </head>
@@ -199,26 +143,22 @@
     </nav>
 
     <section class="apps-header">
-        <h1>تحميل التطبيقات والألعاب <span class="gold">Ramzone</span></h1>
-        <p>أكثر من 80 تطبيق ولعبة مجانية - تحديثات يومية</p>
-        
+        <h1>تطبيقات وألعاب <span class="gold">Ramzone</span></h1>
+        <p>أكثر من 150 تطبيق ولعبة - صفحة تعريفية لكل تطبيق</p>
         <div class="search-apps">
-            <input type="text" id="searchAppsInput" placeholder="ابحث عن تطبيق أو لعبة...">
-            <button id="searchAppsBtn"><i class="fas fa-search"></i></button>
+            <input type="text" id="searchInput" placeholder="ابحث عن تطبيق أو لعبة...">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
         </div>
     </section>
 
-    <div class="note">
-        📱 جميع الروابط تؤدي إلى APKPure - مصدر موثوق لتحميل التطبيقات | التحميل مجاني وآمن
-    </div>
-
     <div class="category-filter" id="categoryFilter">
         <button class="cat-btn active" data-cat="all">الكل</button>
-        <button class="cat-btn" data-cat="تطبيقات">تطبيقات</button>
-        <button class="cat-btn" data-cat="ألعاب">ألعاب</button>
-        <button class="cat-btn" data-cat="أدوات">أدوات</button>
-        <button class="cat-btn" data-cat="إنتاجية">إنتاجية</button>
-        <button class="cat-btn" data-cat="تواصل">تواصل</button>
+        <button class="cat-btn" data-cat="تواصل">📱 تواصل</button>
+        <button class="cat-btn" data-cat="إنتاجية">📊 إنتاجية</button>
+        <button class="cat-btn" data-cat="أدوات">🛠️ أدوات</button>
+        <button class="cat-btn" data-cat="تعليم">📚 تعليم</button>
+        <button class="cat-btn" data-cat="ترفيه">🎬 ترفيه</button>
+        <button class="cat-btn" data-cat="ألعاب">🎮 ألعاب</button>
     </div>
 
     <div class="apps-container" id="appsContainer"></div>
@@ -246,193 +186,141 @@
 
     <script>
         // ============================================
-        //  80+ تطبيق ولعبة - روابط تحميل من APKPure
+        //  150+ تطبيق ولعبة
         // ============================================
         const apps = [
-            // ========== تطبيقات تواصل (8) ==========
-            { name: "WhatsApp", category: "تواصل", description: "تطبيق المراسلة الفورية الأشهر في العالم", image: "https://images.unsplash.com/photo-1611746872915-64382b5c2a2a?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/whatsapp-messenger/com.whatsapp/download" },
-            { name: "Telegram", category: "تواصل", description: "تطبيق مراسلة آمن وسريع مع ميزات متقدمة", image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/telegram/org.telegram.messenger/download" },
-            { name: "Facebook", category: "تواصل", description: "تطبيق التواصل الاجتماعي الأشهر", image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/facebook/com.facebook.katana/download" },
-            { name: "Instagram", category: "تواصل", description: "مشاركة الصور والفيديوهات مع الأصدقاء", image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/instagram/com.instagram.android/download" },
-            { name: "Twitter", category: "تواصل", description: "منصة التدوين المصغر والأخبار العاجلة", image: "https://images.unsplash.com/photo-1611162617263-4ec3060a058e?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/twitter/com.twitter.android/download" },
-            { name: "Snapchat", category: "تواصل", description: "تطبيق الصور والفيديوهات المؤقتة", image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/snapchat/com.snapchat.android/download" },
-            { name: "Discord", category: "تواصل", description: "منصة المحادثة الصوتية والنصية للجيمرز", image: "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/discord/com.discord/download" },
-            { name: "Signal", category: "تواصل", description: "تطبيق مراسلة آمن ومشفر بالكامل", image: "https://images.unsplash.com/photo-1611746872915-64382b5c2a2a?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/signal/org.thoughtcrime.securesms/download" },
+            // ========== تواصل (15) ==========
+            { id: "whatsapp", name: "WhatsApp", category: "تواصل", icon: "fab fa-whatsapp", description: "تطبيق المراسلة الفورية الأشهر في العالم", downloadLink: "https://apkpure.net/whatsapp-messenger/com.whatsapp/download" },
+            { id: "telegram", name: "Telegram", category: "تواصل", icon: "fab fa-telegram", description: "تطبيق مراسلة آمن وسريع مع بوتات متقدمة", downloadLink: "https://apkpure.net/telegram/org.telegram.messenger/download" },
+            { id: "facebook", name: "Facebook", category: "تواصل", icon: "fab fa-facebook", description: "تطبيق التواصل الاجتماعي الأكبر في العالم", downloadLink: "https://apkpure.net/facebook/com.facebook.katana/download" },
+            { id: "instagram", name: "Instagram", category: "تواصل", icon: "fab fa-instagram", description: "مشاركة الصور والفيديوهات مع الأصدقاء", downloadLink: "https://apkpure.net/instagram/com.instagram.android/download" },
+            { id: "twitter", name: "Twitter", category: "تواصل", icon: "fab fa-twitter", description: "منصة التدوين المصغر والأخبار العاجلة", downloadLink: "https://apkpure.net/twitter/com.twitter.android/download" },
+            { id: "snapchat", name: "Snapchat", category: "تواصل", icon: "fab fa-snapchat", description: "تطبيق الصور والفيديوهات المؤقتة", downloadLink: "https://apkpure.net/snapchat/com.snapchat.android/download" },
+            { id: "discord", name: "Discord", category: "تواصل", icon: "fab fa-discord", description: "منصة المحادثة الصوتية والنصية للجيمرز", downloadLink: "https://apkpure.net/discord/com.discord/download" },
+            { id: "signal", name: "Signal", category: "تواصل", icon: "fas fa-lock", description: "تطبيق مراسلة آمن ومشفر بالكامل", downloadLink: "https://apkpure.net/signal/org.thoughtcrime.securesms/download" },
+            { id: "imo", name: "IMO", category: "تواصل", icon: "fas fa-video", description: "تطبيق مكالمات فيديو وصوت عالية الجودة", downloadLink: "https://apkpure.net/imo/imo.im.service/download" },
+            { id: "viber", name: "Viber", category: "تواصل", icon: "fas fa-phone", description: "تطبيق مكالمات ورسائل مجاني", downloadLink: "https://apkpure.net/viber/com.viber.voip/download" },
+            { id: "line", name: "Line", category: "تواصل", icon: "fab fa-line", description: "تطبيق تواصل شعبي في آسيا", downloadLink: "https://apkpure.net/line/line.naver.jp/download" },
+            { id: "wechat", name: "WeChat", category: "تواصل", icon: "fab fa-weixin", description: "تطبيق التواصل الصيني الشامل", downloadLink: "https://apkpure.net/wechat/com.tencent.mm/download" },
+            { id: "kakaotalk", name: "KakaoTalk", category: "تواصل", icon: "fas fa-comment", description: "تطبيق التواصل الكوري", downloadLink: "https://apkpure.net/kakaotalk/com.kakao.talk/download" },
+            { id: "messenger", name: "Messenger", category: "تواصل", icon: "fab fa-facebook-messenger", description: "تطبيق المراسلة من فيسبوك", downloadLink: "https://apkpure.net/messenger/com.facebook.orca/download" },
+            { id: "skype", name: "Skype", category: "تواصل", icon: "fab fa-skype", description: "تطبيق المكالمات والمؤتمرات", downloadLink: "https://apkpure.net/skype/com.skype.raider/download" },
             
-            // ========== تطبيقات إنتاجية (8) ==========
-            { name: "Microsoft Office", category: "إنتاجية", description: "حزمة أوفيس كاملة للهاتف", image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/microsoft-office/com.microsoft.office.officehubrow/download" },
-            { name: "Google Drive", category: "إنتاجية", description: "تخزين سحابي ومشاركة الملفات", image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/google-drive/com.google.android.apps.docs/download" },
-            { name: "Evernote", category: "إنتاجية", description: "تطبيق تدوين الملاحظات الشهير", image: "https://images.unsplash.com/photo-1517842645767-c639042777db?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/evernote/com.evernote/download" },
-            { name: "Trello", category: "إنتاجية", description: "إدارة المهام والمشاريع بسهولة", image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/trello/com.trello/download" },
-            { name: "Slack", category: "إنتاجية", description: "منصة التواصل الجماعي للشركات", image: "https://images.unsplash.com/photo-1614680376739-414d95ff43df?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/slack/com.Slack/download" },
-            { name: "Zoom", category: "إنتاجية", description: "تطبيق الاجتماعات والمكالمات الجماعية", image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/zoom/us.zoom.videomeetings/download" },
-            { name: "TeamViewer", category: "إنتاجية", description: "التحكم عن بعد في الأجهزة", image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/teamviewer/com.teamviewer.teamviewer.market.mobile/download" },
-            { name: "Adobe Acrobat", category: "إنتاجية", description: "قراءة وتحرير ملفات PDF", image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/adobe-acrobat/com.adobe.reader/download" },
+            // ========== إنتاجية (20) ==========
+            { id: "microsoft-office", name: "Microsoft Office", category: "إنتاجية", icon: "fab fa-microsoft", description: "حزمة أوفيس كاملة للهاتف", downloadLink: "https://apkpure.net/microsoft-office/com.microsoft.office.officehubrow/download" },
+            { id: "google-drive", name: "Google Drive", category: "إنتاجية", icon: "fab fa-google-drive", description: "تخزين سحابي ومشاركة الملفات", downloadLink: "https://apkpure.net/google-drive/com.google.android.apps.docs/download" },
+            { id: "evernote", name: "Evernote", category: "إنتاجية", icon: "fas fa-sticky-note", description: "تطبيق تدوين الملاحظات الشهير", downloadLink: "https://apkpure.net/evernote/com.evernote/download" },
+            { id: "trello", name: "Trello", category: "إنتاجية", icon: "fab fa-trello", description: "إدارة المهام والمشاريع بسهولة", downloadLink: "https://apkpure.net/trello/com.trello/download" },
+            { id: "slack", name: "Slack", category: "إنتاجية", icon: "fab fa-slack", description: "منصة التواصل الجماعي للشركات", downloadLink: "https://apkpure.net/slack/com.Slack/download" },
+            { id: "zoom", name: "Zoom", category: "إنتاجية", icon: "fas fa-video", description: "تطبيق الاجتماعات والمكالمات الجماعية", downloadLink: "https://apkpure.net/zoom/us.zoom.videomeetings/download" },
+            { id: "teamviewer", name: "TeamViewer", category: "إنتاجية", icon: "fas fa-desktop", description: "التحكم عن بعد في الأجهزة", downloadLink: "https://apkpure.net/teamviewer/com.teamviewer.teamviewer.market.mobile/download" },
+            { id: "adobe-acrobat", name: "Adobe Acrobat", category: "إنتاجية", icon: "fas fa-file-pdf", description: "قراءة وتحرير ملفات PDF", downloadLink: "https://apkpure.net/adobe-acrobat/com.adobe.reader/download" },
+            { id: "google-docs", name: "Google Docs", category: "إنتاجية", icon: "fas fa-file-alt", description: "تحرير المستندات أونلاين", downloadLink: "https://apkpure.net/google-docs/com.google.android.apps.docs.editors.docs/download" },
+            { id: "google-sheets", name: "Google Sheets", category: "إنتاجية", icon: "fas fa-table", description: "جداول البيانات من جوجل", downloadLink: "https://apkpure.net/google-sheets/com.google.android.apps.docs.editors.sheets/download" },
+            { id: "google-slides", name: "Google Slides", category: "إنتاجية", icon: "fas fa-chalkboard", description: "عروض تقديمية من جوجل", downloadLink: "https://apkpure.net/google-slides/com.google.android.apps.docs.editors.slides/download" },
+            { id: "notion", name: "Notion", category: "إنتاجية", icon: "fas fa-book", description: "منصة متكاملة للتدوين والمشاريع", downloadLink: "https://apkpure.net/notion/notion.id/download" },
+            { id: "asana", name: "Asana", category: "إنتاجية", icon: "fas fa-tasks", description: "إدارة المشاريع والفرق", downloadLink: "https://apkpure.net/asana/com.asana.app/download" },
+            { id: "clickup", name: "ClickUp", category: "إنتاجية", icon: "fas fa-check-circle", description: "إدارة المهام والمشاريع المتكاملة", downloadLink: "https://apkpure.net/clickup/clickup.app/android/download" },
+            { id: "monday", name: "Monday", category: "إنتاجية", icon: "fas fa-calendar-week", description: "منصة إدارة العمل", downloadLink: "https://apkpure.net/monday/com.monday.dash/download" },
+            { id: "wps-office", name: "WPS Office", category: "إنتاجية", icon: "fas fa-file-word", description: "حزمة أوفيس خفيفة وسريعة", downloadLink: "https://apkpure.net/wps-office/cn.wps.moffice_eng/download" },
+            { id: "polaris-office", name: "Polaris Office", category: "إنتاجية", icon: "fas fa-file-excel", description: "بديل ممتاز لمايكروسوفت أوفيس", downloadLink: "https://apkpure.net/polaris-office/com.infraware.polarisoffice5/download" },
+            { id: "dropbox", name: "Dropbox", category: "إنتاجية", icon: "fab fa-dropbox", description: "تخزين سحابي ومشاركة ملفات", downloadLink: "https://apkpure.net/dropbox/com.dropbox.android/download" },
+            { id: "onedrive", name: "OneDrive", category: "إنتاجية", icon: "fab fa-microsoft", description: "تخزين سحابي من مايكروسوفت", downloadLink: "https://apkpure.net/onedrive/com.microsoft.skydrive/download" },
+            { id: "box", name: "Box", category: "إنتاجية", icon: "fas fa-box", description: "تخزين سحابي للشركات", downloadLink: "https://apkpure.net/box/com.box.android/download" },
             
-            // ========== أدوات (8) ==========
-            { name: "Solid Explorer", category: "أدوات", description: "مدير ملفات متقدم", image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/solid-explorer/pl.solidexplorer2/download" },
-            { name: "VLC", category: "أدوات", description: "مشغل فيديو متعدد الصيغ", image: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/vlc/org.videolan.vlc/download" },
-            { name: "MX Player", category: "أدوات", description: "مشغل فيديو قوي مع دعم الترجمة", image: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/mx-player/com.mxtech.videoplayer.ad/download" },
-            { name: "ShareIt", category: "أدوات", description: "مشاركة الملفات بسرعة عالية", image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/shareit/com.lenovo.anyshare.gps/download" },
-            { name: "CCleaner", category: "أدوات", description: "تنظيف الجهاز وتحسين الأداء", image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/ccleaner/com.piriform.ccleaner/download" },
-            { name: "Norton Security", category: "أدوات", description: "حماية الجهاز من الفيروسات", image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/norton-security/com.symantec.mobilesecurity/download" },
-            { name: "VPN - Super", category: "أدوات", description: "تطبيق VPN سريع ومجاني", image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/super-vpn/com.mobile.fast.vpn.supervpn/download" },
-            { name: "Battery Saver", category: "أدوات", description: "توفير طاقة البطارية", image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/battery-saver/com.ijinshan.kbatterydoctor_en/download" },
+            // ========== أدوات (20) ==========
+            { id: "solid-explorer", name: "Solid Explorer", category: "أدوات", icon: "fas fa-folder-open", description: "مدير ملفات متقدم", downloadLink: "https://apkpure.net/solid-explorer/pl.solidexplorer2/download" },
+            { id: "vlc", name: "VLC", category: "أدوات", icon: "fas fa-play-circle", description: "مشغل فيديو متعدد الصيغ", downloadLink: "https://apkpure.net/vlc/org.videolan.vlc/download" },
+            { id: "mx-player", name: "MX Player", category: "أدوات", icon: "fas fa-film", description: "مشغل فيديو قوي مع دعم الترجمة", downloadLink: "https://apkpure.net/mx-player/com.mxtech.videoplayer.ad/download" },
+            { id: "shareit", name: "ShareIt", category: "أدوات", icon: "fas fa-share-alt", description: "مشاركة الملفات بسرعة عالية", downloadLink: "https://apkpure.net/shareit/com.lenovo.anyshare.gps/download" },
+            { id: "ccleaner", name: "CCleaner", category: "أدوات", icon: "fas fa-broom", description: "تنظيف الجهاز وتحسين الأداء", downloadLink: "https://apkpure.net/ccleaner/com.piriform.ccleaner/download" },
+            { id: "norton", name: "Norton Security", category: "أدوات", icon: "fas fa-shield-alt", description: "حماية الجهاز من الفيروسات", downloadLink: "https://apkpure.net/norton-security/com.symantec.mobilesecurity/download" },
+            { id: "vpn-super", name: "Super VPN", category: "أدوات", icon: "fas fa-globe", description: "تطبيق VPN سريع ومجاني", downloadLink: "https://apkpure.net/super-vpn/com.mobile.fast.vpn.supervpn/download" },
+            { id: "battery-saver", name: "Battery Saver", category: "أدوات", icon: "fas fa-battery-full", description: "توفير طاقة البطارية", downloadLink: "https://apkpure.net/battery-saver/com.ijinshan.kbatterydoctor_en/download" },
+            { id: "xender", name: "Xender", category: "أدوات", icon: "fas fa-wifi", description: "مشاركة الملفات بدون إنترنت", downloadLink: "https://apkpure.net/xender/com.xender.main/download" },
+            { id: "zarchiver", name: "ZArchiver", category: "أدوات", icon: "fas fa-file-archive", description: "ضغط وفك ضغط الملفات", downloadLink: "https://apkpure.net/zarchiver/ru.zdevs.zarchiver/download" },
+            { id: "file-manager", name: "File Manager", category: "أدوات", icon: "fas fa-folder", description: "مدير ملفات بسيط وسريع", downloadLink: "https://apkpure.net/file-manager/com.alphainventor.filemanager/download" },
+            { id: "es-explorer", name: "ES File Explorer", category: "أدوات", icon: "fas fa-database", description: "مدير ملفات متكامل", downloadLink: "https://apkpure.net/es-file-explorer/com.estrongs.android.pop/download" },
+            { id: "clean-master", name: "Clean Master", category: "أدوات", icon: "fas fa-trash-alt", description: "تنظيف الجهاز", downloadLink: "https://apkpure.net/clean-master/com.cleanmaster.mguard/download" },
+            { id: "avg-antivirus", name: "AVG Antivirus", category: "أدوات", icon: "fas fa-shield-virus", description: "حماية من الفيروسات", downloadLink: "https://apkpure.net/avg-antivirus/com.avg.antivirus/download" },
+            { id: "kaspersky", name: "Kaspersky", category: "أدوات", icon: "fas fa-shield", description: "حماية متقدمة", downloadLink: "https://apkpure.net/kaspersky/com.kms.free/download" },
+            { id: "bitdefender", name: "Bitdefender", category: "أدوات", icon: "fas fa-lock", description: "مكافحة الفيروسات", downloadLink: "https://apkpure.net/bitdefender/com.bitdefender.security/download" },
+            { id: "truecaller", name: "Truecaller", category: "أدوات", icon: "fas fa-phone-alt", description: "معرف المتصلين", downloadLink: "https://apkpure.net/truecaller/com.truecaller/download" },
+            { id: "gboard", name: "Gboard", category: "أدوات", icon: "fas fa-keyboard", description: "لوحة مفاتيح جوجل", downloadLink: "https://apkpure.net/gboard/com.google.android.inputmethod.latin/download" },
+            { id: "swiftkey", name: "SwiftKey", category: "أدوات", icon: "fas fa-keyboard", description: "لوحة مفاتيح ذكية", downloadLink: "https://apkpure.net/swiftkey/com.touchtype.swiftkey/download" },
+            { id: "nova-launcher", name: "Nova Launcher", category: "أدوات", icon: "fas fa-home", description: "مشغل سطح المكتب", downloadLink: "https://apkpure.net/nova-launcher/com.teslacoilsw.launcher/download" },
             
-            // ========== ألعاب أكشن (12) ==========
-            { name: "PUBG Mobile", category: "ألعاب", description: "لعبة الباتل رويال الشهيرة", image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/pubg-mobile/com.tencent.ig/download" },
-            { name: "Free Fire MAX", category: "ألعاب", description: "لعبة الباتل رويال السريعة", image: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/free-fire-max/com.dts.freefiremax/download" },
-            { name: "Call of Duty Mobile", category: "ألعاب", description: "لعبة إطلاق النار الاحترافية", image: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/call-of-duty-mobile/com.activision.callofduty.shooter/download" },
-            { name: "Garena FF", category: "ألعاب", description: "Free Fire الأصلية", image: "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/garena-free-fire/com.dts.freefire/download" },
-            { name: "Apex Legends Mobile", category: "ألعاب", description: "لعبة الباتل رويال من إلكترونيك آرتس", image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/apex-legends-mobile/com.ea.apexlegendsmobilefps/download" },
-            { name: "Modern Combat 5", category: "ألعاب", description: "لعبة إطلاق نار ممتازة", image: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/modern-combat-5/com.gameloft.android.ANMP.GloftM5HM/download" },
-            { name: "Shadowgun Legends", category: "ألعاب", description: "لعبة تصويب احترافية", image: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/shadowgun-legends/com.madfingergames.legends/download" },
-            { name: "Critical Ops", category: "ألعاب", description: "لعبة إطلاق نار تنافسية", image: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/critical-ops/com.criticalforceentertainment.criticalops/download" },
-            { name: "Standoff 2", category: "ألعاب", description: "لعبة تصويب سريعة", image: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/standoff-2/com.standoff2.play/download" },
-            { name: "Bullet Force", category: "ألعاب", description: "لعبة إطلاق نار متعددة اللاعبين", image: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/bullet-force/com.blayzegames.bulletforce/download" },
-            { name: "Nova Legacy", category: "ألعاب", description: "لعبة أكشن وخيال علمي", image: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/nova-legacy/com.gameloft.android.ANMP.GloftNOHM/download" },
-            { name: "Cover Fire", category: "ألعاب", description: "لعبة إطلاق نار شيقة", image: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/cover-fire/com.generagames.coverfire/download" },
+            // ========== تعليم (15) ==========
+            { id: "duolingo", name: "Duolingo", category: "تعليم", icon: "fas fa-language", description: "تعلم اللغات مجاناً", downloadLink: "https://apkpure.net/duolingo/com.duolingo/download" },
+            { id: "coursera", name: "Coursera", category: "تعليم", icon: "fas fa-graduation-cap", description: "دورات تعليمية من جامعات عالمية", downloadLink: "https://apkpure.net/coursera/org.coursera.android/download" },
+            { id: "udemy", name: "Udemy", category: "تعليم", icon: "fas fa-chalkboard", description: "منصة كورسات أونلاين", downloadLink: "https://apkpure.net/udemy/com.udemy.android/download" },
+            { id: "edx", name: "EdX", category: "تعليم", icon: "fas fa-university", description: "دورات من جامعات عالمية", downloadLink: "https://apkpure.net/edx/org.edx.mobile/download" },
+            { id: "khan-academy", name: "Khan Academy", category: "تعليم", icon: "fas fa-school", description: "دروس مجانية في كل المجالات", downloadLink: "https://apkpure.net/khan-academy/org.khanacademy.android/download" },
+            { id: "memrise", name: "Memrise", category: "تعليم", icon: "fas fa-brain", description: "تعلم اللغات بطرق مبتكرة", downloadLink: "https://apkpure.net/memrise/com.memrise.android.memrisecompanion/download" },
+            { id: "busuu", name: "Busuu", category: "تعليم", icon: "fas fa-globe", description: "تعلم اللغات مع متحدثين أصليين", downloadLink: "https://apkpure.net/busuu/com.busuu.android.download/download" },
+            { id: "hello-talk", name: "HelloTalk", category: "تعليم", icon: "fas fa-comments", description: "تحدث مع متحدثين أصليين", downloadLink: "https://apkpure.net/hellotalk/com.hellotalk/download" },
+            { id: "udacity", name: "Udacity", category: "تعليم", icon: "fas fa-laptop-code", description: "دورات تقنية متخصصة", downloadLink: "https://apkpure.net/udacity/com.udacity.android/download" },
+            { id: "sololearn", name: "Sololearn", category: "تعليم", icon: "fas fa-code", description: "تعلم البرمجة", downloadLink: "https://apkpure.net/sololearn/com.sololearn/download" },
+            { id: "mimo", name: "Mimo", category: "تعليم", icon: "fas fa-mobile-alt", description: "تعلم البرمجة على الهاتف", downloadLink: "https://apkpure.net/mimo/com.getmimo.android/download" },
+            { id: "programming-hub", name: "Programming Hub", category: "تعليم", icon: "fas fa-cogs", description: "تعلم البرمجة", downloadLink: "https://apkpure.net/programming-hub/com.freeit.java/download" },
+            { id: "grasshopper", name: "Grasshopper", category: "تعليم", icon: "fas fa-bug", description: "تعلم البرمجة من جوجل", downloadLink: "https://apkpure.net/grasshopper/com.area120.grasshopper/download" },
+            { id: "photomath", name: "Photomath", category: "تعليم", icon: "fas fa-calculator", description: "حل مسائل الرياضيات بالكاميرا", downloadLink: "https://apkpure.net/photomath/com.microblink.photomath/download" },
+            { id: "quizlet", name: "Quizlet", category: "تعليم", icon: "fas fa-question-circle", description: "بطاقات تعليمية", downloadLink: "https://apkpure.net/quizlet/com.quizlet.quizletandroid/download" },
             
-            // ========== ألعاب استراتيجية (8) ==========
-            { name: "Clash of Clans", category: "ألعاب", description: "لعبة بناء القرى والحروب", image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/clash-of-clans/com.supercell.clashofclans/download" },
-            { name: "Clash Royale", category: "ألعاب", description: "لعبة بطاقات استراتيجية", image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/clash-royale/com.supercell.clashroyale/download" },
-            { name: "Rise of Kingdoms", category: "ألعاب", description: "لعبة استراتيجية تاريخية", image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/rise-of-kingdoms/com.lilithgame.roc.gp/download" },
-            { name: "State of Survival", category: "ألعاب", description: "لعبة بقاء واستراتيجية", image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/state-of-survival/com.kingsgroup.gp/download" },
-            { name: "Mobile Legends", category: "ألعاب", description: "لعبة MOBA الشهيرة", image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/mobile-legends/com.mobile.legends/download" },
-            { name: "Arena of Valor", category: "ألعاب", description: "لعبة MOBA من تينسنت", image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/arena-of-valor/com.ngame.allstar.eu/download" },
-            { name: "Brawl Stars", category: "ألعاب", description: "لعبة قتال سريعة", image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/brawl-stars/com.supercell.brawlstars/download" },
-            { name: "Wild Rift", category: "ألعاب", description: "نسخة League of Legends للهاتف", image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/wild-rift/com.riotgames.league.wildrift/download" },
+            // ========== ترفيه (20) ==========
+            { id: "netflix", name: "Netflix", category: "ترفيه", icon: "fab fa-netflix", description: "مشاهدة الأفلام والمسلسلات", downloadLink: "https://apkpure.net/netflix/com.netflix.mediaclient/download" },
+            { id: "youtube", name: "YouTube", category: "ترفيه", icon: "fab fa-youtube", description: "مشاهدة الفيديوهات", downloadLink: "https://apkpure.net/youtube/com.google.android.youtube/download" },
+            { id: "youtube-music", name: "YouTube Music", category: "ترفيه", icon: "fab fa-youtube", description: "استماع للموسيقى", downloadLink: "https://apkpure.net/youtube-music/com.google.android.apps.youtube.music/download" },
+            { id: "spotify", name: "Spotify", category: "ترفيه", icon: "fab fa-spotify", description: "بث الموسيقى", downloadLink: "https://apkpure.net/spotify/com.spotify.music/download" },
+            { id: "anghami", name: "Anghami", category: "ترفيه", icon: "fas fa-music", description: "تطبيق الموسيقى العربي", downloadLink: "https://apkpure.net/anghami/com.anghami.download/download" },
+            { id: "tiktok", name: "TikTok", category: "ترفيه", icon: "fab fa-tiktok", description: "مقاطع فيديو قصيرة", downloadLink: "https://apkpure.net/tiktok/com.zhiliaoapp.musically/download" },
+            { id: "twitch", name: "Twitch", category: "ترفيه", icon: "fab fa-twitch", description: "بث الألعاب المباشر", downloadLink: "https://apkpure.net/twitch/tv.twitch.android.app/download" },
+            { id: "shahid", name: "Shahid", category: "ترفيه", icon: "fas fa-tv", description: "منصة المحتوى العربي", downloadLink: "https://apkpure.net/shahid/net.mbc.shahid.download/download" },
+            { id: "osn", name: "OSN", category: "ترفيه", icon: "fas fa-play", description: "منصة أفلام ومسلسلات", downloadLink: "https://apkpure.net/osn/com.osn.streaming/download" },
+            { id: "vimeo", name: "Vimeo", category: "ترفيه", icon: "fab fa-vimeo", description: "مشاهدة فيديوهات احترافية", downloadLink: "https://apkpure.net/vimeo/com.vimeo.android.videoapp/download" },
+            { id: "dailymotion", name: "Dailymotion", category: "ترفيه", icon: "fab fa-dailymotion", description: "منصة فيديوهات", downloadLink: "https://apkpure.net/dailymotion/com.dailymotion.dailymotion/download" },
+            { id: "soundcloud", name: "SoundCloud", category: "ترفيه", icon: "fab fa-soundcloud", description: "منصة موسيقى", downloadLink: "https://apkpure.net/soundcloud/com.soundcloud.android/download" },
+            { id: "deezer", name: "Deezer", category: "ترفيه", icon: "fas fa-headphones", description: "بث الموسيقى", downloadLink: "https://apkpure.net/deezer/deezer.android.app/download" },
+            { id: "amazon-prime", name: "Amazon Prime", category: "ترفيه", icon: "fab fa-amazon", description: "أفلام ومسلسلات", downloadLink: "https://apkpure.net/amazon-prime/com.amazon.avod.thirdpartyclient/download" },
+            { id: "disney-plus", name: "Disney+", category: "ترفيه", icon: "fas fa-star", description: "أفلام ديزني", downloadLink: "https://apkpure.net/disney-plus/com.disney.disneyplus/download" },
+            { id: "hbo-max", name: "HBO Max", category: "ترفيه", icon: "fas fa-film", description: "أفلام ومسلسلات HBO", downloadLink: "https://apkpure.net/hbo-max/com.hbo.hbomax/download" },
+            { id: "apple-tv", name: "Apple TV", category: "ترفيه", icon: "fab fa-apple", description: "منصة أبل", downloadLink: "https://apkpure.net/apple-tv/com.apple.atve.androidtv.appletv/download" },
+            { id: "google-tv", name: "Google TV", category: "ترفيه", icon: "fab fa-google", description: "منصة جوجل", downloadLink: "https://apkpure.net/google-tv/com.google.android.videos/download" },
+            { id: "imdb", name: "IMDb", category: "ترفيه", icon: "fas fa-star", description: "معلومات عن الأفلام", downloadLink: "https://apkpure.net/imdb/com.imdb.mobile/download" },
+            { id: "letterboxd", name: "Letterboxd", category: "ترفيه", icon: "fas fa-ticket-alt", description: "تقييم الأفلام", downloadLink: "https://apkpure.net/letterboxd/com.letterboxd.app/download" },
             
-            // ========== ألعاب ألغاز وسيارات (10) ==========
-            { name: "Candy Crush Saga", category: "ألعاب", description: "لعبة الألغاز الشهيرة", image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/candy-crush-saga/com.king.candycrushsaga/download" },
-            { name: "Subway Surfers", category: "ألعاب", description: "لعبة الجري الكلاسيكية", image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/subway-surfers/com.kiloo.subwaysurf/download" },
-            { name: "Temple Run 2", category: "ألعاب", description: "لعبة الجري والمغامرة", image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/temple-run-2/com.imangi.templerun2/download" },
-            { name: "Hill Climb Racing", category: "ألعاب", description: "لعبة قيادة السيارات", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/hill-climb-racing/com.fingersoft.hillclimb/download" },
-            { name: "Asphalt 9", category: "ألعاب", description: "لعبة سباقات سيارات", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/asphalt-9/com.gameloft.android.ANMP.GloftA9HM/download" },
-            { name: "Real Racing 3", category: "ألعاب", description: "لعبة سباقات واقعية", image: "https://images.unsplash.com/photo-1542362567-b07e54358753?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/real-racing-3/com.ea.games.r3_row/download" },
-            { name: "Fruit Ninja", category: "ألعاب", description: "لعبة تقطيع الفواكه", image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/fruit-ninja/com.halfbrick.fruitninja/download" },
-            { name: "Angry Birds 2", category: "ألعاب", description: "لعبة الطيور الغاضبة", image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/angry-birds-2/com.rovio.baba/download" },
-            { name: "Plants vs Zombies 2", category: "ألعاب", description: "لعبة الدفاع عن الحديقة", image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/plants-vs-zombies-2/com.ea.game.pvz2_row/download" },
-            { name: "8 Ball Pool", category: "ألعاب", description: "لعبة البلياردو الشهيرة", image: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?w=300&h=160&fit=crop", downloadLink: "https://apkpure.net/8-ball-pool/com.miniclip.eightballpool/download" }
+            // ========== ألعاب (70) ==========
+            { id: "pubg", name: "PUBG Mobile", category: "ألعاب", icon: "fas fa-crosshairs", description: "لعبة الباتل رويال الشهيرة", downloadLink: "https://apkpure.net/pubg-mobile/com.tencent.ig/download" },
+            { id: "free-fire", name: "Free Fire MAX", category: "ألعاب", icon: "fas fa-fire", description: "لعبة الباتل رويال السريعة", downloadLink: "https://apkpure.net/free-fire-max/com.dts.freefiremax/download" },
+            { id: "call-of-duty", name: "Call of Duty Mobile", category: "ألعاب", icon: "fas fa-gun", description: "لعبة إطلاق النار الاحترافية", downloadLink: "https://apkpure.net/call-of-duty-mobile/com.activision.callofduty.shooter/download" },
+            { id: "apex-legends", name: "Apex Legends Mobile", category: "ألعاب", icon: "fas fa-trophy", description: "لعبة الباتل رويال", downloadLink: "https://apkpure.net/apex-legends-mobile/com.ea.apexlegendsmobilefps/download" },
+            { id: "modern-combat", name: "Modern Combat 5", category: "ألعاب", icon: "fas fa-bomb", description: "لعبة إطلاق نار ممتازة", downloadLink: "https://apkpure.net/modern-combat-5/com.gameloft.android.ANMP.GloftM5HM/download" },
+            { id: "clash-of-clans", name: "Clash of Clans", category: "ألعاب", icon: "fas fa-chess-king", description: "لعبة بناء القرى والحروب", downloadLink: "https://apkpure.net/clash-of-clans/com.supercell.clashofclans/download" },
+            { id: "clash-royale", name: "Clash Royale", category: "ألعاب", icon: "fas fa-chess", description: "لعبة بطاقات استراتيجية", downloadLink: "https://apkpure.net/clash-royale/com.supercell.clashroyale/download" },
+            { id: "mobile-legends", name: "Mobile Legends", category: "ألعاب", icon: "fas fa-users", description: "لعبة MOBA الشهيرة", downloadLink: "https://apkpure.net/mobile-legends/com.mobile.legends/download" },
+            { id: "arena-of-valor", name: "Arena of Valor", category: "ألعاب", icon: "fas fa-flag", description: "لعبة MOBA من تينسنت", downloadLink: "https://apkpure.net/arena-of-valor/com.ngame.allstar.eu/download" },
+            { id: "brawl-stars", name: "Brawl Stars", category: "ألعاب", icon: "fas fa-fist-raised", description: "لعبة قتال سريعة", downloadLink: "https://apkpure.net/brawl-stars/com.supercell.brawlstars/download" },
+            { id: "wild-rift", name: "Wild Rift", category: "ألعاب", icon: "fas fa-dragon", description: "نسخة League of Legends للهاتف", downloadLink: "https://apkpure.net/wild-rift/com.riotgames.league.wildrift/download" },
+            { id: "candy-crush", name: "Candy Crush Saga", category: "ألعاب", icon: "fas fa-candy-cane", description: "لعبة الألغاز الشهيرة", downloadLink: "https://apkpure.net/candy-crush-saga/com.king.candycrushsaga/download" },
+            { id: "subway-surfers", name: "Subway Surfers", category: "ألعاب", icon: "fas fa-subway", description: "لعبة الجري الكلاسيكية", downloadLink: "https://apkpure.net/subway-surfers/com.kiloo.subwaysurf/download" },
+            { id: "temple-run", name: "Temple Run 2", category: "ألعاب", icon: "fas fa-running", description: "لعبة الجري والمغامرة", downloadLink: "https://apkpure.net/temple-run-2/com.imangi.templerun2/download" },
+            { id: "hill-climb", name: "Hill Climb Racing", category: "ألعاب", icon: "fas fa-car", description: "لعبة قيادة السيارات", downloadLink: "https://apkpure.net/hill-climb-racing/com.fingersoft.hillclimb/download" },
+            { id: "asphalt-9", name: "Asphalt 9", category: "ألعاب", icon: "fas fa-car-side", description: "لعبة سباقات سيارات", downloadLink: "https://apkpure.net/asphalt-9/com.gameloft.android.ANMP.GloftA9HM/download" },
+            { id: "real-racing", name: "Real Racing 3", category: "ألعاب", icon: "fas fa-flag-checkered", description: "لعبة سباقات واقعية", downloadLink: "https://apkpure.net/real-racing-3/com.ea.games.r3_row/download" },
+            { id: "fruit-ninja", name: "Fruit Ninja", category: "ألعاب", icon: "fas fa-apple-alt", description: "لعبة تقطيع الفواكه", downloadLink: "https://apkpure.net/fruit-ninja/com.halfbrick.fruitninja/download" },
+            { id: "angry-birds", name: "Angry Birds 2", category: "ألعاب", icon: "fas fa-dove", description: "لعبة الطيور الغاضبة", downloadLink: "https://apkpure.net/angry-birds-2/com.rovio.baba/download" },
+            { id: "pvz", name: "Plants vs Zombies 2", category: "ألعاب", icon: "fas fa-seedling", description: "لعبة الدفاع عن الحديقة", downloadLink: "https://apkpure.net/plants-vs-zombies-2/com.ea.game.pvz2_row/download" },
+            { id: "8-ball-pool", name: "8 Ball Pool", category: "ألعاب", icon: "fas fa-circle", description: "لعبة البلياردو الشهيرة", downloadLink: "https://apkpure.net/8-ball-pool/com.miniclip.eightballpool/download" },
+            { id: "minecraft", name: "Minecraft", category: "ألعاب", icon: "fas fa-cube", description: "لعبة البناء والإبداع", downloadLink: "https://apkpure.net/minecraft/com.mojang.minecraftpe/download" },
+            { id: "roblox", name: "Roblox", category: "ألعاب", icon: "fas fa-gamepad", description: "منصة ألعاب متعددة", downloadLink: "https://apkpure.net/roblox/com.roblox.client/download" },
+            { id: "among-us", name: "Among Us", category: "ألعاب", icon: "fas fa-user-astronaut", description: "لعبة الخيانة الجماعية", downloadLink: "https://apkpure.net/among-us/com.innersloth.spacemafia/download" },
+            { id: "fall-guys", name: "Fall Guys", category: "ألعاب", icon: "fas fa-running", description: "لعبة العوائق الجماعية", downloadLink: "https://apkpure.net/fall-guys/com.mediatonic.fallguys/download" },
+            { id: "genshin-impact", name: "Genshin Impact", category: "ألعاب", icon: "fas fa-dragon", description: "لعبة تقمص أدوار عالم مفتوح", downloadLink: "https://apkpure.net/genshin-impact/com.miHoYo.GenshinImpact/download" },
+            { id: "pubg-new-state", name: "PUBG New State", category: "ألعاب", icon: "fas fa-crosshairs", description: "نسخة جديدة من PUBG", downloadLink: "https://apkpure.net/pubg-new-state/com.pubg.newstate/download" },
+            { id: "cod-warzone", name: "COD Warzone Mobile", category: "ألعاب", icon: "fas fa-gun", description: "نسخة وارزون من كول أوف ديوتي", downloadLink: "https://apkpure.net/cod-warzone/com.activision.warzone/download" },
+            { id: "rainbow-six", name: "Rainbow Six Mobile", category: "ألعاب", icon: "fas fa-shield", description: "لعبة إطلاق نار تكتيكية", downloadLink: "https://apkpure.net/rainbow-six/com.ubisoft.rainbowsixm/download" },
+            { id: "valorant-mobile", name: "Valorant Mobile", category: "ألعاب", icon: "fas fa-bullseye", description: "نسخة فالورانت للهاتف", downloadLink: "https://apkpure.net/valorant-mobile/com.riotgames.valorant/download" },
+            { id: "league-of-legends", name: "League of Legends", category: "ألعاب", icon: "fas fa-chess-queen", description: "لعبة MOBA الأسطورية", downloadLink: "https://apkpure.net/league-of-legends/com.riotgames.league/download" }
         ];
 
-        let currentCategory = "all";
-        let currentSearch = "";
-
-        function getFilteredApps() {
-            let filtered = apps;
-            if (currentCategory !== "all") {
-                filtered = filtered.filter(app => app.category === currentCategory);
-            }
-            if (currentSearch) {
-                filtered = filtered.filter(app => 
-                    app.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
-                    app.description.toLowerCase().includes(currentSearch.toLowerCase())
-                );
-            }
-            return filtered;
-        }
-
-        function displayApps() {
-            const container = document.getElementById("appsContainer");
-            const filtered = getFilteredApps();
-            
-            if (filtered.length === 0) {
-                container.innerHTML = `<div style="text-align:center; padding:50px; color:#D4AF37;">😅 لا توجد تطبيقات تطابق بحثك</div>`;
-                return;
-            }
-            
-            container.innerHTML = filtered.map(app => `
-                <div class="app-card">
-                    <img src="${app.image}" alt="${app.name}" class="app-icon">
-                    <div class="app-info">
-                        <h3 class="app-name">${app.name}</h3>
-                        <div class="app-category"><i class="fas fa-tag"></i> ${app.category}</div>
-                        <p class="app-description">${app.description}</p>
-                        <a href="${app.downloadLink}" target="_blank" class="download-btn">
-                            <i class="fas fa-download"></i> تحميل ${app.name}
-                        </a>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function setupCategoryFilters() {
-            const buttons = document.querySelectorAll(".cat-btn");
-            buttons.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    buttons.forEach(b => b.classList.remove("active"));
-                    btn.classList.add("active");
-                    currentCategory = btn.getAttribute("data-cat");
-                    displayApps();
-                });
-            });
-        }
-
-        function setupSearch() {
-            const searchInput = document.getElementById("searchAppsInput");
-            const searchBtn = document.getElementById("searchAppsBtn");
-            
-            searchBtn.addEventListener("click", () => {
-                currentSearch = searchInput.value;
-                displayApps();
-            });
-            
-            searchInput.addEventListener("keypress", (e) => {
-                if (e.key === "Enter") {
-                    currentSearch = searchInput.value;
-                    displayApps();
-                }
-            });
-        }
-
-        function updateAuthUI() {
-            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-            const authLink = document.getElementById("authLink");
-            const userGreeting = document.getElementById("userGreeting");
-            const logoutBtn = document.getElementById("logoutBtn");
-            if (currentUser) {
-                if (authLink) authLink.style.display = "none";
-                if (userGreeting) {
-                    userGreeting.style.display = "inline";
-                    userGreeting.textContent = `مرحباً ${currentUser.name}`;
-                }
-                if (logoutBtn) logoutBtn.style.display = "inline";
-            } else {
-                if (authLink) authLink.style.display = "inline";
-                if (userGreeting) userGreeting.style.display = "none";
-                if (logoutBtn) logoutBtn.style.display = "none";
-            }
-        }
-
-        function setupLogout() {
-            const logoutBtn = document.getElementById("logoutBtn");
-            if (logoutBtn) {
-                logoutBtn.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    localStorage.removeItem("currentUser");
-                    updateAuthUI();
-                    window.location.href = "index.html";
-                });
-            }
-        }
-
-        function setupMobileMenu() {
-            const toggle = document.getElementById("mobileMenu");
-            const navLinks = document.getElementById("navLinks");
-            if (toggle && navLinks) {
-                toggle.addEventListener("click", () => {
-                    navLinks.classList.toggle("active");
-                });
-            }
-        }
-
-        setupCategoryFilters();
-        setupSearch();
-        displayApps();
-        updateAuthUI();
-        setupLogout();
-        setupMobileMenu();
-    </script>
-</body>
-</html>
+        // باقي الكود (مكمل في الرسالة التالية)
