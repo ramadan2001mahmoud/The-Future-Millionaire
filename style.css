@@ -11,7 +11,7 @@ body {
     line-height: 1.6;
 }
 
-/* شريط التنقل */
+/* Ramzone - شريط التنقل */
 .navbar {
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(10px);
@@ -113,7 +113,6 @@ body {
     display: block;
 }
 
-/* بحث */
 .search-box {
     display: flex;
     align-items: center;
@@ -135,7 +134,6 @@ body {
     color: #D4AF37;
 }
 
-/* القسم الرئيسي */
 .hero {
     background: linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 100%);
     padding: 100px 20px;
@@ -174,7 +172,6 @@ body {
     transform: scale(1.05);
 }
 
-/* شريط الإحصائيات */
 .stats-bar {
     display: flex;
     justify-content: center;
@@ -207,7 +204,6 @@ body {
     color: #CCCCCC;
 }
 
-/* تصفية */
 .filter-section {
     display: flex;
     justify-content: center;
@@ -232,7 +228,6 @@ body {
     border-color: #D4AF37;
 }
 
-/* بطاقات الأدوات */
 .tools-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -303,7 +298,6 @@ body {
     color: #666;
 }
 
-/* فوتر */
 .footer {
     background: #050505;
     padding: 40px 20px;
@@ -327,7 +321,6 @@ body {
     color: #D4AF37;
 }
 
-/* عداد الزوار */
 .visitor-counter {
     margin-top: 10px;
     font-size: 0.8rem;
@@ -339,7 +332,6 @@ body {
     margin-left: 5px;
 }
 
-/* روابط الفوتر */
 .footer-links {
     margin-top: 15px;
 }
@@ -350,7 +342,6 @@ body {
     margin: 0 10px;
 }
 
-/* موبايل */
 .menu-toggle {
     display: none;
     font-size: 1.5rem;
