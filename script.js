@@ -226,14 +226,12 @@ async function updateGlobalCounter(type, shouldIncrement = true) {
 
 // تسجيل نقرة مركزية
 async function recordGlobalClick(toolName) {
-    // أولاً: تحديث العداد المحلي للأداة
     const tool = tools.find(t => t.name === toolName);
     if (tool) {
         tool.clicks++;
         saveClicksToStorage();
     }
     
-    // ثانياً: تحديث العداد المركزي لإجمالي النقرات (في الخلفية)
     updateGlobalCounter("click", true).then(totalClicks => {
         const totalClicksSpan = document.getElementById("totalClicks");
         if (totalClicksSpan && totalClicks) {
@@ -241,7 +239,6 @@ async function recordGlobalClick(toolName) {
         }
     });
     
-    // ثالثاً: تحديث إحصائيات المستخدم
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (currentUser) {
         let userClicks = JSON.parse(localStorage.getItem(`userClicks_${currentUser.id}`) || "{}");
@@ -265,29 +262,21 @@ async function recordNewUser() {
     }
 }
 
-// ============================================
-//  عداد الزوار - يزيد مرة واحدة كل 24 ساعة لكل متصفح
-// ============================================
-
+// عداد الزوار (يزيد مرة كل 24 ساعة)
 function updateVisitorCounter() {
-    // نجيب آخر توقيت تم فيه تحديث العداد من هذا المتصفح
     const lastVisit = localStorage.getItem("lastVisitorUpdate");
     const now = new Date().getTime();
-    const oneDay = 24 * 60 * 60 * 1000; // 24 ساعة بالمللي ثانية
+    const oneDay = 24 * 60 * 60 * 1000;
     
-    // لو مفيش توقيت مسجل، أو مر أكتر من 24 ساعة
     if (!lastVisit || (now - parseInt(lastVisit)) > oneDay) {
-        // نطلب من Google Sheets تزيد العداد بواحد
         updateGlobalCounter("visitor", true).then(visitorCount => {
             const visitorSpan = document.getElementById("visitorCount");
             if (visitorSpan && visitorCount) {
                 visitorSpan.textContent = visitorCount;
             }
         });
-        // نسجل توقيت آخر تحديث
         localStorage.setItem("lastVisitorUpdate", now.toString());
     } else {
-        // لو لسه 24 ساعة مرتحتش، نجيب العداد الحالي بس من غير ما نزوده
         updateGlobalCounter("visitor", false).then(visitorCount => {
             const visitorSpan = document.getElementById("visitorCount");
             if (visitorSpan && visitorCount) {
@@ -348,6 +337,38 @@ function setupLogout() {
 }
 
 // ============================================
+//  نظام Dark Mode / Light Mode
+// ============================================
+
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    let theme = savedTheme;
+    if (!theme) {
+        theme = systemPrefersDark ? 'dark' : 'light';
+    }
+    
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    const toggle = document.getElementById('theme-toggle');
+    if (toggle) {
+        toggle.checked = (theme === 'dark');
+    }
+}
+
+function setupThemeToggle() {
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+    
+    toggle.addEventListener('change', (e) => {
+        const newTheme = e.target.checked ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+}
+
+// ============================================
 //  بناء واجهة الموقع
 // ============================================
 
@@ -404,14 +425,14 @@ function displayTools(toolsArray) {
     container.innerHTML = "";
     
     if (toolsArray.length === 0) {
-        container.innerHTML = `<div style="text-align:center; padding:50px; color:#D4AF37;">😅 لا توجد أدوات في هذه الفئة حالياً</div>`;
+        container.innerHTML = `<div style="text-align:center; padding:50px; color:var(--gold);">😅 لا توجد أدوات في هذه الفئة حالياً</div>`;
         return;
     }
     
     toolsArray.forEach(tool => {
         const isFav = isFavorite(tool.name);
         const starClass = isFav ? "fas fa-star" : "far fa-star";
-        const starColor = isFav ? "#D4AF37" : "#666";
+        const starColor = isFav ? "var(--gold)" : "#666";
         
         const card = document.createElement("div");
         card.className = "tool-card";
@@ -448,7 +469,7 @@ function displayTools(toolsArray) {
             const icon = btn.querySelector("i");
             if (isNowFav) {
                 icon.className = "fas fa-star";
-                btn.style.color = "#D4AF37";
+                btn.style.color = "var(--gold)";
             } else {
                 icon.className = "far fa-star";
                 btn.style.color = "#666";
@@ -513,12 +534,12 @@ function setupExploreBtn() {
 }
 
 // ============================================
-//  التهيئة (Init) - نسخة سريعة ⚡
+//  التهيئة (Init) - النسخة السريعة
 // ============================================
 
 function init() {
-    // 1. المحتوى الرئيسي يظهر فوراً
     loadClicksFromStorage();
+    updateVisitorCounter();
     updateAuthUI();
     setupLogout();
     buildDropdowns();
@@ -528,14 +549,17 @@ function init() {
     setupMobileMenu();
     setupExploreBtn();
     updateStatsDisplay();
-
-    // 2. الأرقام تتحمل في الخلفية
-    updateVisitorCounter();                                    // عداد الزوار (مرة كل 24 ساعة)
-    updateGlobalCounter("click", false).then(count => {       // إجمالي النقرات
+    
+    // تهيئة نظام Dark/Light Mode
+    initTheme();
+    setupThemeToggle();
+    
+    // جلب الأرقام المركزية
+    updateGlobalCounter("click", false).then(count => {
         const span = document.getElementById("totalClicks");
         if (span && count !== null) span.textContent = count;
     });
-    updateGlobalCounter("user", false).then(count => {        // عدد المستخدمين
+    updateGlobalCounter("user", false).then(count => {
         const span = document.getElementById("totalUsers");
         if (span && count !== null) span.textContent = count;
     });
