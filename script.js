@@ -1,12 +1,174 @@
 // ============================================
-//  قائمة الأدوات (92+ أداة مع أسماء عربية)
+//  قاموس المرادفات للبحث (Synonyms Dictionary)
+// ============================================
+const synonyms = {
+    // ألعاب
+    "ببجي": "pubg",
+    "pubg": "pubg",
+    "ببجى": "pubg",
+    "بب جي": "pubg",
+    "بب جي": "pubg",
+    "ببجى": "pubg",
+    "فري فاير": "free fire",
+    "فري فاير": "free fire",
+    "فري فاير": "free fire",
+    "فري فاير": "free fire",
+    "فريفاير": "free fire",
+    "كول أوف ديوتي": "call of duty",
+    "كول اوف ديوتي": "call of duty",
+    "كول اوف ديوتي": "call of duty",
+    "كول أوف ديوتي": "call of duty",
+    "كود": "call of duty",
+    "مودرن كومبات": "modern combat",
+    "كلاش اوف كلانس": "clash of clans",
+    "كلاش أوف كلانس": "clash of clans",
+    "كلاش اوف كلانس": "clash of clans",
+    "كوك": "clash of clans",
+    "كلاش رويال": "clash royale",
+    "كلاش رويال": "clash royale",
+    "موبايل ليجندز": "mobile legends",
+    "موبايل ليجندز": "mobile legends",
+    "موبايل ليجندز": "mobile legends",
+    "م وبايل ليجندز": "mobile legends",
+    "براول ستارز": "brawl stars",
+    "برول ستارز": "brawl stars",
+    "جينشين": "genshin impact",
+    "جينشين إمباكت": "genshin impact",
+    "جينشين امباكت": "genshin impact",
+    "ماين كرافت": "minecraft",
+    "ماين كرافت": "minecraft",
+    "ماين كرافت": "minecraft",
+    "روبلوكس": "roblox",
+    "روبلكس": "roblox",
+    "كاندي كراش": "candy crush",
+    "ساب واي": "subway surfers",
+    "ساب واي سيرفرز": "subway surfers",
+    "ساب واي": "subway surfers",
+    "تمبل رن": "temple run",
+    "اسفلت": "asphalt",
+    "اسفلت 9": "asphalt",
+    
+    // أدوات ذكاء اصطناعي
+    "شات جي بي تي": "chatgpt",
+    "شات جي بي تي": "chatgpt",
+    "شات جبتي": "chatgpt",
+    "تشات جي بي تي": "chatgpt",
+    "تشات جي بي تي": "chatgpt",
+    "شات جي بي تي": "chatgpt",
+    "شات جي بي تي": "chatgpt",
+    "شات جي بي تي": "chatgpt",
+    "chat gpt": "chatgpt",
+    "chat-gpt": "chatgpt",
+    "شات": "chatgpt",
+    "ميدجورني": "midjourney",
+    "ميد جورني": "midjourney",
+    "ميدجورني": "midjourney",
+    "ميدجورني": "midjourney",
+    "ميدجورني": "midjourney",
+    "دالي": "dalle",
+    "دال اي": "dalle",
+    "دال إي": "dalle",
+    "دال اي": "dalle",
+    "دال اي": "dalle",
+    "رن واي": "runway",
+    "رن واي": "runway",
+    "إيفين لابس": "elevenlabs",
+    "ايفين لابس": "elevenlabs",
+    "إيفين لابس": "elevenlabs",
+    "إيفين لابس": "elevenlabs",
+    "كلود": "claude",
+    "كلود": "claude",
+    "جيميني": "gemini",
+    "جيميني": "gemini",
+    "ديب سيك": "deepseek",
+    "ديب سيك": "deepseek",
+    "بيربلكستي": "perplexity",
+    "بيربلكستي": "perplexity",
+    "كوبي": "copy.ai",
+    "جاسبر": "jasper",
+    "رايت سونيك": "writesonic",
+    "رايتير": "rytr"
+};
+
+// دالة لتوسيع نص البحث بالمرادفات
+function expandSearchQuery(query) {
+    let expanded = [query.toLowerCase().trim()];
+    
+    for (const [key, value] of Object.entries(synonyms)) {
+        if (query.toLowerCase().includes(key)) {
+            expanded.push(value);
+            expanded.push(key);
+        }
+        if (value.includes(query.toLowerCase()) || query.toLowerCase().includes(value)) {
+            expanded.push(key);
+            expanded.push(value);
+        }
+    }
+    
+    return [...new Set(expanded)];
+}
+
+// دالة لتطبيع النص (تجهيزه للبحث)
+function normalizeText(text) {
+    if (!text) return '';
+    
+    let normalized = text.toLowerCase().trim();
+    normalized = normalized.normalize("NFD").replace(/[\u064B-\u065F\u0670]/g, "");
+    normalized = normalized.replace(/[^\w\s\u0600-\u06FF]/g, ' ');
+    normalized = normalized.replace(/\s+/g, ' ').trim();
+    
+    return normalized;
+}
+
+// دالة البحث المطورة مع المرادفات
+function enhancedFuzzySearch(query, targetText) {
+    if (!query) return true;
+    
+    const targetLower = targetText.toLowerCase();
+    const expandedQueries = expandSearchQuery(query);
+    
+    // البحث بالمرادفات الموسعة
+    for (const expQuery of expandedQueries) {
+        if (targetLower.includes(expQuery)) {
+            return true;
+        }
+    }
+    
+    // البحث العادي (بعد التوحيد)
+    const normalizedQuery = normalizeText(query);
+    const normalizedTarget = normalizeText(targetText);
+    
+    if (normalizedTarget.includes(normalizedQuery)) {
+        return true;
+    }
+    
+    // البحث بالكلمات المفتاحية
+    const queryWords = normalizedQuery.split(/\s+/);
+    let matchCount = 0;
+    
+    for (const word of queryWords) {
+        if (word.length < 2) continue;
+        if (normalizedTarget.includes(word)) {
+            matchCount++;
+        }
+    }
+    
+    if (matchCount >= queryWords.length * 0.5 && matchCount > 0) {
+        return true;
+    }
+    
+    return false;
+}
+
+// ============================================
+//  قائمة الأدوات (92+ أداة ذكاء اصطناعي)
 // ============================================
 let tools = [
     // ========== 📝 أدوات النصوص (20 أداة) ==========
-    { name: "ChatGPT (شات جي بي تي | ChatGPT)", category: "نصوص", url: "https://chat.openai.com", description: "نموذج لغوي متقدم للمحادثة والكتابة والبرمجة", icon: "fa-comments", clicks: 0 },
+    { name: "ChatGPT (شات جي بي تي)", category: "نصوص", url: "https://chat.openai.com", description: "نموذج لغوي متقدم للمحادثة والكتابة والبرمجة", icon: "fa-comments", clicks: 0 },
     { name: "Claude (كلود)", category: "نصوص", url: "https://claude.ai", description: "ذكاء اصطناعي أخلاقي من Anthropic للكتابة المتقدمة", icon: "fa-message", clicks: 0 },
     { name: "Perplexity AI (بيربلكستي)", category: "نصوص", url: "https://www.perplexity.ai", description: "محرك بحث ذكي يجمع بين ChatGPT والبحث المباشر", icon: "fa-globe", clicks: 0 },
-    { name: "Gemini (جيميني | Google Gemini)", category: "نصوص", url: "https://gemini.google.com", description: "نموذج جوجل المتعدد الوسائط", icon: "fa-star-of-life", clicks: 0 },
+    { name: "Gemini (جيميني)", category: "نصوص", url: "https://gemini.google.com", description: "نموذج جوجل المتعدد الوسائط", icon: "fa-star-of-life", clicks: 0 },
     { name: "DeepSeek (ديب سيك)", category: "نصوص", url: "https://deepseek.com", description: "نموذج صيني قوي مجاني للبرمجة والتحليل", icon: "fa-chart-line", clicks: 0 },
     { name: "Copy.ai (كوبي ايه آي)", category: "نصوص", url: "https://www.copy.ai", description: "كتابة محتوى تسويقي وإعلانات", icon: "fa-copy", clicks: 0 },
     { name: "Jasper (جاسبر)", category: "نصوص", url: "https://www.jasper.ai", description: "مساعد كتابة احترافي للشركات", icon: "fa-feather-alt", clicks: 0 },
@@ -25,8 +187,8 @@ let tools = [
     { name: "Cohere (كو هير)", category: "نصوص", url: "https://cohere.com", description: "منصة لتوليد النصوص للمطورين", icon: "fa-cogs", clicks: 0 },
 
     // ========== 🎨 أدوات الصور (20 أداة) ==========
-    { name: "Midjourney (ميدجورني | ميدجورني)", category: "صور", url: "https://www.midjourney.com", description: "أقوى أداة لتوليد صور فائقة الجودة", icon: "fa-palette", clicks: 0 },
-    { name: "DALL-E 3 (دالي | DALL-E)", category: "صور", url: "https://openai.com/dall-e-3", description: "توليد صور إبداعية من وصف نصي", icon: "fa-image", clicks: 0 },
+    { name: "Midjourney (ميدجورني)", category: "صور", url: "https://www.midjourney.com", description: "أقوى أداة لتوليد صور فائقة الجودة", icon: "fa-palette", clicks: 0 },
+    { name: "DALL-E 3 (دالي)", category: "صور", url: "https://openai.com/dall-e-3", description: "توليد صور إبداعية من وصف نصي", icon: "fa-image", clicks: 0 },
     { name: "Leonardo.ai (ليوناردو)", category: "صور", url: "https://leonardo.ai", description: "توليد صور وفيديوهات إبداعية مجاناً", icon: "fa-dragon", clicks: 0 },
     { name: "Stable Diffusion (ستيبل ديفيوجن)", category: "صور", url: "https://stability.ai", description: "نموذج مفتوح المصدر لتوليد الصور", icon: "fa-cube", clicks: 0 },
     { name: "Adobe Firefly (فايرفلاي)", category: "صور", url: "https://firefly.adobe.com", description: "توليد وتحرير الصور بأسلوب أدوبي", icon: "fa-fire", clicks: 0 },
@@ -96,15 +258,15 @@ let tools = [
     { name: "Taskade (تاسكيد)", category: "إنتاجية", url: "https://www.taskade.com", description: "إدارة المهام والفريق بالذكاء الاصطناعي", icon: "fa-tasks", clicks: 0 },
 
     // ========== 🆕 ألعاب (للبحث في الصفحة الرئيسية) ==========
-    { name: "PUBG Mobile (ببجي | PUBG)", category: "ألعاب", url: "https://www.pubg.com", description: "لعبة الباتل رويال الشهيرة", icon: "fa-crosshairs", clicks: 0 },
-    { name: "Free Fire (فري فاير | FreeFire)", category: "ألعاب", url: "https://ff.garena.com", description: "لعبة الباتل رويال السريعة", icon: "fa-fire", clicks: 0 },
-    { name: "Call of Duty (كول أوف ديوتي | COD)", category: "ألعاب", url: "https://www.callofduty.com", description: "لعبة إطلاق النار الاحترافية", icon: "fa-gun", clicks: 0 },
-    { name: "Clash of Clans (كلاش أوف كلانس | COC)", category: "ألعاب", url: "https://clashofclans.com", description: "لعبة بناء القرى والحروب", icon: "fa-chess-king", clicks: 0 },
+    { name: "PUBG Mobile (ببجي)", category: "ألعاب", url: "https://www.pubg.com", description: "لعبة الباتل رويال الشهيرة - Battlegrounds", icon: "fa-crosshairs", clicks: 0 },
+    { name: "Free Fire (فري فاير)", category: "ألعاب", url: "https://ff.garena.com", description: "لعبة الباتل رويال السريعة", icon: "fa-fire", clicks: 0 },
+    { name: "Call of Duty (كول أوف ديوتي)", category: "ألعاب", url: "https://www.callofduty.com", description: "لعبة إطلاق النار الاحترافية", icon: "fa-gun", clicks: 0 },
+    { name: "Clash of Clans (كلاش أوف كلانس)", category: "ألعاب", url: "https://clashofclans.com", description: "لعبة بناء القرى والحروب", icon: "fa-chess-king", clicks: 0 },
     { name: "Among Us (أمونج أس)", category: "ألعاب", url: "https://www.innersloth.com/games/among-us", description: "لعبة الخيانة الجماعية", icon: "fa-user-astronaut", clicks: 0 },
     { name: "Minecraft (ماين كرافت)", category: "ألعاب", url: "https://www.minecraft.net", description: "لعبة البناء والإبداع", icon: "fa-cube", clicks: 0 },
     { name: "Roblox (روبلكس)", category: "ألعاب", url: "https://www.roblox.com", description: "منصة ألعاب متعددة", icon: "fa-gamepad", clicks: 0 },
     { name: "Genshin Impact (جينشين إمباكت)", category: "ألعاب", url: "https://genshin.hoyoverse.com", description: "لعبة تقمص أدوار عالم مفتوح", icon: "fa-dragon", clicks: 0 },
-    { name: "Mobile Legends (موبايل ليجندز | MLBB)", category: "ألعاب", url: "https://m.mobilelegends.com", description: "لعبة MOBA الشهيرة", icon: "fa-users", clicks: 0 },
+    { name: "Mobile Legends (موبايل ليجندز)", category: "ألعاب", url: "https://m.mobilelegends.com", description: "لعبة MOBA الشهيرة", icon: "fa-users", clicks: 0 },
     { name: "Brawl Stars (برول ستارز)", category: "ألعاب", url: "https://brawlstars.com", description: "لعبة قتال سريعة", icon: "fa-fist-raised", clicks: 0 },
     { name: "Candy Crush (كاندي كراش)", category: "ألعاب", url: "https://www.king.com/game/candycrush", description: "لعبة الألغاز الشهيرة", icon: "fa-candy-cane", clicks: 0 },
     { name: "Subway Surfers (ساب واي سيرفرز)", category: "ألعاب", url: "https://www.subwaysurfers.com", description: "لعبة الجري الكلاسيكية", icon: "fa-subway", clicks: 0 },
@@ -124,9 +286,8 @@ let tools = [
     { name: "Khroma (كرومة)", category: "تصميم", url: "https://www.khroma.co", description: "توليد لوحات ألوان ذكية", icon: "fa-palette", clicks: 0 }
 ];
 
-// باقي الكود (دوال النقرات، المفضلة، عداد الزوار، البحث المرن، Dark Mode، إلخ) - نفس الكود السابق
 // ============================================
-//  إدارة الإحصائيات المحلية (LocalStorage)
+//  باقي الكود (نفس الكود السابق)
 // ============================================
 
 function loadClicksFromStorage() {
@@ -152,10 +313,6 @@ function updateStatsDisplay() {
     const totalToolsSpan = document.getElementById("totalTools");
     if (totalToolsSpan) totalToolsSpan.textContent = tools.length;
 }
-
-// ============================================
-//  نظام المفضلة (Favorites)
-// ============================================
 
 function addToFavorites(toolName) {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
@@ -214,10 +371,6 @@ function updateNavbarStats() {
         }
     }
 }
-
-// ============================================
-//  الأرقام المركزية (Google Sheets API)
-// ============================================
 
 const GAS_URL = "https://script.google.com/macros/s/AKfycbyGri-e8pequyYJ-DkwCyHsk17NsozvxLtbahssbXqVnTyfXjiHETSNHtlWDq2vaDXV4w/exec";
 
@@ -299,10 +452,6 @@ function updateVisitorCounter() {
     }
 }
 
-// ============================================
-//  إدارة المستخدمين والجلسة
-// ============================================
-
 function updateAuthUI() {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     const authLink = document.getElementById("authLink");
@@ -349,48 +498,6 @@ function setupLogout() {
     }
 }
 
-// ============================================
-//  البحث المرن (يدعم العربي والإنجليزي والمسافات)
-// ============================================
-
-function normalizeText(text) {
-    if (!text) return '';
-    
-    let normalized = text.toLowerCase().trim();
-    normalized = normalized.normalize("NFD").replace(/[\u064B-\u065F\u0670]/g, "");
-    normalized = normalized.replace(/[^\w\s\u0600-\u06FF]/g, ' ');
-    normalized = normalized.replace(/\s+/g, ' ').trim();
-    
-    return normalized;
-}
-
-function fuzzySearch(query, targetText) {
-    if (!query) return true;
-    
-    const normalizedQuery = normalizeText(query);
-    const normalizedTarget = normalizeText(targetText);
-    
-    if (normalizedTarget.includes(normalizedQuery)) {
-        return true;
-    }
-    
-    const queryWords = normalizedQuery.split(/\s+/);
-    let matchCount = 0;
-    
-    for (const word of queryWords) {
-        if (word.length < 2) continue;
-        if (normalizedTarget.includes(word)) {
-            matchCount++;
-        }
-    }
-    
-    if (matchCount >= queryWords.length * 0.5 && matchCount > 0) {
-        return true;
-    }
-    
-    return false;
-}
-
 function setupSearch() {
     const searchInput = document.getElementById("searchInput");
     const searchBtn = document.getElementById("searchBtn");
@@ -400,9 +507,9 @@ function setupSearch() {
     function performSearch() {
         const query = searchInput.value;
         const filtered = tools.filter(tool => 
-            fuzzySearch(query, tool.name) || 
-            fuzzySearch(query, tool.description) ||
-            fuzzySearch(query, tool.category)
+            enhancedFuzzySearch(query, tool.name) || 
+            enhancedFuzzySearch(query, tool.description) ||
+            enhancedFuzzySearch(query, tool.category)
         );
         displayTools(filtered);
         
@@ -421,10 +528,6 @@ function setupSearch() {
         searchBtn.addEventListener("click", performSearch);
     }
 }
-
-// ============================================
-//  نظام Dark Mode / Light Mode
-// ============================================
 
 function initTheme() {
     const savedTheme = localStorage.getItem('theme');
@@ -453,10 +556,6 @@ function setupThemeToggle() {
         localStorage.setItem('theme', newTheme);
     });
 }
-
-// ============================================
-//  بناء واجهة الموقع
-// ============================================
 
 function buildDropdowns() {
     const categories = [...new Set(tools.map(t => t.category))];
@@ -519,7 +618,6 @@ function displayTools(toolsArray) {
         const isFav = isFavorite(tool.name.split(' (')[0]);
         const starClass = isFav ? "fas fa-star" : "far fa-star";
         const starColor = isFav ? "var(--gold)" : "#666";
-        
         const displayName = tool.name.split(' (')[0];
         
         const card = document.createElement("div");
@@ -601,10 +699,6 @@ function setupExploreBtn() {
         });
     }
 }
-
-// ============================================
-//  التهيئة (Init)
-// ============================================
 
 function init() {
     loadClicksFromStorage();
