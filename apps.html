@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LEQF7LQ0WY"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -289,7 +291,7 @@
             { id: "imdb", name: "IMDb", category: "ترفيه", icon: "fas fa-star", description: "معلومات عن الأفلام", downloadLink: "https://apkpure.net/imdb/com.imdb.mobile/download" },
             { id: "letterboxd", name: "Letterboxd", category: "ترفيه", icon: "fas fa-ticket-alt", description: "تقييم الأفلام", downloadLink: "https://apkpure.net/letterboxd/com.letterboxd.app/download" },
             
-            // ========== ألعاب (70) ==========
+            // ========== ألعاب (60) ==========
             { id: "pubg", name: "PUBG Mobile", category: "ألعاب", icon: "fas fa-crosshairs", description: "لعبة الباتل رويال الشهيرة", downloadLink: "https://apkpure.net/pubg-mobile/com.tencent.ig/download" },
             { id: "free-fire", name: "Free Fire MAX", category: "ألعاب", icon: "fas fa-fire", description: "لعبة الباتل رويال السريعة", downloadLink: "https://apkpure.net/free-fire-max/com.dts.freefiremax/download" },
             { id: "call-of-duty", name: "Call of Duty Mobile", category: "ألعاب", icon: "fas fa-gun", description: "لعبة إطلاق النار الاحترافية", downloadLink: "https://apkpure.net/call-of-duty-mobile/com.activision.callofduty.shooter/download" },
@@ -314,13 +316,122 @@
             { id: "minecraft", name: "Minecraft", category: "ألعاب", icon: "fas fa-cube", description: "لعبة البناء والإبداع", downloadLink: "https://apkpure.net/minecraft/com.mojang.minecraftpe/download" },
             { id: "roblox", name: "Roblox", category: "ألعاب", icon: "fas fa-gamepad", description: "منصة ألعاب متعددة", downloadLink: "https://apkpure.net/roblox/com.roblox.client/download" },
             { id: "among-us", name: "Among Us", category: "ألعاب", icon: "fas fa-user-astronaut", description: "لعبة الخيانة الجماعية", downloadLink: "https://apkpure.net/among-us/com.innersloth.spacemafia/download" },
-            { id: "fall-guys", name: "Fall Guys", category: "ألعاب", icon: "fas fa-running", description: "لعبة العوائق الجماعية", downloadLink: "https://apkpure.net/fall-guys/com.mediatonic.fallguys/download" },
             { id: "genshin-impact", name: "Genshin Impact", category: "ألعاب", icon: "fas fa-dragon", description: "لعبة تقمص أدوار عالم مفتوح", downloadLink: "https://apkpure.net/genshin-impact/com.miHoYo.GenshinImpact/download" },
-            { id: "pubg-new-state", name: "PUBG New State", category: "ألعاب", icon: "fas fa-crosshairs", description: "نسخة جديدة من PUBG", downloadLink: "https://apkpure.net/pubg-new-state/com.pubg.newstate/download" },
             { id: "cod-warzone", name: "COD Warzone Mobile", category: "ألعاب", icon: "fas fa-gun", description: "نسخة وارزون من كول أوف ديوتي", downloadLink: "https://apkpure.net/cod-warzone/com.activision.warzone/download" },
             { id: "rainbow-six", name: "Rainbow Six Mobile", category: "ألعاب", icon: "fas fa-shield", description: "لعبة إطلاق نار تكتيكية", downloadLink: "https://apkpure.net/rainbow-six/com.ubisoft.rainbowsixm/download" },
             { id: "valorant-mobile", name: "Valorant Mobile", category: "ألعاب", icon: "fas fa-bullseye", description: "نسخة فالورانت للهاتف", downloadLink: "https://apkpure.net/valorant-mobile/com.riotgames.valorant/download" },
-            { id: "league-of-legends", name: "League of Legends", category: "ألعاب", icon: "fas fa-chess-queen", description: "لعبة MOBA الأسطورية", downloadLink: "https://apkpure.net/league-of-legends/com.riotgames.league/download" }
+            { id: "league-of-legends", name: "League of Legends", category: "ألعاب", icon: "fas fa-chess-queen", description: "لعبة MOBA الأسطورية", downloadLink: "https://apkpure.net/league-of-legends/com.riotgames.league/download" },
+            { id: "fall-guys", name: "Fall Guys", category: "ألعاب", icon: "fas fa-running", description: "لعبة العوائق الجماعية", downloadLink: "https://apkpure.net/fall-guys/com.mediatonic.fallguys/download" }
         ];
 
-        // باقي الكود (مكمل في الرسالة التالية)
+        let currentCategory = "all";
+        let currentSearch = "";
+
+        function getFilteredApps() {
+            let filtered = apps;
+            if (currentCategory !== "all") {
+                filtered = filtered.filter(app => app.category === currentCategory);
+            }
+            if (currentSearch) {
+                filtered = filtered.filter(app => 
+                    app.name.toLowerCase().includes(currentSearch.toLowerCase())
+                );
+            }
+            return filtered;
+        }
+
+        function displayApps() {
+            const container = document.getElementById("appsContainer");
+            const filtered = getFilteredApps();
+            
+            if (filtered.length === 0) {
+                container.innerHTML = `<div style="text-align:center; padding:50px; color:#D4AF37;">😅 لا توجد تطبيقات تطابق بحثك</div>`;
+                return;
+            }
+            
+            container.innerHTML = filtered.map(app => `
+                <div class="app-card" onclick="window.location.href='app-details.html?id=${app.id}'">
+                    <i class="${app.icon}"></i>
+                    <h3>${app.name}</h3>
+                    <p>${app.description.substring(0, 50)}...</p>
+                </div>
+            `).join('');
+        }
+
+        function setupCategoryFilters() {
+            const buttons = document.querySelectorAll(".cat-btn");
+            buttons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    buttons.forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    currentCategory = btn.getAttribute("data-cat");
+                    displayApps();
+                });
+            });
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById("searchInput");
+            const searchBtn = document.getElementById("searchBtn");
+            searchBtn.addEventListener("click", () => {
+                currentSearch = searchInput.value;
+                displayApps();
+            });
+            searchInput.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") {
+                    currentSearch = searchInput.value;
+                    displayApps();
+                }
+            });
+        }
+
+        function updateAuthUI() {
+            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            const authLink = document.getElementById("authLink");
+            const userGreeting = document.getElementById("userGreeting");
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (currentUser) {
+                if (authLink) authLink.style.display = "none";
+                if (userGreeting) {
+                    userGreeting.style.display = "inline";
+                    userGreeting.textContent = `مرحباً ${currentUser.name}`;
+                }
+                if (logoutBtn) logoutBtn.style.display = "inline";
+            } else {
+                if (authLink) authLink.style.display = "inline";
+                if (userGreeting) userGreeting.style.display = "none";
+                if (logoutBtn) logoutBtn.style.display = "none";
+            }
+        }
+
+        function setupLogout() {
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("currentUser");
+                    updateAuthUI();
+                    window.location.href = "index.html";
+                });
+            }
+        }
+
+        function setupMobileMenu() {
+            const toggle = document.getElementById("mobileMenu");
+            const navLinks = document.getElementById("navLinks");
+            if (toggle && navLinks) {
+                toggle.addEventListener("click", () => {
+                    navLinks.classList.toggle("active");
+                });
+            }
+        }
+
+        setupCategoryFilters();
+        setupSearch();
+        displayApps();
+        updateAuthUI();
+        setupLogout();
+        setupMobileMenu();
+    </script>
+</body>
+</html>
