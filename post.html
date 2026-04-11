@@ -13,26 +13,7 @@
         gtag('config', 'G-LEQF7LQ0WY');
     </script>
     
-    <!-- SEO Meta Tags -->
-    <title>Ramzone | مقالة: الذكاء الاصطناعي وريادة الأعمال</title>
-    <meta name="description" content="اقرأ أحدث المقالات عن الذكاء الاصطناعي، أدوات AI، وريادة الأعمال الرقمية. تعلم كيف تحقق أرباحاً باستخدام التكنولوجيا الحديثة.">
-    <meta name="keywords" content="مقالات الذكاء الاصطناعي, مدونة AI, تعلم الذكاء الاصطناعي, ريادة الأعمال الرقمية, Ramzone">
-    <meta name="author" content="Ramadan Mahmoud">
-    <meta name="robots" content="index, follow">
-    
-    <meta property="og:title" content="Ramzone | مقالة عن الذكاء الاصطناعي">
-    <meta property="og:description" content="اقرأ أحدث المقالات عن الذكاء الاصطناعي وأدوات AI">
-    <meta property="og:image" content="https://ramadan2001mahmoud.github.io/The-Future-Millionaire/logo.png">
-    <meta property="og:url" content="https://ramadan2001mahmoud.github.io/The-Future-Millionaire/post.html">
-    <meta property="og:type" content="article">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ramzone | مقالة">
-    <meta name="twitter:description" content="اقرأ أحدث المقالات عن الذكاء الاصطناعي">
-    <meta name="twitter:image" content="https://ramadan2001mahmoud.github.io/The-Future-Millionaire/logo.png">
-    
-    <link rel="canonical" href="https://ramadan2001mahmoud.github.io/The-Future-Millionaire/post.html">
-    
+    <title>تفاصيل المقال | Ramzone</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -111,14 +92,15 @@
             transform: scale(1.1);
             color: #FFF2B2;
         }
-        .footer-links {
-            margin-top: 15px;
+        .comments-section {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #D4AF37;
         }
-        .footer-links a {
+        .comments-section h3 {
             color: #D4AF37;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
         }
         .whatsapp-float {
             position: fixed;
@@ -169,6 +151,7 @@
                 <a href="index.html">الرئيسية</a>
                 <a href="blog.html">المدونة</a>
                 <a href="courses.html">الكورسات</a>
+                <a href="apps.html">تطبيقات وألعاب</a>
                 <a href="login.html" id="authLink">تسجيل الدخول</a>
                 <span id="userGreeting" style="display:none; color:#D4AF37;"></span>
                 <a href="#" id="logoutBtn" style="display:none;">تسجيل خروج</a>
@@ -180,6 +163,27 @@
     <div class="post-container" id="postContainer">
         <a href="blog.html" class="back-btn"><i class="fas fa-arrow-right"></i> العودة إلى المدونة</a>
         <div id="postContent"></div>
+        
+        <!-- قسم التعليقات -->
+        <div class="comments-section">
+            <h3>💬 التعليقات</h3>
+            <script src="https://giscus.app/client.js"
+                    data-repo="ramadan2001mahmoud/The-Future-Millionaire"
+                    data-repo-id="R_kgDOR8z1hA"
+                    data-category="Announcements"
+                    data-category-id="DIC_kwDOR8z1hM4C6mJj"
+                    data-mapping="title"
+                    data-strict="0"
+                    data-reactions-enabled="1"
+                    data-emit-metadata="0"
+                    data-input-position="top"
+                    data-theme="dark"
+                    data-lang="ar"
+                    data-loading="lazy"
+                    crossorigin="anonymous"
+                    async>
+            </script>
+        </div>
     </div>
 
     <a href="https://wa.me/201069302075" class="whatsapp-float" target="_blank">
@@ -204,6 +208,7 @@
     </footer>
 
     <script>
+        // قاعدة بيانات المقالات الكاملة
         const fullPosts = {
             "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026": {
                 title: "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026",
@@ -228,7 +233,7 @@
                 title: "أفضل 10 أدوات AI لتوليد الفيديو",
                 date: "2026-03-28",
                 category: "أدوات",
-                image: "https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg?w=800&h=400&fit=crop",
+                image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4dde1?w=800&h=400&fit=crop",
                 content: `<p>صناعة الفيديو أصبحت أسهل من أي وقت مضى بفضل الذكاء الاصطناعي. إليك أفضل 10 أدوات:</p>
                 <ul>
                     <li><strong>Runway ML:</strong> تحرير وتوليد فيديوهات احترافية</li>
@@ -291,6 +296,55 @@
                 <h2>4. ابدأ مشروعك الخاص</h2>
                 <p>بعد شهر من التعلم، ابدأ مشروعاً خاصاً بك.</p>`
             },
+            "أفضل 5 أدوات لتحليل البيانات بالذكاء الاصطناعي": {
+                title: "أفضل 5 أدوات لتحليل البيانات بالذكاء الاصطناعي",
+                date: "2026-03-10",
+                category: "أدوات",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
+                content: `<p>تحليل البيانات أصبح أسهل مع الذكاء الاصطناعي. إليك أفضل 5 أدوات:</p>
+                <ul>
+                    <li><strong>Tableau AI:</strong> تصور البيانات بالذكاء الاصطناعي</li>
+                    <li><strong>Polymer:</strong> تحليل بيانات بدون كود</li>
+                    <li><strong>Julius AI:</strong> تحليل بيانات بالمحادثة</li>
+                    <li><strong>MonkeyLearn:</strong> تحليل النصوص والمشاعر</li>
+                    <li><strong>IBM Watson:</strong> تحليل متقدم للبيانات</li>
+                </ul>
+                <p>جميع هذه الأدوات توفر نسخ تجريبية مجانية.</p>`
+            },
+            "الاستثمار في الذكاء الاصطناعي: فرص العقد القادم": {
+                title: "الاستثمار في الذكاء الاصطناعي: فرص العقد القادم",
+                date: "2026-03-05",
+                category: "استثمار",
+                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
+                content: `<p>الذكاء الاصطناعي هو المستقبل، والاستثمار فيه الآن قد يحقق عوائد ضخمة. إليك أفضل المجالات:</p>
+                <h2>1. شركات التكنولوجيا الكبرى</h2>
+                <p>Google، Microsoft، Amazon كلها تستثمر بكثافة في AI.</p>
+                <h2>2. الشركات الناشئة</h2>
+                <p>استثمر في الشركات الناشئة التي تقدم حلولاً مبتكرة في مجال AI.</p>
+                <h2>3. الصناديق المتداولة (ETFs)</h2>
+                <p>صناديق مثل ROBO و BOTZ تركز على شركات التكنولوجيا.</p>
+                <p><strong>نصيحة:</strong> ابدأ بمبالغ صغيرة واستثمر على المدى الطويل.</p>`
+            },
+            "10 مهارات مطلوبة في عصر الذكاء الاصطناعي": {
+                title: "10 مهارات مطلوبة في عصر الذكاء الاصطناعي",
+                date: "2026-02-28",
+                category: "تطوير ذات",
+                image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=400&fit=crop",
+                content: `<p>سوق العمل يتغير بسرعة بسبب الذكاء الاصطناعي. إليك 10 مهارات ستجعلك مطلوباً:</p>
+                <ol>
+                    <li><strong>البرمجة:</strong> Python و JavaScript أساسيتان</li>
+                    <li><strong>تحليل البيانات:</strong> فهم البيانات واستخراج القيم منها</li>
+                    <li><strong>التعلم الآلي:</strong> بناء نماذج AI</li>
+                    <li><strong>التفكير النقدي:</strong> تحليل النتائج واتخاذ القرارات</li>
+                    <li><strong>الإبداع:</strong> AI يقلد لكن لا يبتكر</li>
+                    <li><strong>التواصل:</strong> شرح الأفكار التقنية لغير المختصين</li>
+                    <li><strong>إدارة المشاريع:</strong> تنظيم وتوجيه فرق العمل</li>
+                    <li><strong>التسويق الرقمي:</strong> استغلال AI في التسويق</li>
+                    <li><strong>التعلم المستمر:</strong> مواكبة التطورات السريعة</li>
+                    <li><strong>الأخلاقيات:</strong> فهم تأثير AI على المجتمع</li>
+                </ol>
+                <p>طور هذه المهارات وستكون جاهزاً لمستقبل مليء بالفرص.</p>`
+            },
             "كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال": {
                 title: "كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال",
                 date: "2026-04-05",
@@ -304,7 +358,8 @@
                 <h2>3. سوق لنفسك مجاناً</h2>
                 <p>استخدم LinkedIn، Twitter، ومجموعات Facebook للترويج لخدماتك.</p>
                 <h2>4. أعد استثمار أرباحك</h2>
-                <p>أول 100 دولار أرباح استثمرها في أدوات مدفوعة لتطوير خدماتك.</p>`
+                <p>أول 100 دولار أرباح استثمرها في أدوات مدفوعة لتطوير خدماتك.</p>
+                <p><strong>الخلاصة:</strong> ابدأ اليوم، لا تنتظر الظروف المثالية.</p>`
             },
             "أفضل 5 أدوات AI لكتابة السيرة الذاتية": {
                 title: "أفضل 5 أدوات AI لكتابة السيرة الذاتية",
@@ -318,7 +373,8 @@
                     <li><strong>Novoresume:</strong> تحليل واقتراحات لتحسين سيرتك الذاتية</li>
                     <li><strong>EnhanCV:</strong> تحسين الكلمات المفتاحية لتجاوز أنظمة ATS</li>
                     <li><strong>Resume.io:</strong> قوالب حديثة مع نصائح مخصصة</li>
-                </ul>`
+                </ul>
+                <p><strong>نصيحة:</strong> استخدم ChatGPT أيضاً لكتابة ملخص شخصي قوي وجذاب.</p>`
             }
         };
 
