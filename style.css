@@ -14,6 +14,7 @@ body {
 
 /* ========== متغيرات الألوان ========== */
 :root {
+    /* الوضع الليلي (Dark Mode) */
     --bg-primary: #0A0A0A;
     --bg-secondary: #1A1A1A;
     --bg-card: #1A1A1A;
@@ -27,25 +28,31 @@ body {
     --gold-dark: #B8860B;
     --gold-rgb: 212, 175, 55;
     --dropdown-bg: #1A1A1A;
+    --hover-bg: #D4AF37;
+    --hover-text: #0A0A0A;
 }
 
 [data-theme="light"] {
-    --bg-primary: #F5F5F5;
+    /* الوضع النهاري (Light Mode) - ألوان فاتحة محسنة */
+    --bg-primary: #F8F9FA;
     --bg-secondary: #FFFFFF;
     --bg-card: #FFFFFF;
-    --bg-navbar: rgba(245, 245, 245, 0.95);
-    --text-primary: #1A1A1A;
-    --text-secondary: #333333;
-    --text-muted: #666666;
-    --border-color: #E0E0E0;
-    --gold: #B8860B;
-    --gold-light: #D4AF37;
-    --gold-dark: #8B6508;
-    --gold-rgb: 184, 134, 11;
+    --bg-navbar: rgba(255, 255, 255, 0.98);
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --text-muted: #6C757D;
+    --border-color: #E9ECEF;
+    --gold: #D4AF37;
+    --gold-light: #E8C860;
+    --gold-dark: #B8860B;
+    --gold-rgb: 212, 175, 55;
     --dropdown-bg: #FFFFFF;
+    --hover-bg: #D4AF37;
+    --hover-text: #212529;
 }
 
 [data-theme="dark"] {
+    /* الوضع الليلي (Dark Mode) */
     --bg-primary: #0A0A0A;
     --bg-secondary: #1A1A1A;
     --bg-card: #1A1A1A;
@@ -59,6 +66,8 @@ body {
     --gold-dark: #B8860B;
     --gold-rgb: 212, 175, 55;
     --dropdown-bg: #1A1A1A;
+    --hover-bg: #D4AF37;
+    --hover-text: #0A0A0A;
 }
 
 /* شريط التنقل */
@@ -68,7 +77,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid rgba(var(--gold-rgb), 0.3);
+    border-bottom: 1px solid var(--gold);
 }
 
 .nav-container {
@@ -129,32 +138,41 @@ body {
     border-bottom: 2px solid var(--gold);
 }
 
-/* القوائم المنسدلة */
+/* القوائم المنسدلة - ثابتة */
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
+.dropdown .dropbtn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 .dropdown-content {
     display: none;
     position: absolute;
-    background: var(--dropdown-bg);
-    min-width: 220px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    border-radius: 10px;
-    border: 1px solid var(--gold);
-    z-index: 1001;
     top: 100%;
     right: 0;
+    background: var(--dropdown-bg);
+    min-width: 220px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    border: 1px solid var(--gold);
+    z-index: 10000;
+    overflow: hidden;
 }
 
 .dropdown-content a {
     color: var(--text-primary);
-    padding: 12px 16px;
+    padding: 12px 18px;
     text-decoration: none;
     display: block;
+    text-align: right;
     border-bottom: 1px solid var(--border-color);
-    transition: 0.2s;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
 }
 
 .dropdown-content a:last-child {
@@ -162,8 +180,8 @@ body {
 }
 
 .dropdown-content a:hover {
-    background: var(--gold);
-    color: #0A0A0A;
+    background: var(--hover-bg);
+    color: var(--hover-text);
 }
 
 .dropdown:hover .dropdown-content {
@@ -175,10 +193,16 @@ body {
     display: flex;
     align-items: center;
     background: var(--bg-secondary);
-    border-radius: 25px;
+    border-radius: 30px;
     border: 1px solid var(--border-color);
     overflow: hidden;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.search-box:focus-within {
+    box-shadow: 0 0 0 2px rgba(var(--gold-rgb), 0.2);
+    border-color: var(--gold);
 }
 
 .search-box input {
@@ -186,15 +210,19 @@ body {
     border: none;
     color: var(--text-primary);
     outline: none;
-    padding: 8px 15px;
-    width: 200px;
+    padding: 10px 16px;
+    width: 220px;
     font-size: 0.9rem;
+}
+
+.search-box input::placeholder {
+    color: var(--text-muted);
 }
 
 .search-box button {
     background: var(--gold);
     border: none;
-    padding: 8px 12px;
+    padding: 10px 16px;
     cursor: pointer;
     color: #0A0A0A;
     transition: 0.3s;
@@ -204,30 +232,25 @@ body {
     background: var(--gold-light);
 }
 
-.search-box i {
-    font-size: 0.9rem;
-}
-
 /* القسم الرئيسي */
 .hero {
     background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-    padding: 100px 20px;
+    padding: 80px 20px;
     text-align: center;
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
-.gold {
-    color: var(--gold);
-}
-
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--text-secondary);
     margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cta-btn {
@@ -235,7 +258,7 @@ body {
     color: #0A0A0A;
     border: none;
     padding: 12px 30px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
     border-radius: 30px;
     cursor: pointer;
@@ -244,14 +267,14 @@ body {
 
 .cta-btn:hover {
     background: var(--gold-light);
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 /* شريط الإحصائيات */
 .stats-bar {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 40px;
     padding: 40px 20px;
     background: var(--bg-secondary);
     border-bottom: 1px solid var(--gold);
@@ -263,20 +286,20 @@ body {
 }
 
 .stat-item i {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--gold);
     margin-bottom: 10px;
 }
 
 .stat-item span {
     display: block;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: bold;
     color: var(--gold);
 }
 
 .stat-item p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
 }
 
@@ -284,19 +307,20 @@ body {
 .filter-section {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 12px;
     flex-wrap: wrap;
-    padding: 40px 20px;
+    padding: 30px 20px;
 }
 
 .filter-btn {
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     color: var(--text-primary);
-    padding: 8px 20px;
+    padding: 8px 18px;
     border-radius: 25px;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 0.9rem;
 }
 
 .filter-btn.active, .filter-btn:hover {
@@ -307,60 +331,65 @@ body {
 
 /* بطاقات الأدوات */
 .tools-container {
-    max-width: 1400px;
+    max-width: 1300px;
     margin: 0 auto;
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+    gap: 25px;
 }
 
 .tool-card {
     background: var(--bg-card);
-    border-radius: 15px;
+    border-radius: 16px;
     padding: 20px;
-    transition: 0.3s;
+    transition: all 0.3s ease;
     border: 1px solid var(--border-color);
     position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .tool-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
     border-color: var(--gold);
-    box-shadow: 0 10px 30px rgba(var(--gold-rgb), 0.2);
+    box-shadow: 0 10px 25px rgba(var(--gold-rgb), 0.15);
 }
 
 .tool-icon {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: var(--gold);
     margin-bottom: 15px;
 }
 
 .tool-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
 }
 
 .tool-category {
     color: var(--gold);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .tool-description {
     color: var(--text-secondary);
     margin-bottom: 15px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
 }
 
 .tool-link {
     display: inline-block;
     background: var(--gold);
     color: #0A0A0A;
-    padding: 8px 20px;
-    border-radius: 20px;
+    padding: 8px 18px;
+    border-radius: 25px;
     text-decoration: none;
     font-weight: bold;
+    font-size: 0.85rem;
     transition: 0.3s;
 }
 
@@ -370,7 +399,7 @@ body {
 
 .tool-clicks {
     position: absolute;
-    bottom: 15px;
+    bottom: 12px;
     right: 15px;
     font-size: 0.7rem;
     color: var(--text-muted);
@@ -379,9 +408,9 @@ body {
 /* فوتر */
 .footer {
     background: var(--bg-primary);
-    padding: 40px 20px;
+    padding: 35px 20px;
     text-align: center;
-    margin-top: 60px;
+    margin-top: 50px;
     border-top: 1px solid var(--gold);
 }
 
@@ -392,7 +421,7 @@ body {
 .social-icons a {
     color: var(--text-primary);
     margin: 0 10px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     transition: 0.3s;
 }
 
@@ -401,8 +430,8 @@ body {
 }
 
 .visitor-counter {
-    margin-top: 10px;
-    font-size: 0.8rem;
+    margin-top: 15px;
+    font-size: 0.75rem;
     color: var(--text-muted);
 }
 
@@ -419,6 +448,11 @@ body {
     color: var(--gold);
     text-decoration: none;
     margin: 0 10px;
+    font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
 }
 
 /* موبايل */
@@ -437,15 +471,15 @@ body {
 }
 
 .theme-icon {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--gold);
 }
 
 .theme-switch {
     display: inline-block;
-    height: 24px;
+    height: 22px;
     position: relative;
-    width: 50px;
+    width: 48px;
 }
 
 .theme-switch input {
@@ -460,18 +494,18 @@ body {
     position: absolute;
     right: 0;
     top: 0;
-    transition: .4s;
+    transition: .3s;
     border-radius: 34px;
 }
 
 .slider:before {
     background-color: white;
-    bottom: 4px;
+    bottom: 3px;
     content: "";
     height: 16px;
     left: 4px;
     position: absolute;
-    transition: .4s;
+    transition: .3s;
     width: 16px;
     border-radius: 50%;
 }
@@ -484,15 +518,7 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
-}
-
-/* استجابة للشاشات المتوسطة */
+/* استجابة للشاشات */
 @media (max-width: 1024px) {
     .nav-container {
         flex-wrap: wrap;
@@ -516,6 +542,7 @@ input:checked + .slider:before {
     .nav-container {
         flex-direction: row;
         flex-wrap: wrap;
+        justify-content: space-between;
     }
     
     .menu-toggle {
@@ -527,12 +554,13 @@ input:checked + .slider:before {
         order: 2;
         flex: 1;
         justify-content: center;
+        display: flex;
     }
     
     .search-box {
         order: 3;
         width: 100%;
-        margin-top: 10px;
+        margin-top: 12px;
     }
     
     .search-box input {
@@ -542,7 +570,7 @@ input:checked + .slider:before {
     .theme-switch-wrapper {
         order: 4;
         justify-content: center;
-        margin: 10px 0;
+        margin: 12px 0;
     }
     
     .nav-links {
@@ -558,14 +586,33 @@ input:checked + .slider:before {
         display: flex;
     }
     
+    .dropdown {
+        width: 100%;
+    }
+    
+    .dropdown .dropbtn {
+        width: 100%;
+        justify-content: center;
+    }
+    
     .dropdown-content {
         position: static;
         width: 100%;
-        margin-top: 5px;
+        margin-top: 8px;
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+    }
+    
+    .hero {
+        padding: 50px 15px;
     }
     
     .hero-content h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.95rem;
     }
     
     .stats-bar {
@@ -584,27 +631,49 @@ input:checked + .slider:before {
 
 @media (max-width: 480px) {
     .nav-container {
-        padding: 1rem;
+        padding: 0.8rem 1rem;
+    }
+    
+    .logo-text {
+        font-size: 1.1rem;
+    }
+    
+    .logo-img {
+        width: 35px;
+        height: 35px;
     }
     
     .hero {
-        padding: 60px 15px;
+        padding: 40px 15px;
     }
     
     .hero-content h1 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
     
     .filter-section {
-        gap: 10px;
+        gap: 8px;
+        padding: 20px 15px;
     }
     
     .filter-btn {
         padding: 6px 12px;
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
     
     .tools-container {
         grid-template-columns: 1fr;
+    }
+    
+    .stat-item i {
+        font-size: 1.3rem;
+    }
+    
+    .stat-item span {
+        font-size: 1.1rem;
+    }
+    
+    .stat-item p {
+        font-size: 0.7rem;
     }
         }
