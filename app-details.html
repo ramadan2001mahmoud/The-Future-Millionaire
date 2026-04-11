@@ -18,6 +18,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
+    <!-- البيانات المحدثة تلقائياً من GitHub Actions -->
+    <script src="data/apps-data-complete.js"></script>
+    
     <style>
         .details-container {
             max-width: 900px;
@@ -131,7 +134,6 @@
         .back-btn:hover {
             text-decoration: underline;
         }
-        /* مساحة إعلانية - فارغة جاهزة للإعلانات */
         .ad-space {
             margin: 30px 0;
             min-height: 90px;
@@ -185,7 +187,6 @@
     <div class="details-container" id="detailsContainer">
         <a href="apps.html" class="back-btn"><i class="fas fa-arrow-right"></i> العودة إلى القائمة</a>
         <div id="detailsContent"></div>
-        <!-- مساحة إعلانية فارغة - جاهزة للإعلانات مستقبلاً -->
         <div class="ad-space" id="adSpace"></div>
     </div>
 
@@ -211,92 +212,81 @@
     </footer>
 
     <script>
-        // قاعدة بيانات التطبيقات والألعاب (نسخة كاملة)
-        const apps = [
-            // ========== تواصل ==========
-            { id: "whatsapp", name: "WhatsApp", category: "تواصل", icon: "fab fa-whatsapp", description: "تطبيق المراسلة الفورية الأشهر في العالم. يتيح إرسال الرسائل النصية والصور والفيديوهات وإجراء المكالمات الصوتية والمرئية.", features: ["مراسلة فورية", "مكالمات صوتية وفيديو", "مشاركة الموقع", "مكالمات جماعية", "تشفير شامل"], version: "2.24.8.85", size: "45 MB", downloads: "5B+", developer: "Meta", downloadLink: "https://apkpure.net/whatsapp-messenger/com.whatsapp/download" },
-            { id: "telegram", name: "Telegram", category: "تواصل", icon: "fab fa-telegram", description: "تطبيق مراسلة آمن وسريع مع بوتات متقدمة وميزات فائقة السرعة. يدعم القنوات والمجموعات الكبيرة.", features: ["قنوات ومجموعات غير محدودة", "بوتات ذكية", "مشاركة ملفات حتى 2GB", "تشفير المحادثات السرية"], version: "10.9.1", size: "72 MB", downloads: "1B+", developer: "Telegram FZ-LLC", downloadLink: "https://apkpure.net/telegram/org.telegram.messenger/download" },
-            { id: "facebook", name: "Facebook", category: "تواصل", icon: "fab fa-facebook", description: "تطبيق التواصل الاجتماعي الأكبر في العالم. تواصل مع الأصدقاء والعائلة، تابع الأخبار والفيديوهات.", features: ["مشاركة المنشورات", "مشاهدة الفيديوهات", "مجموعات وصفحات", "بث مباشر", "سوق"], version: "460.0.0", size: "82 MB", downloads: "10B+", developer: "Meta", downloadLink: "https://apkpure.net/facebook/com.facebook.katana/download" },
-            { id: "instagram", name: "Instagram", category: "تواصل", icon: "fab fa-instagram", description: "مشاركة الصور والفيديوهات مع الأصدقاء. قصص وريلز وبث مباشر. اكتشف المحتوى المفضل لديك.", features: ["صور وفيديوهات", "قصص وريلز", "رسائل مباشرة", "بث مباشر", "تسوق"], version: "332.0.0", size: "68 MB", downloads: "5B+", developer: "Meta", downloadLink: "https://apkpure.net/instagram/com.instagram.android/download" },
-            { id: "twitter", name: "Twitter", category: "تواصل", icon: "fab fa-twitter", description: "منصة التدوين المصغر والأخبار العاجلة. تابع الأحداث أول بأول. شارك رأيك في 280 حرف.", features: ["تغريدات", "وسوم", "مقاطع فيديو", "مساحات صوتية", "قوائم"], version: "10.45.0", size: "58 MB", downloads: "1B+", developer: "X Corp", downloadLink: "https://apkpure.net/twitter/com.twitter.android/download" },
-            { id: "snapchat", name: "Snapchat", category: "تواصل", icon: "fab fa-snapchat", description: "تطبيق الصور والفيديوهات المؤقتة. أضف فلاتر وعدسات ممتعة. تواصل مع الأصدقاء.", features: ["لقطات مؤقتة", "فلتر وعدسات", "خريطة سناب", "قصص", "دردشة"], version: "12.85.0", size: "125 MB", downloads: "500M+", developer: "Snap Inc", downloadLink: "https://apkpure.net/snapchat/com.snapchat.android/download" },
-            { id: "discord", name: "Discord", category: "تواصل", icon: "fab fa-discord", description: "منصة المحادثة الصوتية والنصية للجيمرز والمجتمعات. أنشئ خادمك الخاص.", features: ["خوادم وقنوات", "مكالمات صوتية", "بث مباشر", "بوتات", "مشاركة شاشة"], version: "242.0", size: "95 MB", downloads: "500M+", developer: "Discord Inc", downloadLink: "https://apkpure.net/discord/com.discord/download" },
-            { id: "signal", name: "Signal", category: "تواصل", icon: "fas fa-lock", description: "تطبيق مراسلة آمن ومشفر بالكامل. خصوصية تامة. لا يخزن أي بيانات عنك.", features: ["تشفير كامل", "رسائل تختفي", "مكالمات آمنة", "مصدر مفتوح", "بدون إعلانات"], version: "7.8.0", size: "48 MB", downloads: "100M+", developer: "Signal Foundation", downloadLink: "https://apkpure.net/signal/org.thoughtcrime.securesms/download" },
-            
-            // ========== ألعاب ==========
-            { id: "pubg", name: "PUBG Mobile", category: "ألعاب", icon: "fas fa-crosshairs", description: "لعبة الباتل رويال الشهيرة. ناجاة 100 لاعب على جزيرة. آخر لاعب يبقى هو الفائز.", features: ["100 لاعب في مباراة واحدة", "رسومات واقعية", "أسلحة متعددة", "مركبات", "طور الساحة"], version: "3.4.0", size: "1.2 GB", downloads: "1B+", developer: "Tencent", downloadLink: "https://apkpure.net/pubg-mobile/com.tencent.ig/download" },
-            { id: "free-fire", name: "Free Fire MAX", category: "ألعاب", icon: "fas fa-fire", description: "لعبة الباتل رويال السريعة. مباريات 10 دقائق. رسومات محسنة.", features: ["50 لاعب", "مباريات سريعة", "رسومات HD", "أسلحة متنوعة", "شخصيات فريدة"], version: "2.107.0", size: "850 MB", downloads: "1B+", developer: "Garena", downloadLink: "https://apkpure.net/free-fire-max/com.dts.freefiremax/download" },
-            { id: "call-of-duty", name: "Call of Duty Mobile", category: "ألعاب", icon: "fas fa-gun", description: "لعبة إطلاق النار الاحترافية. طور المعركة متعددة اللاعبين وطور الباتل رويال.", features: ["طور المعركة", "باتل رويال", "أسلحة حقيقية", "خرائط كلاسيكية", "تخصيص الأسلحة"], version: "1.9.0", size: "1.5 GB", downloads: "500M+", developer: "Activision", downloadLink: "https://apkpure.net/call-of-duty-mobile/com.activision.callofduty.shooter/download" },
-            { id: "clash-of-clans", name: "Clash of Clans", category: "ألعاب", icon: "fas fa-chess-king", description: "لعبة بناء القرى والحروب. اقرية، درب جيشك، وشن الهجمات على لاعبين آخرين.", features: ["بناء القرية", "هجمات اللاعبين", "تحالفات", "أبطال", "أحداث أسبوعية"], version: "16.0.0", size: "320 MB", downloads: "500M+", developer: "Supercell", downloadLink: "https://apkpure.net/clash-of-clans/com.supercell.clashofclans/download" },
-            { id: "clash-royale", name: "Clash Royale", category: "ألعاب", icon: "fas fa-chess", description: "لعبة بطاقات استراتيجية. اجمع البطاقات، كوّن برجك، ودمر أبراج الخصم.", features: ["بطاقات قابلة للتطور", "معارك لحظية", "عشائر", "بطولات", "بطاقات البطل"], version: "3.6.0", size: "240 MB", downloads: "100M+", developer: "Supercell", downloadLink: "https://apkpure.net/clash-royale/com.supercell.clashroyale/download" },
-            { id: "mobile-legends", name: "Mobile Legends", category: "ألعاب", icon: "fas fa-users", description: "لعبة MOBA الشهيرة. 5v5. أبطال متنوعون. مهارات رائعة.", features: ["5v5", "أبطال متنوعون", "طور الترتيب", "عشائر", "أحداث يومية"], version: "1.8.0", size: "450 MB", downloads: "500M+", developer: "Moonton", downloadLink: "https://apkpure.net/mobile-legends/com.mobile.legends/download" },
-            { id: "brawl-stars", name: "Brawl Stars", category: "ألعاب", icon: "fas fa-fist-raised", description: "لعبة قتال سريعة. معارك 3v3. أبطال متنوعون.", features: ["طور المعركة", "جمع الأحجار", "السيطرة على المنطقة", "أبطال فريدون", "أحداث محدودة"], version: "55.0", size: "350 MB", downloads: "100M+", developer: "Supercell", downloadLink: "https://apkpure.net/brawl-stars/com.supercell.brawlstars/download" },
-            { id: "candy-crush", name: "Candy Crush Saga", category: "ألعاب", icon: "fas fa-candy-cane", description: "لعبة الألغاز الشهيرة. آلاف المستويات. حلوى لذيذة.", features: ["آلاف المستويات", "عززات", "أحداث أسبوعية", "صعوبة متدرجة", "رسومات زاهية"], version: "1.270.0", size: "180 MB", downloads: "500M+", developer: "King", downloadLink: "https://apkpure.net/candy-crush-saga/com.king.candycrushsaga/download" },
-            { id: "subway-surfers", name: "Subway Surfers", category: "ألعاب", icon: "fas fa-subway", description: "لعبة الجري الكلاسيكية. اهرب من المفتش. اجمع العملات.", features: ["جري لا نهائي", "لوحات تزلج", "أبطال متعددون", "أحداث محدودة", "مهمات يومية"], version: "3.34.0", size: "150 MB", downloads: "1B+", developer: "Sybo", downloadLink: "https://apkpure.net/subway-surfers/com.kiloo.subwaysurf/download" },
-            { id: "temple-run", name: "Temple Run 2", category: "ألعاب", icon: "fas fa-running", description: "لعبة الجري والمغامرة. اهرب من القرود. اجمع العملات الذهبية.", features: ["جري لا نهائي", "أبطال متعددون", "عززات", "مهمات", "أحداث"], version: "1.80.0", size: "120 MB", downloads: "500M+", developer: "Imangi", downloadLink: "https://apkpure.net/temple-run-2/com.imangi.templerun2/download" },
-            { id: "asphalt-9", name: "Asphalt 9", category: "ألعاب", icon: "fas fa-car-side", description: "لعبة سباقات سيارات. سيارات خيالية. مسارات حقيقية.", features: ["سيارات حقيقية", "مسارات عالمية", "طور المهنة", "سباقات متعددة اللاعبين", "تخصيص السيارات"], version: "4.3.0", size: "2.5 GB", downloads: "100M+", developer: "Gameloft", downloadLink: "https://apkpure.net/asphalt-9/com.gameloft.android.ANMP.GloftA9HM/download" },
-            { id: "minecraft", name: "Minecraft", category: "ألعاب", icon: "fas fa-cube", description: "لعبة البناء والإبداع. عالم مفتوح. ابني أي شيء تريد.", features: ["عالم مفتوح", "بناء وإبداع", "وضع البقاء", "وضع الإبداع", "متعددة اللاعبين"], version: "1.20.0", size: "400 MB", downloads: "100M+", developer: "Mojang", downloadLink: "https://apkpure.net/minecraft/com.mojang.minecraftpe/download" },
-            { id: "roblox", name: "Roblox", category: "ألعاب", icon: "fas fa-gamepad", description: "منصة ألعاب متعددة. آلاف الألعاب داخل لعبة واحدة.", features: ["آلاف الألعاب", "إنشاء ألعابك الخاصة", "أفاتار قابل للتخصيص", "لعب مع الأصدقاء"], version: "2.610.0", size: "200 MB", downloads: "100M+", developer: "Roblox", downloadLink: "https://apkpure.net/roblox/com.roblox.client/download" },
-            { id: "among-us", name: "Among Us", category: "ألعاب", icon: "fas fa-user-astronaut", description: "لعبة الخيانة الجماعية. اكتشف المحتال قبل فوات الأوان.", features: ["4-15 لاعب", "مهمات", "اجتماعات طارئة", "تخصيص الشخصية", "خرائط متعددة"], version: "2024.8.0", size: "250 MB", downloads: "500M+", developer: "Innersloth", downloadLink: "https://apkpure.net/among-us/com.innersloth.spacemafia/download" },
-            { id: "genshin-impact", name: "Genshin Impact", category: "ألعاب", icon: "fas fa-dragon", description: "لعبة تقمص أدوار عالم مفتوح. رسومات أنمي. معارك ممتعة.", features: ["عالم مفتوح", "شخصيات متعددة", "عناصر متفاعلة", "معارك تكتيكية", "تحديثات مستمرة"], version: "5.0.0", size: "3.5 GB", downloads: "50M+", developer: "HoYoverse", downloadLink: "https://apkpure.net/genshin-impact/com.miHoYo.GenshinImpact/download" }
-        ];
-
         const urlParams = new URLSearchParams(window.location.search);
         const appId = urlParams.get('id');
-        const app = apps.find(a => a.id === appId);
-        const container = document.getElementById("detailsContent");
-
-        if (app) {
-            document.title = `${app.name} | Ramzone`;
-            // إنشاء قائمة المميزات
-            const featuresHtml = app.features ? app.features.map(f => `<li>${f}</li>`).join('') : '<li>تحديثات مستمرة</li><li>واجهة سهلة</li><li>آمن ومجاني</li>';
+        
+        // انتظار تحميل البيانات من الملف الخارجي
+        function initDetails() {
+            if (typeof appsData === 'undefined') {
+                // لو البيانات لسه محملتش، نستنى شوية
+                setTimeout(initDetails, 100);
+                return;
+            }
             
-            container.innerHTML = `
-                <div class="app-header">
-                    <div class="app-icon"><i class="${app.icon}"></i></div>
-                    <h1 class="app-name">${app.name}</h1>
-                    <span class="app-category">${app.category}</span>
-                </div>
-                
-                <p class="app-description">${app.description}</p>
-                
-                <div class="info-grid">
-                    <div class="info-item">
-                        <i class="fas fa-code-branch"></i>
-                        <div class="value">${app.version || "آخر إصدار"}</div>
-                        <div class="label">الإصدار</div>
+            const app = appsData.find(a => a.id === appId);
+            const container = document.getElementById("detailsContent");
+            
+            if (app) {
+                document.title = `${app.name} | Ramzone`;
+                container.innerHTML = `
+                    <div class="app-header">
+                        <div class="app-icon"><i class="${app.icon}"></i></div>
+                        <h1 class="app-name">${app.name}</h1>
+                        <span class="app-category">${app.category}</span>
                     </div>
-                    <div class="info-item">
-                        <i class="fas fa-database"></i>
-                        <div class="value">${app.size || "متغير"}</div>
-                        <div class="label">الحجم</div>
+                    
+                    <p class="app-description">${app.description || "لا يوجد وصف متاح لهذا التطبيق"}</p>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <i class="fas fa-code-branch"></i>
+                            <div class="value">${app.version || "غير معروف"}</div>
+                            <div class="label">الإصدار</div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-database"></i>
+                            <div class="value">${app.size || "غير معروف"}</div>
+                            <div class="label">الحجم</div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-download"></i>
+                            <div class="value">${app.downloads || "غير معروف"}</div>
+                            <div class="label">عدد التحميلات</div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-building"></i>
+                            <div class="value">${app.developer || "غير معروف"}</div>
+                            <div class="label">المطور</div>
+                        </div>
                     </div>
-                    <div class="info-item">
-                        <i class="fas fa-download"></i>
-                        <div class="value">${app.downloads || "10M+"}</div>
-                        <div class="label">عدد التحميلات</div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-building"></i>
-                        <div class="value">${app.developer || "شركة مطورة"}</div>
-                        <div class="label">المطور</div>
-                    </div>
-                </div>
-                
-                <h3 class="features-title">✨ مميزات التطبيق</h3>
-                <ul class="features-list">
-                    ${featuresHtml}
-                </ul>
-                
-                <a href="${app.downloadLink}" target="_blank" class="download-btn">
-                    <i class="fas fa-download"></i> تحميل ${app.name}
-                </a>
-            `;
-        } else {
-            container.innerHTML = `<p style="color:#ff6b6b;">😅 التطبيق غير موجود</p><a href="apps.html">العودة إلى القائمة</a>`;
+                    
+                    <h3 class="features-title">✨ مميزات التطبيق</h3>
+                    <ul class="features-list">
+                        ${app.features && app.features.length > 0 
+                            ? app.features.map(f => `<li>${escapeHtml(f)}</li>`).join('')
+                            : '<li>لا توجد مميزات متاحة حالياً</li>'
+                        }
+                    </ul>
+                    
+                    <a href="${app.downloadLink}" target="_blank" class="download-btn">
+                        <i class="fas fa-download"></i> تحميل ${app.name}
+                    </a>
+                `;
+            } else {
+                container.innerHTML = `<p style="color:#ff6b6b;">😅 عذراً، التطبيق غير موجود</p><a href="apps.html">العودة إلى القائمة</a>`;
+            }
         }
-
-        // تحديث واجهة المستخدم (تسجيل الدخول)
+        
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+        
         function updateAuthUI() {
             const currentUser = JSON.parse(localStorage.getItem("currentUser"));
             const authLink = document.getElementById("authLink");
@@ -340,6 +330,7 @@
         updateAuthUI();
         setupLogout();
         setupMobileMenu();
+        initDetails();
     </script>
 </body>
 </html>
