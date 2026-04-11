@@ -13,25 +13,11 @@
         gtag('config', 'G-LEQF7LQ0WY');
     </script>
     
-    <!-- SEO Meta Tags -->
     <title>مدونة Ramzone | مقالات الذكاء الاصطناعي وريادة الأعمال</title>
     <meta name="description" content="مدونة Ramzone - مقالات حصرية عن الذكاء الاصطناعي، أدوات AI، ريادة الأعمال، وكيفية تحقيق الثروة الرقمية.">
     <meta name="keywords" content="مدونة الذكاء الاصطناعي, مقالات AI, تعلم الذكاء الاصطناعي, ريادة الأعمال الرقمية, Ramzone">
     <meta name="author" content="Ramadan Mahmoud">
     <meta name="robots" content="index, follow">
-    
-    <meta property="og:title" content="مدونة Ramzone">
-    <meta property="og:description" content="مقالات حصرية عن الذكاء الاصطناعي وريادة الأعمال">
-    <meta property="og:image" content="https://ramadan2001mahmoud.github.io/The-Future-Millionaire/logo.png">
-    <meta property="og:url" content="https://ramadan2001mahmoud.github.io/The-Future-Millionaire/blog.html">
-    <meta property="og:type" content="website">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="مدونة Ramzone">
-    <meta name="twitter:description" content="مقالات حصرية عن الذكاء الاصطناعي وريادة الأعمال">
-    <meta name="twitter:image" content="https://ramadan2001mahmoud.github.io/The-Future-Millionaire/logo.png">
-    
-    <link rel="canonical" href="https://ramadan2001mahmoud.github.io/The-Future-Millionaire/blog.html">
     
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -79,7 +65,7 @@
             background: #1A1A1A;
             border: 1px solid #333;
             color: white;
-            padding: 8px 20px;
+            padding: 8px 25px;
             border-radius: 25px;
             cursor: pointer;
             transition: 0.3s;
@@ -88,8 +74,6 @@
             background: #D4AF37;
             color: #0A0A0A;
         }
-        .footer-links { margin-top: 15px; }
-        .footer-links a { color: #D4AF37; text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -112,6 +96,22 @@
         @media (max-width: 600px) {
             .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; bottom: 20px; right: 20px; }
         }
+        .footer-links { margin-top: 15px; }
+        .footer-links a { color: #D4AF37; text-decoration: none; margin: 0 10px; }
+        .comments-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #1A1A1A;
+            border-radius: 15px;
+            border: 1px solid #2A2A2A;
+        }
+        .comments-section h3 {
+            color: #D4AF37;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #333;
+        }
     </style>
 </head>
 <body>
@@ -126,6 +126,7 @@
                 <a href="index.html">الرئيسية</a>
                 <a href="blog.html" class="active">المدونة</a>
                 <a href="courses.html">الكورسات</a>
+                <a href="apps.html">تطبيقات وألعاب</a>
                 <a href="login.html" id="authLink">تسجيل الدخول</a>
                 <span id="userGreeting" style="display:none; color:#D4AF37;"></span>
                 <a href="#" id="logoutBtn" style="display:none;">تسجيل خروج</a>
@@ -139,7 +140,15 @@
         <p>مقالات حصرية عن الذكاء الاصطناعي، ريادة الأعمال، والثراء الرقمي</p>
     </section>
 
-    <div class="category-filter" id="categoryFilter"></div>
+    <div class="category-filter" id="categoryFilter">
+        <button class="cat-btn active" data-cat="all">الكل</button>
+        <button class="cat-btn" data-cat="ريادة أعمال">ريادة أعمال</button>
+        <button class="cat-btn" data-cat="أدوات">أدوات</button>
+        <button class="cat-btn" data-cat="مقارنات">مقارنات</button>
+        <button class="cat-btn" data-cat="تطوير ذات">تطوير ذات</button>
+        <button class="cat-btn" data-cat="برمجة">برمجة</button>
+        <button class="cat-btn" data-cat="استثمار">استثمار</button>
+    </div>
 
     <div class="blog-container" id="blogContainer"></div>
 
@@ -166,19 +175,19 @@
 
     <script>
         const posts = [
-            { title: "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026", date: "2026-04-01", excerpt: "5 استراتيجيات ذكية لتضخيم دخلك باستخدام أدوات AI...", image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400&h=250&fit=crop", category: "ريادة أعمال" },
-            { title: "أفضل 10 أدوات AI لتوليد الفيديو", date: "2026-03-28", excerpt: "من Runway إلى Pika... تعرف على أدوات صناعة الفيديو بالذكاء الاصطناعي", image: "https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg?w=400&h=250&fit=crop", category: "أدوات" },
-            { title: "ChatGPT vs Claude: أيهما أفضل للبرمجة؟", date: "2026-03-25", excerpt: "مقارنة شاملة بين أقوى نموذجين للذكاء الاصطناعي", image: "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=400&h=250&fit=crop", category: "مقارنات" },
-            { title: "عقلية المليونير: كيف تفكر كالأغنياء", date: "2026-03-20", excerpt: "7 عادات يومية تغير طريقة تفكيرك تجاه المال", image: "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=400&h=250&fit=crop", category: "تطوير ذات" },
-            { title: "دليلك الشامل لتعلم البرمجة بالذكاء الاصطناعي", date: "2026-03-15", excerpt: "كيف تستخدم GitHub Copilot وCursor لتصبح مبرمجاً محترفاً", image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&h=250&fit=crop", category: "برمجة" },
-            { title: "أفضل 5 أدوات لتحليل البيانات بالذكاء الاصطناعي", date: "2026-03-10", excerpt: "من Tableau إلى Julius AI.. اختر الأداة المناسبة لعملك", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop", category: "أدوات" },
-            { title: "الاستثمار في الذكاء الاصطناعي: فرص العقد القادم", date: "2026-03-05", excerpt: "كيف تستثمر في شركات AI قبل فوات الأوان", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop", category: "استثمار" },
-            { title: "10 مهارات مطلوبة في عصر الذكاء الاصطناعي", date: "2026-02-28", excerpt: "المهارات التي تضمن لك وظيفة المستقبل", image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=250&fit=crop", category: "تطوير ذات" },
-            { title: "كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال", date: "2026-04-05", excerpt: "أفكار عملية لمشاريع رقمية مربحة باستخدام أدوات AI المجانية", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop", category: "ريادة أعمال" },
-            { title: "أفضل 5 أدوات AI لكتابة السيرة الذاتية", date: "2026-04-02", excerpt: "كيف تحصل على وظيفة أحلامك باستخدام الذكاء الاصطناعي", image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=250&fit=crop", category: "أدوات" }
+            { title: "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026", date: "2026-04-01", excerpt: "5 استراتيجيات ذكية لتضخيم دخلك باستخدام أدوات AI...", image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400&h=250&fit=crop", category: "ريادة أعمال", url: "post.html?title=كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026" },
+            { title: "أفضل 10 أدوات AI لتوليد الفيديو", date: "2026-03-28", excerpt: "من Runway إلى Pika... تعرف على أدوات صناعة الفيديو بالذكاء الاصطناعي", image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4dde1?w=400&h=250&fit=crop", category: "أدوات", url: "post.html?title=أفضل 10 أدوات AI لتوليد الفيديو" },
+            { title: "ChatGPT vs Claude: أيهما أفضل للبرمجة؟", date: "2026-03-25", excerpt: "مقارنة شاملة بين أقوى نموذجين للذكاء الاصطناعي", image: "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=400&h=250&fit=crop", category: "مقارنات", url: "post.html?title=ChatGPT vs Claude: أيهما أفضل للبرمجة؟" },
+            { title: "عقلية المليونير: كيف تفكر كالأغنياء", date: "2026-03-20", excerpt: "7 عادات يومية تغير طريقة تفكيرك تجاه المال", image: "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=400&h=250&fit=crop", category: "تطوير ذات", url: "post.html?title=عقلية المليونير: كيف تفكر كالأغنياء" },
+            { title: "دليلك الشامل لتعلم البرمجة بالذكاء الاصطناعي", date: "2026-03-15", excerpt: "كيف تستخدم GitHub Copilot وCursor لتصبح مبرمجاً محترفاً", image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&h=250&fit=crop", category: "برمجة", url: "post.html?title=دليلك الشامل لتعلم البرمجة بالذكاء الاصطناعي" },
+            { title: "أفضل 5 أدوات لتحليل البيانات بالذكاء الاصطناعي", date: "2026-03-10", excerpt: "من Tableau إلى Julius AI.. اختر الأداة المناسبة لعملك", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop", category: "أدوات", url: "post.html?title=أفضل 5 أدوات لتحليل البيانات بالذكاء الاصطناعي" },
+            { title: "الاستثمار في الذكاء الاصطناعي: فرص العقد القادم", date: "2026-03-05", excerpt: "كيف تستثمر في شركات AI قبل فوات الأوان", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop", category: "استثمار", url: "post.html?title=الاستثمار في الذكاء الاصطناعي: فرص العقد القادم" },
+            { title: "10 مهارات مطلوبة في عصر الذكاء الاصطناعي", date: "2026-02-28", excerpt: "المهارات التي تضمن لك وظيفة المستقبل", image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=250&fit=crop", category: "تطوير ذات", url: "post.html?title=10 مهارات مطلوبة في عصر الذكاء الاصطناعي" },
+            { title: "كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال", date: "2026-04-05", excerpt: "أفكار عملية لمشاريع رقمية مربحة باستخدام أدوات AI المجانية", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop", category: "ريادة أعمال", url: "post.html?title=كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال" },
+            { title: "أفضل 5 أدوات AI لكتابة السيرة الذاتية", date: "2026-04-02", excerpt: "كيف تحصل على وظيفة أحلامك باستخدام الذكاء الاصطناعي", image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=250&fit=crop", category: "أدوات", url: "post.html?title=أفضل 5 أدوات AI لكتابة السيرة الذاتية" }
         ];
 
-        let currentCategory = "الكل";
+        let currentCategory = "all";
 
         function getCategories() {
             return ["الكل", ...new Set(posts.map(p => p.category))];
@@ -215,12 +224,13 @@
                         <span class="blog-date">${post.date} | ${post.category}</span>
                         <h3>${post.title}</h3>
                         <p>${post.excerpt}</p>
-                        <a href="post.html?title=${encodeURIComponent(post.title)}" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        <a href="${post.url}" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
             `).join('');
         }
 
+        // نظام التعليقات سيظهر في صفحة المقالة نفسها (post.html)، مش في صفحة عرض البطاقات
         function updateAuthUI() {
             const currentUser = JSON.parse(localStorage.getItem("currentUser"));
             const authLink = document.getElementById("authLink");
