@@ -337,6 +337,92 @@ function setupLogout() {
 }
 
 // ============================================
+//  البحث المرن (يدعم العربي والإنجليزي والمسافات)
+// ============================================
+
+// دالة لتطبيع النص (تجهيزه للبحث)
+function normalizeText(text) {
+    if (!text) return '';
+    
+    let normalized = text.toLowerCase().trim();
+    
+    // إزالة التشكيل (علامات الشدة والفتحة والضمة والكسرة)
+    normalized = normalized.normalize("NFD").replace(/[\u064B-\u065F\u0670]/g, "");
+    
+    // إزالة علامات الترقيم
+    normalized = normalized.replace(/[^\w\s\u0600-\u06FF]/g, ' ');
+    
+    // استبدال المسافات المتعددة بمسافة واحدة
+    normalized = normalized.replace(/\s+/g, ' ').trim();
+    
+    return normalized;
+}
+
+// دالة للبحث المرن
+function fuzzySearch(query, targetText) {
+    if (!query) return true;
+    
+    const normalizedQuery = normalizeText(query);
+    const normalizedTarget = normalizeText(targetText);
+    
+    // البحث المباشر
+    if (normalizedTarget.includes(normalizedQuery)) {
+        return true;
+    }
+    
+    // البحث بالكلمات المفتاحية (فصل الكلمات)
+    const queryWords = normalizedQuery.split(/\s+/);
+    let matchCount = 0;
+    
+    for (const word of queryWords) {
+        if (word.length < 2) continue; // تجاهل الكلمات القصيرة جداً
+        if (normalizedTarget.includes(word)) {
+            matchCount++;
+        }
+    }
+    
+    // إذا تطابقت أكثر من 50% من الكلمات
+    if (matchCount >= queryWords.length * 0.5 && matchCount > 0) {
+        return true;
+    }
+    
+    return false;
+}
+
+// دالة البحث في الأدوات
+function setupSearch() {
+    const searchInput = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
+    
+    if (!searchInput) return;
+    
+    function performSearch() {
+        const query = searchInput.value;
+        const filtered = tools.filter(tool => 
+            fuzzySearch(query, tool.name) || 
+            fuzzySearch(query, tool.description) ||
+            fuzzySearch(query, tool.category)
+        );
+        displayTools(filtered);
+        
+        // تحديث الأزرار النشطة
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.classList.remove("active");
+            if (btn.textContent === "الكل") btn.classList.add("active");
+        });
+    }
+    
+    searchInput.addEventListener("input", performSearch);
+    searchInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") performSearch();
+    });
+    
+    if (searchBtn) {
+        searchBtn.addEventListener("click", performSearch);
+    }
+}
+
+// ============================================
 //  نظام Dark Mode / Light Mode
 // ============================================
 
@@ -495,25 +581,6 @@ function filterToolsByCategory(category) {
     }
 }
 
-function setupSearch() {
-    const searchInput = document.getElementById("searchInput");
-    if (!searchInput) return;
-    searchInput.addEventListener("input", (e) => {
-        const query = e.target.value.toLowerCase();
-        const filtered = tools.filter(tool => 
-            tool.name.toLowerCase().includes(query) || 
-            tool.description.toLowerCase().includes(query) ||
-            tool.category.toLowerCase().includes(query)
-        );
-        displayTools(filtered);
-        
-        document.querySelectorAll(".filter-btn").forEach(btn => {
-            btn.classList.remove("active");
-            if (btn.textContent === "الكل") btn.classList.add("active");
-        });
-    });
-}
-
 function setupMobileMenu() {
     const toggle = document.getElementById("mobileMenu");
     const navLinks = document.getElementById("navLinks");
@@ -534,7 +601,7 @@ function setupExploreBtn() {
 }
 
 // ============================================
-//  التهيئة (Init) - النسخة السريعة
+//  التهيئة (Init)
 // ============================================
 
 function init() {
