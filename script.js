@@ -1,5 +1,5 @@
 // ============================================
-//  قاموس المرادفات للبحث (Synonyms Dictionary)
+//  قاموس المرادفات للبحث
 // ============================================
 const synonyms = {
     "ببجي": "pubg", "pubg": "pubg", "ببجى": "pubg", "بب جي": "pubg",
@@ -8,7 +8,7 @@ const synonyms = {
     "كلاش اوف كلانس": "clash of clans", "كوك": "clash of clans",
     "كلاش رويال": "clash royale",
     "موبايل ليجندز": "mobile legends",
-    "براول ستار兹": "brawl stars", "برول ستارز": "brawl stars",
+    "براول ستارز": "brawl stars", "برول ستارز": "brawl stars",
     "جينشين": "genshin impact",
     "ماين كرافت": "minecraft",
     "روبلوكس": "roblox",
@@ -445,7 +445,6 @@ function buildFilterButtons() {
     });
 }
 
-// دالة عرض الأدوات (مع الصور)
 function displayTools(toolsArray) {
     const container = document.getElementById("toolsContainer");
     if (!container) return;
@@ -466,7 +465,7 @@ function displayTools(toolsArray) {
         card.innerHTML = `
             <div style="position: relative;">
                 <div class="tool-icon">
-                    <img src="icons/${tool.icon}" alt="${tool.name}" style="width: 56px; height: 56px; border-radius: 16px; object-fit: cover; background: #0A0A0A; padding: 8px;" 
+                    <img src="icons/${tool.icon}" alt="${tool.name}" style="width: 56px; height: 56px; border-radius: 16px; object-fit: cover; background: var(--bg-secondary); padding: 8px;"
                          onerror="this.src='icons/default.svg'">
                 </div>
                 <button class="favorite-btn" data-tool="${tool.name}" style="position: absolute; top: 5px; left: 5px; background: none; border: none; cursor: pointer; font-size: 1.2rem; color: ${starColor};">
@@ -532,14 +531,6 @@ function setupMobileMenu() {
 function setupExploreBtn() {
     const btn = document.getElementById("exploreBtn");
     if (btn) btn.addEventListener("click", () => document.querySelector(".tools-container").scrollIntoView({ behavior: "smooth" }));
-}
-
-function updateDropdownCategories() {
-    buildDropdowns();
-}
-
-function updateFilterButtonsLanguage() {
-    buildFilterButtons();
 }
 
 function init() {
