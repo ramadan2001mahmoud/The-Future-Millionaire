@@ -71,7 +71,7 @@ function enhancedFuzzySearch(query, targetText) {
 }
 
 // ============================================
-//  قائمة الأدوات والتطبيقات والألعاب (150+)
+//  قائمة الأدوات (أيقونات Font Awesome)
 // ============================================
 let tools = [
     // أدوات ذكاء اصطناعي - نصوص
@@ -96,7 +96,7 @@ let tools = [
     { name: "Adobe Firefly", category: "صور", url: "https://firefly.adobe.com", description: "توليد وتحرير الصور بأسلوب أدوبي", icon: "fa-fire", clicks: 0 },
     { name: "Canva AI", category: "صور", url: "https://www.canva.com/ai-image-generator", description: "توليد صور داخل كانفا", icon: "fa-paintbrush", clicks: 0 },
     
-    // ألعاب مشهورة (للبحث في الصفحة الرئيسية)
+    // ألعاب مشهورة
     { name: "PUBG Mobile", category: "ألعاب", url: "https://www.pubg.com", description: "لعبة الباتل رويال الشهيرة", icon: "fa-crosshairs", clicks: 0 },
     { name: "Free Fire", category: "ألعاب", url: "https://ff.garena.com", description: "لعبة الباتل رويال السريعة", icon: "fa-fire", clicks: 0 },
     { name: "Call of Duty", category: "ألعاب", url: "https://www.callofduty.com", description: "لعبة إطلاق النار الاحترافية", icon: "fa-gun", clicks: 0 },
@@ -122,7 +122,7 @@ let tools = [
     { name: "Discord", category: "تواصل", url: "https://discord.com", description: "منصة المحادثة للجيمرز", icon: "fab fa-discord", clicks: 0 },
     { name: "Signal", category: "تواصل", url: "https://signal.org", description: "تطبيق مراسلة آمن ومشفر", icon: "fas fa-lock", clicks: 0 },
     
-    // باقي الأدوات (مختصراً للطول)
+    // تطبيقات إنتاجية وترفيه
     { name: "Notion AI", category: "إنتاجية", url: "https://www.notion.so", description: "مساعد ذكي داخل نوتيون", icon: "fa-book", clicks: 0 },
     { name: "Zoom", category: "إنتاجية", url: "https://zoom.us", description: "تطبيق الاجتماعات والمكالمات الجماعية", icon: "fa-video", clicks: 0 },
     { name: "Microsoft Teams", category: "إنتاجية", url: "https://www.microsoft.com/teams", description: "منصة التعاون الجماعي", icon: "fab fa-microsoft", clicks: 0 },
@@ -132,6 +132,8 @@ let tools = [
     { name: "YouTube", category: "ترفيه", url: "https://www.youtube.com", description: "مشاهدة الفيديوهات", icon: "fab fa-youtube", clicks: 0 },
     { name: "Spotify", category: "ترفيه", url: "https://www.spotify.com", description: "بث الموسيقى والبودكاست", icon: "fab fa-spotify", clicks: 0 },
     { name: "TikTok", category: "ترفيه", url: "https://www.tiktok.com", description: "مقاطع فيديو قصيرة", icon: "fab fa-tiktok", clicks: 0 },
+    
+    // تطبيقات تعليم وأدوات
     { name: "Duolingo", category: "تعليم", url: "https://www.duolingo.com", description: "تعلم اللغات مجاناً", icon: "fas fa-language", clicks: 0 },
     { name: "Coursera", category: "تعليم", url: "https://www.coursera.org", description: "دورات من جامعات عالمية", icon: "fas fa-graduation-cap", clicks: 0 },
     { name: "Udemy", category: "تعليم", url: "https://www.udemy.com", description: "منصة كورسات أونلاين", icon: "fas fa-chalkboard", clicks: 0 },
@@ -143,7 +145,7 @@ let tools = [
 ];
 
 // ============================================
-//  باقي الدوال الأساسية
+//  دوال حفظ البيانات والإحصائيات
 // ============================================
 
 function loadClicksFromStorage() {
