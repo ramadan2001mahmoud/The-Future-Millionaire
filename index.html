@@ -3,26 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LEQF7LQ0WY"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-LEQF7LQ0WY');
-    </script>
-    
-    <title>Ramzone | AI Tools</title>
-    <meta name="description" content="أكبر دليل عربي لأدوات الذكاء الاصطناعي - أكثر من 90 أداة AI في مكان واحد">
-    <meta name="keywords" content="الذكاء الاصطناعي, أدوات AI, ChatGPT, Midjourney, Ramzone">
-    <meta name="author" content="Ramadan Mahmoud">
-    <meta name="robots" content="index, follow">
-    
+    <title>Ramzone | دليل أدوات الذكاء الاصطناعي</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+    <script src="lang.js"></script>
     <style>
         .whatsapp-float {
             position: fixed;
@@ -42,20 +27,10 @@
             z-index: 1000;
             text-decoration: none;
         }
-        .whatsapp-float:hover {
-            transform: scale(1.08);
-            background-color: #20b859;
-        }
+        .whatsapp-float:hover { transform: scale(1.08); background-color: #20b859; }
         @media (max-width: 600px) {
-            .whatsapp-float {
-                width: 48px;
-                height: 48px;
-                font-size: 1.5rem;
-                bottom: 18px;
-                right: 18px;
-            }
+            .whatsapp-float { width: 48px; height: 48px; font-size: 1.5rem; bottom: 18px; right: 18px; }
         }
-        
         .lang-toggle {
             background: var(--gold);
             border: none;
@@ -67,10 +42,7 @@
             transition: 0.3s;
             margin-right: 10px;
         }
-        .lang-toggle:hover {
-            background: var(--gold-light);
-            transform: scale(1.02);
-        }
+        .lang-toggle:hover { background: var(--gold-light); transform: scale(1.02); }
     </style>
 </head>
 <body>
@@ -81,16 +53,11 @@
                 <img src="logo.png" alt="Ramzone Logo" class="logo-img">
                 <span class="logo-text">Ramzone</span>
             </div>
-            
             <div class="search-box">
                 <input type="text" id="searchInput" data-i18n-placeholder="nav.search" placeholder="ابحث عن أداة...">
                 <button id="searchBtn"><i class="fas fa-search"></i></button>
             </div>
-            
-            <div class="menu-toggle" id="mobileMenu">
-                <i class="fas fa-bars"></i>
-            </div>
-            
+            <div class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></div>
             <div class="nav-links" id="navLinks">
                 <a href="index.html" class="active" data-i18n="nav.home">الرئيسية</a>
                 <div class="dropdown">
@@ -105,15 +72,10 @@
                 <span id="userStats" style="display:none;"></span>
                 <a href="dashboard.html" id="dashboardLink" style="display:none;" data-i18n="nav.dashboard"><i class="fas fa-tachometer-alt"></i> لوحة التحكم</a>
                 <a href="#" id="logoutBtn" style="display:none;" data-i18n="nav.logout">تسجيل خروج</a>
-                
                 <button id="lang-toggle-btn" class="lang-toggle">🇺🇸 EN</button>
-                
                 <div class="theme-switch-wrapper">
                     <span class="theme-icon"><i class="fas fa-sun"></i></span>
-                    <label class="theme-switch">
-                        <input type="checkbox" id="theme-toggle">
-                        <span class="slider round"></span>
-                    </label>
+                    <label class="theme-switch"><input type="checkbox" id="theme-toggle"><span class="slider round"></span></label>
                     <span class="theme-icon"><i class="fas fa-moon"></i></span>
                 </div>
             </div>
@@ -129,32 +91,15 @@
     </section>
 
     <div class="stats-bar">
-        <div class="stat-item">
-            <i class="fas fa-robot"></i>
-            <span id="totalTools">0</span>
-            <p data-i18n="stats.tools">أداة ذكاء اصطناعي</p>
-        </div>
-        <div class="stat-item">
-            <i class="fas fa-mouse-pointer"></i>
-            <span id="totalClicks">0</span>
-            <p data-i18n="stats.clicks">إجمالي النقرات</p>
-        </div>
-        <div class="stat-item">
-            <i class="fas fa-users"></i>
-            <span id="totalUsers">0</span>
-            <p data-i18n="stats.users">إجمالي المستخدمين</p>
-        </div>
+        <div class="stat-item"><i class="fas fa-robot"></i><span id="totalTools">0</span><p data-i18n="stats.tools">أداة ذكاء اصطناعي</p></div>
+        <div class="stat-item"><i class="fas fa-mouse-pointer"></i><span id="totalClicks">0</span><p data-i18n="stats.clicks">إجمالي النقرات</p></div>
+        <div class="stat-item"><i class="fas fa-users"></i><span id="totalUsers">0</span><p data-i18n="stats.users">إجمالي المستخدمين</p></div>
     </div>
 
-    <div class="filter-section">
-        <button class="filter-btn active" data-category="all" data-i18n="filter.all">الكل</button>
-    </div>
-
+    <div class="filter-section"><button class="filter-btn active" data-category="all" data-i18n="filter.all">الكل</button></div>
     <div class="tools-container" id="toolsContainer"></div>
 
-    <a href="https://wa.me/201069302075" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/201069302075" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <footer class="footer">
         <div class="footer-content">
@@ -170,13 +115,29 @@
                 <a href="terms.html" data-i18n="footer.terms">شروط الاستخدام</a>
                 <a href="terms.html#privacy" data-i18n="footer.privacy">سياسة الخصوصية</a>
             </div>
-            <div class="visitor-counter">
-                <i class="fas fa-eye"></i> <span data-i18n="footer.visitors">عدد زوار الموقع</span>: <span id="visitorCount">0</span>
-            </div>
+            <div class="visitor-counter"><i class="fas fa-eye"></i> <span data-i18n="footer.visitors">عدد زوار الموقع</span>: <span id="visitorCount">0</span></div>
         </div>
     </footer>
 
-    <script src="lang.js"></script>
+    <script>
+        // --- دوال تبديل اللغة ---
+        function initLanguage() {
+            const savedLang = localStorage.getItem('language') || 'ar';
+            document.documentElement.lang = savedLang;
+            document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
+            const langBtn = document.getElementById('lang-toggle-btn');
+            if (langBtn) langBtn.textContent = savedLang === 'ar' ? '🇺🇸 EN' : '🇪🇬 عربي';
+            if (typeof updateUILanguage === 'function') updateUILanguage();
+        }
+        function switchLanguage() {
+            const currentLang = localStorage.getItem('language') || 'ar';
+            const newLang = currentLang === 'ar' ? 'en' : 'ar';
+            localStorage.setItem('language', newLang);
+            location.reload();
+        }
+        document.getElementById('lang-toggle-btn')?.addEventListener('click', switchLanguage);
+        initLanguage();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
