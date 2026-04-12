@@ -3,165 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LEQF7LQ0WY"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-LEQF7LQ0WY');
-    </script>
-    
     <title>تفاصيل المقال | Ramzone</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
     <style>
-        .post-container {
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 40px;
-            background: #1A1A1A;
-            border-radius: 20px;
-            border: 1px solid #2A2A2A;
-        }
-        .post-container img {
-            width: 100%;
-            border-radius: 15px;
-            margin: 25px 0;
-        }
-        .post-category {
-            color: #D4AF37;
-            font-size: 0.9rem;
-            margin-top: 15px;
-        }
-        .post-date {
-            color: #888;
-            font-size: 0.8rem;
-            margin: 5px 0;
-        }
-        .post-content {
-            line-height: 1.9;
-            color: #DDD;
-            margin-top: 30px;
-        }
-        .post-content h2 {
-            color: #D4AF37;
-            margin: 25px 0 15px;
-            font-size: 1.5rem;
-        }
-        .post-content ul, .post-content ol {
-            margin: 15px 0;
-            padding-right: 25px;
-        }
-        .post-content li {
-            margin: 8px 0;
-        }
-        .post-content hr {
-            margin: 30px 0;
-            border-color: #333;
-        }
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 25px;
-            color: #D4AF37;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .back-btn:hover {
-            text-decoration: underline;
-        }
-        .share-buttons {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .share-buttons a {
-            color: #D4AF37;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: 0.3s;
-        }
-        .share-buttons a:hover {
-            transform: scale(1.1);
-            color: #FFF2B2;
-        }
-        .comments-section {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 2px solid #D4AF37;
-        }
-        .comments-section h3 {
-            color: #D4AF37;
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
-        .cusdis-dark {
-            --cusdis-bg-color: #1A1A1A;
-            --cusdis-text-color: #FFFFFF;
-            --cusdis-color-primary: #D4AF37;
-            --cusdis-color-secondary: #888;
-            --cusdis-border-color: #2A2A2A;
-        }
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: 0.3s;
-            z-index: 1000;
-            text-decoration: none;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background-color: #20b859;
-        }
-        @media (max-width: 600px) {
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 1.6rem;
-                bottom: 20px;
-                right: 20px;
-            }
-            .post-container {
-                margin: 30px 15px;
-                padding: 20px;
-            }
-        }
+        .post-container { max-width: 900px; margin: 60px auto; padding: 40px; background: #1A1A1A; border-radius: 20px; border: 1px solid #2A2A2A; }
+        .post-container img { width: 100%; border-radius: 15px; margin: 25px 0; }
+        .post-category { color: #D4AF37; font-size: 0.9rem; margin-top: 15px; }
+        .post-date { color: #888; font-size: 0.8rem; margin: 5px 0; }
+        .post-content { line-height: 1.9; color: #DDD; margin-top: 30px; }
+        .post-content h2 { color: #D4AF37; margin: 25px 0 15px; font-size: 1.5rem; }
+        .post-content ul, .post-content ol { margin: 15px 0; padding-right: 25px; }
+        .post-content li { margin: 8px 0; }
+        .post-content hr { margin: 30px 0; border-color: #333; }
+        .back-btn { display: inline-block; margin-bottom: 25px; color: #D4AF37; text-decoration: none; font-weight: bold; }
+        .back-btn:hover { text-decoration: underline; }
+        .share-buttons { margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
+        .share-buttons a { color: #D4AF37; text-decoration: none; font-size: 1.2rem; transition: 0.3s; }
+        .share-buttons a:hover { transform: scale(1.1); color: #FFF2B2; }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s; z-index: 1000; text-decoration: none; }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #20b859; }
+        @media (max-width: 600px) { .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; bottom: 20px; right: 20px; } .post-container { margin: 30px 15px; padding: 20px; } }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <img src="logo.png" alt="Ramzone Logo" class="logo-img">
-                <span class="logo-text">Ramzone</span>
-            </div>
+            <div class="logo"><img src="logo.png" alt="Ramzone Logo" class="logo-img"><span class="logo-text">Ramzone</span></div>
             <div class="nav-links" id="navLinks">
-                <a href="index.html">الرئيسية</a>
-                <a href="blog.html">المدونة</a>
-                <a href="courses.html">الكورسات</a>
-                <a href="apps.html">تطبيقات وألعاب</a>
-                <a href="login.html" id="authLink">تسجيل الدخول</a>
-                <span id="userGreeting" style="display:none; color:#D4AF37;"></span>
-                <a href="#" id="logoutBtn" style="display:none;">تسجيل خروج</a>
+                <a href="index.html">الرئيسية</a> <a href="blog.html">المدونة</a> <a href="courses.html">الكورسات</a> <a href="apps.html">تطبيقات وألعاب</a>
+                <a href="login.html" id="authLink">تسجيل الدخول</a> <span id="userGreeting" style="display:none;"></span> <a href="#" id="logoutBtn" style="display:none;">تسجيل خروج</a>
             </div>
             <div class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></div>
         </div>
@@ -170,39 +43,12 @@
     <div class="post-container" id="postContainer">
         <a href="blog.html" class="back-btn"><i class="fas fa-arrow-right"></i> العودة إلى المدونة</a>
         <div id="postContent"></div>
-        
-        <div class="comments-section">
-            <h3>💬 التعليقات</h3>
-            <div id="cusdis_thread"
-                data-host="https://cusdis.com"
-                data-app-id="9059bdc5-fb60-4f5a-96c2-043d58a86299"
-                data-page-id=""
-                data-page-url=""
-                data-page-title=""
-                data-theme="dark"
-            ></div>
-            <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-            <script>
-                const pageId = window.location.pathname + window.location.search;
-                const pageUrl = window.location.href;
-                const pageTitle = document.title;
-                const cusdisDiv = document.getElementById("cusdis_thread");
-                if (cusdisDiv) {
-                    cusdisDiv.setAttribute("data-page-id", pageId);
-                    cusdisDiv.setAttribute("data-page-url", pageUrl);
-                    cusdisDiv.setAttribute("data-page-title", pageTitle);
-                }
-            </script>
-        </div>
     </div>
 
-    <a href="https://wa.me/201069302075" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/201069302075" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2026 Ramzone - جميع الحقوق محفوظة</p>
+        <div class="footer-content"><p>&copy; 2026 Ramzone - جميع الحقوق محفوظة</p>
             <div class="social-icons">
                 <a href="https://linkedin.com/in/ramadanm200110" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 <a href="https://twitter.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -210,377 +56,36 @@
                 <a href="https://github.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://facebook.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-facebook-f"></i></a>
             </div>
-            <div class="footer-links">
-                <a href="terms.html">شروط الاستخدام</a>
-                <a href="terms.html#privacy">سياسة الخصوصية</a>
-            </div>
+            <div class="footer-links"><a href="terms.html">شروط الاستخدام</a><a href="terms.html#privacy">سياسة الخصوصية</a></div>
         </div>
     </footer>
 
     <script>
         const fullPosts = {
-            // المقالات القديمة
-            "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026": {
-                title: "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026",
-                date: "2026-04-01",
-                category: "ريادة أعمال",
-                image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&h=400&fit=crop",
-                content: `<p>الذكاء الاصطناعي ليس مجرد تقنية عابرة، بل هو ثورة حقيقية تخلق مليارديرات جدد كل يوم. في هذا المقال، نستعرض 5 استراتيجيات ذكية لتضخيم دخلك باستخدام أدوات AI:</p>
-                <h2>🇸🇦 1. أتمتة المحتوى</h2>
-                <p>استخدم ChatGPT وJasper لإنشاء محتوى تسويقي، مقالات، منشورات سوشيال ميديا بكميات هائلة وبجودة عالية.</p>
-                <h2>🎓 2. إنشاء دورات تعليمية بالذكاء الاصطناعي</h2>
-                <p>باستخدام HeyGen وElevenLabs، يمكنك إنشاء فيديوهات تعليمية كاملة بصوتك وصورتك الرقمية.</p>
-                <h2>💻 3. بناء تطبيقات بدون برمجة</h2>
-                <p>أدوات مثل Cursor وReplit AI تسمح لأي شخص ببناء تطبيقات ويب كاملة بدون خبرة برمجية عميقة.</p>
-                <h2>📢 4. التسويق بالذكاء الاصطناعي</h2>
-                <p>استخدم Perplexity AI لتحليل السوق، وMidjourney لتصميم إعلانات جذابة، وCopy.ai لكتابة نصوص إعلانية مقنعة.</p>
-                <h2>💰 5. الاستثمار في شركات AI</h2>
-                <p>تابع الشركات الناشئة في مجال الذكاء الاصطناعي واستثمر مبكراً.</p>
-                <hr>
-                <p><strong>الخلاصة:</strong> المستقبل لمن يستخدم الذكاء الاصطناعي كأداة لتضخيم جهوده. ابدأ اليوم ولا تنتظر.</p>`
-            },
-            "أفضل 10 أدوات AI لتوليد الفيديو": {
-                title: "أفضل 10 أدوات AI لتوليد الفيديو",
-                date: "2026-03-28",
-                category: "أدوات",
-                image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4dde1?w=800&h=400&fit=crop",
-                content: `<p>صناعة الفيديو أصبحت أسهل من أي وقت مضى بفضل الذكاء الاصطناعي. إليك أفضل 10 أدوات:</p>
-                <ul>
-                    <li><strong>Runway ML:</strong> تحرير وتوليد فيديوهات احترافية</li>
-                    <li><strong>HeyGen:</strong> إنشاء أفلام بصور رمزية متحركة واقعية</li>
-                    <li><strong>Pika Labs:</strong> تحويل النص إلى فيديو قصير</li>
-                    <li><strong>Kaiber:</strong> تحويل الصور إلى فيديوهات متحركة</li>
-                    <li><strong>Sora:</strong> أحدث إصدار من OpenAI (قيد الإصدار)</li>
-                    <li><strong>Descript:</strong> تحرير الفيديو كأنك تحرر نصاً</li>
-                    <li><strong>Fliki:</strong> تحويل المدونات إلى فيديوهات</li>
-                    <li><strong>Synthesia:</strong> إنشاء فيديوهات تدريبية بأفاتار رقمي</li>
-                    <li><strong>Elai.io:</strong> إنشاء فيديوهات من النص فقط</li>
-                    <li><strong>Pictory.ai:</strong> تحويل المقالات الطويلة إلى فيديوهات قصيرة</li>
-                </ul>
-                <p>كل هذه الأدوات توفر نسخ مجانية لتجربتها قبل الاشتراك.</p>`
-            },
-            "ChatGPT vs Claude: أيهما أفضل للبرمجة؟": {
-                title: "ChatGPT vs Claude: أيهما أفضل للبرمجة؟",
-                date: "2026-03-25",
-                category: "مقارنات",
-                image: "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=800&h=400&fit=crop",
-                content: `<p>مقارنة شاملة بين أقوى نموذجين للذكاء الاصطناعي في مجال البرمجة:</p>
-                <h2>🤖 ChatGPT (GPT-4):</h2>
-                <p><strong>مميزات:</strong> يفهم السياق جيداً، يكتب كود نظيف، يدعم أكثر من 50 لغة برمجة.</p>
-                <p><strong>عيوب:</strong> أحياناً يهلوس في الكود المعقد.</p>
-                <h2>🧠 Claude 3 (Opus):</h2>
-                <p><strong>مميزات:</strong> دقة عالية في الكود الطويل، فهم ممتاز للمشاريع الكبيرة.</p>
-                <p><strong>عيوب:</strong> أقل شيوعاً، سعر أعلى لـ API.</p>
-                <h2>🏆 الخلاصة:</h2>
-                <p>للمشاريع الصغيرة → ChatGPT. للمشاريع الكبيرة → Claude 3.</p>`
-            },
-            "عقلية المليونير: كيف تفكر كالأغنياء": {
-                title: "عقلية المليونير: كيف تفكر كالأغنياء",
-                date: "2026-03-20",
-                category: "تطوير ذات",
-                image: "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&h=400&fit=crop",
-                content: `<p>الفرق بين الأغنياء والفقراء ليس في المال فقط، بل في العقلية. إليك 7 عادات يومية:</p>
-                <ol>
-                    <li><strong>التفكير في الحلول وليس المشاكل</strong></li>
-                    <li><strong>الاستثمار في نفسك</strong></li>
-                    <li><strong>تحمل المخاطر المحسوبة</strong></li>
-                    <li><strong>بناء شبكة علاقات قوية</strong></li>
-                    <li><strong>الانضباط المالي</strong></li>
-                    <li><strong>التعلم المستمر</strong></li>
-                    <li><strong>العمل على المشروع وليس في المشروع</strong></li>
-                </ol>
-                <p>ابدأ بتطبيق هذه العادات اليوم، وستلاحظ الفرق خلال 6 أشهر.</p>`
-            },
-            "دليلك الشامل لتعلم البرمجة بالذكاء الاصطناعي": {
-                title: "دليلك الشامل لتعلم البرمجة بالذكاء الاصطناعي",
-                date: "2026-03-15",
-                category: "برمجة",
-                image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=400&fit=crop",
-                content: `<p>البرمجة لم تعد حكراً على الخبراء. بفضل الذكاء الاصطناعي، أي شخص يمكنه تعلم البرمجة وبناء تطبيقات احترافية.</p>
-                <h2>1. ابدأ بأساسيات البرمجة</h2>
-                <p>تعلم الأساسيات باستخدام ChatGPT.</p>
-                <h2>2. استخدم مساعد البرمجة الذكي</h2>
-                <p>جرب <strong>GitHub Copilot</strong> أو <strong>Cursor</strong>.</p>
-                <h2>3. حل المشكلات العملية</h2>
-                <p>اطلب من ChatGPT حل مشكلات برمجية حقيقية.</p>
-                <h2>4. ابدأ مشروعك الخاص</h2>
-                <p>بعد شهر من التعلم، ابدأ مشروعاً خاصاً بك.</p>`
-            },
-            "أفضل 5 أدوات لتحليل البيانات بالذكاء الاصطناعي": {
-                title: "أفضل 5 أدوات لتحليل البيانات بالذكاء الاصطناعي",
-                date: "2026-03-10",
-                category: "أدوات",
-                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
-                content: `<p>تحليل البيانات أصبح أسهل مع الذكاء الاصطناعي. إليك أفضل 5 أدوات:</p>
-                <ul>
-                    <li><strong>Tableau AI:</strong> تصور البيانات بالذكاء الاصطناعي</li>
-                    <li><strong>Polymer:</strong> تحليل بيانات بدون كود</li>
-                    <li><strong>Julius AI:</strong> تحليل بيانات بالمحادثة</li>
-                    <li><strong>MonkeyLearn:</strong> تحليل النصوص والمشاعر</li>
-                    <li><strong>IBM Watson:</strong> تحليل متقدم للبيانات</li>
-                </ul>
-                <p>جميع هذه الأدوات توفر نسخ تجريبية مجانية.</p>`
-            },
-            "الاستثمار في الذكاء الاصطناعي: فرص العقد القادم": {
-                title: "الاستثمار في الذكاء الاصطناعي: فرص العقد القادم",
-                date: "2026-03-05",
-                category: "استثمار",
-                image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
-                content: `<p>الذكاء الاصطناعي هو المستقبل، والاستثمار فيه الآن قد يحقق عوائد ضخمة. إليك أفضل المجالات:</p>
-                <h2>1. شركات التكنولوجيا الكبرى</h2>
-                <p>Google، Microsoft، Amazon كلها تستثمر بكثافة في AI.</p>
-                <h2>2. الشركات الناشئة</h2>
-                <p>استثمر في الشركات الناشئة التي تقدم حلولاً مبتكرة في مجال AI.</p>
-                <h2>3. الصناديق المتداولة (ETFs)</h2>
-                <p>صناديق مثل ROBO و BOTZ تركز على شركات التكنولوجيا.</p>
-                <p><strong>نصيحة:</strong> ابدأ بمبالغ صغيرة واستثمر على المدى الطويل.</p>`
-            },
-            "10 مهارات مطلوبة في عصر الذكاء الاصطناعي": {
-                title: "10 مهارات مطلوبة في عصر الذكاء الاصطناعي",
-                date: "2026-02-28",
-                category: "تطوير ذات",
-                image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=400&fit=crop",
-                content: `<p>سوق العمل يتغير بسرعة بسبب الذكاء الاصطناعي. إليك 10 مهارات ستجعلك مطلوباً:</p>
-                <ol>
-                    <li><strong>البرمجة:</strong> Python و JavaScript أساسيتان</li>
-                    <li><strong>تحليل البيانات:</strong> فهم البيانات واستخراج القيم منها</li>
-                    <li><strong>التعلم الآلي:</strong> بناء نماذج AI</li>
-                    <li><strong>التفكير النقدي:</strong> تحليل النتائج واتخاذ القرارات</li>
-                    <li><strong>الإبداع:</strong> AI يقلد لكن لا يبتكر</li>
-                    <li><strong>التواصل:</strong> شرح الأفكار التقنية لغير المختصين</li>
-                    <li><strong>إدارة المشاريع:</strong> تنظيم وتوجيه فرق العمل</li>
-                    <li><strong>التسويق الرقمي:</strong> استغلال AI في التسويق</li>
-                    <li><strong>التعلم المستمر:</strong> مواكبة التطورات السريعة</li>
-                    <li><strong>الأخلاقيات:</strong> فهم تأثير AI على المجتمع</li>
-                </ol>
-                <p>طور هذه المهارات وستكون جاهزاً لمستقبل مليء بالفرص.</p>`
-            },
-            "كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال": {
-                title: "كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال",
-                date: "2026-04-05",
-                category: "ريادة أعمال",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
-                content: `<p>كثيرون يعتقدون أن بدء مشروع يتطلب رأس مال كبير، لكن الحقيقة أن الذكاء الاصطناعي غير هذه المعادلة.</p>
-                <h2>1. استخدم الأدوات المجانية</h2>
-                <p>ChatGPT المجاني، Canva AI، وLeonardo.ai كلها أدوات قوية ومجانية.</p>
-                <h2>2. ابدأ خدمة صغيرة</h2>
-                <p>مثل كتابة المحتوى، تصميم الشعارات، أو تحرير الفيديو باستخدام AI.</p>
-                <h2>3. سوق لنفسك مجاناً</h2>
-                <p>استخدم LinkedIn، Twitter، ومجموعات Facebook للترويج لخدماتك.</p>
-                <h2>4. أعد استثمار أرباحك</h2>
-                <p>أول 100 دولار أرباح استثمرها في أدوات مدفوعة لتطوير خدماتك.</p>
-                <p><strong>الخلاصة:</strong> ابدأ اليوم، لا تنتظر الظروف المثالية.</p>`
-            },
-            "أفضل 5 أدوات AI لكتابة السيرة الذاتية": {
-                title: "أفضل 5 أدوات AI لكتابة السيرة الذاتية",
-                date: "2026-04-02",
-                category: "أدوات",
-                image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=400&fit=crop",
-                content: `<p>الحصول على وظيفة أحلامك يبدأ بسيرة ذاتية احترافية. إليك أفضل 5 أدوات AI:</p>
-                <ul>
-                    <li><strong>Rezi:</strong> منصة متخصصة في كتابة السيرة الذاتية بالذكاء الاصطناعي</li>
-                    <li><strong>Kickresume:</strong> قوالب احترافية مع مساعد AI ذكي</li>
-                    <li><strong>Novoresume:</strong> تحليل واقتراحات لتحسين سيرتك الذاتية</li>
-                    <li><strong>EnhanCV:</strong> تحسين الكلمات المفتاحية لتجاوز أنظمة ATS</li>
-                    <li><strong>Resume.io:</strong> قوالب حديثة مع نصائح مخصصة</li>
-                </ul>
-                <p><strong>نصيحة:</strong> استخدم ChatGPT أيضاً لكتابة ملخص شخصي قوي وجذاب.</p>`
-            },
-
-            // ========== المقالات الجديدة (5 مقالات) ==========
-            
-            "كيف تكسب المال من الإنترنت باستخدام الذكاء الاصطناعي في 2026": {
-                title: "كيف تكسب المال من الإنترنت باستخدام الذكاء الاصطناعي في 2026",
-                date: "2026-04-12",
-                category: "ريادة أعمال",
-                image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&h=400&fit=crop",
-                content: `<h2>المقدمة: ثورة الذكاء الاصطناعي والربح من الإنترنت</h2>
-                <p>في عام 2026، لم يعد الذكاء الاصطناعي مجرد تقنية مستقبلية، بل أصبح أداة يومية يستخدمها الملايين لزيادة دخلهم. سواء كنت موظفاً بدوام كامل، أو طالباً، أو رائد أعمال، فإن أدوات الذكاء الاصطناعي تقدم لك فرصاً غير مسبوقة لتحقيق أرباح حقيقية من المنزل. في هذا الدليل الشامل، سنستعرض 7 طرق عملية ومجربة لكسب المال باستخدام الذكاء الاصطناعي، مع شرح خطوة بخطوة وأمثلة واقعية.</p>
-                <h2>1. كتابة المحتوى والكتب الإلكترونية باستخدام ChatGPT</h2>
-                <p>تعتبر كتابة المحتوى من أسهل وأسرع الطرق لبدء الربح من الإنترنت. باستخدام أدوات مثل ChatGPT وClaude وJasper، يمكنك كتابة مقالات كاملة، تقارير، وحتى كتب إلكترونية في ساعات قليلة.</p>
-                <h2>2. إنشاء دورات تعليمية بالفيديو باستخدام HeyGen و ElevenLabs</h2>
-                <p>لم تعد بحاجة إلى كاميرا احترافية أو استوديو تسجيل. باستخدام أدوات الذكاء الاصطناعي مثل HeyGen و ElevenLabs، يمكنك إنشاء فيديوهات تعليمية كاملة بأفاتار رقمي يشبهك ويحاكي صوتك.</p>
-                <h2>3. تصميم الجرافيك والشعارات باستخدام Midjourney و Canva AI</h2>
-                <p>تصميم الجرافيك هو مجال آخر يمكنك من خلاله تحقيق أرباح كبيرة باستخدام الذكاء الاصطناعي. أدوات مثل Midjourney و DALL-E 3 و Leonardo.ai تسمح لك بإنشاء صور فائقة الجودة وشعارات احترافية في ثوانٍ.</p>
-                <h2>4. تطوير تطبيقات ومواقع بدون برمجة باستخدام Cursor و Replit AI</h2>
-                <p>مع ظهور أدوات البرمجة بالذكاء الاصطناعي مثل GitHub Copilot و Cursor و Replit AI، أصبح بإمكان أي شخص بناء تطبيقات ومواقع ويب كاملة بدون الحاجة إلى تعلم البرمجة بشكل عميق.</p>
-                <h2>5. إنشاء قنوات يوتيوب وتيك توك آلية</h2>
-                <p>من أكثر الطرق ربحية في 2026 هي إنشاء قنوات على يوتيوب وتيك توك تعتمد بالكامل على الذكاء الاصطناعي. يمكنك إنشاء فيديوهات قصيرة ومثيرة للاهتمام بدون تصوير أو تحرير يدوي.</p>
-                <h2>6. التسويق بالعمولة باستخدام الذكاء الاصطناعي</h2>
-                <p>التسويق بالعمولة هو عملية الترويج لمنتجات الآخرين مقابل عمولة على كل عملية بيع تتم عبر رابطك الخاص. باستخدام الذكاء الاصطناعي، يمكنك أتمتة هذه العملية بالكامل.</p>
-                <h2>7. تقديم خدمات الاستشارات والتدريب</h2>
-                <p>إذا كنت خبيراً في مجال معين، يمكنك استخدام الذكاء الاصطناعي لتقديم خدمات استشارية وتدريبية بأسعار تنافسية. أدوات مثل Zoom AI و Otter.ai تساعدك في إدارة الجلسات وتوثيقها.</p>
-                <h2>💎 الخلاصة: ابدأ اليوم ولا تنتظر</h2>
-                <p>الذكاء الاصطناعي ليس مستقبلاً بعيداً، إنه حاضر بين يديك الآن. الفرص المتاحة لا حصر لها، وكل ما تحتاجه هو البدء. اختر طريقة واحدة من الطرق السابقة، وابدأ في تطبيقها اليوم.</p>`
-            },
-            
-            "ChatGPT vs Gemini vs Claude: أيهما أفضل للبرمجة والكتابة": {
-                title: "ChatGPT vs Gemini vs Claude: أيهما أفضل للبرمجة والكتابة",
-                date: "2026-04-12",
-                category: "مقارنات",
-                image: "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=800&h=400&fit=crop",
-                content: `<h2>المقدمة: عصر النماذج اللغوية العملاقة</h2>
-                <p>في عالم الذكاء الاصطناعي التوليدي، تتصدر ثلاثة نماذج لغوية عملاقة الساحة: ChatGPT من OpenAI، وGemini من Google، وClaude من Anthropic. كل نموذج له نقاط قوة وضعف مختلفة، واختيار النموذج المناسب يعتمد على احتياجاتك الخاصة.</p>
-                <h2>1. مقارنة عامة بين النماذج الثلاثة</h2>
-                <p><strong>ChatGPT (GPT-4 Turbo):</strong> تم تطويره بواسطة OpenAI، ويعتبر الأكثر شيوعاً والأوسع انتشاراً. يتميز بقدرته على فهم السياق وكتابة كود نظيف ومفهوم.</p>
-                <p><strong>Gemini Advanced (Gemini 1.5 Pro):</strong> تم تطويره بواسطة Google، ويتميز بتكامله العميق مع خدمات جوجل (مثل Gmail، Drive، Docs). يدعم سياقات ضخمة جداً.</p>
-                <p><strong>Claude 3 (Opus):</strong> تم تطويره بواسطة Anthropic، ويتميز بدقته العالية وقلة "هلوساته". يعتبر الأفضل في المهام التي تتطلب دقة متناهية.</p>
-                <h2>2. في البرمجة: من يكتب أفضل كود؟</h2>
-                <p>ChatGPT يتميز بقدرته على شرح الكود وتوثيقه بطريقة مفهومة للمبتدئين. Gemini يتفوق في التعامل مع قواعد البيانات الكبيرة وفهم السياق العام للمشروع. Claude يعتبر الأفضل في كتابة الكود الدقيق والخالي من الأخطاء.</p>
-                <h2>3. في الكتابة: من ينتج أفضل محتوى؟</h2>
-                <p>ChatGPT يتميز بأسلوبه الطبيعي والمرن. Gemini يتفوق في الكتابة الإبداعية والأدبية. Claude يتميز بأسلوبه الدقيق والواضح، مما يجعله مثالياً للكتابات التقنية والعلمية.</p>
-                <h2>4. التسعير وإمكانية الوصول</h2>
-                <p>جميع النماذج الثلاثة تقدم نسخاً مجانية محدودة، وإصدارات مدفوعة بسعر 20 دولاراً شهرياً لكل منها.</p>
-                <h2>💎 الخلاصة: أيهما تختار؟</h2>
-                <p>إذا كنت تبحث عن أداة عامة للاستخدام اليومي، ابدأ بـ ChatGPT المجاني. إذا كنت مبرمجاً أو تعمل مع مشاريع كبيرة، جرب Claude 3. إذا كنت تحتاج إلى تحليل كميات هائلة من البيانات أو تعمل في بيئة جوجل، فـ Gemini هو الخيار المناسب.</p>`
-            },
-            
-            "أفضل 10 أدوات ذكاء اصطناعي لتوليد الصور والفيديو": {
-                title: "أفضل 10 أدوات ذكاء اصطناعي لتوليد الصور والفيديو",
-                date: "2026-04-12",
-                category: "أدوات",
-                image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4dde1?w=800&h=400&fit=crop",
-                content: `<h2>المقدمة: ثورة الإبداع البصري بالذكاء الاصطناعي</h2>
-                <p>في عام 2026، أصبح إنشاء الصور والفيديوهات الاحترافية أمراً في متناول الجميع، بفضل التطور الهائل في أدوات الذكاء الاصطناعي. سواء كنت مصمماً جرافيكياً، أو صانع محتوى، أو مسوقاً رقمياً، فإن هذه الأدوات ستوفر عليك ساعات طويلة من العمل وتمنحك نتائج مذهلة.</p>
-                <h2>1. Midjourney: ملك أدوات توليد الصور</h2>
-                <p>يعتبر Midjourney الأقوى والأشهر في مجال توليد الصور. يتميز بجودة صوره الفائقة، وأسلوبه الفني المميز.</p>
-                <h2>2. DALL-E 3: القوة الإبداعية لـ ChatGPT</h2>
-                <p>يتكامل DALL-E 3 بشكل ممتاز مع ChatGPT، مما يسمح لك بتوليد الصور مباشرة من داخل محادثات ChatGPT.</p>
-                <h2>3. Leonardo.ai: الخيار المجاني الأقوى</h2>
-                <p>يقدم Leonardo.ai نسخة مجانية سخية (150 صورة يومياً) مع جودة صور ممتازة.</p>
-                <h2>4. Stable Diffusion: الأداة مفتوحة المصدر</h2>
-                <p>Stable Diffusion مجاني ومفتوح المصدر بالكامل، ويمكن تشغيله على جهازك الشخصي.</p>
-                <h2>5. Adobe Firefly: تكامل احترافي مع Creative Cloud</h2>
-                <p>يتكامل Firefly بشكل سلس مع تطبيقات Adobe مثل Photoshop و Illustrator.</p>
-                <h2>6. Canva AI: للمبتدئين والمصممين غير المحترفين</h2>
-                <p>يأتي Canva AI مدمجاً في منصة Canva الشهيرة، مما يجعله سهل الاستخدام جداً.</p>
-                <h2>7. Runway ML: أداة صناعة الفيديو الأقوى</h2>
-                <p>يقدم Runway ML مجموعة واسعة من الأدوات لتحرير وتوليد الفيديو بالذكاء الاصطناعي.</p>
-                <h2>8. Pika Labs: منافس قوي لـ Runway ML</h2>
-                <p>يتميز Pika Labs بسهولة استخدامه وجودة الفيديوهات التي ينتجها.</p>
-                <h2>9. HeyGen: إنشاء أفلام بأفاتار رقمي</h2>
-                <p>يسمح لك HeyGen بإنشاء فيديوهات بأفاتار رقمي يتحدث النص الذي تكتبه.</p>
-                <h2>10. Lumen5: تحويل النص إلى فيديو تلقائياً</h2>
-                <p>يسمح لك Lumen5 بتحويل المقالات والمدونات إلى فيديوهات قصيرة جذابة تلقائياً.</p>
-                <h2>💎 الخلاصة: كيف تختار الأداة المناسبة؟</h2>
-                <p>اختيار الأداة المناسبة يعتمد على احتياجاتك وميزانيتك ومستوى خبرتك. جرب الأدوات المجانية أولاً، ثم انتقل إلى الإصدارات المدفوعة عندما تحتاج إلى ميزات أكثر تقدماً.</p>`
-            },
-            
-            "كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال": {
-                title: "كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال",
-                date: "2026-04-12",
-                category: "ريادة أعمال",
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop",
-                content: `<h2>المقدمة: خرافة رأس المال الكبير</h2>
-                <p>يعتقد الكثيرون أن بدء مشروع ناجح يتطلب استثمارات ضخمة، ولكن الحقيقة أن عصر الذكاء الاصطناعي غير هذه المعادلة تماماً. اليوم، يمكنك بدء مشروعك الخاص بدون أي رأس مال، باستخدام الأدوات المجانية المتاحة، وتحقيق أرباح حقيقية من المنزل.</p>
-                <h2>1. اختر فكرة مشروعك (أهم خطوة)</h2>
-                <p>الخطوة الأولى والأهم هي اختيار فكرة المشروع المناسبة. إليك 5 أفكار مشاريع يمكنك البدء بها اليوم: خدمات كتابة المحتوى، تصميم الشعارات، تحرير الفيديو، ترجمة المحتوى، إنشاء قوالب وسائل التواصل الاجتماعي.</p>
-                <h2>2. استخدم الأدوات المجانية (بدون أي تكاليف)</h2>
-                <p>لا تحتاج إلى دفع أي أموال في البداية. استخدم ChatGPT المجاني، Leonardo.ai، Canva AI، VEED.io، Grammarly، وغيرها من الأدوات المجانية.</p>
-                <h2>3. أنشئ ملف أعمالك (Portfolio) بدون تكلفة</h2>
-                <p>قبل أن تبدأ في البحث عن عملاء، تحتاج إلى إثبات مهاراتك. استخدم Behance، Notion، أو Google Sites لإنشاء ملف أعمال مجاني.</p>
-                <h2>4. سوق لخدماتك مجاناً (بدون ميزانية إعلانات)</h2>
-                <p>لا تحتاج إلى ميزانية إعلانات في البداية. استخدم LinkedIn، مجموعات Facebook، Twitter، ومنصات العمل الحر للتسويق.</p>
-                <h2>5. طور نفسك باستمرار (مجاناً)</h2>
-                <p>النجاح يتطلب التعلم المستمر. استخدم YouTube، Coursera، edX، و Google Digital Garage لتطوير مهاراتك مجاناً.</p>
-                <h2>6. أعد استثمار أرباحك الأولى</h2>
-                <p>بعد أن تحقق أول 100-200 دولار من مشروعك، ابدأ في إعادة استثمارها في الأدوات المدفوعة والتعلم المتقدم والإعلانات.</p>
-                <h2>💎 الخلاصة: ابدأ اليوم ولا تنتظر</h2>
-                <p>الذكاء الاصطناعي فتح أبواباً لم تكن موجودة من قبل. لم يعد رأس المال هو العائق الأكبر، بل الإرادة والبداية. ابدأ بأصغر خطوة ممكنة اليوم، وستتفاجأ بالنتائج بعد 6 أشهر.</p>`
-            },
-            
-            "دليلك الكامل لتعلم البرمجة بالذكاء الاصطناعي": {
-                title: "دليلك الكامل لتعلم البرمجة بالذكاء الاصطناعي",
-                date: "2026-04-12",
-                category: "برمجة",
-                image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=400&fit=crop",
-                content: `<h2>المقدمة: البرمجة للجميع في عصر الذكاء الاصطناعي</h2>
-                <p>البرمجة لم تعد حكراً على العباقرة أو خريجي علوم الحاسوب. في عام 2026، وبفضل أدوات الذكاء الاصطناعي، أصبح بإمكان أي شخص تعلم البرمجة وبناء تطبيقات احترافية في غضون أسابيع، وليس سنوات.</p>
-                <h2>الجزء الأول: الأساسيات (بدون ذكاء اصطناعي)</h2>
-                <p>قبل أن نبدأ في استخدام الذكاء الاصطناعي، تحتاج إلى فهم أساسيات البرمجة: الخوارزميات، المتغيرات، الجمل الشرطية، الحلقات، والدوال.</p>
-                <h2>الجزء الثاني: استخدام ChatGPT كمعلم ومساعد شخصي</h2>
-                <p>ChatGPT هو أفضل معلم برمجة يمكن أن تتمناه. اطلب منه شرح المفاهيم، حل التمارين، تصحيح الأخطاء، وإعادة هيكلة الكود.</p>
-                <h2>الجزء الثالث: استخدام مساعد البرمجة الذكي</h2>
-                <p>GitHub Copilot و Cursor يغيران قواعد اللعبة تماماً. بدلاً من كتابة كل سطر بنفسك، يقوم الذكاء الاصطناعي باقتراح الكود أثناء كتابتك.</p>
-                <h2>الجزء الرابع: بناء أول تطبيق (دليل عملي)</h2>
-                <p>دعنا نطبق ما تعلمناه في بناء تطبيق "حاسبة المهام". اتبع الخطوات من التخطيط إلى التجميع والاختبار.</p>
-                <h2>الجزء الخامس: بناء مشاريع أكثر تقدماً</h2>
-                <p>بعد أن تتقن الأساسيات، يمكنك الانتقال إلى مشاريع أكثر تعقيداً مثل تطبيق طقس، تطبيق تحويل العملات، مدونة شخصية، أو متجر إلكتروني صغير.</p>
-                <h2>الجزء السادس: نصائح لتسريع تعلمك</h2>
-                <p>اكتب كوداً يومياً، اقرأ كود الآخرين، انضم إلى مجتمعات المبرمجين، لا تخف من الأخطاء، واستخدم Git و GitHub.</p>
-                <h2>💎 الخلاصة: أنت على بعد 3 أشهر من الاحتراف</h2>
-                <p>مع الذكاء الاصطناعي، أصبحت رحلة تعلم البرمجة أقصر وأسهل من أي وقت مضى. بالالتزام بهذا الدليل، يمكنك في غضون 3 أشهر فهم أساسيات البرمجة، وبناء تطبيقات ويب كاملة، واستخدام أدوات الذكاء الاصطناعي لزيادة إنتاجيتك.</p>`
-            }
+            "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026": { title: "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026", date: "2026-04-01", category: "ريادة أعمال", image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&h=400&fit=crop", content: `<p>الذكاء الاصطناعي ليس مجرد تقنية عابرة، بل هو ثورة حقيقية تخلق مليارديرات جدد كل يوم. في هذا المقال، نستعرض 5 استراتيجيات ذكية لتضخيم دخلك باستخدام أدوات AI:</p><h2>🇸🇦 1. أتمتة المحتوى</h2><p>استخدم ChatGPT وJasper لإنشاء محتوى تسويقي، مقالات، منشورات سوشيال ميديا بكميات هائلة وبجودة عالية.</p><h2>🎓 2. إنشاء دورات تعليمية بالذكاء الاصطناعي</h2><p>باستخدام HeyGen وElevenLabs، يمكنك إنشاء فيديوهات تعليمية كاملة بصوتك وصورتك الرقمية.</p><h2>💻 3. بناء تطبيقات بدون برمجة</h2><p>أدوات مثل Cursor وReplit AI تسمح لأي شخص ببناء تطبيقات ويب كاملة بدون خبرة برمجية عميقة.</p><h2>📢 4. التسويق بالذكاء الاصطناعي</h2><p>استخدم Perplexity AI لتحليل السوق، وMidjourney لتصميم إعلانات جذابة، وCopy.ai لكتابة نصوص إعلانية مقنعة.</p><h2>💰 5. الاستثمار في شركات AI</h2><p>تابع الشركات الناشئة في مجال الذكاء الاصطناعي واستثمر مبكراً.</p><hr><p><strong>الخلاصة:</strong> المستقبل لمن يستخدم الذكاء الاصطناعي كأداة لتضخيم جهوده. ابدأ اليوم ولا تنتظر.</p>` },
+            "أفضل 10 أدوات AI لتوليد الفيديو": { title: "أفضل 10 أدوات AI لتوليد الفيديو", date: "2026-03-28", category: "أدوات", image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4dde1?w=800&h=400&fit=crop", content: `<p>صناعة الفيديو أصبحت أسهل من أي وقت مضى بفضل الذكاء الاصطناعي. إليك أفضل 10 أدوات:</p><ul><li><strong>Runway ML:</strong> تحرير وتوليد فيديوهات احترافية</li><li><strong>HeyGen:</strong> إنشاء أفلام بصور رمزية متحركة واقعية</li><li><strong>Pika Labs:</strong> تحويل النص إلى فيديو قصير</li><li><strong>Kaiber:</strong> تحويل الصور إلى فيديوهات متحركة</li><li><strong>Sora:</strong> أحدث إصدار من OpenAI (قيد الإصدار)</li><li><strong>Descript:</strong> تحرير الفيديو كأنك تحرر نصاً</li><li><strong>Fliki:</strong> تحويل المدونات إلى فيديوهات</li><li><strong>Synthesia:</strong> إنشاء فيديوهات تدريبية بأفاتار رقمي</li><li><strong>Elai.io:</strong> إنشاء فيديوهات من النص فقط</li><li><strong>Pictory.ai:</strong> تحويل المقالات الطويلة إلى فيديوهات قصيرة</li></ul><p>كل هذه الأدوات توفر نسخ مجانية لتجربتها قبل الاشتراك.</p>` },
+            "ChatGPT vs Claude: أيهما أفضل للبرمجة؟": { title: "ChatGPT vs Claude: أيهما أفضل للبرمجة؟", date: "2026-03-25", category: "مقارنات", image: "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=800&h=400&fit=crop", content: `<p>مقارنة شاملة بين أقوى نموذجين للذكاء الاصطناعي في مجال البرمجة:</p><h2>🤖 ChatGPT (GPT-4):</h2><p><strong>مميزات:</strong> يفهم السياق جيداً، يكتب كود نظيف، يدعم أكثر من 50 لغة برمجة.</p><p><strong>عيوب:</strong> أحياناً يهلوس في الكود المعقد.</p><h2>🧠 Claude 3 (Opus):</h2><p><strong>مميزات:</strong> دقة عالية في الكود الطويل، فهم ممتاز للمشاريع الكبيرة.</p><p><strong>عيوب:</strong> أقل شيوعاً، سعر أعلى لـ API.</p><h2>🏆 الخلاصة:</h2><p>للمشاريع الصغيرة → ChatGPT. للمشاريع الكبيرة → Claude 3.</p>` },
+            "عقلية المليونير: كيف تفكر كالأغنياء": { title: "عقلية المليونير: كيف تفكر كالأغنياء", date: "2026-03-20", category: "تطوير ذات", image: "https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&h=400&fit=crop", content: `<p>الفرق بين الأغنياء والفقراء ليس في المال فقط، بل في العقلية. إليك 7 عادات يومية:</p><ol><li><strong>التفكير في الحلول وليس المشاكل</strong></li><li><strong>الاستثمار في نفسك</strong></li><li><strong>تحمل المخاطر المحسوبة</strong></li><li><strong>بناء شبكة علاقات قوية</strong></li><li><strong>الانضباط المالي</strong></li><li><strong>التعلم المستمر</strong></li><li><strong>العمل على المشروع وليس في المشروع</strong></li></ol><p>ابدأ بتطبيق هذه العادات اليوم، وستلاحظ الفرق خلال 6 أشهر.</p>` },
+            "دليلك الشامل لتعلم البرمجة بالذكاء الاصطناعي": { title: "دليلك الشامل لتعلم البرمجة بالذكاء الاصطناعي", date: "2026-03-15", category: "برمجة", image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=800&h=400&fit=crop", content: `<p>البرمجة لم تعد حكراً على الخبراء. بفضل الذكاء الاصطناعي، أي شخص يمكنه تعلم البرمجة وبناء تطبيقات احترافية.</p><h2>1. ابدأ بأساسيات البرمجة</h2><p>تعلم الأساسيات باستخدام ChatGPT.</p><h2>2. استخدم مساعد البرمجة الذكي</h2><p>جرب <strong>GitHub Copilot</strong> أو <strong>Cursor</strong>.</p><h2>3. حل المشكلات العملية</h2><p>اطلب من ChatGPT حل مشكلات برمجية حقيقية.</p><h2>4. ابدأ مشروعك الخاص</h2><p>بعد شهر من التعلم، ابدأ مشروعاً خاصاً بك.</p>` },
+            "أفضل 5 أدوات لتحليل البيانات بالذكاء الاصطناعي": { title: "أفضل 5 أدوات لتحليل البيانات بالذكاء الاصطناعي", date: "2026-03-10", category: "أدوات", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop", content: `<p>تحليل البيانات أصبح أسهل مع الذكاء الاصطناعي. إليك أفضل 5 أدوات:</p><ul><li><strong>Tableau AI:</strong> تصور البيانات بالذكاء الاصطناعي</li><li><strong>Polymer:</strong> تحليل بيانات بدون كود</li><li><strong>Julius AI:</strong> تحليل بيانات بالمحادثة</li><li><strong>MonkeyLearn:</strong> تحليل النصوص والمشاعر</li><li><strong>IBM Watson:</strong> تحليل متقدم للبيانات</li></ul><p>جميع هذه الأدوات توفر نسخ تجريبية مجانية.</p>` },
+            "الاستثمار في الذكاء الاصطناعي: فرص العقد القادم": { title: "الاستثمار في الذكاء الاصطناعي: فرص العقد القادم", date: "2026-03-05", category: "استثمار", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop", content: `<p>الذكاء الاصطناعي هو المستقبل، والاستثمار فيه الآن قد يحقق عوائد ضخمة. إليك أفضل المجالات:</p><h2>1. شركات التكنولوجيا الكبرى</h2><p>Google، Microsoft، Amazon كلها تستثمر بكثافة في AI.</p><h2>2. الشركات الناشئة</h2><p>استثمر في الشركات الناشئة التي تقدم حلولاً مبتكرة في مجال AI.</p><h2>3. الصناديق المتداولة (ETFs)</h2><p>صناديق مثل ROBO و BOTZ تركز على شركات التكنولوجيا.</p><p><strong>نصيحة:</strong> ابدأ بمبالغ صغيرة واستثمر على المدى الطويل.</p>` },
+            "10 مهارات مطلوبة في عصر الذكاء الاصطناعي": { title: "10 مهارات مطلوبة في عصر الذكاء الاصطناعي", date: "2026-02-28", category: "تطوير ذات", image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=400&fit=crop", content: `<p>سوق العمل يتغير بسرعة بسبب الذكاء الاصطناعي. إليك 10 مهارات ستجعلك مطلوباً:</p><ol><li><strong>البرمجة:</strong> Python و JavaScript أساسيتان</li><li><strong>تحليل البيانات:</strong> فهم البيانات واستخراج القيم منها</li><li><strong>التعلم الآلي:</strong> بناء نماذج AI</li><li><strong>التفكير النقدي:</strong> تحليل النتائج واتخاذ القرارات</li><li><strong>الإبداع:</strong> AI يقلد لكن لا يبتكر</li><li><strong>التواصل:</strong> شرح الأفكار التقنية لغير المختصين</li><li><strong>إدارة المشاريع:</strong> تنظيم وتوجيه فرق العمل</li><li><strong>التسويق الرقمي:</strong> استغلال AI في التسويق</li><li><strong>التعلم المستمر:</strong> مواكبة التطورات السريعة</li><li><strong>الأخلاقيات:</strong> فهم تأثير AI على المجتمع</li></ol><p>طور هذه المهارات وستكون جاهزاً لمستقبل مليء بالفرص.</p>` },
+            "كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال": { title: "كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال", date: "2026-04-05", category: "ريادة أعمال", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop", content: `<p>كثيرون يعتقدون أن بدء مشروع يتطلب رأس مال كبير، لكن الحقيقة أن الذكاء الاصطناعي غير هذه المعادلة.</p><h2>1. استخدم الأدوات المجانية</h2><p>ChatGPT المجاني، Canva AI، وLeonardo.ai كلها أدوات قوية ومجانية.</p><h2>2. ابدأ خدمة صغيرة</h2><p>مثل كتابة المحتوى، تصميم الشعارات، أو تحرير الفيديو باستخدام AI.</p><h2>3. سوق لنفسك مجاناً</h2><p>استخدم LinkedIn، Twitter، ومجموعات Facebook للترويج لخدماتك.</p><h2>4. أعد استثمار أرباحك</h2><p>أول 100 دولار أرباح استثمرها في أدوات مدفوعة لتطوير خدماتك.</p><p><strong>الخلاصة:</strong> ابدأ اليوم، لا تنتظر الظروف المثالية.</p>` },
+            "أفضل 5 أدوات AI لكتابة السيرة الذاتية": { title: "أفضل 5 أدوات AI لكتابة السيرة الذاتية", date: "2026-04-02", category: "أدوات", image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=400&fit=crop", content: `<p>الحصول على وظيفة أحلامك يبدأ بسيرة ذاتية احترافية. إليك أفضل 5 أدوات AI:</p><ul><li><strong>Rezi:</strong> منصة متخصصة في كتابة السيرة الذاتية بالذكاء الاصطناعي</li><li><strong>Kickresume:</strong> قوالب احترافية مع مساعد AI ذكي</li><li><strong>Novoresume:</strong> تحليل واقتراحات لتحسين سيرتك الذاتية</li><li><strong>EnhanCV:</strong> تحسين الكلمات المفتاحية لتجاوز أنظمة ATS</li><li><strong>Resume.io:</strong> قوالب حديثة مع نصائح مخصصة</li></ul><p><strong>نصيحة:</strong> استخدم ChatGPT أيضاً لكتابة ملخص شخصي قوي وجذاب.</p>` },
+            "كيف تكسب المال من الإنترنت باستخدام الذكاء الاصطناعي в 2026": { title: "كيف تكسب المال من الإنترنت باستخدام الذكاء الاصطناعي في 2026", date: "2026-04-12", category: "ريادة أعمال", image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&h=400&fit=crop", content: `<h2>المقدمة: ثورة الذكاء الاصطناعي والربح من الإنترنت</h2><p>في عام 2026، لم يعد الذكاء الاصطناعي مجرد تقنية مستقبلية، بل أصبح أداة يومية يستخدمها الملايين لزيادة دخلهم. في هذا الدليل، نستعرض 7 طرق عملية لكسب المال باستخدام الذكاء الاصطناعي.</p><h2>1. كتابة المحتوى والكتب الإلكترونية</h2><p>استخدم ChatGPT لكتابة مقالات وكتب إلكترونية وبيعها على Amazon KDP.</p><h2>2. إنشاء دورات تعليمية بالفيديو</h2><p>استخدم HeyGen وElevenLabs لإنشاء فيديوهات تعليمية بأفاتار رقمي.</p><h2>3. تصميم الجرافيك والشعارات</h2><p>استخدم Midjourney وCanva AI لتصميم شعارات احترافية.</p><h2>4. تطوير تطبيقات بدون برمجة</h2><p>استخدم Cursor وReplit AI لبناء تطبيقات وبيعها.</p><h2>5. إنشاء قنوات يوتيوب آلية</h2><p>استخدم الذكاء الاصطناعي لإنشاء فيديوهات تلقائية وتحقيق أرباح من الإعلانات.</p><h2>6. التسويق بالعمولة</h2><p>استخدم الذكاء الاصطناعي لكتابة مراجعات للمنتجات والترويج لها.</p><h2>7. تقديم خدمات الاستشارات</h2><p>استخدم الذكاء الاصطناعي لتقديم استشارات احترافية في مجالك.</p><h2>💎 الخلاصة</h2><p>اختر طريقة واحدة وابدأ اليوم. النجاح لا يأتي بين عشية وضحاها، لكن مع المثابرة ستحقق نتائج مبهرة.</p>` }
         };
-
         const urlParams = new URLSearchParams(window.location.search);
         const postTitle = decodeURIComponent(urlParams.get('title') || '');
         const post = fullPosts[postTitle];
         const container = document.getElementById("postContent");
-        
         if (post) {
             document.title = `Ramzone | ${post.title}`;
-            container.innerHTML = `
-                <h1>${post.title}</h1>
-                <div class="post-category"><i class="fas fa-folder-open"></i> ${post.category}</div>
-                <div class="post-date"><i class="fas fa-calendar-alt"></i> ${post.date}</div>
-                <img src="${post.image}" alt="${post.title}">
-                <div class="post-content">${post.content}</div>
-                <div class="share-buttons">
-                    <span style="color:#888;">شارك المقال:</span>
-                    <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://wa.me/?text=${encodeURIComponent(post.title + ' ' + window.location.href)}" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            `;
-        } else {
-            container.innerHTML = `<p style="color:#ff6b6b;">😅 عذراً، المقال غير موجود</p><a href="blog.html" style="color:#D4AF37;">العودة إلى المدونة</a>`;
-        }
-
-        function updateAuthUI() {
-            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-            const authLink = document.getElementById("authLink");
-            const userGreeting = document.getElementById("userGreeting");
-            const logoutBtn = document.getElementById("logoutBtn");
-            if (currentUser) {
-                if (authLink) authLink.style.display = "none";
-                if (userGreeting) {
-                    userGreeting.style.display = "inline";
-                    userGreeting.textContent = `مرحباً ${currentUser.name}`;
-                }
-                if (logoutBtn) logoutBtn.style.display = "inline";
-            } else {
-                if (authLink) authLink.style.display = "inline";
-                if (userGreeting) userGreeting.style.display = "none";
-                if (logoutBtn) logoutBtn.style.display = "none";
-            }
-        }
-
-        function setupLogout() {
-            const logoutBtn = document.getElementById("logoutBtn");
-            if (logoutBtn) {
-                logoutBtn.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    localStorage.removeItem("currentUser");
-                    window.location.href = "index.html";
-                });
-            }
-        }
-
-        function setupMobileMenu() {
-            const toggle = document.getElementById("mobileMenu");
-            const navLinks = document.getElementById("navLinks");
-            if (toggle && navLinks) {
-                toggle.addEventListener("click", () => {
-                    navLinks.classList.toggle("active");
-                });
-            }
-        }
-
-        updateAuthUI();
-        setupLogout();
-        setupMobileMenu();
+            container.innerHTML = `<h1>${post.title}</h1><div class="post-category"><i class="fas fa-folder-open"></i> ${post.category}</div><div class="post-date"><i class="fas fa-calendar-alt"></i> ${post.date}</div><img src="${post.image}" alt="${post.title}"><div class="post-content">${post.content}</div><div class="share-buttons"><span style="color:#888;">شارك المقال:</span><a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}" target="_blank"><i class="fab fa-twitter"></i></a><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="https://wa.me/?text=${encodeURIComponent(post.title + ' ' + window.location.href)}" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}" target="_blank"><i class="fab fa-linkedin-in"></i></a></div>`;
+        } else { container.innerHTML = `<p style="color:#ff6b6b;">😅 عذراً، المقال غير موجود</p><a href="blog.html" style="color:#D4AF37;">العودة إلى المدونة</a>`; }
+        function updateAuthUI() { const currentUser = JSON.parse(localStorage.getItem("currentUser")); const authLink = document.getElementById("authLink"); const userGreeting = document.getElementById("userGreeting"); const logoutBtn = document.getElementById("logoutBtn"); if (currentUser) { if (authLink) authLink.style.display = "none"; if (userGreeting) { userGreeting.style.display = "inline"; userGreeting.textContent = `مرحباً ${currentUser.name}`; } if (logoutBtn) logoutBtn.style.display = "inline"; } else { if (authLink) authLink.style.display = "inline"; if (userGreeting) userGreeting.style.display = "none"; if (logoutBtn) logoutBtn.style.display = "none"; } }
+        function setupLogout() { const logoutBtn = document.getElementById("logoutBtn"); if (logoutBtn) { logoutBtn.addEventListener("click", (e) => { e.preventDefault(); localStorage.removeItem("currentUser"); window.location.href = "index.html"; }); } }
+        function setupMobileMenu() { const toggle = document.getElementById("mobileMenu"); const navLinks = document.getElementById("navLinks"); if (toggle && navLinks) toggle.addEventListener("click", () => navLinks.classList.toggle("active")); }
+        updateAuthUI(); setupLogout(); setupMobileMenu();
     </script>
 </body>
 </html>
