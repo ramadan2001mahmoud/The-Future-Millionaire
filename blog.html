@@ -98,20 +98,6 @@
         }
         .footer-links { margin-top: 15px; }
         .footer-links a { color: #D4AF37; text-decoration: none; margin: 0 10px; }
-        .comments-section {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 20px;
-            background: #1A1A1A;
-            border-radius: 15px;
-            border: 1px solid #2A2A2A;
-        }
-        .comments-section h3 {
-            color: #D4AF37;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #333;
-        }
     </style>
 </head>
 <body>
@@ -187,7 +173,7 @@
             { title: "كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال", date: "2026-04-05", excerpt: "أفكار عملية لمشاريع رقمية مربحة باستخدام أدوات AI المجانية", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop", category: "ريادة أعمال", url: "post.html?title=كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال" },
             { title: "أفضل 5 أدوات AI لكتابة السيرة الذاتية", date: "2026-04-02", excerpt: "كيف تحصل على وظيفة أحلامك باستخدام الذكاء الاصطناعي", image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=250&fit=crop", category: "أدوات", url: "post.html?title=أفضل 5 أدوات AI لكتابة السيرة الذاتية" },
             
-            // ========== المقالات الجديدة (5 مقالات) ==========
+            // المقالات الجديدة
             { title: "كيف تكسب المال من الإنترنت باستخدام الذكاء الاصطناعي في 2026", date: "2026-04-12", excerpt: "7 طرق عملية ومجربة لكسب المال من المنزل باستخدام أدوات الذكاء الاصطناعي...", image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400&h=250&fit=crop", category: "ريادة أعمال", url: "post.html?title=كيف تكسب المال من الإنترنت باستخدام الذكاء الاصطناعي في 2026" },
             { title: "ChatGPT vs Gemini vs Claude: أيهما أفضل للبرمجة والكتابة", date: "2026-04-12", excerpt: "مقارنة شاملة بين أقوى ثلاثة نماذج ذكاء اصطناعي في مجالات البرمجة والكتابة...", image: "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=400&h=250&fit=crop", category: "مقارنات", url: "post.html?title=ChatGPT vs Gemini vs Claude: أيهما أفضل للبرمجة والكتابة" },
             { title: "أفضل 10 أدوات ذكاء اصطناعي لتوليد الصور والفيديو", date: "2026-04-12", excerpt: "دليلك الشامل لأفضل أدوات الذكاء الاصطناعي لإنشاء الصور والفيديوهات الاحترافية...", image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4dde1?w=400&h=250&fit=crop", category: "أدوات", url: "post.html?title=أفضل 10 أدوات ذكاء اصطناعي لتوليد الصور والفيديو" },
@@ -279,16 +265,12 @@
             }
         }
 
+        // نقطة البداية الصحيحة - المقالات تظهر فوراً
         buildCategoryButtons();
         displayPosts();
         updateAuthUI();
         setupLogout();
         setupMobileMenu();
-        
-        // تأكيد إضافي لعرض المقالات بعد تحميل الصفحة
-        setTimeout(function() {
-            displayPosts();
-        }, 100);
     </script>
 </body>
 </html>
