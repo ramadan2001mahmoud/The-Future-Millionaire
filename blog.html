@@ -175,6 +175,7 @@
 
     <script>
         const posts = [
+            // المقالات القديمة
             { title: "كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026", date: "2026-04-01", excerpt: "5 استراتيجيات ذكية لتضخيم دخلك باستخدام أدوات AI...", image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400&h=250&fit=crop", category: "ريادة أعمال", url: "post.html?title=كيف تصبح مليونيراً باستخدام الذكاء الاصطناعي في 2026" },
             { title: "أفضل 10 أدوات AI لتوليد الفيديو", date: "2026-03-28", excerpt: "من Runway إلى Pika... تعرف على أدوات صناعة الفيديو بالذكاء الاصطناعي", image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4dde1?w=400&h=250&fit=crop", category: "أدوات", url: "post.html?title=أفضل 10 أدوات AI لتوليد الفيديو" },
             { title: "ChatGPT vs Claude: أيهما أفضل للبرمجة؟", date: "2026-03-25", excerpt: "مقارنة شاملة بين أقوى نموذجين للذكاء الاصطناعي", image: "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=400&h=250&fit=crop", category: "مقارنات", url: "post.html?title=ChatGPT vs Claude: أيهما أفضل للبرمجة؟" },
@@ -184,7 +185,14 @@
             { title: "الاستثمار في الذكاء الاصطناعي: فرص العقد القادم", date: "2026-03-05", excerpt: "كيف تستثمر في شركات AI قبل فوات الأوان", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop", category: "استثمار", url: "post.html?title=الاستثمار في الذكاء الاصطناعي: فرص العقد القادم" },
             { title: "10 مهارات مطلوبة في عصر الذكاء الاصطناعي", date: "2026-02-28", excerpt: "المهارات التي تضمن لك وظيفة المستقبل", image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=250&fit=crop", category: "تطوير ذات", url: "post.html?title=10 مهارات مطلوبة في عصر الذكاء الاصطناعي" },
             { title: "كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال", date: "2026-04-05", excerpt: "أفكار عملية لمشاريع رقمية مربحة باستخدام أدوات AI المجانية", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop", category: "ريادة أعمال", url: "post.html?title=كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال" },
-            { title: "أفضل 5 أدوات AI لكتابة السيرة الذاتية", date: "2026-04-02", excerpt: "كيف تحصل على وظيفة أحلامك باستخدام الذكاء الاصطناعي", image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=250&fit=crop", category: "أدوات", url: "post.html?title=أفضل 5 أدوات AI لكتابة السيرة الذاتية" }
+            { title: "أفضل 5 أدوات AI لكتابة السيرة الذاتية", date: "2026-04-02", excerpt: "كيف تحصل على وظيفة أحلامك باستخدام الذكاء الاصطناعي", image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=250&fit=crop", category: "أدوات", url: "post.html?title=أفضل 5 أدوات AI لكتابة السيرة الذاتية" },
+            
+            // ========== المقالات الجديدة (5 مقالات) ==========
+            { title: "كيف تكسب المال من الإنترنت باستخدام الذكاء الاصطناعي في 2026", date: "2026-04-12", excerpt: "7 طرق عملية ومجربة لكسب المال من المنزل باستخدام أدوات الذكاء الاصطناعي...", image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=400&h=250&fit=crop", category: "ريادة أعمال", url: "post.html?title=كيف تكسب المال من الإنترنت باستخدام الذكاء الاصطناعي في 2026" },
+            { title: "ChatGPT vs Gemini vs Claude: أيهما أفضل للبرمجة والكتابة", date: "2026-04-12", excerpt: "مقارنة شاملة بين أقوى ثلاثة نماذج ذكاء اصطناعي في مجالات البرمجة والكتابة...", image: "https://images.unsplash.com/photo-1580894894513-541e068a3e2b?w=400&h=250&fit=crop", category: "مقارنات", url: "post.html?title=ChatGPT vs Gemini vs Claude: أيهما أفضل للبرمجة والكتابة" },
+            { title: "أفضل 10 أدوات ذكاء اصطناعي لتوليد الصور والفيديو", date: "2026-04-12", excerpt: "دليلك الشامل لأفضل أدوات الذكاء الاصطناعي لإنشاء الصور والفيديوهات الاحترافية...", image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4dde1?w=400&h=250&fit=crop", category: "أدوات", url: "post.html?title=أفضل 10 أدوات ذكاء اصطناعي لتوليد الصور والفيديو" },
+            { title: "كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال", date: "2026-04-12", excerpt: "خطة عمل متكاملة لبدء مشروعك الخاص باستخدام الأدوات المجانية وتحقيق أرباح حقيقية...", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop", category: "ريادة أعمال", url: "post.html?title=كيف تبدأ مشروعك الخاص بالذكاء الاصطناعي بدون رأس مال" },
+            { title: "دليلك الكامل لتعلم البرمجة بالذكاء الاصطناعي", date: "2026-04-12", excerpt: "من الصفر إلى الاحتراف: كيف تتعلم البرمجة باستخدام أدوات الذكاء الاصطناعي في 3 أشهر...", image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=400&h=250&fit=crop", category: "برمجة", url: "post.html?title=دليلك الكامل لتعلم البرمجة بالذكاء الاصطناعي" }
         ];
 
         let currentCategory = "all";
@@ -230,7 +238,6 @@
             `).join('');
         }
 
-        // نظام التعليقات سيظهر في صفحة المقالة نفسها (post.html)، مش في صفحة عرض البطاقات
         function updateAuthUI() {
             const currentUser = JSON.parse(localStorage.getItem("currentUser"));
             const authLink = document.getElementById("authLink");
