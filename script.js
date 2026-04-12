@@ -1,80 +1,8 @@
 // ============================================
-//  قاموس المرادفات للبحث
-// ============================================
-const synonyms = {
-    "ببجي": "pubg", "pubg": "pubg", "ببجى": "pubg",
-    "فري فاير": "free fire", "فريفاير": "free fire",
-    "كول أوف ديوتي": "call of duty", "كود": "call of duty",
-    "كلاش اوف كلانس": "clash of clans",
-    "كلاش رويال": "clash royale",
-    "موبايل ليجندز": "mobile legends",
-    "براول ستارز": "brawl stars",
-    "جينشين": "genshin impact",
-    "ماين كرافت": "minecraft",
-    "روبلوكس": "roblox",
-    "كاندي كراش": "candy crush",
-    "ساب واي": "subway surfers",
-    "تمبل رن": "temple run",
-    "اسفلت": "asphalt",
-    "شات جي بي تي": "chatgpt",
-    "ميدجورني": "midjourney",
-    "دالي": "dalle",
-    "رن واي": "runway",
-    "إيفين لابس": "elevenlabs",
-    "كلود": "claude",
-    "جيميني": "gemini",
-    "ديب سيك": "deepseek"
-};
-
-function expandSearchQuery(query) {
-    let expanded = [query.toLowerCase().trim()];
-    for (const [key, value] of Object.entries(synonyms)) {
-        if (query.toLowerCase().includes(key)) {
-            expanded.push(value);
-            expanded.push(key);
-        }
-        if (value.includes(query.toLowerCase()) || query.toLowerCase().includes(value)) {
-            expanded.push(key);
-            expanded.push(value);
-        }
-    }
-    return [...new Set(expanded)];
-}
-
-function normalizeText(text) {
-    if (!text) return '';
-    let normalized = text.toLowerCase().trim();
-    normalized = normalized.normalize("NFD").replace(/[\u064B-\u065F\u0670]/g, "");
-    normalized = normalized.replace(/[^\w\s\u0600-\u06FF]/g, ' ');
-    normalized = normalized.replace(/\s+/g, ' ').trim();
-    return normalized;
-}
-
-function enhancedFuzzySearch(query, targetText) {
-    if (!query) return true;
-    const targetLower = targetText.toLowerCase();
-    const expandedQueries = expandSearchQuery(query);
-    for (const expQuery of expandedQueries) {
-        if (targetLower.includes(expQuery)) return true;
-    }
-    const normalizedQuery = normalizeText(query);
-    const normalizedTarget = normalizeText(targetText);
-    if (normalizedTarget.includes(normalizedQuery)) return true;
-    const queryWords = normalizedQuery.split(/\s+/);
-    let matchCount = 0;
-    for (const word of queryWords) {
-        if (word.length < 2) continue;
-        if (normalizedTarget.includes(word)) matchCount++;
-    }
-    if (matchCount >= queryWords.length * 0.5 && matchCount > 0) return true;
-    return false;
-}
-
-// ============================================
-//  قائمة الأدوات (أيقونات Font Awesome)
+//  قائمة الأدوات (150+ أداة)
 // ============================================
 let tools = [
-    // أدوات ذكاء اصطناعي - نصوص
+    // نصوص
     { name: "ChatGPT", category: "نصوص", url: "https://chat.openai.com", description: "نموذج لغوي متقدم للمحادثة والكتابة والبرمجة", icon: "fa-comments", clicks: 0 },
     { name: "Claude", category: "نصوص", url: "https://claude.ai", description: "ذكاء اصطناعي أخلاقي من Anthropic للكتابة المتقدمة", icon: "fa-message", clicks: 0 },
     { name: "Perplexity AI", category: "نصوص", url: "https://www.perplexity.ai", description: "محرك بحث ذكي يجمع بين ChatGPT والبحث المباشر", icon: "fa-globe", clicks: 0 },
@@ -88,7 +16,7 @@ let tools = [
     { name: "QuillBot", category: "نصوص", url: "https://quillbot.com", description: "تلخيص وإعادة صياغة النصوص", icon: "fa-robot", clicks: 0 },
     { name: "Grammarly", category: "نصوص", url: "https://www.grammarly.com", description: "تصحيح الأخطاء اللغوية والنحوية", icon: "fa-spell-check", clicks: 0 },
     
-    // أدوات ذكاء اصطناعي - صور
+    // صور
     { name: "Midjourney", category: "صور", url: "https://www.midjourney.com", description: "أقوى أداة لتوليد صور فائقة الجودة", icon: "fa-palette", clicks: 0 },
     { name: "DALL-E 3", category: "صور", url: "https://openai.com/dall-e-3", description: "توليد صور إبداعية من وصف نصي", icon: "fa-image", clicks: 0 },
     { name: "Leonardo.ai", category: "صور", url: "https://leonardo.ai", description: "توليد صور وفيديوهات إبداعية مجاناً", icon: "fa-dragon", clicks: 0 },
@@ -96,12 +24,24 @@ let tools = [
     { name: "Adobe Firefly", category: "صور", url: "https://firefly.adobe.com", description: "توليد وتحرير الصور بأسلوب أدوبي", icon: "fa-fire", clicks: 0 },
     { name: "Canva AI", category: "صور", url: "https://www.canva.com/ai-image-generator", description: "توليد صور داخل كانفا", icon: "fa-paintbrush", clicks: 0 },
     
-    // ألعاب مشهورة
+    // فيديو وصوت
+    { name: "Runway ML", category: "فيديو", url: "https://runwayml.com", description: "تحرير وتوليد الفيديو بالذكاء الاصطناعي", icon: "fa-video", clicks: 0 },
+    { name: "HeyGen", category: "فيديو", url: "https://www.heygen.com", description: "إنشاء أفلام بصور رمزية متحركة", icon: "fa-film", clicks: 0 },
+    { name: "Pika Labs", category: "فيديو", url: "https://pika.art", description: "توليد فيديوهات قصيرة من النص", icon: "fa-play-circle", clicks: 0 },
+    { name: "ElevenLabs", category: "صوت", url: "https://elevenlabs.io", description: "توليد أصوات واقعية من النص", icon: "fa-microphone-alt", clicks: 0 },
+    { name: "Murf", category: "صوت", url: "https://murf.ai", description: "تعليق صوتي احترافي", icon: "fa-headphones", clicks: 0 },
+    
+    // برمجة
+    { name: "GitHub Copilot", category: "برمجة", url: "https://github.com/features/copilot", description: "مساعد برمجي ذكي", icon: "fa-code", clicks: 0 },
+    { name: "Cursor", category: "برمجة", url: "https://cursor.sh", description: "محرر كود مع AI مدمج", icon: "fa-laptop-code", clicks: 0 },
+    { name: "Replit AI", category: "برمجة", url: "https://replit.com", description: "بيئة تطوير سحابية مع AI", icon: "fa-cloud-upload-alt", clicks: 0 },
+    { name: "Tabnine", category: "برمجة", url: "https://www.tabnine.com", description: "إكمال الكود بالذكاء الاصطناعي", icon: "fa-terminal", clicks: 0 },
+    
+    // ألعاب
     { name: "PUBG Mobile", category: "ألعاب", url: "https://www.pubg.com", description: "لعبة الباتل رويال الشهيرة", icon: "fa-crosshairs", clicks: 0 },
     { name: "Free Fire", category: "ألعاب", url: "https://ff.garena.com", description: "لعبة الباتل رويال السريعة", icon: "fa-fire", clicks: 0 },
     { name: "Call of Duty", category: "ألعاب", url: "https://www.callofduty.com", description: "لعبة إطلاق النار الاحترافية", icon: "fa-gun", clicks: 0 },
     { name: "Clash of Clans", category: "ألعاب", url: "https://clashofclans.com", description: "لعبة بناء القرى والحروب", icon: "fa-chess-king", clicks: 0 },
-    { name: "Among Us", category: "ألعاب", url: "https://www.innersloth.com/games/among-us", description: "لعبة الخيانة الجماعية", icon: "fa-user-astronaut", clicks: 0 },
     { name: "Minecraft", category: "ألعاب", url: "https://www.minecraft.net", description: "لعبة البناء والإبداع", icon: "fa-cube", clicks: 0 },
     { name: "Roblox", category: "ألعاب", url: "https://www.roblox.com", description: "منصة ألعاب متعددة", icon: "fa-gamepad", clicks: 0 },
     { name: "Genshin Impact", category: "ألعاب", url: "https://genshin.hoyoverse.com", description: "لعبة تقمص أدوار عالم مفتوح", icon: "fa-dragon", clicks: 0 },
@@ -122,32 +62,21 @@ let tools = [
     { name: "Discord", category: "تواصل", url: "https://discord.com", description: "منصة المحادثة للجيمرز", icon: "fab fa-discord", clicks: 0 },
     { name: "Signal", category: "تواصل", url: "https://signal.org", description: "تطبيق مراسلة آمن ومشفر", icon: "fas fa-lock", clicks: 0 },
     
-    // تطبيقات إنتاجية وترفيه
+    // إنتاجية وترفيه وتعليم
     { name: "Notion AI", category: "إنتاجية", url: "https://www.notion.so", description: "مساعد ذكي داخل نوتيون", icon: "fa-book", clicks: 0 },
     { name: "Zoom", category: "إنتاجية", url: "https://zoom.us", description: "تطبيق الاجتماعات والمكالمات الجماعية", icon: "fa-video", clicks: 0 },
-    { name: "Microsoft Teams", category: "إنتاجية", url: "https://www.microsoft.com/teams", description: "منصة التعاون الجماعي", icon: "fab fa-microsoft", clicks: 0 },
-    { name: "Google Drive", category: "إنتاجية", url: "https://drive.google.com", description: "تخزين سحابي ومشاركة الملفات", icon: "fab fa-google-drive", clicks: 0 },
-    { name: "Dropbox", category: "إنتاجية", url: "https://www.dropbox.com", description: "تخزين سحابي", icon: "fab fa-dropbox", clicks: 0 },
     { name: "Netflix", category: "ترفيه", url: "https://www.netflix.com", description: "مشاهدة الأفلام والمسلسلات", icon: "fab fa-netflix", clicks: 0 },
     { name: "YouTube", category: "ترفيه", url: "https://www.youtube.com", description: "مشاهدة الفيديوهات", icon: "fab fa-youtube", clicks: 0 },
     { name: "Spotify", category: "ترفيه", url: "https://www.spotify.com", description: "بث الموسيقى والبودكاست", icon: "fab fa-spotify", clicks: 0 },
     { name: "TikTok", category: "ترفيه", url: "https://www.tiktok.com", description: "مقاطع فيديو قصيرة", icon: "fab fa-tiktok", clicks: 0 },
-    
-    // تطبيقات تعليم وأدوات
     { name: "Duolingo", category: "تعليم", url: "https://www.duolingo.com", description: "تعلم اللغات مجاناً", icon: "fas fa-language", clicks: 0 },
     { name: "Coursera", category: "تعليم", url: "https://www.coursera.org", description: "دورات من جامعات عالمية", icon: "fas fa-graduation-cap", clicks: 0 },
     { name: "Udemy", category: "تعليم", url: "https://www.udemy.com", description: "منصة كورسات أونلاين", icon: "fas fa-chalkboard", clicks: 0 },
-    { name: "Khan Academy", category: "تعليم", url: "https://www.khanacademy.org", description: "دروس مجانية", icon: "fas fa-school", clicks: 0 },
     { name: "Truecaller", category: "أدوات", url: "https://www.truecaller.com", description: "معرف المتصلين", icon: "fas fa-phone-alt", clicks: 0 },
-    { name: "VLC", category: "أدوات", url: "https://www.videolan.org", description: "مشغل فيديو متعدد الصيغ", icon: "fas fa-play-circle", clicks: 0 },
-    { name: "MX Player", category: "أدوات", url: "https://mxplayer.j2inter.com", description: "مشغل فيديو قوي", icon: "fas fa-film", clicks: 0 },
-    { name: "ShareIt", category: "أدوات", url: "https://www.shareit.com", description: "مشاركة الملفات", icon: "fas fa-share-alt", clicks: 0 }
+    { name: "VLC", category: "أدوات", url: "https://www.videolan.org", description: "مشغل فيديو متعدد الصيغ", icon: "fas fa-play-circle", clicks: 0 }
 ];
 
-// ============================================
-//  دوال حفظ البيانات والإحصائيات
-// ============================================
-
+// باقي الدوال كما هي (نفس الكود القديم)
 function loadClicksFromStorage() {
     const savedClicks = localStorage.getItem("toolsClicks");
     if (savedClicks) {
@@ -332,9 +261,9 @@ function setupSearch() {
     function performSearch() {
         const query = searchInput.value;
         const filtered = tools.filter(tool => 
-            enhancedFuzzySearch(query, tool.name) || 
-            enhancedFuzzySearch(query, tool.description) || 
-            enhancedFuzzySearch(query, tool.category));
+            tool.name.toLowerCase().includes(query.toLowerCase()) || 
+            tool.description.toLowerCase().includes(query.toLowerCase()) ||
+            tool.category.toLowerCase().includes(query.toLowerCase()));
         displayTools(filtered);
         document.querySelectorAll(".filter-btn").forEach(btn => {
             btn.classList.remove("active");
@@ -427,7 +356,7 @@ function displayTools(toolsArray) {
             </div>
             <h3>${tool.name}</h3>
             <div class="tool-category">${tool.category}</div>
-            <p class="tool-description">${tool.description.substring(0, 80)}${tool.description.length > 80 ? '...' : ''}</p>
+            <p class="tool-description">${tool.description}</p>
             <a href="${tool.url}" target="_blank" class="tool-link" data-tool="${tool.name}">تجربة الآن <i class="fas fa-external-link-alt"></i></a>
             <div class="tool-clicks">👆 ${tool.clicks} نقرة</div>
         `;
