@@ -2,87 +2,28 @@
 //  قاموس المرادفات للبحث (Synonyms Dictionary)
 // ============================================
 const synonyms = {
-    // ألعاب
-    "ببجي": "pubg",
-    "pubg": "pubg",
-    "ببجى": "pubg",
-    "بب جي": "pubg",
-    "بب جي": "pubg",
-    "ببجى": "pubg",
-    "فري فاير": "free fire",
-    "فري فاير": "free fire",
-    "فري فاير": "free fire",
-    "فري فاير": "free fire",
-    "فريفاير": "free fire",
-    "كول أوف ديوتي": "call of duty",
-    "كول اوف ديوتي": "call of duty",
-    "كول اوف ديوتي": "call of duty",
-    "كول أوف ديوتي": "call of duty",
-    "كود": "call of duty",
-    "مودرن كومبات": "modern combat",
-    "كلاش اوف كلانس": "clash of clans",
-    "كلاش أوف كلانس": "clash of clans",
-    "كلاش اوف كلانس": "clash of clans",
-    "كوك": "clash of clans",
-    "كلاش رويال": "clash royale",
+    "ببجي": "pubg", "pubg": "pubg", "ببجى": "pubg", "بب جي": "pubg",
+    "فري فاير": "free fire", "فريفاير": "free fire",
+    "كول أوف ديوتي": "call of duty", "كول اوف ديوتي": "call of duty", "كود": "call of duty",
+    "كلاش اوف كلانس": "clash of clans", "كوك": "clash of clans",
     "كلاش رويال": "clash royale",
     "موبايل ليجندز": "mobile legends",
-    "موبايل ليجندز": "mobile legends",
-    "موبايل ليجندز": "mobile legends",
-    "م وبايل ليجندز": "mobile legends",
-    "براول ستارز": "brawl stars",
-    "برول ستارز": "brawl stars",
-    "جينشين": "genshin impact",
-    "جينشين إمباكت": "genshin impact",
-    "جينشين امباكت": "genshin impact",
+    "براول ستارز": "brawl stars", "برول ستارز": "brawl stars",
+    "جينشين": "genshin impact", "جينشين إمباكت": "genshin impact",
     "ماين كرافت": "minecraft",
-    "ماين كرافت": "minecraft",
-    "ماين كرافت": "minecraft",
-    "روبلوكس": "roblox",
-    "روبلكس": "roblox",
+    "روبلوكس": "roblox", "روبلكس": "roblox",
     "كاندي كراش": "candy crush",
-    "ساب واي": "subway surfers",
-    "ساب واي سيرفرز": "subway surfers",
-    "ساب واي": "subway surfers",
+    "ساب واي": "subway surfers", "ساب واي سيرفرز": "subway surfers",
     "تمبل رن": "temple run",
     "اسفلت": "asphalt",
-    "اسفلت 9": "asphalt",
-    
-    // أدوات ذكاء اصطناعي
-    "شات جي بي تي": "chatgpt",
-    "شات جي بي تي": "chatgpt",
-    "شات جبتي": "chatgpt",
-    "تشات جي بي تي": "chatgpt",
-    "تشات جي بي تي": "chatgpt",
-    "شات جي بي تي": "chatgpt",
-    "شات جي بي تي": "chatgpt",
-    "شات جي بي تي": "chatgpt",
-    "chat gpt": "chatgpt",
-    "chat-gpt": "chatgpt",
-    "شات": "chatgpt",
-    "ميدجورني": "midjourney",
-    "ميد جورني": "midjourney",
-    "ميدجورني": "midjourney",
-    "ميدجورني": "midjourney",
-    "ميدجورني": "midjourney",
-    "دالي": "dalle",
-    "دال اي": "dalle",
-    "دال إي": "dalle",
-    "دال اي": "dalle",
-    "دال اي": "dalle",
+    "شات جي بي تي": "chatgpt", "تشات جي بي تي": "chatgpt", "chat gpt": "chatgpt",
+    "ميدجورني": "midjourney", "ميد جورني": "midjourney",
+    "دالي": "dalle", "دال اي": "dalle", "دال إي": "dalle",
     "رن واي": "runway",
-    "رن واي": "runway",
-    "إيفين لابس": "elevenlabs",
-    "ايفين لابس": "elevenlabs",
-    "إيفين لابس": "elevenlabs",
-    "إيفين لابس": "elevenlabs",
-    "كلود": "claude",
+    "إيفين لابس": "elevenlabs", "ايفين لابس": "elevenlabs",
     "كلود": "claude",
     "جيميني": "gemini",
-    "جيميني": "gemini",
     "ديب سيك": "deepseek",
-    "ديب سيك": "deepseek",
-    "بيربلكستي": "perplexity",
     "بيربلكستي": "perplexity",
     "كوبي": "copy.ai",
     "جاسبر": "jasper",
@@ -90,10 +31,8 @@ const synonyms = {
     "رايتير": "rytr"
 };
 
-// دالة لتوسيع نص البحث بالمرادفات
 function expandSearchQuery(query) {
     let expanded = [query.toLowerCase().trim()];
-    
     for (const [key, value] of Object.entries(synonyms)) {
         if (query.toLowerCase().includes(key)) {
             expanded.push(value);
@@ -104,67 +43,42 @@ function expandSearchQuery(query) {
             expanded.push(value);
         }
     }
-    
     return [...new Set(expanded)];
 }
 
-// دالة لتطبيع النص (تجهيزه للبحث)
 function normalizeText(text) {
     if (!text) return '';
-    
     let normalized = text.toLowerCase().trim();
     normalized = normalized.normalize("NFD").replace(/[\u064B-\u065F\u0670]/g, "");
     normalized = normalized.replace(/[^\w\s\u0600-\u06FF]/g, ' ');
     normalized = normalized.replace(/\s+/g, ' ').trim();
-    
     return normalized;
 }
 
-// دالة البحث المطورة مع المرادفات
 function enhancedFuzzySearch(query, targetText) {
     if (!query) return true;
-    
     const targetLower = targetText.toLowerCase();
     const expandedQueries = expandSearchQuery(query);
-    
-    // البحث بالمرادفات الموسعة
     for (const expQuery of expandedQueries) {
-        if (targetLower.includes(expQuery)) {
-            return true;
-        }
+        if (targetLower.includes(expQuery)) return true;
     }
-    
-    // البحث العادي (بعد التوحيد)
     const normalizedQuery = normalizeText(query);
     const normalizedTarget = normalizeText(targetText);
-    
-    if (normalizedTarget.includes(normalizedQuery)) {
-        return true;
-    }
-    
-    // البحث بالكلمات المفتاحية
+    if (normalizedTarget.includes(normalizedQuery)) return true;
     const queryWords = normalizedQuery.split(/\s+/);
     let matchCount = 0;
-    
     for (const word of queryWords) {
         if (word.length < 2) continue;
-        if (normalizedTarget.includes(word)) {
-            matchCount++;
-        }
+        if (normalizedTarget.includes(word)) matchCount++;
     }
-    
-    if (matchCount >= queryWords.length * 0.5 && matchCount > 0) {
-        return true;
-    }
-    
+    if (matchCount >= queryWords.length * 0.5 && matchCount > 0) return true;
     return false;
 }
 
 // ============================================
-//  قائمة الأدوات (92+ أداة ذكاء اصطناعي)
+//  قائمة الأدوات
 // ============================================
 let tools = [
-    // ========== 📝 أدوات النصوص (20 أداة) ==========
     { name: "ChatGPT (شات جي بي تي)", category: "نصوص", url: "https://chat.openai.com", description: "نموذج لغوي متقدم للمحادثة والكتابة والبرمجة", icon: "fa-comments", clicks: 0 },
     { name: "Claude (كلود)", category: "نصوص", url: "https://claude.ai", description: "ذكاء اصطناعي أخلاقي من Anthropic للكتابة المتقدمة", icon: "fa-message", clicks: 0 },
     { name: "Perplexity AI (بيربلكستي)", category: "نصوص", url: "https://www.perplexity.ai", description: "محرك بحث ذكي يجمع بين ChatGPT والبحث المباشر", icon: "fa-globe", clicks: 0 },
@@ -185,8 +99,6 @@ let tools = [
     { name: "Character AI (كاراكتر)", category: "نصوص", url: "https://character.ai", description: "تحدث مع شخصيات خيالية وتاريخية", icon: "fa-users", clicks: 0 },
     { name: "Pi AI (باي)", category: "نصوص", url: "https://pi.ai", description: "مساعد شخصي ذكي ودود للمحادثة", icon: "fa-smile", clicks: 0 },
     { name: "Cohere (كو هير)", category: "نصوص", url: "https://cohere.com", description: "منصة لتوليد النصوص للمطورين", icon: "fa-cogs", clicks: 0 },
-
-    // ========== 🎨 أدوات الصور (20 أداة) ==========
     { name: "Midjourney (ميدجورني)", category: "صور", url: "https://www.midjourney.com", description: "أقوى أداة لتوليد صور فائقة الجودة", icon: "fa-palette", clicks: 0 },
     { name: "DALL-E 3 (دالي)", category: "صور", url: "https://openai.com/dall-e-3", description: "توليد صور إبداعية من وصف نصي", icon: "fa-image", clicks: 0 },
     { name: "Leonardo.ai (ليوناردو)", category: "صور", url: "https://leonardo.ai", description: "توليد صور وفيديوهات إبداعية مجاناً", icon: "fa-dragon", clicks: 0 },
@@ -207,8 +119,6 @@ let tools = [
     { name: "Artbreeder (آرت بريدر)", category: "صور", url: "https://www.artbreeder.com", description: "توليد وتعديل الصور بالذكاء الاصطناعي", icon: "fa-leaf", clicks: 0 },
     { name: "Fotor AI (فوتور)", category: "صور", url: "https://www.fotor.com", description: "تعديل وتوليد الصور باحترافية", icon: "fa-camera", clicks: 0 },
     { name: "Picsart AI (بيكس آرت)", category: "صور", url: "https://picsart.com", description: "تصميم وتحرير الصور بالذكاء الاصطناعي", icon: "fa-pen-fancy", clicks: 0 },
-
-    // ========== 🎥 أدوات الفيديو والصوت (16 أداة) ==========
     { name: "Runway ML (رن واي)", category: "فيديو", url: "https://runwayml.com", description: "تحرير وتوليد الفيديو بالذكاء الاصطناعي", icon: "fa-video", clicks: 0 },
     { name: "HeyGen (هي جين)", category: "فيديو", url: "https://www.heygen.com", description: "إنشاء أفلام بصور رمزية متحركة", icon: "fa-film", clicks: 0 },
     { name: "Pika Labs (بيكا لابس)", category: "فيديو", url: "https://pika.art", description: "توليد فيديوهات قصيرة من النص", icon: "fa-play-circle", clicks: 0 },
@@ -225,8 +135,6 @@ let tools = [
     { name: "Wondershare Virbo (فيربو)", category: "فيديو", url: "https://virbo.wondershare.com", description: "إنشاء أفلام بأفاتار رقمي", icon: "fa-user-astronaut", clicks: 0 },
     { name: "Rask.ai (راسك)", category: "صوت", url: "https://rask.ai", description: "ترجمة ودبلجة الفيديوهات", icon: "fa-language", clicks: 0 },
     { name: "Voice.ai (فويس)", category: "صوت", url: "https://voice.ai", description: "تغيير الصوت بتقنية AI", icon: "fa-microphone", clicks: 0 },
-
-    // ========== 💻 أدوات البرمجة (14 أداة) ==========
     { name: "GitHub Copilot (كوبايلوت)", category: "برمجة", url: "https://github.com/features/copilot", description: "مساعد برمجي ذكي", icon: "fa-code", clicks: 0 },
     { name: "Cursor (كرسر)", category: "برمجة", url: "https://cursor.sh", description: "محرر كود مع AI مدمج", icon: "fa-laptop-code", clicks: 0 },
     { name: "Replit AI (ريبلت)", category: "برمجة", url: "https://replit.com", description: "بيئة تطوير سحابية مع AI", icon: "fa-cloud-upload-alt", clicks: 0 },
@@ -241,8 +149,6 @@ let tools = [
     { name: "AICommit (ايه آي كوميت)", category: "برمجة", url: "https://aicommit.app", description: "كتابة رسائل Commit ذكية", icon: "fa-git-alt", clicks: 0 },
     { name: "Swimm (سويم)", category: "برمجة", url: "https://swimm.io", description: "توثيق الكود بالذكاء الاصطناعي", icon: "fa-swimming-pool", clicks: 0 },
     { name: "Bloop (بلوب)", category: "برمجة", url: "https://bloop.ai", description: "البحث في قاعدة الكود باللغة الطبيعية", icon: "fa-search", clicks: 0 },
-
-    // ========== 📊 أدوات التحليل والإنتاجية (14 أداة) ==========
     { name: "Tableau AI (تابلو)", category: "تحليل", url: "https://www.tableau.com", description: "تحليل بيانات وتصور ذكي", icon: "fa-chart-bar", clicks: 0 },
     { name: "Polymer (بوليمر)", category: "تحليل", url: "https://www.polymersearch.com", description: "تحليل بيانات بدون كود", icon: "fa-chart-pie", clicks: 0 },
     { name: "Julius AI (جوليوس)", category: "تحليل", url: "https://julius.ai", description: "تحليل بيانات بالمحادثة", icon: "fa-robot", clicks: 0 },
@@ -256,8 +162,6 @@ let tools = [
     { name: "Reclaim AI (ريكليم)", category: "إنتاجية", url: "https://reclaim.ai", description: "جدولة المهام بذكاء", icon: "fa-calendar-check", clicks: 0 },
     { name: "Motion (موشن)", category: "إنتاجية", url: "https://www.usemotion.com", description: "تنظيم الوقت والمهام بالذكاء الاصطناعي", icon: "fa-clock", clicks: 0 },
     { name: "Taskade (تاسكيد)", category: "إنتاجية", url: "https://www.taskade.com", description: "إدارة المهام والفريق بالذكاء الاصطناعي", icon: "fa-tasks", clicks: 0 },
-
-    // ========== 🆕 ألعاب (للبحث في الصفحة الرئيسية) ==========
     { name: "PUBG Mobile (ببجي)", category: "ألعاب", url: "https://www.pubg.com", description: "لعبة الباتل رويال الشهيرة - Battlegrounds", icon: "fa-crosshairs", clicks: 0 },
     { name: "Free Fire (فري فاير)", category: "ألعاب", url: "https://ff.garena.com", description: "لعبة الباتل رويال السريعة", icon: "fa-fire", clicks: 0 },
     { name: "Call of Duty (كول أوف ديوتي)", category: "ألعاب", url: "https://www.callofduty.com", description: "لعبة إطلاق النار الاحترافية", icon: "fa-gun", clicks: 0 },
@@ -272,14 +176,10 @@ let tools = [
     { name: "Subway Surfers (ساب واي سيرفرز)", category: "ألعاب", url: "https://www.subwaysurfers.com", description: "لعبة الجري الكلاسيكية", icon: "fa-subway", clicks: 0 },
     { name: "Temple Run (تمبل رن)", category: "ألعاب", url: "https://www.templerun.com", description: "لعبة الجري والمغامرة", icon: "fa-running", clicks: 0 },
     { name: "Asphalt 9 (اسفلت 9)", category: "ألعاب", url: "https://www.gameloft.com/game/asphalt-9", description: "لعبة سباقات سيارات", icon: "fa-car-side", clicks: 0 },
-
-    // ========== 🆕 تسويق (4 أدوات) ==========
     { name: "Jasper AI (جاسبر)", category: "تسويق", url: "https://www.jasper.ai", description: "كتابة محتوى تسويقي احترافي", icon: "fa-chart-simple", clicks: 0 },
     { name: "Copy.ai (كوبي)", category: "تسويق", url: "https://www.copy.ai", description: "كتابة نصوص إعلانية وتسويقية", icon: "fa-copy", clicks: 0 },
     { name: "Rytr (رايت)", category: "تسويق", url: "https://rytr.me", description: "إنشاء محتوى تسويقي بأسعار اقتصادية", icon: "fa-pen-nib", clicks: 0 },
     { name: "Writer (رايتير)", category: "تسويق", url: "https://writer.com", description: "منصة متكاملة لكتابة المحتوى التسويقي", icon: "fa-feather", clicks: 0 },
-
-    // ========== 🆕 تصميم (4 أدوات) ==========
     { name: "Uizard (ويزارد)", category: "تصميم", url: "https://uizard.io", description: "تحويل الرسومات إلى تصميمات رقمية", icon: "fa-magic", clicks: 0 },
     { name: "Figma AI (فيجما)", category: "تصميم", url: "https://www.figma.com", description: "توليد وتحرير التصميمات بالذكاء الاصطناعي", icon: "fa-pen-ruler", clicks: 0 },
     { name: "Adobe Sensei (سينسي)", category: "تصميم", url: "https://www.adobe.com/sensei.html", description: "منصة الذكاء الاصطناعي من أدوبي", icon: "fa-adobe", clicks: 0 },
@@ -287,25 +187,20 @@ let tools = [
 ];
 
 // ============================================
-//  باقي الكود (نفس الكود السابق)
+//  باقي الدوال (كما هي)
 // ============================================
 
 function loadClicksFromStorage() {
     const savedClicks = localStorage.getItem("toolsClicks");
     if (savedClicks) {
         const clicksData = JSON.parse(savedClicks);
-        tools = tools.map(tool => ({
-            ...tool,
-            clicks: clicksData[tool.name] || 0
-        }));
+        tools = tools.map(tool => ({ ...tool, clicks: clicksData[tool.name] || 0 }));
     }
 }
 
 function saveClicksToStorage() {
     const clicksData = {};
-    tools.forEach(tool => {
-        clicksData[tool.name] = tool.clicks;
-    });
+    tools.forEach(tool => { clicksData[tool.name] = tool.clicks; });
     localStorage.setItem("toolsClicks", JSON.stringify(clicksData));
 }
 
@@ -317,22 +212,19 @@ function updateStatsDisplay() {
 function addToFavorites(toolName) {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (!currentUser) {
-        if (confirm("يجب تسجيل الدخول لإضافة أدوات للمفضلة. هل تريد الذهاب لتسجيل الدخول؟")) {
-            window.location.href = "login.html";
-        }
+        if (confirm(t("msg.login-required"))) window.location.href = "login.html";
         return false;
     }
-    
     let favorites = JSON.parse(localStorage.getItem(`favorites_${currentUser.id}`) || "[]");
     if (!favorites.includes(toolName)) {
         favorites.push(toolName);
         localStorage.setItem(`favorites_${currentUser.id}`, JSON.stringify(favorites));
-        alert(`✅ تم إضافة ${toolName} إلى المفضلة`);
+        alert(t("msg.added-favorite", { tool: toolName }));
         return true;
     } else {
         favorites = favorites.filter(f => f !== toolName);
         localStorage.setItem(`favorites_${currentUser.id}`, JSON.stringify(favorites));
-        alert(`🗑️ تم إزالة ${toolName} من المفضلة`);
+        alert(t("msg.removed-favorite", { tool: toolName }));
         return false;
     }
 }
@@ -347,11 +239,9 @@ function isFavorite(toolName) {
 function getUserStats() {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (!currentUser) return { clicks: 0, favorites: 0 };
-    
     const userClicks = JSON.parse(localStorage.getItem(`userClicks_${currentUser.id}`) || "{}");
     const totalClicks = Object.values(userClicks).reduce((a, b) => a + b, 0);
     const favorites = JSON.parse(localStorage.getItem(`favorites_${currentUser.id}`) || "[]");
-    
     return { clicks: totalClicks, favorites: favorites.length };
 }
 
@@ -359,7 +249,6 @@ function updateNavbarStats() {
     const stats = getUserStats();
     const statsSpan = document.getElementById("userStats");
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    
     if (statsSpan) {
         if (currentUser) {
             statsSpan.style.display = "inline";
@@ -377,7 +266,6 @@ const GAS_URL = "https://script.google.com/macros/s/AKfycbyGri-e8pequyYJ-DkwCyHs
 async function updateGlobalCounter(type, shouldIncrement = true) {
     try {
         let url = `${GAS_URL}?type=${type}`;
-        
         if (shouldIncrement) {
             const postResponse = await fetch(url, { method: "POST" });
             const newData = await postResponse.json();
@@ -395,18 +283,11 @@ async function updateGlobalCounter(type, shouldIncrement = true) {
 
 async function recordGlobalClick(toolName) {
     const tool = tools.find(t => t.name === toolName);
-    if (tool) {
-        tool.clicks++;
-        saveClicksToStorage();
-    }
-    
+    if (tool) { tool.clicks++; saveClicksToStorage(); }
     updateGlobalCounter("click", true).then(totalClicks => {
         const totalClicksSpan = document.getElementById("totalClicks");
-        if (totalClicksSpan && totalClicks) {
-            totalClicksSpan.textContent = totalClicks;
-        }
+        if (totalClicksSpan && totalClicks) totalClicksSpan.textContent = totalClicks;
     });
-    
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (currentUser) {
         let userClicks = JSON.parse(localStorage.getItem(`userClicks_${currentUser.id}`) || "{}");
@@ -424,30 +305,23 @@ async function recordGlobalClick(toolName) {
 async function recordNewUser() {
     const totalUsers = await updateGlobalCounter("user", true);
     const totalUsersSpan = document.getElementById("totalUsers");
-    if (totalUsersSpan && totalUsers) {
-        totalUsersSpan.textContent = totalUsers;
-    }
+    if (totalUsersSpan && totalUsers) totalUsersSpan.textContent = totalUsers;
 }
 
 function updateVisitorCounter() {
     const lastVisit = localStorage.getItem("lastVisitorUpdate");
     const now = new Date().getTime();
     const oneDay = 24 * 60 * 60 * 1000;
-    
     if (!lastVisit || (now - parseInt(lastVisit)) > oneDay) {
         updateGlobalCounter("visitor", true).then(visitorCount => {
             const visitorSpan = document.getElementById("visitorCount");
-            if (visitorSpan && visitorCount) {
-                visitorSpan.textContent = visitorCount;
-            }
+            if (visitorSpan && visitorCount) visitorSpan.textContent = visitorCount;
         });
         localStorage.setItem("lastVisitorUpdate", now.toString());
     } else {
         updateGlobalCounter("visitor", false).then(visitorCount => {
             const visitorSpan = document.getElementById("visitorCount");
-            if (visitorSpan && visitorCount) {
-                visitorSpan.textContent = visitorCount;
-            }
+            if (visitorSpan && visitorCount) visitorSpan.textContent = visitorCount;
         });
     }
 }
@@ -459,12 +333,11 @@ function updateAuthUI() {
     const logoutBtn = document.getElementById("logoutBtn");
     const dashboardLink = document.getElementById("dashboardLink");
     const userStatsSpan = document.getElementById("userStats");
-    
     if (currentUser) {
         if (authLink) authLink.style.display = "none";
         if (userGreeting) {
             userGreeting.style.display = "inline";
-            userGreeting.textContent = `مرحباً ${currentUser.name}`;
+            userGreeting.textContent = t("msg.welcome", { name: currentUser.name });
         }
         if (logoutBtn) logoutBtn.style.display = "inline";
         if (dashboardLink) dashboardLink.style.display = "inline";
@@ -501,55 +374,33 @@ function setupLogout() {
 function setupSearch() {
     const searchInput = document.getElementById("searchInput");
     const searchBtn = document.getElementById("searchBtn");
-    
     if (!searchInput) return;
-    
     function performSearch() {
         const query = searchInput.value;
-        const filtered = tools.filter(tool => 
-            enhancedFuzzySearch(query, tool.name) || 
-            enhancedFuzzySearch(query, tool.description) ||
-            enhancedFuzzySearch(query, tool.category)
-        );
+        const filtered = tools.filter(tool => enhancedFuzzySearch(query, tool.name) || enhancedFuzzySearch(query, tool.description) || enhancedFuzzySearch(query, tool.category));
         displayTools(filtered);
-        
         document.querySelectorAll(".filter-btn").forEach(btn => {
             btn.classList.remove("active");
-            if (btn.textContent === "الكل") btn.classList.add("active");
+            if (btn.textContent === t("filter.all")) btn.classList.add("active");
         });
     }
-    
     searchInput.addEventListener("input", performSearch);
-    searchInput.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") performSearch();
-    });
-    
-    if (searchBtn) {
-        searchBtn.addEventListener("click", performSearch);
-    }
+    searchInput.addEventListener("keypress", (e) => { if (e.key === "Enter") performSearch(); });
+    if (searchBtn) searchBtn.addEventListener("click", performSearch);
 }
 
 function initTheme() {
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
-    let theme = savedTheme;
-    if (!theme) {
-        theme = systemPrefersDark ? 'dark' : 'light';
-    }
-    
+    let theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
     document.documentElement.setAttribute('data-theme', theme);
-    
     const toggle = document.getElementById('theme-toggle');
-    if (toggle) {
-        toggle.checked = (theme === 'dark');
-    }
+    if (toggle) toggle.checked = (theme === 'dark');
 }
 
 function setupThemeToggle() {
     const toggle = document.getElementById('theme-toggle');
     if (!toggle) return;
-    
     toggle.addEventListener('change', (e) => {
         const newTheme = e.target.checked ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', newTheme);
@@ -565,7 +416,13 @@ function buildDropdowns() {
         categories.forEach(cat => {
             const link = document.createElement("a");
             link.href = "#";
-            link.textContent = cat;
+            const categoryTranslation = {
+                "نصوص": t("category.text"), "صور": t("category.image"), "فيديو": t("category.video"),
+                "صوت": t("category.audio"), "برمجة": t("category.programming"), "تحليل": t("category.analysis"),
+                "إنتاجية": t("category.productivity"), "تسويق": t("category.marketing"), "تصميم": t("category.design"),
+                "ألعاب": t("category.games")
+            };
+            link.textContent = categoryTranslation[cat] || cat;
             link.addEventListener("click", (e) => {
                 e.preventDefault();
                 filterToolsByCategory(cat);
@@ -580,26 +437,24 @@ function buildFilterButtons() {
     const filterSection = document.querySelector(".filter-section");
     if (!filterSection) return;
     filterSection.innerHTML = "";
-    
     categories.forEach(cat => {
         const btn = document.createElement("button");
         btn.className = "filter-btn";
         if (cat === "الكل") btn.classList.add("active");
-        btn.textContent = cat;
+        const categoryTranslation = {
+            "الكل": t("filter.all"), "نصوص": t("category.text"), "صور": t("category.image"), "فيديو": t("category.video"),
+            "صوت": t("category.audio"), "برمجة": t("category.programming"), "تحليل": t("category.analysis"),
+            "إنتاجية": t("category.productivity"), "تسويق": t("category.marketing"), "تصميم": t("category.design"),
+            "ألعاب": t("category.games")
+        };
+        btn.textContent = categoryTranslation[cat] || cat;
         btn.setAttribute("data-category", cat === "الكل" ? "all" : cat);
-        
         btn.addEventListener("click", () => {
             document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
-            
-            if (cat === "الكل") {
-                displayTools(tools);
-            } else {
-                const filtered = tools.filter(t => t.category === cat);
-                displayTools(filtered);
-            }
+            if (cat === "الكل") displayTools(tools);
+            else displayTools(tools.filter(t => t.category === cat));
         });
-        
         filterSection.appendChild(btn);
     });
 }
@@ -608,18 +463,15 @@ function displayTools(toolsArray) {
     const container = document.getElementById("toolsContainer");
     if (!container) return;
     container.innerHTML = "";
-    
     if (toolsArray.length === 0) {
-        container.innerHTML = `<div style="text-align:center; padding:50px; color:var(--gold);">😅 لا توجد أدوات في هذه الفئة حالياً</div>`;
+        container.innerHTML = `<div style="text-align:center; padding:50px; color:var(--gold);">${t("msg.no-tools")}</div>`;
         return;
     }
-    
     toolsArray.forEach(tool => {
         const isFav = isFavorite(tool.name.split(' (')[0]);
         const starClass = isFav ? "fas fa-star" : "far fa-star";
         const starColor = isFav ? "var(--gold)" : "#666";
         const displayName = tool.name.split(' (')[0];
-        
         const card = document.createElement("div");
         card.className = "tool-card";
         card.innerHTML = `
@@ -630,21 +482,19 @@ function displayTools(toolsArray) {
                 </button>
             </div>
             <h3>${displayName}</h3>
-            <div class="tool-category">${tool.category}</div>
+            <div class="tool-category">${tool.category === "نصوص" ? t("category.text") : tool.category === "صور" ? t("category.image") : tool.category === "فيديو" ? t("category.video") : tool.category === "صوت" ? t("category.audio") : tool.category === "برمجة" ? t("category.programming") : tool.category === "تحليل" ? t("category.analysis") : tool.category === "إنتاجية" ? t("category.productivity") : tool.category === "تسويق" ? t("category.marketing") : tool.category === "تصميم" ? t("category.design") : tool.category === "ألعاب" ? t("category.games") : tool.category}</div>
             <p class="tool-description">${tool.description}</p>
-            <a href="${tool.url}" target="_blank" class="tool-link" data-tool="${displayName}">تجربة الآن <i class="fas fa-external-link-alt"></i></a>
-            <div class="tool-clicks">👆 ${tool.clicks} نقرة</div>
+            <a href="${tool.url}" target="_blank" class="tool-link" data-tool="${displayName}">${t("tool.try")} <i class="fas fa-external-link-alt"></i></a>
+            <div class="tool-clicks">👆 ${tool.clicks} ${t("tool.click")}</div>
         `;
         container.appendChild(card);
     });
-    
     document.querySelectorAll(".tool-link").forEach(link => {
         link.addEventListener("click", (e) => {
             const toolName = link.getAttribute("data-tool");
             recordGlobalClick(toolName);
         });
     });
-    
     document.querySelectorAll(".favorite-btn").forEach(btn => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
@@ -668,36 +518,34 @@ function displayTools(toolsArray) {
 function filterToolsByCategory(category) {
     document.querySelectorAll(".filter-btn").forEach(btn => {
         btn.classList.remove("active");
-        if (btn.textContent === category || (category === "الكل" && btn.textContent === "الكل")) {
-            btn.classList.add("active");
-        }
+        const categoryTranslation = {
+            "نصوص": t("category.text"), "صور": t("category.image"), "فيديو": t("category.video"), "صوت": t("category.audio"),
+            "برمجة": t("category.programming"), "تحليل": t("category.analysis"), "إنتاجية": t("category.productivity"),
+            "تسويق": t("category.marketing"), "تصميم": t("category.design"), "ألعاب": t("category.games")
+        };
+        if (btn.textContent === (category === "الكل" ? t("filter.all") : categoryTranslation[category] || category)) btn.classList.add("active");
     });
-    
-    if (category === "الكل") {
-        displayTools(tools);
-    } else {
-        const filtered = tools.filter(t => t.category === category);
-        displayTools(filtered);
-    }
+    if (category === "الكل") displayTools(tools);
+    else displayTools(tools.filter(t => t.category === category));
 }
 
 function setupMobileMenu() {
     const toggle = document.getElementById("mobileMenu");
     const navLinks = document.getElementById("navLinks");
-    if (toggle && navLinks) {
-        toggle.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
-        });
-    }
+    if (toggle && navLinks) toggle.addEventListener("click", () => navLinks.classList.toggle("active"));
 }
 
 function setupExploreBtn() {
     const btn = document.getElementById("exploreBtn");
-    if (btn) {
-        btn.addEventListener("click", () => {
-            document.querySelector(".tools-container").scrollIntoView({ behavior: "smooth" });
-        });
-    }
+    if (btn) btn.addEventListener("click", () => document.querySelector(".tools-container").scrollIntoView({ behavior: "smooth" }));
+}
+
+function updateDropdownCategories() {
+    buildDropdowns();
+}
+
+function updateFilterButtonsLanguage() {
+    buildFilterButtons();
 }
 
 function init() {
@@ -712,10 +560,11 @@ function init() {
     setupMobileMenu();
     setupExploreBtn();
     updateStatsDisplay();
-    
     initTheme();
     setupThemeToggle();
-    
+    initLanguage();
+    const langBtn = document.getElementById('lang-toggle-btn');
+    if (langBtn) langBtn.addEventListener('click', switchLanguage);
     updateGlobalCounter("click", false).then(count => {
         const span = document.getElementById("totalClicks");
         if (span && count !== null) span.textContent = count;
