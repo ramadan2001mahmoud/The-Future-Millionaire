@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LEQF7LQ0WY"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -12,12 +10,10 @@
         gtag('js', new Date());
         gtag('config', 'G-LEQF7LQ0WY');
     </script>
-    
     <title>تطبيقات وألعاب | Ramzone</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
     <style>
         .apps-header {
             text-align: center;
@@ -38,6 +34,7 @@
             border: 1px solid #333;
             border-radius: 30px;
             color: white;
+            font-size: 1rem;
         }
         .search-apps button {
             background: #D4AF37;
@@ -198,11 +195,10 @@
 
     <div class="category-filter" id="categoryFilter">
         <button class="cat-btn active" data-cat="all">الكل</button>
-        <button class="cat-btn" data-cat="تواصل">📱 تواصل</button>
         <button class="cat-btn" data-cat="ألعاب">🎮 ألعاب</button>
-        <button class="cat-btn" data-cat="تطبيقات">📱 تطبيقات</button>
-        <button class="cat-btn" data-cat="أدوات">🛠️ أدوات</button>
+        <button class="cat-btn" data-cat="تواصل">📱 تواصل</button>
         <button class="cat-btn" data-cat="ترفيه">🎬 ترفيه</button>
+        <button class="cat-btn" data-cat="أدوات">🛠️ أدوات</button>
         <button class="cat-btn" data-cat="تعليم">📚 تعليم</button>
     </div>
 
@@ -230,9 +226,8 @@
     </footer>
 
     <script>
-        // قاعدة بيانات التطبيقات والألعاب
         const apps = [
-            // ألعاب مشهورة
+            // ألعاب
             { id: "pubg", name: "PUBG Mobile", category: "ألعاب", description: "لعبة الباتل رويال الشهيرة. ناجاة 100 لاعب على جزيرة.", icon: "pubg.svg", downloadLink: "https://apkpure.net/pubg-mobile/com.tencent.ig/download" },
             { id: "freefire", name: "Free Fire MAX", category: "ألعاب", description: "لعبة الباتل رويال السريعة. مباريات 10 دقائق.", icon: "freefire.svg", downloadLink: "https://apkpure.net/free-fire-max/com.dts.freefiremax/download" },
             { id: "callofduty", name: "Call of Duty Mobile", category: "ألعاب", description: "لعبة إطلاق النار الاحترافية.", icon: "callofduty.svg", downloadLink: "https://apkpure.net/call-of-duty-mobile/com.activision.callofduty.shooter/download" },
@@ -248,6 +243,11 @@
             { id: "roblox", name: "Roblox", category: "ألعاب", description: "منصة ألعاب متعددة.", icon: "roblox.svg", downloadLink: "https://apkpure.net/roblox/com.roblox.client/download" },
             { id: "amongus", name: "Among Us", category: "ألعاب", description: "لعبة الخيانة الجماعية.", icon: "amongus.svg", downloadLink: "https://apkpure.net/among-us/com.innersloth.spacemafia/download" },
             { id: "genshin", name: "Genshin Impact", category: "ألعاب", description: "لعبة تقمص أدوار عالم مفتوح.", icon: "genshin.svg", downloadLink: "https://apkpure.net/genshin-impact/com.miHoYo.GenshinImpact/download" },
+            { id: "pubgnewstate", name: "PUBG New State", category: "ألعاب", description: "النسخة الجديدة من PUBG برسومات محسنة.", icon: "pubg.svg", downloadLink: "https://apkpure.net/pubg-new-state/com.pubg.newstate/download" },
+            { id: "apexlegends", name: "Apex Legends Mobile", category: "ألعاب", description: "لعبة الباتل رويال من EA.", icon: "apex.svg", downloadLink: "https://apkpure.net/apex-legends-mobile/com.ea.apexlegendsmobilefps/download" },
+            { id: "rainbowsix", name: "Rainbow Six Mobile", category: "ألعاب", description: "لعبة إطلاق نار تكتيكية.", icon: "rainbow.svg", downloadLink: "https://apkpure.net/rainbow-six/com.ubisoft.rainbowsixm/download" },
+            { id: "valorant", name: "Valorant Mobile", category: "ألعاب", description: "نسخة فالورانت للهاتف.", icon: "valorant.svg", downloadLink: "https://apkpure.net/valorant-mobile/com.riotgames.valorant/download" },
+            { id: "wildrift", name: "Wild Rift", category: "ألعاب", description: "نسخة League of Legends للهاتف.", icon: "wildrift.svg", downloadLink: "https://apkpure.net/wild-rift/com.riotgames.league.wildrift/download" },
             
             // تطبيقات تواصل
             { id: "whatsapp", name: "WhatsApp", category: "تواصل", description: "تطبيق المراسلة الفورية الأشهر في العالم.", icon: "whatsapp.svg", downloadLink: "https://apkpure.net/whatsapp-messenger/com.whatsapp/download" },
@@ -258,23 +258,48 @@
             { id: "snapchat", name: "Snapchat", category: "تواصل", description: "تطبيق الصور والفيديوهات المؤقتة.", icon: "snapchat.svg", downloadLink: "https://apkpure.net/snapchat/com.snapchat.android/download" },
             { id: "discord", name: "Discord", category: "تواصل", description: "منصة المحادثة للجيمرز والمجتمعات.", icon: "discord.svg", downloadLink: "https://apkpure.net/discord/com.discord/download" },
             { id: "signal", name: "Signal", category: "تواصل", description: "تطبيق مراسلة آمن ومشفر.", icon: "signal.svg", downloadLink: "https://apkpure.net/signal/org.thoughtcrime.securesms/download" },
+            { id: "imo", name: "IMO", category: "تواصل", description: "تطبيق مكالمات فيديو وصوت عالية الجودة.", icon: "imo.svg", downloadLink: "https://apkpure.net/imo/imo.im.service/download" },
+            { id: "viber", name: "Viber", category: "تواصل", description: "تطبيق مكالمات ورسائل مجاني.", icon: "viber.svg", downloadLink: "https://apkpure.net/viber/com.viber.voip/download" },
+            { id: "line", name: "Line", category: "تواصل", description: "تطبيق تواصل شعبي في آسيا.", icon: "line.svg", downloadLink: "https://apkpure.net/line/line.naver.jp/download" },
+            { id: "wechat", name: "WeChat", category: "تواصل", description: "تطبيق التواصل الصيني الشامل.", icon: "wechat.svg", downloadLink: "https://apkpure.net/wechat/com.tencent.mm/download" },
+            { id: "kakaotalk", name: "KakaoTalk", category: "تواصل", description: "تطبيق التواصل الكوري.", icon: "kakao.svg", downloadLink: "https://apkpure.net/kakaotalk/com.kakao.talk/download" },
+            { id: "messenger", name: "Messenger", category: "تواصل", description: "تطبيق المراسلة من فيسبوك.", icon: "messenger.svg", downloadLink: "https://apkpure.net/messenger/com.facebook.orca/download" },
+            { id: "skype", name: "Skype", category: "تواصل", description: "تطبيق المكالمات والمؤتمرات.", icon: "skype.svg", downloadLink: "https://apkpure.net/skype/com.skype.raider/download" },
             
             // تطبيقات ترفيه
             { id: "netflix", name: "Netflix", category: "ترفيه", description: "مشاهدة الأفلام والمسلسلات الحصرية.", icon: "netflix.svg", downloadLink: "https://apkpure.net/netflix/com.netflix.mediaclient/download" },
             { id: "youtube", name: "YouTube", category: "ترفيه", description: "مشاهدة الفيديوهات.", icon: "youtube.svg", downloadLink: "https://apkpure.net/youtube/com.google.android.youtube/download" },
             { id: "spotify", name: "Spotify", category: "ترفيه", description: "بث الموسيقى والبودكاست.", icon: "spotify.svg", downloadLink: "https://apkpure.net/spotify/com.spotify.music/download" },
             { id: "tiktok", name: "TikTok", category: "ترفيه", description: "مقاطع فيديو قصيرة.", icon: "tiktok.svg", downloadLink: "https://apkpure.net/tiktok/com.zhiliaoapp.musically/download" },
+            { id: "anghami", name: "Anghami", category: "ترفيه", description: "تطبيق الموسيقى العربي الأول.", icon: "anghami.svg", downloadLink: "https://apkpure.net/anghami/com.anghami.download/download" },
+            { id: "twitch", name: "Twitch", category: "ترفيه", description: "بث الألعاب المباشر.", icon: "twitch.svg", downloadLink: "https://apkpure.net/twitch/tv.twitch.android.app/download" },
+            { id: "shahid", name: "Shahid", category: "ترفيه", description: "منصة المحتوى العربي من MBC.", icon: "shahid.svg", downloadLink: "https://apkpure.net/shahid/net.mbc.shahid.download/download" },
+            { id: "osn", name: "OSN", category: "ترفيه", description: "منصة أفلام ومسلسلات.", icon: "osn.svg", downloadLink: "https://apkpure.net/osn/com.osn.streaming/download" },
+            { id: "vimeo", name: "Vimeo", category: "ترفيه", description: "مشاهدة فيديوهات احترافية.", icon: "vimeo.svg", downloadLink: "https://apkpure.net/vimeo/com.vimeo.android.videoapp/download" },
+            { id: "dailymotion", name: "Dailymotion", category: "ترفيه", description: "منصة فيديوهات بديلة.", icon: "dailymotion.svg", downloadLink: "https://apkpure.net/dailymotion/com.dailymotion.dailymotion/download" },
             
             // أدوات
             { id: "truecaller", name: "Truecaller", category: "أدوات", description: "معرف المتصلين وحظر المكالمات المزعجة.", icon: "truecaller.svg", downloadLink: "https://apkpure.net/truecaller/com.truecaller/download" },
             { id: "vlc", name: "VLC", category: "أدوات", description: "مشغل فيديو متعدد الصيغ.", icon: "vlc.svg", downloadLink: "https://apkpure.net/vlc/org.videolan.vlc/download" },
             { id: "mxplayer", name: "MX Player", category: "أدوات", description: "مشغل فيديو قوي مع دعم الترجمة.", icon: "mxplayer.svg", downloadLink: "https://apkpure.net/mx-player/com.mxtech.videoplayer.ad/download" },
             { id: "shareit", name: "ShareIt", category: "أدوات", description: "مشاركة الملفات بسرعة عالية.", icon: "shareit.svg", downloadLink: "https://apkpure.net/shareit/com.lenovo.anyshare.gps/download" },
+            { id: "xender", name: "Xender", category: "أدوات", description: "مشاركة الملفات بدون إنترنت.", icon: "xender.svg", downloadLink: "https://apkpure.net/xender/com.xender.main/download" },
+            { id: "zarchiver", name: "ZArchiver", category: "أدوات", description: "ضغط وفك ضغط الملفات.", icon: "zarchiver.svg", downloadLink: "https://apkpure.net/zarchiver/ru.zdevs.zarchiver/download" },
+            { id: "ccleaner", name: "CCleaner", category: "أدوات", description: "تنظيف الجهاز وتحسين الأداء.", icon: "ccleaner.svg", downloadLink: "https://apkpure.net/ccleaner/com.piriform.ccleaner/download" },
+            { id: "norton", name: "Norton Security", category: "أدوات", description: "حماية الجهاز من الفيروسات.", icon: "norton.svg", downloadLink: "https://apkpure.net/norton-security/com.symantec.mobilesecurity/download" },
+            { id: "kaspersky", name: "Kaspersky", category: "أدوات", description: "حماية متقدمة من الفيروسات.", icon: "kaspersky.svg", downloadLink: "https://apkpure.net/kaspersky/com.kms.free/download" },
+            { id: "avg", name: "AVG Antivirus", category: "أدوات", description: "مكافحة الفيروسات.", icon: "avg.svg", downloadLink: "https://apkpure.net/avg-antivirus/com.avg.antivirus/download" },
             
             // تعليم
             { id: "duolingo", name: "Duolingo", category: "تعليم", description: "تعلم اللغات مجاناً وبطريقة ممتعة.", icon: "duolingo.svg", downloadLink: "https://apkpure.net/duolingo/com.duolingo/download" },
             { id: "coursera", name: "Coursera", category: "تعليم", description: "دورات من جامعات عالمية.", icon: "coursera.svg", downloadLink: "https://apkpure.net/coursera/org.coursera.android/download" },
-            { id: "udemy", name: "Udemy", category: "تعليم", description: "منصة كورسات أونلاين.", icon: "udemy.svg", downloadLink: "https://apkpure.net/udemy/com.udemy.android/download" }
+            { id: "udemy", name: "Udemy", category: "تعليم", description: "منصة كورسات أونلاين.", icon: "udemy.svg", downloadLink: "https://apkpure.net/udemy/com.udemy.android/download" },
+            { id: "khanacademy", name: "Khan Academy", category: "تعليم", description: "دروس مجانية في كل المجالات.", icon: "khan.svg", downloadLink: "https://apkpure.net/khan-academy/org.khanacademy.android/download" },
+            { id: "memrise", name: "Memrise", category: "تعليم", description: "تعلم اللغات بطرق مبتكرة.", icon: "memrise.svg", downloadLink: "https://apkpure.net/memrise/com.memrise.android.memrisecompanion/download" },
+            { id: "sololearn", name: "Sololearn", category: "تعليم", description: "تعلم البرمجة من الصفر.", icon: "sololearn.svg", downloadLink: "https://apkpure.net/sololearn/com.sololearn/download" },
+            { id: "photomath", name: "Photomath", category: "تعليم", description: "حل مسائل الرياضيات بالكاميرا.", icon: "photomath.svg", downloadLink: "https://apkpure.net/photomath/com.microblink.photomath/download" },
+            { id: "quizlet", name: "Quizlet", category: "تعليم", description: "بطاقات تعليمية وألعاب.", icon: "quizlet.svg", downloadLink: "https://apkpure.net/quizlet/com.quizlet.quizletandroid/download" },
+            { id: "edx", name: "EdX", category: "تعليم", description: "دورات من جامعات عالمية مثل هارفارد.", icon: "edx.svg", downloadLink: "https://apkpure.net/edx/org.edx.mobile/download" }
         ];
 
         let currentCategory = "all";
@@ -311,7 +336,7 @@
                     <div class="app-info">
                         <h3 class="app-name">${app.name}</h3>
                         <div class="app-category"><i class="fas fa-tag"></i> ${app.category}</div>
-                        <p class="app-description">${app.description}</p>
+                        <p class="app-description">${app.description.substring(0, 80)}${app.description.length > 80 ? '...' : ''}</p>
                         <a href="${app.downloadLink}" target="_blank" class="download-btn" onclick="event.stopPropagation()">
                             <i class="fas fa-download"></i> تحميل
                         </a>
@@ -335,12 +360,10 @@
         function setupSearch() {
             const searchInput = document.getElementById("searchInput");
             const searchBtn = document.getElementById("searchBtn");
-            
             searchBtn.addEventListener("click", () => {
                 currentSearch = searchInput.value;
                 displayApps();
             });
-            
             searchInput.addEventListener("keypress", (e) => {
                 if (e.key === "Enter") {
                     currentSearch = searchInput.value;
