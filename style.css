@@ -12,6 +12,7 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* ========== متغيرات الألوان ========== */
 :root {
     --bg-primary: #0A0A0A;
     --bg-secondary: #1A1A1A;
@@ -66,6 +67,7 @@ body {
     --hover-text: #0A0A0A;
 }
 
+/* شريط التنقل */
 .navbar {
     background: var(--bg-navbar);
     backdrop-filter: blur(10px);
@@ -182,6 +184,7 @@ body {
     display: block;
 }
 
+/* بحث */
 .search-box {
     display: flex;
     align-items: center;
@@ -225,6 +228,7 @@ body {
     background: var(--gold-light);
 }
 
+/* القسم الرئيسي */
 .hero {
     background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
     padding: 80px 20px;
@@ -262,6 +266,7 @@ body {
     transform: scale(1.02);
 }
 
+/* إحصائيات */
 .stats-bar {
     display: flex;
     justify-content: center;
@@ -294,6 +299,7 @@ body {
     color: var(--text-secondary);
 }
 
+/* أزرار التصفية */
 .filter-section {
     display: flex;
     justify-content: center;
@@ -319,12 +325,13 @@ body {
     border-color: var(--gold);
 }
 
+/* بطاقات الأدوات */
 .tools-container {
     max-width: 1300px;
     margin: 0 auto;
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 25px;
 }
 
@@ -345,32 +352,15 @@ body {
 }
 
 .tool-icon {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 15px;
     text-align: center;
-    margin-bottom: 12px;
-}
-
-.tool-icon img {
-    width: 56px;
-    height: 56px;
-    border-radius: 16px;
-    object-fit: cover;
-    background: var(--bg-secondary);
-    padding: 8px;
-    transition: transform 0.3s ease;
-}
-
-.tool-card:hover .tool-icon img {
-    transform: scale(1.05);
-}
-
-[data-theme="light"] .tool-icon img {
-    background: #FFFFFF;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .tool-card h3 {
     font-size: 1.1rem;
-    margin: 8px 0 5px;
+    margin-bottom: 8px;
     text-align: center;
 }
 
@@ -421,6 +411,7 @@ body {
     color: var(--text-muted);
 }
 
+/* فوتر */
 .footer {
     background: var(--bg-primary);
     padding: 35px 20px;
@@ -470,6 +461,7 @@ body {
     text-decoration: underline;
 }
 
+/* قائمة الموبايل */
 .menu-toggle {
     display: none;
     font-size: 1.5rem;
@@ -477,6 +469,7 @@ body {
     color: var(--gold);
 }
 
+/* زر تبديل الوضع */
 .theme-switch-wrapper {
     display: flex;
     align-items: center;
@@ -531,6 +524,57 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
+/* زر تبديل اللغة */
+.lang-toggle {
+    background: var(--gold);
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.8rem;
+    transition: 0.3s;
+    margin-right: 10px;
+}
+
+.lang-toggle:hover {
+    background: var(--gold-light);
+    transform: scale(1.02);
+}
+
+/* أيقونات التطبيقات والألعاب */
+.app-icon {
+    background: linear-gradient(135deg, #2A2A2A, #1A1A1A);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.app-icon img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+}
+
+.app-card:hover .app-icon img {
+    transform: scale(1.05);
+}
+
+[data-theme="light"] .app-icon {
+    background: linear-gradient(135deg, #E9ECEF, #FFFFFF);
+}
+
+@media (max-width: 768px) {
+    .app-icon img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* استجابة الشاشات */
 @media (max-width: 1024px) {
     .nav-container {
         flex-wrap: wrap;
@@ -636,7 +680,7 @@ input:checked + .slider:before {
     }
     
     .tools-container {
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 20px;
     }
 }
@@ -677,8 +721,7 @@ input:checked + .slider:before {
         grid-template-columns: 1fr;
     }
     
-    .tool-icon img {
-        width: 48px;
-        height: 48px;
+    .tool-icon {
+        font-size: 2rem;
     }
 }
