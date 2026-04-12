@@ -1,15 +1,55 @@
+// ============================================
+//  ملف الترجمة (العربية - الإنجليزية)
+// ============================================
+
 const translations = {
     ar: {
-        "nav.home": "الرئيسية", "nav.ai-tools": "أدوات الذكاء الاصطناعي", "nav.blog": "المدونة",
-        "nav.courses": "الكورسات", "nav.apps": "تطبيقات وألعاب", "nav.login": "تسجيل الدخول",
-        "nav.dashboard": "لوحة التحكم", "nav.logout": "تسجيل خروج", "nav.search": "ابحث عن أداة...",
-        "hero.title": "مستقبل الذكاء الاصطناعي", "hero.title.gold": "بين يديك",
+        // القائمة العلوية
+        "nav.home": "الرئيسية",
+        "nav.ai-tools": "أدوات الذكاء الاصطناعي",
+        "nav.blog": "المدونة",
+        "nav.courses": "الكورسات",
+        "nav.apps": "تطبيقات وألعاب",
+        "nav.login": "تسجيل الدخول",
+        "nav.dashboard": "لوحة التحكم",
+        "nav.logout": "تسجيل خروج",
+        "nav.search": "ابحث عن أداة...",
+        
+        // القسم الرئيسي
+        "hero.title": "مستقبل الذكاء الاصطناعي",
+        "hero.title.gold": "بين يديك",
         "hero.subtitle": "أكثر من 90+ أداة ذكاء اصطناعي متطورة في مكان واحد. اختر، جرب، وابدع.",
-        "hero.button": "استكشف الأدوات", "filter.all": "الكل",
-        "stats.tools": "أداة ذكاء اصطناعي", "stats.clicks": "إجمالي النقرات", "stats.users": "إجمالي المستخدمين",
-        "tool.try": "تجربة الآن", "tool.click": "نقرة",
-        "footer.copyright": "جميع الحقوق محفوظة", "footer.terms": "شروط الاستخدام",
-        "footer.privacy": "سياسة الخصوصية", "footer.visitors": "عدد زوار الموقع",
+        "hero.button": "استكشف الأدوات",
+        
+        // الإحصائيات
+        "stats.tools": "أداة ذكاء اصطناعي",
+        "stats.clicks": "إجمالي النقرات",
+        "stats.users": "إجمالي المستخدمين",
+        
+        // الفلاتر والفئات
+        "filter.all": "الكل",
+        "category.text": "نصوص",
+        "category.image": "صور",
+        "category.video": "فيديو",
+        "category.audio": "صوت",
+        "category.programming": "برمجة",
+        "category.analysis": "تحليل",
+        "category.productivity": "إنتاجية",
+        "category.marketing": "تسويق",
+        "category.design": "تصميم",
+        "category.games": "ألعاب",
+        
+        // الأدوات
+        "tool.try": "تجربة الآن",
+        "tool.click": "نقرة",
+        
+        // الفوتر
+        "footer.copyright": "جميع الحقوق محفوظة",
+        "footer.terms": "شروط الاستخدام",
+        "footer.privacy": "سياسة الخصوصية",
+        "footer.visitors": "عدد زوار الموقع",
+        
+        // رسائل عامة
         "msg.no-tools": "😅 لا توجد أدوات في هذه الفئة حالياً",
         "msg.login-required": "يجب تسجيل الدخول لإضافة أدوات للمفضلة. هل تريد الذهاب لتسجيل الدخول؟",
         "msg.added-favorite": "✅ تم إضافة {tool} إلى المفضلة",
@@ -17,16 +57,52 @@ const translations = {
         "msg.welcome": "مرحباً {name}"
     },
     en: {
-        "nav.home": "Home", "nav.ai-tools": "AI Tools", "nav.blog": "Blog", "nav.courses": "Courses",
-        "nav.apps": "Apps & Games", "nav.login": "Login", "nav.dashboard": "Dashboard",
-        "nav.logout": "Logout", "nav.search": "Search for a tool...",
-        "hero.title": "The Future of Artificial Intelligence", "hero.title.gold": "In Your Hands",
+        // Navigation
+        "nav.home": "Home",
+        "nav.ai-tools": "AI Tools",
+        "nav.blog": "Blog",
+        "nav.courses": "Courses",
+        "nav.apps": "Apps & Games",
+        "nav.login": "Login",
+        "nav.dashboard": "Dashboard",
+        "nav.logout": "Logout",
+        "nav.search": "Search for a tool...",
+        
+        // Hero section
+        "hero.title": "The Future of Artificial Intelligence",
+        "hero.title.gold": "In Your Hands",
         "hero.subtitle": "90+ advanced AI tools in one place. Choose, try, and create.",
-        "hero.button": "Explore Tools", "filter.all": "All",
-        "stats.tools": "AI Tools", "stats.clicks": "Total Clicks", "stats.users": "Total Users",
-        "tool.try": "Try Now", "tool.click": "click",
-        "footer.copyright": "All Rights Reserved", "footer.terms": "Terms of Use",
-        "footer.privacy": "Privacy Policy", "footer.visitors": "Website Visitors",
+        "hero.button": "Explore Tools",
+        
+        // Statistics
+        "stats.tools": "AI Tools",
+        "stats.clicks": "Total Clicks",
+        "stats.users": "Total Users",
+        
+        // Filters & Categories
+        "filter.all": "All",
+        "category.text": "Text",
+        "category.image": "Image",
+        "category.video": "Video",
+        "category.audio": "Audio",
+        "category.programming": "Programming",
+        "category.analysis": "Analysis",
+        "category.productivity": "Productivity",
+        "category.marketing": "Marketing",
+        "category.design": "Design",
+        "category.games": "Games",
+        
+        // Tools
+        "tool.try": "Try Now",
+        "tool.click": "click",
+        
+        // Footer
+        "footer.copyright": "All Rights Reserved",
+        "footer.terms": "Terms of Use",
+        "footer.privacy": "Privacy Policy",
+        "footer.visitors": "Website Visitors",
+        
+        // General messages
         "msg.no-tools": "😅 No tools in this category yet",
         "msg.login-required": "Please login to add tools to favorites. Go to login?",
         "msg.added-favorite": "✅ {tool} added to favorites",
@@ -34,6 +110,72 @@ const translations = {
         "msg.welcome": "Welcome {name}"
     }
 };
-function t(key, params = {}) { const lang = localStorage.getItem('language') || 'ar'; let text = translations[lang][key] || key; for (const [paramKey, paramValue] of Object.entries(params)) { text = text.replace(`{${paramKey}}`, paramValue); } return text; }
-function updateUILanguage() { document.querySelectorAll('[data-i18n]').forEach(el => { const key = el.getAttribute('data-i18n'); if (key) el.textContent = t(key); }); document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { const key = el.getAttribute('data-i18n-placeholder'); if (key) el.placeholder = t(key); }); const langBtn = document.getElementById('lang-toggle-btn'); if (langBtn) { const currentLang = localStorage.getItem('language') || 'ar'; langBtn.innerHTML = currentLang === 'ar' ? '🇺🇸 EN' : '🇪🇬 عربي'; } }
-window.t = t; window.updateUILanguage = updateUILanguage;
+
+// دالة للحصول على النص المترجم
+function t(key, params = {}) {
+    const lang = localStorage.getItem('language') || 'ar';
+    let text = translations[lang][key] || key;
+    
+    for (const [paramKey, paramValue] of Object.entries(params)) {
+        text = text.replace(`{${paramKey}}`, paramValue);
+    }
+    
+    return text;
+}
+
+// دالة لتحديث واجهة المستخدم باللغة الجديدة
+function updateUILanguage() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (key) {
+            el.textContent = t(key);
+        }
+    });
+    
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (key) {
+            el.placeholder = t(key);
+        }
+    });
+    
+    const langToggle = document.getElementById('lang-toggle-btn');
+    if (langToggle) {
+        const currentLang = localStorage.getItem('language') || 'ar';
+        langToggle.innerHTML = currentLang === 'ar' ? '🇺🇸 EN' : '🇪🇬 عربي';
+    }
+    
+    // تحديث الفئات في القائمة المنسدلة
+    if (typeof updateDropdownCategories === 'function') {
+        updateDropdownCategories();
+    }
+    if (typeof updateFilterButtonsLanguage === 'function') {
+        updateFilterButtonsLanguage();
+    }
+}
+
+// دالة لتبديل اللغة
+function switchLanguage() {
+    const currentLang = localStorage.getItem('language') || 'ar';
+    const newLang = currentLang === 'ar' ? 'en' : 'ar';
+    localStorage.setItem('language', newLang);
+    updateUILanguage();
+    
+    if (typeof buildDropdowns === 'function') {
+        buildDropdowns();
+    }
+    if (typeof buildFilterButtons === 'function') {
+        buildFilterButtons();
+    }
+    if (typeof displayTools === 'function') {
+        displayTools(tools);
+    }
+}
+
+// تهيئة اللغة عند تحميل الصفحة
+function initLanguage() {
+    if (!localStorage.getItem('language')) {
+        localStorage.setItem('language', 'ar');
+    }
+    updateUILanguage();
+}
