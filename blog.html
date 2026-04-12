@@ -284,6 +284,11 @@
         updateAuthUI();
         setupLogout();
         setupMobileMenu();
+        
+        // تأكيد إضافي لعرض المقالات بعد تحميل الصفحة
+        setTimeout(function() {
+            displayPosts();
+        }, 100);
     </script>
 </body>
 </html>
