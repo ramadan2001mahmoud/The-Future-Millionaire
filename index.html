@@ -120,7 +120,6 @@
     </footer>
 
     <script>
-        // --- دوال تبديل اللغة ---
         function initLanguage() {
             const savedLang = localStorage.getItem('language') || 'ar';
             document.documentElement.lang = savedLang;
@@ -129,13 +128,12 @@
             if (langBtn) langBtn.textContent = savedLang === 'ar' ? '🇺🇸 EN' : '🇪🇬 عربي';
             if (typeof updateUILanguage === 'function') updateUILanguage();
         }
-        function switchLanguage() {
+        document.getElementById('lang-toggle-btn')?.addEventListener('click', () => {
             const currentLang = localStorage.getItem('language') || 'ar';
             const newLang = currentLang === 'ar' ? 'en' : 'ar';
             localStorage.setItem('language', newLang);
             location.reload();
-        }
-        document.getElementById('lang-toggle-btn')?.addEventListener('click', switchLanguage);
+        });
         initLanguage();
     </script>
     <script src="script.js"></script>
