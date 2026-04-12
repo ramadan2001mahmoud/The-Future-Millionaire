@@ -26,8 +26,18 @@ const translations = {
         "stats.clicks": "إجمالي النقرات",
         "stats.users": "إجمالي المستخدمين",
         
-        // الفلاتر
+        // الفلاتر والفئات
         "filter.all": "الكل",
+        "category.text": "نصوص",
+        "category.image": "صور",
+        "category.video": "فيديو",
+        "category.audio": "صوت",
+        "category.programming": "برمجة",
+        "category.analysis": "تحليل",
+        "category.productivity": "إنتاجية",
+        "category.marketing": "تسويق",
+        "category.design": "تصميم",
+        "category.games": "ألعاب",
         
         // الأدوات
         "tool.try": "تجربة الآن",
@@ -69,8 +79,18 @@ const translations = {
         "stats.clicks": "Total Clicks",
         "stats.users": "Total Users",
         
-        // Filters
+        // Filters & Categories
         "filter.all": "All",
+        "category.text": "Text",
+        "category.image": "Image",
+        "category.video": "Video",
+        "category.audio": "Audio",
+        "category.programming": "Programming",
+        "category.analysis": "Analysis",
+        "category.productivity": "Productivity",
+        "category.marketing": "Marketing",
+        "category.design": "Design",
+        "category.games": "Games",
         
         // Tools
         "tool.try": "Try Now",
@@ -96,7 +116,6 @@ function t(key, params = {}) {
     const lang = localStorage.getItem('language') || 'ar';
     let text = translations[lang][key] || key;
     
-    // استبدال المتغيرات مثل {tool}
     for (const [paramKey, paramValue] of Object.entries(params)) {
         text = text.replace(`{${paramKey}}`, paramValue);
     }
@@ -106,7 +125,6 @@ function t(key, params = {}) {
 
 // دالة لتحديث واجهة المستخدم باللغة الجديدة
 function updateUILanguage() {
-    // تحديث النصوص التي لها id محدد
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (key) {
@@ -114,7 +132,6 @@ function updateUILanguage() {
         }
     });
     
-    // تحديث الـ placeholders
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
         if (key) {
@@ -122,19 +139,18 @@ function updateUILanguage() {
         }
     });
     
-    // تحديث الـ buttons التي لها data-i18n
-    document.querySelectorAll('[data-i18n-btn]').forEach(el => {
-        const key = el.getAttribute('data-i18n-btn');
-        if (key) {
-            el.textContent = t(key);
-        }
-    });
-    
-    // تحديث زر تبديل اللغة
     const langToggle = document.getElementById('lang-toggle-btn');
     if (langToggle) {
         const currentLang = localStorage.getItem('language') || 'ar';
         langToggle.innerHTML = currentLang === 'ar' ? '🇺🇸 EN' : '🇪🇬 عربي';
+    }
+    
+    // تحديث الفئات في القائمة المنسدلة
+    if (typeof updateDropdownCategories === 'function') {
+        updateDropdownCategories();
+    }
+    if (typeof updateFilterButtonsLanguage === 'function') {
+        updateFilterButtonsLanguage();
     }
 }
 
@@ -145,7 +161,6 @@ function switchLanguage() {
     localStorage.setItem('language', newLang);
     updateUILanguage();
     
-    // إعادة تحميل الأدوات لتحديث الفئات
     if (typeof buildDropdowns === 'function') {
         buildDropdowns();
     }
