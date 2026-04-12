@@ -13,7 +13,7 @@
         gtag('config', 'G-LEQF7LQ0WY');
     </script>
     
-    <title>تطبيقات وألعاب Ramzone</title>
+    <title>تطبيقات وألعاب | Ramzone</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -72,14 +72,13 @@
             margin: 40px auto;
             padding: 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
         }
         .app-card {
             background: #1A1A1A;
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
+            border-radius: 16px;
+            overflow: hidden;
             transition: 0.3s;
             border: 1px solid #2A2A2A;
             cursor: pointer;
@@ -88,23 +87,60 @@
             transform: translateY(-5px);
             border-color: #D4AF37;
         }
-        .app-card i {
-            font-size: 3rem;
-            color: #D4AF37;
-            margin-bottom: 15px;
+        .app-icon {
+            width: 100%;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2A2A2A, #1A1A1A);
         }
-        .app-card h3 {
-            font-size: 1.1rem;
+        .app-icon img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+        }
+        .app-card:hover .app-icon img {
+            transform: scale(1.05);
+        }
+        .app-info {
+            padding: 20px;
+            text-align: center;
+        }
+        .app-name {
+            font-size: 1.2rem;
             margin-bottom: 8px;
         }
-        .app-card p {
-            font-size: 0.8rem;
-            color: #888;
-        }
-        .loading {
-            text-align: center;
-            padding: 50px;
+        .app-category {
             color: #D4AF37;
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+        }
+        .app-description {
+            color: #CCCCCC;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            height: 60px;
+            overflow: hidden;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #D4AF37;
+            color: #0A0A0A;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            width: 100%;
+            text-align: center;
+        }
+        .download-btn:hover {
+            background: #FFF2B2;
         }
         .whatsapp-float {
             position: fixed;
@@ -125,6 +161,8 @@
         .whatsapp-float:hover { transform: scale(1.1); }
         @media (max-width: 600px) {
             .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; }
+            .apps-container { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+            .app-icon img { width: 60px; height: 60px; }
         }
     </style>
 </head>
@@ -151,7 +189,7 @@
 
     <section class="apps-header">
         <h1>تطبيقات وألعاب <span class="gold">Ramzone</span></h1>
-        <p>أكثر من 150 تطبيق ولعبة - صفحة تعريفية لكل تطبيق</p>
+        <p>أكثر من 150 تطبيق ولعبة - تحميل مباشر من APKPure</p>
         <div class="search-apps">
             <input type="text" id="searchInput" placeholder="ابحث عن تطبيق أو لعبة...">
             <button id="searchBtn"><i class="fas fa-search"></i></button>
@@ -161,18 +199,14 @@
     <div class="category-filter" id="categoryFilter">
         <button class="cat-btn active" data-cat="all">الكل</button>
         <button class="cat-btn" data-cat="تواصل">📱 تواصل</button>
-        <button class="cat-btn" data-cat="إنتاجية">📊 إنتاجية</button>
-        <button class="cat-btn" data-cat="أدوات">🛠️ أدوات</button>
-        <button class="cat-btn" data-cat="تعليم">📚 تعليم</button>
-        <button class="cat-btn" data-cat="ترفيه">🎬 ترفيه</button>
         <button class="cat-btn" data-cat="ألعاب">🎮 ألعاب</button>
+        <button class="cat-btn" data-cat="تطبيقات">📱 تطبيقات</button>
+        <button class="cat-btn" data-cat="أدوات">🛠️ أدوات</button>
+        <button class="cat-btn" data-cat="ترفيه">🎬 ترفيه</button>
+        <button class="cat-btn" data-cat="تعليم">📚 تعليم</button>
     </div>
 
-    <div class="apps-container" id="appsContainer">
-        <div class="loading">
-            <i class="fas fa-spinner fa-pulse"></i> جاري تحميل التطبيقات...
-        </div>
-    </div>
+    <div class="apps-container" id="appsContainer"></div>
 
     <a href="https://wa.me/201069302075" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
@@ -196,22 +230,73 @@
     </footer>
 
     <script>
-        let allApps = [];
+        // قاعدة بيانات التطبيقات والألعاب
+        const apps = [
+            // ألعاب مشهورة
+            { id: "pubg", name: "PUBG Mobile", category: "ألعاب", description: "لعبة الباتل رويال الشهيرة. ناجاة 100 لاعب على جزيرة.", icon: "pubg.svg", downloadLink: "https://apkpure.net/pubg-mobile/com.tencent.ig/download" },
+            { id: "freefire", name: "Free Fire MAX", category: "ألعاب", description: "لعبة الباتل رويال السريعة. مباريات 10 دقائق.", icon: "freefire.svg", downloadLink: "https://apkpure.net/free-fire-max/com.dts.freefiremax/download" },
+            { id: "callofduty", name: "Call of Duty Mobile", category: "ألعاب", description: "لعبة إطلاق النار الاحترافية.", icon: "callofduty.svg", downloadLink: "https://apkpure.net/call-of-duty-mobile/com.activision.callofduty.shooter/download" },
+            { id: "clashofclans", name: "Clash of Clans", category: "ألعاب", description: "لعبة بناء القرى والحروب.", icon: "clashofclans.svg", downloadLink: "https://apkpure.net/clash-of-clans/com.supercell.clashofclans/download" },
+            { id: "clashroyale", name: "Clash Royale", category: "ألعاب", description: "لعبة بطاقات استراتيجية.", icon: "clashroyale.svg", downloadLink: "https://apkpure.net/clash-royale/com.supercell.clashroyale/download" },
+            { id: "mobilelegends", name: "Mobile Legends", category: "ألعاب", description: "لعبة MOBA الشهيرة.", icon: "mobilelegends.svg", downloadLink: "https://apkpure.net/mobile-legends/com.mobile.legends/download" },
+            { id: "brawlstars", name: "Brawl Stars", category: "ألعاب", description: "لعبة قتال سريعة.", icon: "brawlstars.svg", downloadLink: "https://apkpure.net/brawl-stars/com.supercell.brawlstars/download" },
+            { id: "candycrush", name: "Candy Crush Saga", category: "ألعاب", description: "لعبة الألغاز الشهيرة.", icon: "candycrush.svg", downloadLink: "https://apkpure.net/candy-crush-saga/com.king.candycrushsaga/download" },
+            { id: "subwaysurfers", name: "Subway Surfers", category: "ألعاب", description: "لعبة الجري الكلاسيكية.", icon: "subwaysurfers.svg", downloadLink: "https://apkpure.net/subway-surfers/com.kiloo.subwaysurf/download" },
+            { id: "templerun", name: "Temple Run 2", category: "ألعاب", description: "لعبة الجري والمغامرة.", icon: "templerun.svg", downloadLink: "https://apkpure.net/temple-run-2/com.imangi.templerun2/download" },
+            { id: "asphalt9", name: "Asphalt 9", category: "ألعاب", description: "لعبة سباقات سيارات.", icon: "asphalt.svg", downloadLink: "https://apkpure.net/asphalt-9/com.gameloft.android.ANMP.GloftA9HM/download" },
+            { id: "minecraft", name: "Minecraft", category: "ألعاب", description: "لعبة البناء والإبداع.", icon: "minecraft.svg", downloadLink: "https://apkpure.net/minecraft/com.mojang.minecraftpe/download" },
+            { id: "roblox", name: "Roblox", category: "ألعاب", description: "منصة ألعاب متعددة.", icon: "roblox.svg", downloadLink: "https://apkpure.net/roblox/com.roblox.client/download" },
+            { id: "amongus", name: "Among Us", category: "ألعاب", description: "لعبة الخيانة الجماعية.", icon: "amongus.svg", downloadLink: "https://apkpure.net/among-us/com.innersloth.spacemafia/download" },
+            { id: "genshin", name: "Genshin Impact", category: "ألعاب", description: "لعبة تقمص أدوار عالم مفتوح.", icon: "genshin.svg", downloadLink: "https://apkpure.net/genshin-impact/com.miHoYo.GenshinImpact/download" },
+            
+            // تطبيقات تواصل
+            { id: "whatsapp", name: "WhatsApp", category: "تواصل", description: "تطبيق المراسلة الفورية الأشهر في العالم.", icon: "whatsapp.svg", downloadLink: "https://apkpure.net/whatsapp-messenger/com.whatsapp/download" },
+            { id: "telegram", name: "Telegram", category: "تواصل", description: "تطبيق مراسلة آمن وسريع.", icon: "telegram.svg", downloadLink: "https://apkpure.net/telegram/org.telegram.messenger/download" },
+            { id: "facebook", name: "Facebook", category: "تواصل", description: "تطبيق التواصل الاجتماعي الأكبر في العالم.", icon: "facebook.svg", downloadLink: "https://apkpure.net/facebook/com.facebook.katana/download" },
+            { id: "instagram", name: "Instagram", category: "تواصل", description: "مشاركة الصور والفيديوهات مع الأصدقاء.", icon: "instagram.svg", downloadLink: "https://apkpure.net/instagram/com.instagram.android/download" },
+            { id: "twitter", name: "Twitter", category: "تواصل", description: "منصة التدوين المصغر والأخبار العاجلة.", icon: "twitter.svg", downloadLink: "https://apkpure.net/twitter/com.twitter.android/download" },
+            { id: "snapchat", name: "Snapchat", category: "تواصل", description: "تطبيق الصور والفيديوهات المؤقتة.", icon: "snapchat.svg", downloadLink: "https://apkpure.net/snapchat/com.snapchat.android/download" },
+            { id: "discord", name: "Discord", category: "تواصل", description: "منصة المحادثة للجيمرز والمجتمعات.", icon: "discord.svg", downloadLink: "https://apkpure.net/discord/com.discord/download" },
+            { id: "signal", name: "Signal", category: "تواصل", description: "تطبيق مراسلة آمن ومشفر.", icon: "signal.svg", downloadLink: "https://apkpure.net/signal/org.thoughtcrime.securesms/download" },
+            
+            // تطبيقات ترفيه
+            { id: "netflix", name: "Netflix", category: "ترفيه", description: "مشاهدة الأفلام والمسلسلات الحصرية.", icon: "netflix.svg", downloadLink: "https://apkpure.net/netflix/com.netflix.mediaclient/download" },
+            { id: "youtube", name: "YouTube", category: "ترفيه", description: "مشاهدة الفيديوهات.", icon: "youtube.svg", downloadLink: "https://apkpure.net/youtube/com.google.android.youtube/download" },
+            { id: "spotify", name: "Spotify", category: "ترفيه", description: "بث الموسيقى والبودكاست.", icon: "spotify.svg", downloadLink: "https://apkpure.net/spotify/com.spotify.music/download" },
+            { id: "tiktok", name: "TikTok", category: "ترفيه", description: "مقاطع فيديو قصيرة.", icon: "tiktok.svg", downloadLink: "https://apkpure.net/tiktok/com.zhiliaoapp.musically/download" },
+            
+            // أدوات
+            { id: "truecaller", name: "Truecaller", category: "أدوات", description: "معرف المتصلين وحظر المكالمات المزعجة.", icon: "truecaller.svg", downloadLink: "https://apkpure.net/truecaller/com.truecaller/download" },
+            { id: "vlc", name: "VLC", category: "أدوات", description: "مشغل فيديو متعدد الصيغ.", icon: "vlc.svg", downloadLink: "https://apkpure.net/vlc/org.videolan.vlc/download" },
+            { id: "mxplayer", name: "MX Player", category: "أدوات", description: "مشغل فيديو قوي مع دعم الترجمة.", icon: "mxplayer.svg", downloadLink: "https://apkpure.net/mx-player/com.mxtech.videoplayer.ad/download" },
+            { id: "shareit", name: "ShareIt", category: "أدوات", description: "مشاركة الملفات بسرعة عالية.", icon: "shareit.svg", downloadLink: "https://apkpure.net/shareit/com.lenovo.anyshare.gps/download" },
+            
+            // تعليم
+            { id: "duolingo", name: "Duolingo", category: "تعليم", description: "تعلم اللغات مجاناً وبطريقة ممتعة.", icon: "duolingo.svg", downloadLink: "https://apkpure.net/duolingo/com.duolingo/download" },
+            { id: "coursera", name: "Coursera", category: "تعليم", description: "دورات من جامعات عالمية.", icon: "coursera.svg", downloadLink: "https://apkpure.net/coursera/org.coursera.android/download" },
+            { id: "udemy", name: "Udemy", category: "تعليم", description: "منصة كورسات أونلاين.", icon: "udemy.svg", downloadLink: "https://apkpure.net/udemy/com.udemy.android/download" }
+        ];
+
         let currentCategory = "all";
         let currentSearch = "";
 
-        function displayApps() {
-            const container = document.getElementById("appsContainer");
-            let filtered = allApps;
-            
+        function getFilteredApps() {
+            let filtered = apps;
             if (currentCategory !== "all") {
                 filtered = filtered.filter(app => app.category === currentCategory);
             }
             if (currentSearch) {
                 filtered = filtered.filter(app => 
-                    app.name.toLowerCase().includes(currentSearch.toLowerCase())
+                    app.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                    app.description.toLowerCase().includes(currentSearch.toLowerCase())
                 );
             }
+            return filtered;
+        }
+
+        function displayApps() {
+            const container = document.getElementById("appsContainer");
+            const filtered = getFilteredApps();
             
             if (filtered.length === 0) {
                 container.innerHTML = `<div style="text-align:center; padding:50px; color:#D4AF37;">😅 لا توجد تطبيقات تطابق بحثك</div>`;
@@ -220,21 +305,19 @@
             
             container.innerHTML = filtered.map(app => `
                 <div class="app-card" onclick="window.location.href='app-details.html?id=${app.id}'">
-                    <i class="${app.icon}"></i>
-                    <h3>${escapeHtml(app.name)}</h3>
-                    <p>${app.category}</p>
+                    <div class="app-icon">
+                        <img src="icons/${app.icon}" alt="${app.name}" onerror="this.src='icons/default.svg'">
+                    </div>
+                    <div class="app-info">
+                        <h3 class="app-name">${app.name}</h3>
+                        <div class="app-category"><i class="fas fa-tag"></i> ${app.category}</div>
+                        <p class="app-description">${app.description}</p>
+                        <a href="${app.downloadLink}" target="_blank" class="download-btn" onclick="event.stopPropagation()">
+                            <i class="fas fa-download"></i> تحميل
+                        </a>
+                    </div>
                 </div>
             `).join('');
-        }
-        
-        function escapeHtml(str) {
-            if (!str) return '';
-            return String(str).replace(/[&<>]/g, function(m) {
-                if (m === '&') return '&amp;';
-                if (m === '<') return '&lt;';
-                if (m === '>') return '&gt;';
-                return m;
-            });
         }
 
         function setupCategoryFilters() {
@@ -252,10 +335,12 @@
         function setupSearch() {
             const searchInput = document.getElementById("searchInput");
             const searchBtn = document.getElementById("searchBtn");
+            
             searchBtn.addEventListener("click", () => {
                 currentSearch = searchInput.value;
                 displayApps();
             });
+            
             searchInput.addEventListener("keypress", (e) => {
                 if (e.key === "Enter") {
                     currentSearch = searchInput.value;
@@ -305,30 +390,12 @@
             }
         }
 
-        // تحميل البيانات من الملف الخارجي
-        function loadAppsData() {
-            const script = document.createElement('script');
-            script.src = 'data/apps-data.js?_=' + new Date().getTime();
-            script.onload = function() {
-                if (typeof appsConfig !== 'undefined' && appsConfig) {
-                    allApps = appsConfig;
-                    displayApps();
-                } else {
-                    document.getElementById("appsContainer").innerHTML = `<div style="text-align:center; padding:50px; color:#ff6b6b;">😅 خطأ في تحميل البيانات</div>`;
-                }
-            };
-            script.onerror = function() {
-                document.getElementById("appsContainer").innerHTML = `<div style="text-align:center; padding:50px; color:#ff6b6b;">😅 خطأ في تحميل البيانات</div>`;
-            };
-            document.head.appendChild(script);
-        }
-
         setupCategoryFilters();
         setupSearch();
+        displayApps();
         updateAuthUI();
         setupLogout();
         setupMobileMenu();
-        loadAppsData();
     </script>
 </body>
 </html>
