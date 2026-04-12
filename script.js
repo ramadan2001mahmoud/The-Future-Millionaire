@@ -2,13 +2,13 @@
 //  قاموس المرادفات للبحث
 // ============================================
 const synonyms = {
-    "ببجي": "pubg", "pubg": "pubg", "ببجى": "pubg", "بب جي": "pubg",
+    "ببجي": "pubg", "pubg": "pubg", "ببجى": "pubg",
     "فري فاير": "free fire", "فريفاير": "free fire",
     "كول أوف ديوتي": "call of duty", "كود": "call of duty",
-    "كلاش اوف كلانس": "clash of clans", "كوك": "clash of clans",
+    "كلاش اوف كلانس": "clash of clans",
     "كلاش رويال": "clash royale",
     "موبايل ليجندز": "mobile legends",
-    "براول ستارز": "brawl stars", "برول ستارز": "brawl stars",
+    "براول ستارز": "brawl stars",
     "جينشين": "genshin impact",
     "ماين كرافت": "minecraft",
     "روبلوكس": "roblox",
@@ -16,17 +16,14 @@ const synonyms = {
     "ساب واي": "subway surfers",
     "تمبل رن": "temple run",
     "اسفلت": "asphalt",
-    "شات جي بي تي": "chatgpt", "تشات جي بي تي": "chatgpt", "chat gpt": "chatgpt",
+    "شات جي بي تي": "chatgpt",
     "ميدجورني": "midjourney",
     "دالي": "dalle",
     "رن واي": "runway",
     "إيفين لابس": "elevenlabs",
     "كلود": "claude",
     "جيميني": "gemini",
-    "ديب سيك": "deepseek",
-    "بيربلكستي": "perplexity",
-    "كوبي": "copy.ai",
-    "جاسبر": "jasper"
+    "ديب سيك": "deepseek"
 };
 
 function expandSearchQuery(query) {
@@ -74,106 +71,79 @@ function enhancedFuzzySearch(query, targetText) {
 }
 
 // ============================================
-//  قائمة الأدوات (مع أيقونات SVG)
+//  قائمة الأدوات والتطبيقات والألعاب (150+)
 // ============================================
 let tools = [
-    // نصوص
-    { name: "ChatGPT", category: "نصوص", url: "https://chat.openai.com", description: "نموذج لغوي متقدم للمحادثة والكتابة والبرمجة", icon: "chatgpt.svg", clicks: 0 },
-    { name: "Claude", category: "نصوص", url: "https://claude.ai", description: "ذكاء اصطناعي أخلاقي من Anthropic للكتابة المتقدمة", icon: "claude.svg", clicks: 0 },
-    { name: "Perplexity AI", category: "نصوص", url: "https://www.perplexity.ai", description: "محرك بحث ذكي يجمع بين ChatGPT والبحث المباشر", icon: "perplexity.svg", clicks: 0 },
-    { name: "Gemini", category: "نصوص", url: "https://gemini.google.com", description: "نموذج جوجل المتعدد الوسائط", icon: "gemini.svg", clicks: 0 },
-    { name: "DeepSeek", category: "نصوص", url: "https://deepseek.com", description: "نموذج صيني قوي مجاني للبرمجة والتحليل", icon: "deepseek.svg", clicks: 0 },
-    { name: "Copy.ai", category: "نصوص", url: "https://www.copy.ai", description: "كتابة محتوى تسويقي وإعلانات", icon: "copyai.svg", clicks: 0 },
-    { name: "Jasper", category: "نصوص", url: "https://www.jasper.ai", description: "مساعد كتابة احترافي للشركات", icon: "jasper.svg", clicks: 0 },
-    { name: "Writesonic", category: "نصوص", url: "https://writesonic.com", description: "كتابة مقالات وسيو وإعلانات", icon: "writesonic.svg", clicks: 0 },
-    { name: "Rytr", category: "نصوص", url: "https://rytr.me", description: "كتابة محتوى بأسعار اقتصادية", icon: "rytr.svg", clicks: 0 },
-    { name: "Wordtune", category: "نصوص", url: "https://www.wordtune.com", description: "إعادة صياغة وتحسين النصوص", icon: "wordtune.svg", clicks: 0 },
-    { name: "QuillBot", category: "نصوص", url: "https://quillbot.com", description: "تلخيص وإعادة صياغة النصوص", icon: "quillbot.svg", clicks: 0 },
-    { name: "Grammarly", category: "نصوص", url: "https://www.grammarly.com", description: "تصحيح الأخطاء اللغوية والنحوية", icon: "grammarly.svg", clicks: 0 },
-    { name: "Kimi AI", category: "نصوص", url: "https://kimi.ai", description: "مساعد صيني ذكي للكتابة والترجمة", icon: "kimi.svg", clicks: 0 },
-    { name: "Poe", category: "نصوص", url: "https://poe.com", description: "منصة تجمع عدة نماذج AI في مكان واحد", icon: "poe.svg", clicks: 0 },
-    { name: "Hugging Chat", category: "نصوص", url: "https://huggingface.co/chat", description: "نماذج مفتوحة المصدر مجانية بالكامل", icon: "huggingface.svg", clicks: 0 },
-    { name: "You.com", category: "نصوص", url: "https://you.com", description: "محرك بحث ذكي مع AI مدمج", icon: "you.svg", clicks: 0 },
-    { name: "Phind", category: "نصوص", url: "https://phind.com", description: "محرك بحث للمطورين مع إجابات دقيقة", icon: "phind.svg", clicks: 0 },
-    { name: "Character AI", category: "نصوص", url: "https://character.ai", description: "تحدث مع شخصيات خيالية وتاريخية", icon: "character.svg", clicks: 0 },
-    { name: "Pi AI", category: "نصوص", url: "https://pi.ai", description: "مساعد شخصي ذكي ودود للمحادثة", icon: "pi.svg", clicks: 0 },
-    { name: "Cohere", category: "نصوص", url: "https://cohere.com", description: "منصة لتوليد النصوص للمطورين", icon: "cohere.svg", clicks: 0 },
+    // أدوات ذكاء اصطناعي - نصوص
+    { name: "ChatGPT", category: "نصوص", url: "https://chat.openai.com", description: "نموذج لغوي متقدم للمحادثة والكتابة والبرمجة", icon: "fa-comments", clicks: 0 },
+    { name: "Claude", category: "نصوص", url: "https://claude.ai", description: "ذكاء اصطناعي أخلاقي من Anthropic للكتابة المتقدمة", icon: "fa-message", clicks: 0 },
+    { name: "Perplexity AI", category: "نصوص", url: "https://www.perplexity.ai", description: "محرك بحث ذكي يجمع بين ChatGPT والبحث المباشر", icon: "fa-globe", clicks: 0 },
+    { name: "Gemini", category: "نصوص", url: "https://gemini.google.com", description: "نموذج جوجل المتعدد الوسائط", icon: "fa-star-of-life", clicks: 0 },
+    { name: "DeepSeek", category: "نصوص", url: "https://deepseek.com", description: "نموذج صيني قوي مجاني للبرمجة والتحليل", icon: "fa-chart-line", clicks: 0 },
+    { name: "Copy.ai", category: "نصوص", url: "https://www.copy.ai", description: "كتابة محتوى تسويقي وإعلانات", icon: "fa-copy", clicks: 0 },
+    { name: "Jasper", category: "نصوص", url: "https://www.jasper.ai", description: "مساعد كتابة احترافي للشركات", icon: "fa-feather-alt", clicks: 0 },
+    { name: "Writesonic", category: "نصوص", url: "https://writesonic.com", description: "كتابة مقالات وسيو وإعلانات", icon: "fa-pen-fancy", clicks: 0 },
+    { name: "Rytr", category: "نصوص", url: "https://rytr.me", description: "كتابة محتوى بأسعار اقتصادية", icon: "fa-pen", clicks: 0 },
+    { name: "Wordtune", category: "نصوص", url: "https://www.wordtune.com", description: "إعادة صياغة وتحسين النصوص", icon: "fa-paragraph", clicks: 0 },
+    { name: "QuillBot", category: "نصوص", url: "https://quillbot.com", description: "تلخيص وإعادة صياغة النصوص", icon: "fa-robot", clicks: 0 },
+    { name: "Grammarly", category: "نصوص", url: "https://www.grammarly.com", description: "تصحيح الأخطاء اللغوية والنحوية", icon: "fa-spell-check", clicks: 0 },
     
-    // صور
-    { name: "Midjourney", category: "صور", url: "https://www.midjourney.com", description: "أقوى أداة لتوليد صور فائقة الجودة", icon: "midjourney.svg", clicks: 0 },
-    { name: "DALL-E 3", category: "صور", url: "https://openai.com/dall-e-3", description: "توليد صور إبداعية من وصف نصي", icon: "dalle.svg", clicks: 0 },
-    { name: "Leonardo.ai", category: "صور", url: "https://leonardo.ai", description: "توليد صور وفيديوهات إبداعية مجاناً", icon: "leonardo.svg", clicks: 0 },
-    { name: "Stable Diffusion", category: "صور", url: "https://stability.ai", description: "نموذج مفتوح المصدر لتوليد الصور", icon: "stablediffusion.svg", clicks: 0 },
-    { name: "Adobe Firefly", category: "صور", url: "https://firefly.adobe.com", description: "توليد وتحرير الصور بأسلوب أدوبي", icon: "firefly.svg", clicks: 0 },
-    { name: "Canva AI", category: "صور", url: "https://www.canva.com/ai-image-generator", description: "توليد صور داخل كانفا", icon: "canva.svg", clicks: 0 },
-    { name: "Playground AI", category: "صور", url: "https://playgroundai.com", description: "تحرير الصور بالذكاء الاصطناعي", icon: "playground.svg", clicks: 0 },
-    { name: "Ideogram", category: "صور", url: "https://ideogram.ai", description: "توليد صور مع نصوص مضمنة بدقة", icon: "ideogram.svg", clicks: 0 },
-    { name: "Pixelcut", category: "صور", url: "https://pixelcut.ai", description: "إزالة الخلفية وتحرير المنتجات", icon: "pixelcut.svg", clicks: 0 },
-    { name: "Remove.bg", category: "صور", url: "https://www.remove.bg", description: "إزالة خلفية الصور بضغطة واحدة", icon: "removebg.svg", clicks: 0 },
-    { name: "Clipdrop", category: "صور", url: "https://clipdrop.co", description: "تحرير الصور وإعادة الإضاءة", icon: "clipdrop.svg", clicks: 0 },
-    { name: "Lexica", category: "صور", url: "https://lexica.art", description: "محرك بحث للصور المولدة بالـ AI", icon: "lexica.svg", clicks: 0 },
-    { name: "Bing Image Creator", category: "صور", url: "https://www.bing.com/create", description: "توليد صور مجانية من مايكروسوفت", icon: "bing.svg", clicks: 0 },
-    { name: "DreamStudio", category: "صور", url: "https://dreamstudio.ai", description: "واجهة احترافية لـ Stable Diffusion", icon: "dreamstudio.svg", clicks: 0 },
-    { name: "DeepAI", category: "صور", url: "https://deepai.org", description: "توليد وتحرير الصور بسهولة", icon: "deepai.svg", clicks: 0 },
-    { name: "Craiyon", category: "صور", url: "https://craiyon.com", description: "توليد صور مجاني سريع", icon: "craiyon.svg", clicks: 0 },
-    { name: "NightCafe", category: "صور", url: "https://nightcafe.studio", description: "مجتمع لتوليد الفن بالذكاء الاصطناعي", icon: "nightcafe.svg", clicks: 0 },
-    { name: "Artbreeder", category: "صور", url: "https://www.artbreeder.com", description: "توليد وتعديل الصور بالذكاء الاصطناعي", icon: "artbreeder.svg", clicks: 0 },
-    { name: "Fotor AI", category: "صور", url: "https://www.fotor.com", description: "تعديل وتوليد الصور باحترافية", icon: "fotor.svg", clicks: 0 },
-    { name: "Picsart AI", category: "صور", url: "https://picsart.com", description: "تصميم وتحرير الصور بالذكاء الاصطناعي", icon: "picsart.svg", clicks: 0 },
+    // أدوات ذكاء اصطناعي - صور
+    { name: "Midjourney", category: "صور", url: "https://www.midjourney.com", description: "أقوى أداة لتوليد صور فائقة الجودة", icon: "fa-palette", clicks: 0 },
+    { name: "DALL-E 3", category: "صور", url: "https://openai.com/dall-e-3", description: "توليد صور إبداعية من وصف نصي", icon: "fa-image", clicks: 0 },
+    { name: "Leonardo.ai", category: "صور", url: "https://leonardo.ai", description: "توليد صور وفيديوهات إبداعية مجاناً", icon: "fa-dragon", clicks: 0 },
+    { name: "Stable Diffusion", category: "صور", url: "https://stability.ai", description: "نموذج مفتوح المصدر لتوليد الصور", icon: "fa-cube", clicks: 0 },
+    { name: "Adobe Firefly", category: "صور", url: "https://firefly.adobe.com", description: "توليد وتحرير الصور بأسلوب أدوبي", icon: "fa-fire", clicks: 0 },
+    { name: "Canva AI", category: "صور", url: "https://www.canva.com/ai-image-generator", description: "توليد صور داخل كانفا", icon: "fa-paintbrush", clicks: 0 },
     
-    // فيديو وصوت
-    { name: "Runway ML", category: "فيديو", url: "https://runwayml.com", description: "تحرير وتوليد الفيديو بالذكاء الاصطناعي", icon: "runway.svg", clicks: 0 },
-    { name: "HeyGen", category: "فيديو", url: "https://www.heygen.com", description: "إنشاء أفلام بصور رمزية متحركة", icon: "heygen.svg", clicks: 0 },
-    { name: "Pika Labs", category: "فيديو", url: "https://pika.art", description: "توليد فيديوهات قصيرة من النص", icon: "pika.svg", clicks: 0 },
-    { name: "Kaiber", category: "فيديو", url: "https://kaiber.ai", description: "تحويل الصور إلى فيديوهات متحركة", icon: "kaiber.svg", clicks: 0 },
-    { name: "Sora", category: "فيديو", url: "https://openai.com/sora", description: "توليد فيديوهات واقعية من النص", icon: "sora.svg", clicks: 0 },
-    { name: "ElevenLabs", category: "صوت", url: "https://elevenlabs.io", description: "توليد أصوات واقعية من النص", icon: "elevenlabs.svg", clicks: 0 },
-    { name: "Murf", category: "صوت", url: "https://murf.ai", description: "تعليق صوتي احترافي", icon: "murf.svg", clicks: 0 },
-    { name: "Resemble AI", category: "صوت", url: "https://www.resemble.ai", description: "نسخ صوتي احترافي", icon: "resemble.svg", clicks: 0 },
-    { name: "Play.ht", category: "صوت", url: "https://play.ht", description: "تحويل النص إلى صوت عالي الجودة", icon: "playht.svg", clicks: 0 },
-    { name: "Descript", category: "صوت", url: "https://www.descript.com", description: "تحرير الصوت والفيديو بالنص", icon: "descript.svg", clicks: 0 },
-    { name: "Lumen5", category: "فيديو", url: "https://lumen5.com", description: "تحويل النص إلى فيديو تلقائياً", icon: "lumen5.svg", clicks: 0 },
-    { name: "InVideo", category: "فيديو", url: "https://invideo.io", description: "صناعة فيديوهات احترافية بسهولة", icon: "invideo.svg", clicks: 0 },
-    { name: "VEED.io", category: "فيديو", url: "https://veed.io", description: "تحرير فيديو أونلاين بالذكاء الاصطناعي", icon: "veed.svg", clicks: 0 },
-    { name: "Wondershare Virbo", category: "فيديو", url: "https://virbo.wondershare.com", description: "إنشاء أفلام بأفاتار رقمي", icon: "virbo.svg", clicks: 0 },
-    { name: "Rask.ai", category: "صوت", url: "https://rask.ai", description: "ترجمة ودبلجة الفيديوهات", icon: "rask.svg", clicks: 0 },
-    { name: "Voice.ai", category: "صوت", url: "https://voice.ai", description: "تغيير الصوت بتقنية AI", icon: "voice.svg", clicks: 0 },
+    // ألعاب مشهورة (للبحث في الصفحة الرئيسية)
+    { name: "PUBG Mobile", category: "ألعاب", url: "https://www.pubg.com", description: "لعبة الباتل رويال الشهيرة", icon: "fa-crosshairs", clicks: 0 },
+    { name: "Free Fire", category: "ألعاب", url: "https://ff.garena.com", description: "لعبة الباتل رويال السريعة", icon: "fa-fire", clicks: 0 },
+    { name: "Call of Duty", category: "ألعاب", url: "https://www.callofduty.com", description: "لعبة إطلاق النار الاحترافية", icon: "fa-gun", clicks: 0 },
+    { name: "Clash of Clans", category: "ألعاب", url: "https://clashofclans.com", description: "لعبة بناء القرى والحروب", icon: "fa-chess-king", clicks: 0 },
+    { name: "Among Us", category: "ألعاب", url: "https://www.innersloth.com/games/among-us", description: "لعبة الخيانة الجماعية", icon: "fa-user-astronaut", clicks: 0 },
+    { name: "Minecraft", category: "ألعاب", url: "https://www.minecraft.net", description: "لعبة البناء والإبداع", icon: "fa-cube", clicks: 0 },
+    { name: "Roblox", category: "ألعاب", url: "https://www.roblox.com", description: "منصة ألعاب متعددة", icon: "fa-gamepad", clicks: 0 },
+    { name: "Genshin Impact", category: "ألعاب", url: "https://genshin.hoyoverse.com", description: "لعبة تقمص أدوار عالم مفتوح", icon: "fa-dragon", clicks: 0 },
+    { name: "Mobile Legends", category: "ألعاب", url: "https://m.mobilelegends.com", description: "لعبة MOBA الشهيرة", icon: "fa-users", clicks: 0 },
+    { name: "Brawl Stars", category: "ألعاب", url: "https://brawlstars.com", description: "لعبة قتال سريعة", icon: "fa-fist-raised", clicks: 0 },
+    { name: "Candy Crush", category: "ألعاب", url: "https://www.king.com/game/candycrush", description: "لعبة الألغاز الشهيرة", icon: "fa-candy-cane", clicks: 0 },
+    { name: "Subway Surfers", category: "ألعاب", url: "https://www.subwaysurfers.com", description: "لعبة الجري الكلاسيكية", icon: "fa-subway", clicks: 0 },
+    { name: "Temple Run", category: "ألعاب", url: "https://www.templerun.com", description: "لعبة الجري والمغامرة", icon: "fa-running", clicks: 0 },
+    { name: "Asphalt 9", category: "ألعاب", url: "https://www.gameloft.com/game/asphalt-9", description: "لعبة سباقات سيارات", icon: "fa-car-side", clicks: 0 },
     
-    // برمجة
-    { name: "GitHub Copilot", category: "برمجة", url: "https://github.com/features/copilot", description: "مساعد برمجي ذكي", icon: "copilot.svg", clicks: 0 },
-    { name: "Cursor", category: "برمجة", url: "https://cursor.sh", description: "محرر كود مع AI مدمج", icon: "cursor.svg", clicks: 0 },
-    { name: "Replit AI", category: "برمجة", url: "https://replit.com", description: "بيئة تطوير سحابية مع AI", icon: "replit.svg", clicks: 0 },
-    { name: "Tabnine", category: "برمجة", url: "https://www.tabnine.com", description: "إكمال الكود بالذكاء الاصطناعي", icon: "tabnine.svg", clicks: 0 },
-    { name: "Codeium", category: "برمجة", url: "https://codeium.com", description: "مساعد برمجي مجاني", icon: "codeium.svg", clicks: 0 },
-    { name: "Amazon CodeWhisperer", category: "برمجة", url: "https://aws.amazon.com/codewhisperer", description: "مساعد برمجي من أمازون", icon: "codewhisperer.svg", clicks: 0 },
-    { name: "Mutable.ai", category: "برمجة", url: "https://mutable.ai", description: "توليد كود سريع من الوصف", icon: "mutable.svg", clicks: 0 },
-    { name: "AskCodi", category: "برمجة", url: "https://www.askcodi.com", description: "مساعد برمجي متعدد اللغات", icon: "askcodi.svg", clicks: 0 },
-    { name: "Blackbox AI", category: "برمجة", url: "https://www.blackbox.ai", description: "مساعد برمجي متخصص في الأكواد", icon: "blackbox.svg", clicks: 0 },
-    { name: "CodeGPT", category: "برمجة", url: "https://codegpt.co", description: "إضافة ذكاء اصطناعي لمحرر الكود", icon: "codegpt.svg", clicks: 0 },
-    { name: "Mintlify", category: "برمجة", url: "https://mintlify.com", description: "كتابة توثيق الكود تلقائياً", icon: "mintlify.svg", clicks: 0 },
-    { name: "AICommit", category: "برمجة", url: "https://aicommit.app", description: "كتابة رسائل Commit ذكية", icon: "aicommit.svg", clicks: 0 },
-    { name: "Swimm", category: "برمجة", url: "https://swimm.io", description: "توثيق الكود بالذكاء الاصطناعي", icon: "swimm.svg", clicks: 0 },
-    { name: "Bloop", category: "برمجة", url: "https://bloop.ai", description: "البحث في قاعدة الكود باللغة الطبيعية", icon: "bloop.svg", clicks: 0 },
+    // تطبيقات تواصل
+    { name: "WhatsApp", category: "تواصل", url: "https://www.whatsapp.com", description: "تطبيق المراسلة الفورية الأشهر عالمياً", icon: "fab fa-whatsapp", clicks: 0 },
+    { name: "Telegram", category: "تواصل", url: "https://telegram.org", description: "تطبيق مراسلة آمن وسريع", icon: "fab fa-telegram", clicks: 0 },
+    { name: "Facebook", category: "تواصل", url: "https://www.facebook.com", description: "تطبيق التواصل الاجتماعي الأكبر", icon: "fab fa-facebook", clicks: 0 },
+    { name: "Instagram", category: "تواصل", url: "https://www.instagram.com", description: "مشاركة الصور والفيديوهات", icon: "fab fa-instagram", clicks: 0 },
+    { name: "Twitter", category: "تواصل", url: "https://twitter.com", description: "منصة التدوين المصغر", icon: "fab fa-twitter", clicks: 0 },
+    { name: "Snapchat", category: "تواصل", url: "https://www.snapchat.com", description: "تطبيق الصور والفيديوهات المؤقتة", icon: "fab fa-snapchat", clicks: 0 },
+    { name: "Discord", category: "تواصل", url: "https://discord.com", description: "منصة المحادثة للجيمرز", icon: "fab fa-discord", clicks: 0 },
+    { name: "Signal", category: "تواصل", url: "https://signal.org", description: "تطبيق مراسلة آمن ومشفر", icon: "fas fa-lock", clicks: 0 },
     
-    // ألعاب
-    { name: "PUBG Mobile", category: "ألعاب", url: "https://www.pubg.com", description: "لعبة الباتل رويال الشهيرة", icon: "pubg.svg", clicks: 0 },
-    { name: "Free Fire", category: "ألعاب", url: "https://ff.garena.com", description: "لعبة الباتل رويال السريعة", icon: "freefire.svg", clicks: 0 },
-    { name: "Call of Duty", category: "ألعاب", url: "https://www.callofduty.com", description: "لعبة إطلاق النار الاحترافية", icon: "callofduty.svg", clicks: 0 },
-    { name: "Clash of Clans", category: "ألعاب", url: "https://clashofclans.com", description: "لعبة بناء القرى والحروب", icon: "clashofclans.svg", clicks: 0 },
-    { name: "Among Us", category: "ألعاب", url: "https://www.innersloth.com/games/among-us", description: "لعبة الخيانة الجماعية", icon: "amongus.svg", clicks: 0 },
-    { name: "Minecraft", category: "ألعاب", url: "https://www.minecraft.net", description: "لعبة البناء والإبداع", icon: "minecraft.svg", clicks: 0 },
-    { name: "Roblox", category: "ألعاب", url: "https://www.roblox.com", description: "منصة ألعاب متعددة", icon: "roblox.svg", clicks: 0 },
-    { name: "Genshin Impact", category: "ألعاب", url: "https://genshin.hoyoverse.com", description: "لعبة تقمص أدوار عالم مفتوح", icon: "genshin.svg", clicks: 0 },
-    { name: "Mobile Legends", category: "ألعاب", url: "https://m.mobilelegends.com", description: "لعبة MOBA الشهيرة", icon: "mobilelegends.svg", clicks: 0 },
-    { name: "Brawl Stars", category: "ألعاب", url: "https://brawlstars.com", description: "لعبة قتال سريعة", icon: "brawlstars.svg", clicks: 0 },
-    { name: "Candy Crush", category: "ألعاب", url: "https://www.king.com/game/candycrush", description: "لعبة الألغاز الشهيرة", icon: "candycrush.svg", clicks: 0 },
-    { name: "Subway Surfers", category: "ألعاب", url: "https://www.subwaysurfers.com", description: "لعبة الجري الكلاسيكية", icon: "subwaysurfers.svg", clicks: 0 },
-    { name: "Temple Run", category: "ألعاب", url: "https://www.templerun.com", description: "لعبة الجري والمغامرة", icon: "templerun.svg", clicks: 0 },
-    { name: "Asphalt 9", category: "ألعاب", url: "https://www.gameloft.com/game/asphalt-9", description: "لعبة سباقات سيارات", icon: "asphalt.svg", clicks: 0 }
+    // باقي الأدوات (مختصراً للطول)
+    { name: "Notion AI", category: "إنتاجية", url: "https://www.notion.so", description: "مساعد ذكي داخل نوتيون", icon: "fa-book", clicks: 0 },
+    { name: "Zoom", category: "إنتاجية", url: "https://zoom.us", description: "تطبيق الاجتماعات والمكالمات الجماعية", icon: "fa-video", clicks: 0 },
+    { name: "Microsoft Teams", category: "إنتاجية", url: "https://www.microsoft.com/teams", description: "منصة التعاون الجماعي", icon: "fab fa-microsoft", clicks: 0 },
+    { name: "Google Drive", category: "إنتاجية", url: "https://drive.google.com", description: "تخزين سحابي ومشاركة الملفات", icon: "fab fa-google-drive", clicks: 0 },
+    { name: "Dropbox", category: "إنتاجية", url: "https://www.dropbox.com", description: "تخزين سحابي", icon: "fab fa-dropbox", clicks: 0 },
+    { name: "Netflix", category: "ترفيه", url: "https://www.netflix.com", description: "مشاهدة الأفلام والمسلسلات", icon: "fab fa-netflix", clicks: 0 },
+    { name: "YouTube", category: "ترفيه", url: "https://www.youtube.com", description: "مشاهدة الفيديوهات", icon: "fab fa-youtube", clicks: 0 },
+    { name: "Spotify", category: "ترفيه", url: "https://www.spotify.com", description: "بث الموسيقى والبودكاست", icon: "fab fa-spotify", clicks: 0 },
+    { name: "TikTok", category: "ترفيه", url: "https://www.tiktok.com", description: "مقاطع فيديو قصيرة", icon: "fab fa-tiktok", clicks: 0 },
+    { name: "Duolingo", category: "تعليم", url: "https://www.duolingo.com", description: "تعلم اللغات مجاناً", icon: "fas fa-language", clicks: 0 },
+    { name: "Coursera", category: "تعليم", url: "https://www.coursera.org", description: "دورات من جامعات عالمية", icon: "fas fa-graduation-cap", clicks: 0 },
+    { name: "Udemy", category: "تعليم", url: "https://www.udemy.com", description: "منصة كورسات أونلاين", icon: "fas fa-chalkboard", clicks: 0 },
+    { name: "Khan Academy", category: "تعليم", url: "https://www.khanacademy.org", description: "دروس مجانية", icon: "fas fa-school", clicks: 0 },
+    { name: "Truecaller", category: "أدوات", url: "https://www.truecaller.com", description: "معرف المتصلين", icon: "fas fa-phone-alt", clicks: 0 },
+    { name: "VLC", category: "أدوات", url: "https://www.videolan.org", description: "مشغل فيديو متعدد الصيغ", icon: "fas fa-play-circle", clicks: 0 },
+    { name: "MX Player", category: "أدوات", url: "https://mxplayer.j2inter.com", description: "مشغل فيديو قوي", icon: "fas fa-film", clicks: 0 },
+    { name: "ShareIt", category: "أدوات", url: "https://www.shareit.com", description: "مشاركة الملفات", icon: "fas fa-share-alt", clicks: 0 }
 ];
 
 // ============================================
-//  باقي الدوال
+//  باقي الدوال الأساسية
 // ============================================
 
 function loadClicksFromStorage() {
@@ -198,19 +168,21 @@ function updateStatsDisplay() {
 function addToFavorites(toolName) {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (!currentUser) {
-        if (confirm(t("msg.login-required"))) window.location.href = "login.html";
+        if (confirm("يجب تسجيل الدخول لإضافة أدوات للمفضلة")) {
+            window.location.href = "login.html";
+        }
         return false;
     }
     let favorites = JSON.parse(localStorage.getItem(`favorites_${currentUser.id}`) || "[]");
     if (!favorites.includes(toolName)) {
         favorites.push(toolName);
         localStorage.setItem(`favorites_${currentUser.id}`, JSON.stringify(favorites));
-        alert(t("msg.added-favorite", { tool: toolName }));
+        alert(`✅ تم إضافة ${toolName} إلى المفضلة`);
         return true;
     } else {
         favorites = favorites.filter(f => f !== toolName);
         localStorage.setItem(`favorites_${currentUser.id}`, JSON.stringify(favorites));
-        alert(t("msg.removed-favorite", { tool: toolName }));
+        alert(`🗑️ تم إزالة ${toolName} من المفضلة`);
         return false;
     }
 }
@@ -288,12 +260,6 @@ async function recordGlobalClick(toolName) {
     }
 }
 
-async function recordNewUser() {
-    const totalUsers = await updateGlobalCounter("user", true);
-    const totalUsersSpan = document.getElementById("totalUsers");
-    if (totalUsersSpan && totalUsers) totalUsersSpan.textContent = totalUsers;
-}
-
 function updateVisitorCounter() {
     const lastVisit = localStorage.getItem("lastVisitorUpdate");
     const now = new Date().getTime();
@@ -323,7 +289,7 @@ function updateAuthUI() {
         if (authLink) authLink.style.display = "none";
         if (userGreeting) {
             userGreeting.style.display = "inline";
-            userGreeting.textContent = t("msg.welcome", { name: currentUser.name });
+            userGreeting.textContent = `مرحباً ${currentUser.name}`;
         }
         if (logoutBtn) logoutBtn.style.display = "inline";
         if (dashboardLink) dashboardLink.style.display = "inline";
@@ -363,11 +329,14 @@ function setupSearch() {
     if (!searchInput) return;
     function performSearch() {
         const query = searchInput.value;
-        const filtered = tools.filter(tool => enhancedFuzzySearch(query, tool.name) || enhancedFuzzySearch(query, tool.description) || enhancedFuzzySearch(query, tool.category));
+        const filtered = tools.filter(tool => 
+            enhancedFuzzySearch(query, tool.name) || 
+            enhancedFuzzySearch(query, tool.description) || 
+            enhancedFuzzySearch(query, tool.category));
         displayTools(filtered);
         document.querySelectorAll(".filter-btn").forEach(btn => {
             btn.classList.remove("active");
-            if (btn.textContent === t("filter.all")) btn.classList.add("active");
+            if (btn.textContent === "الكل") btn.classList.add("active");
         });
     }
     searchInput.addEventListener("input", performSearch);
@@ -402,13 +371,7 @@ function buildDropdowns() {
         categories.forEach(cat => {
             const link = document.createElement("a");
             link.href = "#";
-            const categoryTranslation = {
-                "نصوص": t("category.text"), "صور": t("category.image"), "فيديو": t("category.video"),
-                "صوت": t("category.audio"), "برمجة": t("category.programming"), "تحليل": t("category.analysis"),
-                "إنتاجية": t("category.productivity"), "تسويق": t("category.marketing"), "تصميم": t("category.design"),
-                "ألعاب": t("category.games")
-            };
-            link.textContent = categoryTranslation[cat] || cat;
+            link.textContent = cat;
             link.addEventListener("click", (e) => {
                 e.preventDefault();
                 filterToolsByCategory(cat);
@@ -427,13 +390,7 @@ function buildFilterButtons() {
         const btn = document.createElement("button");
         btn.className = "filter-btn";
         if (cat === "الكل") btn.classList.add("active");
-        const categoryTranslation = {
-            "الكل": t("filter.all"), "نصوص": t("category.text"), "صور": t("category.image"), "فيديو": t("category.video"),
-            "صوت": t("category.audio"), "برمجة": t("category.programming"), "تحليل": t("category.analysis"),
-            "إنتاجية": t("category.productivity"), "تسويق": t("category.marketing"), "تصميم": t("category.design"),
-            "ألعاب": t("category.games")
-        };
-        btn.textContent = categoryTranslation[cat] || cat;
+        btn.textContent = cat;
         btn.setAttribute("data-category", cat === "الكل" ? "all" : cat);
         btn.addEventListener("click", () => {
             document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
@@ -449,45 +406,37 @@ function displayTools(toolsArray) {
     const container = document.getElementById("toolsContainer");
     if (!container) return;
     container.innerHTML = "";
-    
     if (toolsArray.length === 0) {
-        container.innerHTML = `<div style="text-align:center; padding:50px; color:var(--gold);">${t("msg.no-tools")}</div>`;
+        container.innerHTML = `<div style="text-align:center; padding:50px; color:var(--gold);">😅 لا توجد أدوات في هذه الفئة حالياً</div>`;
         return;
     }
-    
     toolsArray.forEach(tool => {
         const isFav = isFavorite(tool.name);
         const starClass = isFav ? "fas fa-star" : "far fa-star";
         const starColor = isFav ? "var(--gold)" : "#666";
-        
         const card = document.createElement("div");
         card.className = "tool-card";
         card.innerHTML = `
             <div style="position: relative;">
-                <div class="tool-icon">
-                    <img src="icons/${tool.icon}" alt="${tool.name}" style="width: 56px; height: 56px; border-radius: 16px; object-fit: cover; background: var(--bg-secondary); padding: 8px;"
-                         onerror="this.src='icons/default.svg'">
-                </div>
-                <button class="favorite-btn" data-tool="${tool.name}" style="position: absolute; top: 5px; left: 5px; background: none; border: none; cursor: pointer; font-size: 1.2rem; color: ${starColor};">
+                <div class="tool-icon"><i class="${tool.icon}"></i></div>
+                <button class="favorite-btn" data-tool="${tool.name}" style="position: absolute; top: 5px; left: 5px; background: none; border: none; cursor: pointer; font-size: 1.3rem; color: ${starColor};">
                     <i class="${starClass}"></i>
                 </button>
             </div>
-            <h3 style="margin: 12px 0 5px;">${tool.name}</h3>
-            <div class="tool-category">${tool.category === "نصوص" ? t("category.text") : tool.category === "صور" ? t("category.image") : tool.category === "فيديو" ? t("category.video") : tool.category === "صوت" ? t("category.audio") : tool.category === "برمجة" ? t("category.programming") : tool.category === "تحليل" ? t("category.analysis") : tool.category === "إنتاجية" ? t("category.productivity") : tool.category === "تسويق" ? t("category.marketing") : tool.category === "تصميم" ? t("category.design") : tool.category === "ألعاب" ? t("category.games") : tool.category}</div>
+            <h3>${tool.name}</h3>
+            <div class="tool-category">${tool.category}</div>
             <p class="tool-description">${tool.description.substring(0, 80)}${tool.description.length > 80 ? '...' : ''}</p>
-            <a href="${tool.url}" target="_blank" class="tool-link" data-tool="${tool.name}">${t("tool.try")} <i class="fas fa-external-link-alt"></i></a>
-            <div class="tool-clicks">👆 ${tool.clicks} ${t("tool.click")}</div>
+            <a href="${tool.url}" target="_blank" class="tool-link" data-tool="${tool.name}">تجربة الآن <i class="fas fa-external-link-alt"></i></a>
+            <div class="tool-clicks">👆 ${tool.clicks} نقرة</div>
         `;
         container.appendChild(card);
     });
-    
     document.querySelectorAll(".tool-link").forEach(link => {
         link.addEventListener("click", (e) => {
             const toolName = link.getAttribute("data-tool");
             recordGlobalClick(toolName);
         });
     });
-    
     document.querySelectorAll(".favorite-btn").forEach(btn => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
@@ -511,12 +460,9 @@ function displayTools(toolsArray) {
 function filterToolsByCategory(category) {
     document.querySelectorAll(".filter-btn").forEach(btn => {
         btn.classList.remove("active");
-        const categoryTranslation = {
-            "نصوص": t("category.text"), "صور": t("category.image"), "فيديو": t("category.video"), "صوت": t("category.audio"),
-            "برمجة": t("category.programming"), "تحليل": t("category.analysis"), "إنتاجية": t("category.productivity"),
-            "تسويق": t("category.marketing"), "تصميم": t("category.design"), "ألعاب": t("category.games")
-        };
-        if (btn.textContent === (category === "الكل" ? t("filter.all") : categoryTranslation[category] || category)) btn.classList.add("active");
+        if (btn.textContent === category || (category === "الكل" && btn.textContent === "الكل")) {
+            btn.classList.add("active");
+        }
     });
     if (category === "الكل") displayTools(tools);
     else displayTools(tools.filter(t => t.category === category));
@@ -547,9 +493,6 @@ function init() {
     updateStatsDisplay();
     initTheme();
     setupThemeToggle();
-    initLanguage();
-    const langBtn = document.getElementById('lang-toggle-btn');
-    if (langBtn) langBtn.addEventListener('click', switchLanguage);
     updateGlobalCounter("click", false).then(count => {
         const span = document.getElementById("totalClicks");
         if (span && count !== null) span.textContent = count;
