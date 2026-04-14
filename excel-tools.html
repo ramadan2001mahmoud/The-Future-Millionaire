@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
     <style>
         .excel-header {
             text-align: center;
@@ -219,6 +220,83 @@
             return filtered;
         }
 
+        function generateExcelFile(fileId) {
+            const file = excelFiles.find(f => f.id === fileId);
+            if (!file) return;
+            
+            let data = [];
+            
+            if (file.id === "excel1") {
+                data = [
+                    ["المنتج", "الكمية", "سعر الوحدة", "الإجمالي"],
+                    ["منتج 1", 2, 100, 200],
+                    ["منتج 2", 1, 250, 250],
+                    ["منتج 3", 3, 50, 150],
+                    ["", "", "الإجمالي الكلي", 600]
+                ];
+            } else if (file.id === "excel2") {
+                data = [
+                    ["الحساب", "مدين", "دائن"],
+                    ["الصندوق", 10000, 0],
+                    ["البنك", 5000, 0],
+                    ["المبيعات", 0, 15000],
+                    ["المشتريات", 3000, 0],
+                    ["", "المجموع", 18000]
+                ];
+            } else if (file.id === "excel4") {
+                data = [
+                    ["الموظف", "الراتب الأساسي", "البدلات", "الاستقطاعات", "صافي الراتب"],
+                    ["أحمد محمد", 5000, 1000, 500, 5500],
+                    ["سارة علي", 6000, 1200, 600, 6600],
+                    ["محمد خالد", 4500, 800, 400, 4900],
+                    ["فاطمة حسن", 5500, 1100, 550, 6050]
+                ];
+            } else if (file.id === "excel7") {
+                data = [
+                    ["الإيرادات", "المبلغ", "المصروفات", "المبلغ"],
+                    ["الراتب", 8000, "الإيجار", 2000],
+                    ["العمل الحر", 2000, "المواصلات", 500],
+                    ["الاستثمارات", 500, "الطعام", 1500],
+                    ["", "", "الترفيه", 500],
+                    ["إجمالي الإيرادات", 10500, "إجمالي المصروفات", 4500],
+                    ["", "", "صافي الادخار", 6000]
+                ];
+            } else if (file.id === "excel13") {
+                data = [
+                    ["المهمة", "تاريخ البدء", "تاريخ الانتهاء", "الحالة", "نسبة الإنجاز"],
+                    ["تخطيط المشروع", "2024-01-01", "2024-01-07", "مكتملة", "100%"],
+                    ["التصميم", "2024-01-08", "2024-01-21", "قيد التنفيذ", "60%"],
+                    ["التطوير", "2024-01-22", "2024-02-18", "لم تبدأ", "0%"],
+                    ["الاختبار", "2024-02-19", "2024-03-04", "لم تبدأ", "0%"]
+                ];
+            } else if (file.id === "excel20") {
+                data = [
+                    ["نظام محاسبي متكامل للشركات الصغيرة"],
+                    [],
+                    ["قيد يومية", "مدين", "دائن"],
+                    ["الصندوق", 15000, 0],
+                    ["رأس المال", 0, 15000],
+                    [],
+                    ["ميزان المراجعة"],
+                    ["الحساب", "مدين", "دائن"],
+                    ["الصندوق", 15000, 0],
+                    ["رأس المال", 0, 15000]
+                ];
+            } else {
+                data = [
+                    ["بيانات نموذجية لـ " + file.name],
+                    ["العمود 1", "العمود 2", "العمود 3"],
+                    ["قيمة 1", "قيمة 2", "قيمة 3"],
+                    ["قيمة 4", "قيمة 5", "قيمة 6"]
+                ];
+            }
+            
+            const ws = XLSX.utils.aoa_to_sheet(data);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, file.name);
+            XLSX.writeFile(wb, file.file);
+        }
+
         function displayFiles() {
             const container = document.getElementById("excelContainer");
             const filtered = getFilteredFiles();
@@ -235,19 +313,12 @@
                         <h3 class="excel-name">${file.name}</h3>
                         <div class="excel-category"><i class="fas fa-tag"></i> ${file.category}</div>
                         <p class="excel-description">${file.description.substring(0, 80)}${file.description.length > 80 ? '...' : ''}</p>
-                        <a href="#" class="download-btn" onclick="event.stopPropagation(); downloadFile('${file.file}')">
+                        <button class="download-btn" onclick="event.stopPropagation(); generateExcelFile('${file.id}')">
                             <i class="fas fa-download"></i> تحميل (${file.size})
-                        </a>
+                        </button>
                     </div>
                 </div>
             `).join('');
-        }
-
-        function downloadFile(fileName) {
-            // مؤقتاً: رسالة تنبيه
-            alert(`سيتم تحميل ملف: ${fileName}\n\nلتفعيل التحميل الحقيقي، ارفع ملفات Excel في مجلد "excels" ثم عدل الرابط.`);
-            // الرابط الحقيقي (بعد رفع الملفات):
-            // window.location.href = `excels/${fileName}`;
         }
 
         function setupSearch() {
