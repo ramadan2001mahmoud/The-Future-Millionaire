@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قوالب Excel والنماذج المحاسبية | Ramzone</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .excel-header {
+            text-align: center;
+            padding: 60px 20px 30px;
+            background: linear-gradient(135deg, #0A0A0A, #1A1A1A);
+        }
+        .excel-header h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .excel-header p { color: #CCCCCC; }
+        .search-excel {
+            max-width: 500px;
+            margin: 30px auto;
+            display: flex;
+            gap: 10px;
+        }
+        .search-excel input {
+            flex: 1;
+            padding: 12px 20px;
+            background: #1A1A1A;
+            border: 1px solid #333;
+            border-radius: 30px;
+            color: white;
+            font-size: 1rem;
+        }
+        .search-excel button {
+            background: #D4AF37;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .excel-container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .excel-card {
+            background: #1A1A1A;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid #2A2A2A;
+            cursor: pointer;
+        }
+        .excel-card:hover {
+            transform: translateY(-5px);
+            border-color: #D4AF37;
+        }
+        .excel-icon {
+            width: 100%;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2A2A2A, #1A1A1A);
+            font-size: 3rem;
+            color: #D4AF37;
+        }
+        .excel-info {
+            padding: 20px;
+            text-align: center;
+        }
+        .excel-name {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+        .excel-category {
+            color: #D4AF37;
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+        }
+        .excel-description {
+            color: #CCCCCC;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            height: 60px;
+            overflow: hidden;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #D4AF37;
+            color: #0A0A0A;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            width: 100%;
+            text-align: center;
+        }
+        .download-btn:hover {
+            background: #FFF2B2;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        @media (max-width: 600px) {
+            .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Ramzone Logo" class="logo-img">
+                <span class="logo-text">Ramzone</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">الرئيسية</a>
+                <a href="blog.html">المدونة</a>
+                <a href="courses.html">الكورسات</a>
+                <a href="apps.html">تطبيقات وألعاب</a>
+                <a href="excel-tools.html" class="active">قوالب Excel</a>
+                <a href="login.html" id="authLink">تسجيل الدخول</a>
+                <span id="userGreeting" style="display:none; color:#D4AF37;"></span>
+                <a href="#" id="logoutBtn" style="display:none;">تسجيل خروج</a>
+            </div>
+            <div class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <section class="excel-header">
+        <h1>قوالب <span class="gold">Excel</span> والنماذج المحاسبية</h1>
+        <p>أكثر من 20 قالب Excel ونموذج محاسبي احترافي - تحميل مباشر</p>
+        <div class="search-excel">
+            <input type="text" id="searchInput" placeholder="ابحث عن قالب أو نموذج...">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+        </div>
+    </section>
+
+    <div class="excel-container" id="excelContainer"></div>
+
+    <a href="https://wa.me/201069302075" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Ramzone - جميع الحقوق محفوظة</p>
+            <div class="social-icons">
+                <a href="https://linkedin.com/in/ramadanm200110" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://twitter.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/ra_mah077" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://facebook.com/ramadan2001mahmoud" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="terms.html">شروط الاستخدام</a>
+                <a href="terms.html#privacy">سياسة الخصوصية</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const excelFiles = [
+            { id: "excel1", name: "نموذج فاتورة مبيعات Excel", category: "فواتير", description: "نموذج جاهز لفاتورة مبيعات مع حسومات وضرائب وخصومات", icon: "fas fa-file-invoice", file: "فاتورة_مبيعات.xlsx", size: "245 KB", developer: "Ramzone", version: "2.0" },
+            { id: "excel2", name: "نظام محاسبي متكامل Excel", category: "محاسبة", description: "نظام محاسبي كامل يشمل أستاذ عام، ميزانية، قائمة دخل", icon: "fas fa-chart-line", file: "نظام_محاسبي_متكامل.xlsx", size: "1.2 MB", developer: "Ramzone", version: "3.0" },
+            { id: "excel3", name: "جدول إدارة المشتريات والمخزون", category: "مخزون", description: "نظام لإدارة المشتريات والمخزون مع تقارير حركة المخزون", icon: "fas fa-boxes", file: "ادارة_المشتريات_والمخزون.xlsx", size: "856 KB", developer: "Ramzone", version: "1.5" },
+            { id: "excel4", name: "نموذج كشف رواتب الموظفين", category: "رواتب", description: "نموذج شامل لكشف رواتب الموظفين مع استقطاعات وبدلات", icon: "fas fa-users", file: "كشف_رواتب_الموظفين.xlsx", size: "320 KB", developer: "Ramzone", version: "2.1" },
+            { id: "excel5", name: "قالب تحليل مالي (نسب مالية)", category: "تحليل مالي", description: "قالب لتحليل القوائم المالية وحساب النسب المالية", icon: "fas fa-chart-pie", file: "تحليل_مالي_نسب_مالية.xlsx", size: "567 KB", developer: "Ramzone", version: "1.0" },
+            { id: "excel6", name: "نموذج تقييم المخزون (FIFO - LIFO)", category: "مخزون", description: "نموذج لتقييم المخزون بطريقة الوارد أولاً صادر أولاً والأخير أولاً صادر أولاً", icon: "fas fa-calculator", file: "تقييم_المخزون_FIFO_LIFO.xlsx", size: "412 KB", developer: "Ramzone", version: "1.2" },
+            { id: "excel7", name: "قالب ميزانية شخصية", category: "تمويل شخصي", description: "نموذج لإدارة الإيرادات والمصروفات الشخصية ومتابعة الادخار", icon: "fas fa-wallet", file: "ميزانية_شخصية.xlsx", size: "189 KB", developer: "Ramzone", version: "3.0" },
+            { id: "excel8", name: "نظام إدارة العملاء (CRM) Excel", category: "CRM", description: "نظام متكامل لإدارة بيانات العملاء والمبيعات والتقارير", icon: "fas fa-address-card", file: "CRM_Excel.xlsx", size: "980 KB", developer: "Ramzone", version: "2.0" },
+            { id: "excel9", name: "نموذج جدول استهلاك الأصول الثابتة", category: "محاسبة", description: "نموذج لحساب استهلاك الأصول الثابتة بأكثر من طريقة", icon: "fas fa-building", file: "استهلاك_الاصول_الثابتة.xlsx", size: "278 KB", developer: "Ramzone", version: "1.0" },
+            { id: "excel10", name: "قالب تسجيل المبيعات اليومية", category: "مبيعات", description: "نموذج لتسجيل المبيعات اليومية مع تحليل الإيرادات", icon: "fas fa-chart-line", file: "تسجيل_المبيعات_اليومية.xlsx", size: "234 KB", developer: "Ramzone", version: "1.5" },
+            { id: "excel11", name: "نموذج جدول السلف والعهد", category: "محاسبة", description: "نموذج لإدارة السلف والعهد للموظفين مع التسويات", icon: "fas fa-hand-holding-usd", file: "سلف_و_عهد.xlsx", size: "198 KB", developer: "Ramzone", version: "1.0" },
+            { id: "excel12", name: "قالب جدول الإهلاك (Declining Balance)", category: "محاسبة", description: "نموذج لحساب إهلاك الأصول بطريقة الرصيد المتناقص", icon: "fas fa-chart-line", file: "الاهلاك_Declining_Balance.xlsx", size: "245 KB", developer: "Ramzone", version: "1.0" },
+            { id: "excel13", name: "نظام إدارة المشاريع Excel", category: "إدارة مشاريع", description: "نظام متكامل لإدارة المشاريع والمهام والموارد", icon: "fas fa-tasks", file: "ادارة_المشاريع.xlsx", size: "1.1 MB", developer: "Ramzone", version: "2.0" },
+            { id: "excel14", name: "نموذج قائمة التدفقات النقدية", category: "تحليل مالي", description: "نموذج لقائمة التدفقات النقدية بطريقة غير مباشرة", icon: "fas fa-chart-line", file: "قائمة_التدفقات_النقدية.xlsx", size: "312 KB", developer: "Ramzone", version: "1.0" },
+            { id: "excel15", name: "قالب تحليل التعادل (Break-Even)", category: "تحليل مالي", description: "نموذج لحساب نقطة التعادل وتحليل الربحية", icon: "fas fa-chart-line", file: "تحليل_التعادل_BreakEven.xlsx", size: "267 KB", developer: "Ramzone", version: "1.0" },
+            { id: "excel16", name: "نموذج تقييم المشاريع (NPV - IRR)", category: "تحليل مالي", description: "نموذج لحساب صافي القيمة الحالية ومعدل العائد الداخلي", icon: "fas fa-chart-line", file: "تقييم_المشاريع_NPV_IRR.xlsx", size: "289 KB", developer: "Ramzone", version: "1.0" },
+            { id: "excel17", name: "نظام إدارة الفواتير (Invoicing)", category: "فواتير", description: "نظام متكامل لإدارة الفواتير والعملاء", icon: "fas fa-file-invoice", file: "نظام_الفواتير_Invoicing.xlsx", size: "567 KB", developer: "Ramzone", version: "2.0" },
+            { id: "excel18", name: "نموذج جدول الإهلاك (Sum of Years)", category: "محاسبة", description: "نموذج لحساب إهلاك الأصول بطريقة مجموع أرقام السنوات", icon: "fas fa-chart-line", file: "الاهلاك_Sum_of_Years.xlsx", size: "234 KB", developer: "Ramzone", version: "1.0" },
+            { id: "excel19", name: "قالب إدارة الوقت (Time Management)", category: "إدارة وقت", description: "نموذج لتنظيم المهام وتتبع الوقت والإنتاجية", icon: "fas fa-clock", file: "ادارة_الوقت.xlsx", size: "198 KB", developer: "Ramzone", version: "1.0" },
+            { id: "excel20", name: "نظام محاسبي للشركات الصغيرة", category: "محاسبة", description: "نظام محاسبي متكامل للشركات الصغيرة والمتوسطة", icon: "fas fa-building", file: "نظام_محاسبي_شركات_صغيرة.xlsx", size: "1.5 MB", developer: "Ramzone", version: "3.0" }
+        ];
+
+        let currentSearch = "";
+
+        function getFilteredFiles() {
+            let filtered = excelFiles;
+            if (currentSearch) {
+                filtered = excelFiles.filter(file => 
+                    file.name.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                    file.description.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                    file.category.toLowerCase().includes(currentSearch.toLowerCase())
+                );
+            }
+            return filtered;
+        }
+
+        function displayFiles() {
+            const container = document.getElementById("excelContainer");
+            const filtered = getFilteredFiles();
+            
+            if (filtered.length === 0) {
+                container.innerHTML = `<div style="text-align:center; padding:50px; color:#D4AF37;">😅 لا توجد ملفات تطابق بحثك</div>`;
+                return;
+            }
+            
+            container.innerHTML = filtered.map(file => `
+                <div class="excel-card" onclick="window.location.href='excel-details.html?id=${file.id}'">
+                    <div class="excel-icon"><i class="${file.icon}"></i></div>
+                    <div class="excel-info">
+                        <h3 class="excel-name">${file.name}</h3>
+                        <div class="excel-category"><i class="fas fa-tag"></i> ${file.category}</div>
+                        <p class="excel-description">${file.description.substring(0, 80)}${file.description.length > 80 ? '...' : ''}</p>
+                        <a href="excels/${file.file}" download class="download-btn" onclick="event.stopPropagation()">
+                            <i class="fas fa-download"></i> تحميل (${file.size})
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById("searchInput");
+            const searchBtn = document.getElementById("searchBtn");
+            
+            searchBtn.addEventListener("click", () => {
+                currentSearch = searchInput.value;
+                displayFiles();
+            });
+            
+            searchInput.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") {
+                    currentSearch = searchInput.value;
+                    displayFiles();
+                }
+            });
+        }
+
+        function updateAuthUI() {
+            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            const authLink = document.getElementById("authLink");
+            const userGreeting = document.getElementById("userGreeting");
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (currentUser) {
+                if (authLink) authLink.style.display = "none";
+                if (userGreeting) {
+                    userGreeting.style.display = "inline";
+                    userGreeting.textContent = `مرحباً ${currentUser.name}`;
+                }
+                if (logoutBtn) logoutBtn.style.display = "inline";
+            } else {
+                if (authLink) authLink.style.display = "inline";
+                if (userGreeting) userGreeting.style.display = "none";
+                if (logoutBtn) logoutBtn.style.display = "none";
+            }
+        }
+
+        function setupLogout() {
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("currentUser");
+                    updateAuthUI();
+                    window.location.href = "index.html";
+                });
+            }
+        }
+
+        function setupMobileMenu() {
+            const toggle = document.getElementById("mobileMenu");
+            const navLinks = document.getElementById("navLinks");
+            if (toggle && navLinks) {
+                toggle.addEventListener("click", () => {
+                    navLinks.classList.toggle("active");
+                });
+            }
+        }
+
+        setupSearch();
+        displayFiles();
+        updateAuthUI();
+        setupLogout();
+        setupMobileMenu();
+    </script>
+</body>
+</html>
