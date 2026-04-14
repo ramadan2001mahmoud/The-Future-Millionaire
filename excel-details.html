@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         .details-container {
             max-width: 800px;
@@ -35,6 +36,22 @@
         .info-item i { font-size: 1.5rem; color: #D4AF37; margin-bottom: 8px; }
         .info-item .value { font-size: 1rem; font-weight: bold; color: white; }
         .info-item .label { font-size: 0.7rem; color: #888; }
+        .format-select {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px;
+            margin: 20px auto;
+            background: #0A0A0A;
+            border: 1px solid #D4AF37;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            display: block;
+        }
+        .format-select option {
+            background: #1A1A1A;
+        }
         .download-btn {
             display: inline-block;
             background: #D4AF37;
@@ -99,11 +116,8 @@
 
     <script>
         const excelFiles = {
-            "excel1": { name: "نموذج فاتورة مبيعات Excel", category: "فواتير", description: "نموذج جاهز لفاتورة مبيعات مع حسومات وضرائب. مناسب للشركات الصغيرة والمتوسطة.", icon: "fas fa-file-invoice", file: "فاتورة_مبيعات.xlsx", size: "245 KB", developer: "Ramzone", version: "2.0", features: ["حساب الضريبة المضافة", "خصومات متعددة", "إجمالي تلقائي", "قابل للطباعة"] },
-            "excel2": { name: "نظام محاسبي متكامل Excel", category: "محاسبة", description: "نظام محاسبي كامل يشمل أستاذ عام، ميزانية، قائمة دخل.", icon: "fas fa-chart-line", file: "نظام_محاسبي_متكامل.xlsx", size: "1.2 MB", developer: "Ramzone", version: "3.0", features: ["دفتر أستاذ عام", "ميزانية عمومية", "قائمة دخل", "تقارير شهرية"] },
-            "excel3": { name: "جدول إدارة المشتريات والمخزون", category: "مخزون", description: "نظام لإدارة المشتريات والمخزون مع تقارير حركة المخزون.", icon: "fas fa-boxes", file: "ادارة_المشتريات_والمخزون.xlsx", size: "856 KB", developer: "Ramzone", version: "1.5", features: ["تسجيل المشتريات", "متابعة المخزون", "تنبيهات إعادة الطلب", "تقارير الحركة"] },
-            "excel4": { name: "نموذج كشف رواتب الموظفين", category: "رواتب", description: "نموذج شامل لكشف رواتب الموظفين مع استقطاعات وبدلات.", icon: "fas fa-users", file: "كشف_رواتب_الموظفين.xlsx", size: "320 KB", developer: "Ramzone", version: "2.1", features: ["كشف الرواتب الشهري", "استقطاعات وبدلات", "صافي الراتب", "تقرير سنوي"] },
-            "excel5": { name: "قالب تحليل مالي (نسب مالية)", category: "تحليل مالي", description: "قالب لتحليل القوائم المالية وحساب النسب المالية.", icon: "fas fa-chart-pie", file: "تحليل_مالي_نسب_مالية.xlsx", size: "567 KB", developer: "Ramzone", version: "1.0", features: ["نسب السيولة", "نسب الربحية", "نسب المديونية", "تحليل اتجاهات"] }
+            "excel1": { name: "نموذج فاتورة مبيعات Excel", category: "فواتير", description: "نموذج جاهز لفاتورة مبيعات مع حسومات وضرائب. قالب احترافي من Microsoft.", icon: "fas fa-file-invoice", url: "https://templates.office.com/static/Invoice-TF-Business.xlsx", size: "245 KB", developer: "Microsoft", version: "2.0", features: ["حساب الضريبة المضافة", "خصومات متعددة", "إجمالي تلقائي", "قابل للطباعة"] },
+            "excel2": { name: "نظام محاسبي متكامل Excel", category: "محاسبة", description: "نظام محاسبي كامل يشمل أستاذ عام، ميزانية، قائمة دخل.", icon: "fas fa-chart-line", url: "https://www.vertex42.com/Files/download2/accounting-ledger.xlsx", size: "1.2 MB", developer: "Vertex42", version: "3.0", features: ["دفتر أستاذ عام", "ميزانية عمومية", "قائمة دخل", "تقارير شهرية"] }
         };
 
         const urlParams = new URLSearchParams(window.location.search);
@@ -111,49 +125,58 @@
         const file = excelFiles[fileId];
         const container = document.getElementById("detailsContent");
 
-        function generateExcelFile() {
-            if (!file) return;
-            
-            let data = [];
-            
-            if (fileId === "excel1") {
-                data = [
-                    ["المنتج", "الكمية", "سعر الوحدة", "الإجمالي"],
-                    ["منتج 1", 2, 100, 200],
-                    ["منتج 2", 1, 250, 250],
-                    ["منتج 3", 3, 50, 150],
-                    ["", "", "الإجمالي الكلي", 600]
-                ];
-            } else if (fileId === "excel2") {
-                data = [
-                    ["الحساب", "مدين", "دائن"],
-                    ["الصندوق", 10000, 0],
-                    ["البنك", 5000, 0],
-                    ["المبيعات", 0, 15000],
-                    ["المشتريات", 3000, 0],
-                    ["", "المجموع", 18000]
-                ];
-            } else if (fileId === "excel4") {
-                data = [
-                    ["الموظف", "الراتب الأساسي", "البدلات", "الاستقطاعات", "صافي الراتب"],
-                    ["أحمد محمد", 5000, 1000, 500, 5500],
-                    ["سارة علي", 6000, 1200, 600, 6600],
-                    ["محمد خالد", 4500, 800, 400, 4900],
-                    ["فاطمة حسن", 5500, 1100, 550, 6050]
-                ];
-            } else {
-                data = [
-                    ["بيانات نموذجية لـ " + file.name],
-                    ["العمود 1", "العمود 2", "العمود 3"],
-                    ["قيمة 1", "قيمة 2", "قيمة 3"],
-                    ["قيمة 4", "قيمة 5", "قيمة 6"]
-                ];
+        async function downloadFile(url, filename, format) {
+            try {
+                const response = await fetch(url);
+                const blob = await response.blob();
+                
+                if (format === 'xlsx') {
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = filename.replace('.xlsx', '.xlsx');
+                    link.click();
+                    URL.revokeObjectURL(link.href);
+                } 
+                else if (format === 'csv') {
+                    const text = await blob.text();
+                    const ws = XLSX.read(text, { type: 'string' });
+                    const csv = XLSX.utils.sheet_to_csv(ws.Sheets[ws.SheetNames[0]]);
+                    const csvBlob = new Blob([csv], { type: 'text/csv' });
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(csvBlob);
+                    link.download = filename.replace('.xlsx', '.csv');
+                    link.click();
+                    URL.revokeObjectURL(link.href);
+                }
+                else if (format === 'pdf') {
+                    const { jsPDF } = window.jspdf;
+                    const text = await blob.text();
+                    const doc = new jsPDF();
+                    doc.text(text.substring(0, 5000), 10, 10);
+                    doc.save(filename.replace('.xlsx', '.pdf'));
+                }
+                else if (format === 'html') {
+                    const text = await blob.text();
+                    const htmlBlob = new Blob([`<html><head><meta charset="UTF-8"></head><body><pre>${text}</pre></body></html>`], { type: 'text/html' });
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(htmlBlob);
+                    link.download = filename.replace('.xlsx', '.html');
+                    link.click();
+                    URL.revokeObjectURL(link.href);
+                }
+            } catch (error) {
+                console.error('Error downloading file:', error);
+                alert('حدث خطأ في تحميل الملف. سيتم تحميل نسخة وهمية بديلة.');
+                generateFallbackExcel(filename, format);
             }
-            
+        }
+
+        function generateFallbackExcel(filename, format) {
+            const data = [["بيانات نموذجية لـ " + filename], ["العمود 1", "العمود 2"], ["قيمة 1", "قيمة 2"]];
             const ws = XLSX.utils.aoa_to_sheet(data);
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, file.name);
-            XLSX.writeFile(wb, file.file);
+            XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+            XLSX.writeFile(wb, filename.replace('.xlsx', '.xlsx'));
         }
 
         if (file) {
@@ -168,13 +191,18 @@
                     <div class="info-item"><i class="fas fa-file-excel"></i><div class="value">${file.size}</div><div class="label">حجم الملف</div></div>
                     <div class="info-item"><i class="fas fa-code-branch"></i><div class="value">${file.version}</div><div class="label">الإصدار</div></div>
                     <div class="info-item"><i class="fas fa-building"></i><div class="value">${file.developer}</div><div class="label">المطور</div></div>
-                    <div class="info-item"><i class="fas fa-download"></i><div class="value">مباشر</div><div class="label">طريقة التحميل</div></div>
                 </div>
                 <h3 style="color:#D4AF37; text-align:right; margin-bottom:15px;">✨ مميزات القالب</h3>
                 <ul style="list-style:none; text-align:right; margin-bottom:30px;">
                     ${featuresHtml}
                 </ul>
-                <button class="download-btn" onclick="generateExcelFile()">
+                <select class="format-select" id="format-select">
+                    <option value="xlsx">📊 Excel (.xlsx)</option>
+                    <option value="csv">📄 CSV (.csv)</option>
+                    <option value="pdf">📑 PDF (.pdf)</option>
+                    <option value="html">🌐 HTML (.html)</option>
+                </select>
+                <button class="download-btn" onclick="downloadFile('${file.url}', '${file.name.replace(/ /g, '_')}.xlsx', document.getElementById('format-select').value)">
                     <i class="fas fa-download"></i> تحميل ${file.name}
                 </button>
             `;
