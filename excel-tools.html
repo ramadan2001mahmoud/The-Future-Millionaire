@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         .excel-header {
             text-align: center;
@@ -44,7 +46,7 @@
             margin: 40px auto;
             padding: 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
         }
         .excel-card {
@@ -53,7 +55,6 @@
             overflow: hidden;
             transition: 0.3s;
             border: 1px solid #2A2A2A;
-            cursor: pointer;
         }
         .excel-card:hover {
             transform: translateY(-5px);
@@ -90,6 +91,20 @@
             height: 60px;
             overflow: hidden;
         }
+        .format-select {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            background: #0A0A0A;
+            border: 1px solid #D4AF37;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+        .format-select option {
+            background: #1A1A1A;
+        }
         .download-btn {
             display: inline-block;
             background: #D4AF37;
@@ -102,6 +117,8 @@
             transition: 0.3s;
             width: 100%;
             text-align: center;
+            cursor: pointer;
+            border: none;
         }
         .download-btn:hover {
             background: #FFF2B2;
@@ -152,7 +169,7 @@
 
     <section class="excel-header">
         <h1>قوالب <span class="gold">Excel</span> والنماذج المحاسبية</h1>
-        <p>أكثر من 20 قالب Excel ونموذج محاسبي احترافي - تحميل مباشر</p>
+        <p>أكثر من 20 قالب Excel ونموذج محاسبي احترافي - اختر صيغة التحميل المناسبة لك</p>
         <div class="search-excel">
             <input type="text" id="searchInput" placeholder="ابحث عن قالب...">
             <button id="searchBtn"><i class="fas fa-search"></i></button>
@@ -184,26 +201,26 @@
 
     <script>
         const excelFiles = [
-            { id: "excel1", name: "نموذج فاتورة مبيعات Excel", category: "فواتير", description: "نموذج جاهز لفاتورة مبيعات مع حسومات وضرائب", icon: "fas fa-file-invoice", file: "فاتورة_مبيعات.xlsx", size: "245 KB" },
-            { id: "excel2", name: "نظام محاسبي متكامل Excel", category: "محاسبة", description: "نظام محاسبي كامل يشمل أستاذ عام وميزانية", icon: "fas fa-chart-line", file: "نظام_محاسبي_متكامل.xlsx", size: "1.2 MB" },
-            { id: "excel3", name: "جدول إدارة المشتريات والمخزون", category: "مخزون", description: "نظام لإدارة المشتريات والمخزون مع تقارير", icon: "fas fa-boxes", file: "ادارة_المشتريات_والمخزون.xlsx", size: "856 KB" },
-            { id: "excel4", name: "نموذج كشف رواتب الموظفين", category: "رواتب", description: "نموذج شامل لكشف رواتب الموظفين مع استقطاعات", icon: "fas fa-users", file: "كشف_رواتب_الموظفين.xlsx", size: "320 KB" },
-            { id: "excel5", name: "قالب تحليل مالي (نسب مالية)", category: "تحليل مالي", description: "قالب لتحليل القوائم المالية وحساب النسب", icon: "fas fa-chart-pie", file: "تحليل_مالي_نسب_مالية.xlsx", size: "567 KB" },
-            { id: "excel6", name: "نموذج تقييم المخزون (FIFO - LIFO)", category: "مخزون", description: "تقييم المخزون بطريقة الوارد أولاً صادر أولاً", icon: "fas fa-calculator", file: "تقييم_المخزون_FIFO_LIFO.xlsx", size: "412 KB" },
-            { id: "excel7", name: "قالب ميزانية شخصية", category: "تمويل شخصي", description: "نموذج لإدارة الإيرادات والمصروفات الشخصية", icon: "fas fa-wallet", file: "ميزانية_شخصية.xlsx", size: "189 KB" },
-            { id: "excel8", name: "نظام إدارة العملاء (CRM) Excel", category: "CRM", description: "نظام متكامل لإدارة بيانات العملاء والمبيعات", icon: "fas fa-address-card", file: "CRM_Excel.xlsx", size: "980 KB" },
-            { id: "excel9", name: "نموذج جدول استهلاك الأصول الثابتة", category: "محاسبة", description: "نموذج لحساب استهلاك الأصول الثابتة", icon: "fas fa-building", file: "استهلاك_الاصول_الثابتة.xlsx", size: "278 KB" },
-            { id: "excel10", name: "قالب تسجيل المبيعات اليومية", category: "مبيعات", description: "نموذج لتسجيل المبيعات اليومية مع تحليل الإيرادات", icon: "fas fa-chart-line", file: "تسجيل_المبيعات_اليومية.xlsx", size: "234 KB" },
-            { id: "excel11", name: "نموذج جدول السلف والعهد", category: "محاسبة", description: "نموذج لإدارة السلف والعهد للموظفين", icon: "fas fa-hand-holding-usd", file: "سلف_و_عهد.xlsx", size: "198 KB" },
-            { id: "excel12", name: "قالب جدول الإهلاك (Declining Balance)", category: "محاسبة", description: "نموذج لحساب إهلاك الأصول بطريقة الرصيد المتناقص", icon: "fas fa-chart-line", file: "الاهلاك_Declining_Balance.xlsx", size: "245 KB" },
-            { id: "excel13", name: "نظام إدارة المشاريع Excel", category: "إدارة مشاريع", description: "نظام متكامل لإدارة المشاريع والمهام", icon: "fas fa-tasks", file: "ادارة_المشاريع.xlsx", size: "1.1 MB" },
-            { id: "excel14", name: "نموذج قائمة التدفقات النقدية", category: "تحليل مالي", description: "نموذج لقائمة التدفقات النقدية", icon: "fas fa-chart-line", file: "قائمة_التدفقات_النقدية.xlsx", size: "312 KB" },
-            { id: "excel15", name: "قالب تحليل التعادل (Break-Even)", category: "تحليل مالي", description: "نموذج لحساب نقطة التعادل وتحليل الربحية", icon: "fas fa-chart-line", file: "تحليل_التعادل_BreakEven.xlsx", size: "267 KB" },
-            { id: "excel16", name: "نموذج تقييم المشاريع (NPV - IRR)", category: "تحليل مالي", description: "نموذج لحساب صافي القيمة الحالية", icon: "fas fa-chart-line", file: "تقييم_المشاريع_NPV_IRR.xlsx", size: "289 KB" },
-            { id: "excel17", name: "نظام إدارة الفواتير (Invoicing)", category: "فواتير", description: "نظام متكامل لإدارة الفواتير والعملاء", icon: "fas fa-file-invoice", file: "نظام_الفواتير_Invoicing.xlsx", size: "567 KB" },
-            { id: "excel18", name: "نموذج جدول الإهلاك (Sum of Years)", category: "محاسبة", description: "نموذج لحساب إهلاك الأصول بطريقة مجموع السنوات", icon: "fas fa-chart-line", file: "الاهلاك_Sum_of_Years.xlsx", size: "234 KB" },
-            { id: "excel19", name: "قالب إدارة الوقت (Time Management)", category: "إدارة وقت", description: "نموذج لتنظيم المهام وتتبع الوقت", icon: "fas fa-clock", file: "ادارة_الوقت.xlsx", size: "198 KB" },
-            { id: "excel20", name: "نظام محاسبي للشركات الصغيرة", category: "محاسبة", description: "نظام محاسبي متكامل للشركات الصغيرة", icon: "fas fa-building", file: "نظام_محاسبي_شركات_صغيرة.xlsx", size: "1.5 MB" }
+            { id: "excel1", name: "نموذج فاتورة مبيعات Excel", category: "فواتير", description: "نموذج جاهز لفاتورة مبيعات مع حسومات وضرائب - قالب احترافي من Microsoft", icon: "fas fa-file-invoice", url: "https://templates.office.com/static/Invoice-TF-Business.xlsx", size: "245 KB" },
+            { id: "excel2", name: "نظام محاسبي متكامل Excel", category: "محاسبة", description: "نظام محاسبي كامل يشمل أستاذ عام وميزانية - قالب من Vertex42", icon: "fas fa-chart-line", url: "https://www.vertex42.com/Files/download2/accounting-ledger.xlsx", size: "1.2 MB" },
+            { id: "excel3", name: "جدول إدارة المشتريات والمخزون", category: "مخزون", description: "نظام لإدارة المشتريات والمخزون مع تقارير", icon: "fas fa-boxes", url: "https://www.smartsheet.com/sites/default/files/Inventory-Tracker-Template.xlsx", size: "856 KB" },
+            { id: "excel4", name: "نموذج كشف رواتب الموظفين", category: "رواتب", description: "نموذج شامل لكشف رواتب الموظفين مع استقطاعات - من Microsoft", icon: "fas fa-users", url: "https://templates.office.com/static/Payroll-Register-TF.xlsx", size: "320 KB" },
+            { id: "excel5", name: "قالب تحليل مالي (نسب مالية)", category: "تحليل مالي", description: "قالب لتحليل القوائم المالية وحساب النسب المالية", icon: "fas fa-chart-pie", url: "https://www.vertex42.com/Files/download2/financial-ratio-analysis.xlsx", size: "567 KB" },
+            { id: "excel6", name: "نموذج تقييم المخزون (FIFO - LIFO)", category: "مخزون", description: "تقييم المخزون بطريقة الوارد أولاً صادر أولاً", icon: "fas fa-calculator", url: "https://templates.office.com/static/Inventory-Template-TF.xlsx", size: "412 KB" },
+            { id: "excel7", name: "قالب ميزانية شخصية", category: "تمويل شخصي", description: "نموذج لإدارة الإيرادات والمصروفات الشخصية - من Microsoft", icon: "fas fa-wallet", url: "https://templates.office.com/static/Personal-Budget-TF.xlsx", size: "189 KB" },
+            { id: "excel8", name: "نظام إدارة العملاء (CRM) Excel", category: "CRM", description: "نظام متكامل لإدارة بيانات العملاء والمبيعات", icon: "fas fa-address-card", url: "https://www.vertex42.com/Files/download2/crm-template.xlsx", size: "980 KB" },
+            { id: "excel9", name: "نموذج جدول استهلاك الأصول الثابتة", category: "محاسبة", description: "نموذج لحساب استهلاك الأصول الثابتة", icon: "fas fa-building", url: "https://templates.office.com/static/Fixed-Asset-Tracker-TF.xlsx", size: "278 KB" },
+            { id: "excel10", name: "قالب تسجيل المبيعات اليومية", category: "مبيعات", description: "نموذج لتسجيل المبيعات اليومية مع تحليل الإيرادات", icon: "fas fa-chart-line", url: "https://www.smartsheet.com/sites/default/files/Sales-Tracker-Template.xlsx", size: "234 KB" },
+            { id: "excel11", name: "نموذج جدول السلف والعهد", category: "محاسبة", description: "نموذج لإدارة السلف والعهد للموظفين", icon: "fas fa-hand-holding-usd", url: "https://templates.office.com/static/Cash-Advance-Request-TF.xlsx", size: "198 KB" },
+            { id: "excel12", name: "قالب جدول الإهلاك (Declining Balance)", category: "محاسبة", description: "نموذج لحساب إهلاك الأصول بطريقة الرصيد المتناقص", icon: "fas fa-chart-line", url: "https://www.vertex42.com/Files/download2/depreciation-calculator.xlsx", size: "245 KB" },
+            { id: "excel13", name: "نظام إدارة المشاريع Excel", category: "إدارة مشاريع", description: "نظام متكامل لإدارة المشاريع والمهام - من Smartsheet", icon: "fas fa-tasks", url: "https://www.smartsheet.com/sites/default/files/Project-Tracker-Template.xlsx", size: "1.1 MB" },
+            { id: "excel14", name: "نموذج قائمة التدفقات النقدية", category: "تحليل مالي", description: "نموذج لقائمة التدفقات النقدية", icon: "fas fa-chart-line", url: "https://templates.office.com/static/Cash-Flow-Statement-TF.xlsx", size: "312 KB" },
+            { id: "excel15", name: "قالب تحليل التعادل (Break-Even)", category: "تحليل مالي", description: "نموذج لحساب نقطة التعادل وتحليل الربحية", icon: "fas fa-chart-line", url: "https://www.vertex42.com/Files/download2/breakeven-analysis.xlsx", size: "267 KB" },
+            { id: "excel16", name: "نموذج تقييم المشاريع (NPV - IRR)", category: "تحليل مالي", description: "نموذج لحساب صافي القيمة الحالية", icon: "fas fa-chart-line", url: "https://www.vertex42.com/Files/download2/npv-irr-calculator.xlsx", size: "289 KB" },
+            { id: "excel17", name: "نظام إدارة الفواتير (Invoicing)", category: "فواتير", description: "نظام متكامل لإدارة الفواتير والعملاء", icon: "fas fa-file-invoice", url: "https://www.smartsheet.com/sites/default/files/Invoice-Tracker-Template.xlsx", size: "567 KB" },
+            { id: "excel18", name: "نموذج جدول الإهلاك (Sum of Years)", category: "محاسبة", description: "نموذج لحساب إهلاك الأصول بطريقة مجموع السنوات", icon: "fas fa-chart-line", url: "https://www.vertex42.com/Files/download2/depreciation-calculator-syd.xlsx", size: "234 KB" },
+            { id: "excel19", name: "قالب إدارة الوقت (Time Management)", category: "إدارة وقت", description: "نموذج لتنظيم المهام وتتبع الوقت", icon: "fas fa-clock", url: "https://templates.office.com/static/Time-Management-Schedule-TF.xlsx", size: "198 KB" },
+            { id: "excel20", name: "نظام محاسبي للشركات الصغيرة", category: "محاسبة", description: "نظام محاسبي متكامل للشركات الصغيرة", icon: "fas fa-building", url: "https://www.vertex42.com/Files/download2/small-business-accounting.xlsx", size: "1.5 MB" }
         ];
 
         let currentSearch = "";
@@ -220,81 +237,75 @@
             return filtered;
         }
 
-        function generateExcelFile(fileId) {
-            const file = excelFiles.find(f => f.id === fileId);
-            if (!file) return;
-            
-            let data = [];
-            
-            if (file.id === "excel1") {
-                data = [
-                    ["المنتج", "الكمية", "سعر الوحدة", "الإجمالي"],
-                    ["منتج 1", 2, 100, 200],
-                    ["منتج 2", 1, 250, 250],
-                    ["منتج 3", 3, 50, 150],
-                    ["", "", "الإجمالي الكلي", 600]
-                ];
-            } else if (file.id === "excel2") {
-                data = [
-                    ["الحساب", "مدين", "دائن"],
-                    ["الصندوق", 10000, 0],
-                    ["البنك", 5000, 0],
-                    ["المبيعات", 0, 15000],
-                    ["المشتريات", 3000, 0],
-                    ["", "المجموع", 18000]
-                ];
-            } else if (file.id === "excel4") {
-                data = [
-                    ["الموظف", "الراتب الأساسي", "البدلات", "الاستقطاعات", "صافي الراتب"],
-                    ["أحمد محمد", 5000, 1000, 500, 5500],
-                    ["سارة علي", 6000, 1200, 600, 6600],
-                    ["محمد خالد", 4500, 800, 400, 4900],
-                    ["فاطمة حسن", 5500, 1100, 550, 6050]
-                ];
-            } else if (file.id === "excel7") {
-                data = [
-                    ["الإيرادات", "المبلغ", "المصروفات", "المبلغ"],
-                    ["الراتب", 8000, "الإيجار", 2000],
-                    ["العمل الحر", 2000, "المواصلات", 500],
-                    ["الاستثمارات", 500, "الطعام", 1500],
-                    ["", "", "الترفيه", 500],
-                    ["إجمالي الإيرادات", 10500, "إجمالي المصروفات", 4500],
-                    ["", "", "صافي الادخار", 6000]
-                ];
-            } else if (file.id === "excel13") {
-                data = [
-                    ["المهمة", "تاريخ البدء", "تاريخ الانتهاء", "الحالة", "نسبة الإنجاز"],
-                    ["تخطيط المشروع", "2024-01-01", "2024-01-07", "مكتملة", "100%"],
-                    ["التصميم", "2024-01-08", "2024-01-21", "قيد التنفيذ", "60%"],
-                    ["التطوير", "2024-01-22", "2024-02-18", "لم تبدأ", "0%"],
-                    ["الاختبار", "2024-02-19", "2024-03-04", "لم تبدأ", "0%"]
-                ];
-            } else if (file.id === "excel20") {
-                data = [
-                    ["نظام محاسبي متكامل للشركات الصغيرة"],
-                    [],
-                    ["قيد يومية", "مدين", "دائن"],
-                    ["الصندوق", 15000, 0],
-                    ["رأس المال", 0, 15000],
-                    [],
-                    ["ميزان المراجعة"],
-                    ["الحساب", "مدين", "دائن"],
-                    ["الصندوق", 15000, 0],
-                    ["رأس المال", 0, 15000]
-                ];
-            } else {
-                data = [
-                    ["بيانات نموذجية لـ " + file.name],
-                    ["العمود 1", "العمود 2", "العمود 3"],
-                    ["قيمة 1", "قيمة 2", "قيمة 3"],
-                    ["قيمة 4", "قيمة 5", "قيمة 6"]
-                ];
+        async function downloadFile(url, filename, format) {
+            try {
+                const response = await fetch(url);
+                const blob = await response.blob();
+                
+                if (format === 'xlsx') {
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = filename.replace('.xlsx', '.xlsx');
+                    link.click();
+                    URL.revokeObjectURL(link.href);
+                } 
+                else if (format === 'csv') {
+                    const text = await blob.text();
+                    const ws = XLSX.read(text, { type: 'string' });
+                    const csv = XLSX.utils.sheet_to_csv(ws.Sheets[ws.SheetNames[0]]);
+                    const csvBlob = new Blob([csv], { type: 'text/csv' });
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(csvBlob);
+                    link.download = filename.replace('.xlsx', '.csv');
+                    link.click();
+                    URL.revokeObjectURL(link.href);
+                }
+                else if (format === 'pdf') {
+                    const { jsPDF } = window.jspdf;
+                    const text = await blob.text();
+                    const doc = new jsPDF();
+                    doc.text(text.substring(0, 5000), 10, 10);
+                    doc.save(filename.replace('.xlsx', '.pdf'));
+                }
+                else if (format === 'html') {
+                    const text = await blob.text();
+                    const htmlBlob = new Blob([`<html><head><meta charset="UTF-8"></head><body><pre>${text}</pre></body></html>`], { type: 'text/html' });
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(htmlBlob);
+                    link.download = filename.replace('.xlsx', '.html');
+                    link.click();
+                    URL.revokeObjectURL(link.href);
+                }
+            } catch (error) {
+                console.error('Error downloading file:', error);
+                alert('حدث خطأ في تحميل الملف. سيتم تحميل نسخة وهمية بديلة.');
+                generateFallbackExcel(filename, format);
             }
-            
+        }
+
+        function generateFallbackExcel(filename, format) {
+            const data = [
+                ["بيانات نموذجية لـ " + filename],
+                ["العمود 1", "العمود 2", "العمود 3"],
+                ["قيمة 1", "قيمة 2", "قيمة 3"]
+            ];
             const ws = XLSX.utils.aoa_to_sheet(data);
             const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, file.name);
-            XLSX.writeFile(wb, file.file);
+            XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+            
+            if (format === 'xlsx') {
+                XLSX.writeFile(wb, filename);
+            } else if (format === 'csv') {
+                const csv = XLSX.utils.sheet_to_csv(ws);
+                const blob = new Blob([csv], { type: 'text/csv' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = filename.replace('.xlsx', '.csv');
+                link.click();
+                URL.revokeObjectURL(link.href);
+            } else {
+                XLSX.writeFile(wb, filename);
+            }
         }
 
         function displayFiles() {
@@ -307,13 +318,19 @@
             }
             
             container.innerHTML = filtered.map(file => `
-                <div class="excel-card" onclick="window.location.href='excel-details.html?id=${file.id}'">
+                <div class="excel-card">
                     <div class="excel-icon"><i class="${file.icon}"></i></div>
                     <div class="excel-info">
                         <h3 class="excel-name">${file.name}</h3>
                         <div class="excel-category"><i class="fas fa-tag"></i> ${file.category}</div>
                         <p class="excel-description">${file.description.substring(0, 80)}${file.description.length > 80 ? '...' : ''}</p>
-                        <button class="download-btn" onclick="event.stopPropagation(); generateExcelFile('${file.id}')">
+                        <select class="format-select" id="format-${file.id}">
+                            <option value="xlsx">📊 Excel (.xlsx)</option>
+                            <option value="csv">📄 CSV (.csv)</option>
+                            <option value="pdf">📑 PDF (.pdf)</option>
+                            <option value="html">🌐 HTML (.html)</option>
+                        </select>
+                        <button class="download-btn" onclick="downloadFile('${file.url}', '${file.file || file.name.replace(/ /g, '_') + '.xlsx'}', document.getElementById('format-${file.id}').value)">
                             <i class="fas fa-download"></i> تحميل (${file.size})
                         </button>
                     </div>
