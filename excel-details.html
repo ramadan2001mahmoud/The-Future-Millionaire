@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل القالب | Ramzone</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .details-container {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 40px;
+            background: #1A1A1A;
+            border-radius: 20px;
+            border: 1px solid #2A2A2A;
+            text-align: center;
+        }
+        .file-icon {
+            font-size: 4rem;
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+        .file-name {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .file-category {
+            color: #D4AF37;
+            margin-bottom: 20px;
+        }
+        .file-description {
+            color: #CCCCCC;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: right;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+            background: #0A0A0A;
+            padding: 20px;
+            border-radius: 15px;
+        }
+        .info-item {
+            text-align: center;
+        }
+        .info-item i {
+            font-size: 1.5rem;
+            color: #D4AF37;
+            margin-bottom: 8px;
+        }
+        .info-item .value {
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+        }
+        .info-item .label {
+            font-size: 0.7rem;
+            color: #888;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #D4AF37;
+            color: #0A0A0A;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .download-btn:hover {
+            background: #FFF2B2;
+            transform: scale(1.05);
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #D4AF37;
+            text-decoration: none;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            z-index: 1000;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        @media (max-width: 600px) {
+            .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; }
+            .details-container { margin: 30px 15px; padding: 25px; }
+            .file-name { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.png" alt="Ramzone Logo" class="logo-img">
+                <span class="logo-text">Ramzone</span>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">الرئيسية</a>
+                <a href="blog.html">المدونة</a>
+                <a href="courses.html">الكورسات</a>
+                <a href="apps.html">تطبيقات وألعاب</a>
+                <a href="excel-tools.html">قوالب Excel</a>
+                <a href="login.html" id="authLink">تسجيل الدخول</a>
+                <span id="userGreeting" style="display:none; color:#D4AF37;"></span>
+                <a href="#" id="logoutBtn" style="display:none;">تسجيل خروج</a>
+            </div>
+            <div class="menu-toggle" id="mobileMenu"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <div class="details-container" id="detailsContainer">
+        <a href="excel-tools.html" class="back-btn"><i class="fas fa-arrow-right"></i> العودة إلى القائمة</a>
+        <div id="detailsContent"></div>
+    </div>
+
+    <a href="https://wa.me/201069302075" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        const excelFiles = {
+            "excel1": { name: "نموذج فاتورة مبيعات Excel", category: "فواتير", description: "نموذج جاهز لفاتورة مبيعات مع حسومات وضرائب وخصومات. يتضمن حساب الضريبة المضافة وإجمالي الفاتورة. مناسب للشركات الصغيرة والمتوسطة.", icon: "fas fa-file-invoice", file: "فاتورة_مبيعات.xlsx", size: "245 KB", developer: "Ramzone", version: "2.0", features: ["حساب الضريبة المضافة", "خصومات متعددة", "إجمالي تلقائي", "قابل للطباعة"] },
+            "excel2": { name: "نظام محاسبي متكامل Excel", category: "محاسبة", description: "نظام محاسبي كامل يشمل أستاذ عام، ميزانية، قائمة دخل. مناسب للشركات والمحاسبين.", icon: "fas fa-chart-line", file: "نظام_محاسبي_متكامل.xlsx", size: "1.2 MB", developer: "Ramzone", version: "3.0", features: ["دفتر أستاذ عام", "ميزانية عمومية", "قائمة دخل", "تقارير شهرية"] },
+            "excel3": { name: "جدول إدارة المشتريات والمخزون", category: "مخزون", description: "نظام لإدارة المشتريات والمخزون مع تقارير حركة المخزون.", icon: "fas fa-boxes", file: "ادارة_المشتريات_والمخزون.xlsx", size: "856 KB", developer: "Ramzone", version: "1.5", features: ["تسجيل المشتريات", "متابعة المخزون", "تنبيهات إعادة الطلب", "تقارير الحركة"] },
+            "excel4": { name: "نموذج كشف رواتب الموظفين", category: "رواتب", description: "نموذج شامل لكشف رواتب الموظفين مع استقطاعات وبدلات.", icon: "fas fa-users", file: "كشف_رواتب_الموظفين.xlsx", size: "320 KB", developer: "Ramzone", version: "2.1", features: ["كشف الرواتب الشهري", "استقطاعات وبدلات", "صافي الراتب", "تقرير سنوي"] },
+            "excel5": { name: "قالب تحليل مالي (نسب مالية)", category: "تحليل مالي", description: "قالب لتحليل القوائم المالية وحساب النسب المالية.", icon: "fas fa-chart-pie", file: "تحليل_مالي_نسب_مالية.xlsx", size: "567 KB", developer: "Ramzone", version: "1.0", features: ["نسب السيولة", "نسب الربحية", "نسب المديونية", "تحليل اتجاهات"] },
+            "excel6": { name: "نموذج تقييم المخزون (FIFO - LIFO)", category: "مخزون", description: "نموذج لتقييم المخزون بطريقة الوارد أولاً صادر أولاً والأخير أولاً صادر أولاً.", icon: "fas fa-calculator", file: "تقييم_المخزون_FIFO_LIFO.xlsx", size: "412 KB", developer: "Ramzone", version: "1.2", features: ["طريقة FIFO", "طريقة LIFO", "مقارنة النتائج", "تكلفة البضاعة المباعة"] },
+            "excel7": { name: "قالب ميزانية شخصية", category: "تمويل شخصي", description: "نموذج لإدارة الإيرادات والمصروفات الشخصية ومتابعة الادخار.", icon: "fas fa-wallet", file: "ميزانية_شخصية.xlsx", size: "189 KB", developer: "Ramzone", version: "3.0", features: ["إيرادات شهرية", "مصروفات", "توفير", "رسوم بيانية"] },
+            "excel8": { name: "نظام إدارة العملاء (CRM) Excel", category: "CRM", description: "نظام متكامل لإدارة بيانات العملاء والمبيعات والتقارير.", icon: "fas fa-address-card", file: "CRM_Excel.xlsx", size: "980 KB", developer: "Ramzone", version: "2.0", features: ["قاعدة بيانات العملاء", "سجل المبيعات", "تقارير الأداء", "تحليل العملاء"] },
+            "excel9": { name: "نموذج جدول استهلاك الأصول الثابتة", category: "محاسبة", description: "نموذج لحساب استهلاك الأصول الثابتة بأكثر من طريقة.", icon: "fas fa-building", file: "استهلاك_الاصول_الثابتة.xlsx", size: "278 KB", developer: "Ramzone", version: "1.0", features: ["طريقة القسط الثابت", "طريقة القسط المتناقص", "جدول الاستهلاك السنوي", "صافي القيمة الدفترية"] },
+            "excel10": { name: "قالب تسجيل المبيعات اليومية", category: "مبيعات", description: "نموذج لتسجيل المبيعات اليومية مع تحليل الإيرادات.", icon: "fas fa-chart-line", file: "تسجيل_المبيعات_اليومية.xlsx", size: "234 KB", developer: "Ramzone", version: "1.5", features: ["تسجيل يومي", "تحليل المنتجات", "إجمالي الإيرادات", "رسوم بيانية"] },
+            "excel11": { name: "نموذج جدول السلف والعهد", category: "محاسبة", description: "نموذج لإدارة السلف والعهد للموظفين مع التسويات.", icon: "fas fa-hand-holding-usd", file: "سلف_و_عهد.xlsx", size: "198 KB", developer: "Ramzone", version: "1.0", features: ["تسجيل السلف", "تسويات", "الأرصدة", "تقارير"] },
+            "excel12": { name: "قالب جدول الإهلاك (Declining Balance)", category: "محاسبة", description: "نموذج لحساب إهلاك الأصول بطريقة الرصيد المتناقص.", icon: "fas fa-chart-line", file: "الاهلاك_Declining_Balance.xlsx", size: "245 KB", developer: "Ramzone", version: "1.0", features: ["نسبة الإهلاك", "جدول الإهلاك السنوي", "القيمة الدفترية", "معدل الإهلاك"] },
+            "excel13": { name: "نظام إدارة المشاريع Excel", category: "إدارة مشاريع", description: "نظام متكامل لإدارة المشاريع والمهام والموارد.", icon: "fas fa-tasks", file: "ادارة_المشاريع.xlsx", size: "1.1 MB", developer: "Ramzone", version: "2.0", features: ["قائمة المهام", "تتبع التقدم", "تخصيص الموارد", "تقارير المشروع"] },
+            "excel14": { name: "نموذج قائمة التدفقات النقدية", category: "تحليل مالي", description: "نموذج لقائمة التدفقات النقدية بطريقة غير مباشرة.", icon: "fas fa-chart-line", file: "قائمة_التدفقات_النقدية.xlsx", size: "312 KB", developer: "Ramzone", version: "1.0", features: ["التدفقات التشغيلية", "التدفقات الاستثمارية", "التدفقات التمويلية", "صافي التدفق"] },
+            "excel15": { name: "قالب تحليل التعادل (Break-Even)", category: "تحليل مالي", description: "نموذج لحساب نقطة التعادل وتحليل الربحية.", icon: "fas fa-chart-line", file: "تحليل_التعادل_BreakEven.xlsx", size: "267 KB", developer: "Ramzone", version: "1.0", features: ["نقطة التعادل", "تحليل الحساسية", "هامش الربح", "رسوم بيانية"] },
+            "excel16": { name: "نموذج تقييم المشاريع (NPV - IRR)", category: "تحليل مالي", description: "نموذج لحساب صافي القيمة الحالية ومعدل العائد الداخلي.", icon: "fas fa-chart-line", file: "تقييم_المشاريع_NPV_IRR.xlsx", size: "289 KB", developer: "Ramzone", version: "1.0", features: ["صافي القيمة الحالية (NPV)", "معدل العائد الداخلي (IRR)", "فترة الاسترداد", "تحليل الحساسية"] },
+            "excel17": { name: "نظام إدارة الفواتير (Invoicing)", category: "فواتير", description: "نظام متكامل لإدارة الفواتير والعملاء.", icon: "fas fa-file-invoice", file: "نظام_الفواتير_Invoicing.xlsx", size: "567 KB", developer: "Ramzone", version: "2.0", features: ["إنشاء فواتير", "إدارة العملاء", "تتبع المدفوعات", "تقارير"] },
+            "excel18": { name: "نموذج جدول الإهلاك (Sum of Years)", category: "محاسبة", description: "نموذج لحساب إهلاك الأصول بطريقة مجموع أرقام السنوات.", icon: "fas fa-chart-line", file: "الاهلاك_Sum_of_Years.xlsx", size: "234 KB", developer: "Ramzone", version: "1.0", features: ["جدول الإهلاك السنوي", "نسبة الإهلاك", "القيمة الدفترية", "القسط السنوي"] },
+            "excel19": { name: "قالب إدارة الوقت (Time Management)", category: "إدارة وقت", description: "نموذج لتنظيم المهام وتتبع الوقت والإنتاجية.", icon: "fas fa-clock", file: "ادارة_الوقت.xlsx", size: "198 KB", developer: "Ramzone", version: "1.0", features: ["تسجيل المهام", "تتبع الوقت", "تحليل الإنتاجية", "تقرير أسبوعي"] },
+            "excel20": { name: "نظام محاسبي للشركات الصغيرة", category: "محاسبة", description: "نظام محاسبي متكامل للشركات الصغيرة والمتوسطة.", icon: "fas fa-building", file: "نظام_محاسبي_شركات_صغيرة.xlsx", size: "1.5 MB", developer: "Ramzone", version: "3.0", features: ["دفتر يومية", "أستاذ عام", "ميزان مراجعة", "قوائم مالية"] }
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const fileId = urlParams.get('id');
+        const file = excelFiles[fileId];
+        const container = document.getElementById("detailsContent");
+
+        if (file) {
+            document.title = `${file.name} | Ramzone`;
+            const featuresHtml = file.features.map(f => `<li>${f}</li>`).join('');
+            container.innerHTML = `
+                <div class="file-icon"><i class="${file.icon}"></i></div>
+                <h1 class="file-name">${file.name}</h1>
+                <div class="file-category"><i class="fas fa-tag"></i> ${file.category}</div>
+                <p class="file-description">${file.description}</p>
+                <div class="info-grid">
+                    <div class="info-item"><i class="fas fa-file-excel"></i><div class="value">${file.size}</div><div class="label">حجم الملف</div></div>
+                    <div class="info-item"><i class="fas fa-code-branch"></i><div class="value">${file.version}</div><div class="label">الإصدار</div></div>
+                    <div class="info-item"><i class="fas fa-building"></i><div class="value">${file.developer}</div><div class="label">المطور</div></div>
+                    <div class="info-item"><i class="fas fa-download"></i><div class="value">مباشر</div><div class="label">طريقة التحميل</div></div>
+                </div>
+                <h3 style="color:#D4AF37; text-align:right; margin-bottom:15px;">✨ مميزات القالب</h3>
+                <ul class="features-list" style="list-style:none; text-align:right; margin-bottom:30px;">
+                    ${featuresHtml}
+                </ul>
+                <a href="excels/${file.file}" download class="download-btn">
+                    <i class="fas fa-download"></i> تحميل ${file.name}
+                </a>
+            `;
+        } else {
+            container.innerHTML = `<p style="color:#ff6b6b;">😅 عذراً، الملف غير موجود</p><a href="excel-tools.html">العودة إلى القائمة</a>`;
+        }
+
+        function updateAuthUI() {
+            const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+            const authLink = document.getElementById("authLink");
+            const userGreeting = document.getElementById("userGreeting");
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (currentUser) {
+                if (authLink) authLink.style.display = "none";
+                if (userGreeting) {
+                    userGreeting.style.display = "inline";
+                    userGreeting.textContent = `مرحباً ${currentUser.name}`;
+                }
+                if (logoutBtn) logoutBtn.style.display = "inline";
+            } else {
+                if (authLink) authLink.style.display = "inline";
+                if (userGreeting) userGreeting.style.display = "none";
+                if (logoutBtn) logoutBtn.style.display = "none";
+            }
+        }
+
+        function setupLogout() {
+            const logoutBtn = document.getElementById("logoutBtn");
+            if (logoutBtn) {
+                logoutBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("currentUser");
+                    window.location.href = "index.html";
+                });
+            }
+        }
+
+        function setupMobileMenu() {
+            const toggle = document.getElementById("mobileMenu");
+            const navLinks = document.getElementById("navLinks");
+            if (toggle && navLinks) {
+                toggle.addEventListener("click", () => {
+                    navLinks.classList.toggle("active");
+                });
+            }
+        }
+
+        updateAuthUI();
+        setupLogout();
+        setupMobileMenu();
+    </script>
+</body>
+</html>
