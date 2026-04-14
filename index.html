@@ -100,6 +100,7 @@
                 <a href="blog.html" data-i18n="nav.blog">المدونة</a>
                 <a href="courses.html" data-i18n="nav.courses">الكورسات</a>
                 <a href="apps.html" data-i18n="nav.apps">تطبيقات وألعاب</a>
+                <a href="excel-tools.html" data-i18n="nav.excel">قوالب Excel</a>
                 <a href="login.html" id="authLink" data-i18n="nav.login">تسجيل الدخول</a>
                 <span id="userGreeting" style="display:none;"></span>
                 <span id="userStats" style="display:none;"></span>
@@ -177,6 +178,27 @@
     </footer>
 
     <script src="lang.js"></script>
+    <script>
+        // دوال تبديل اللغة
+        function initLanguage() {
+            const savedLang = localStorage.getItem('language') || 'ar';
+            document.documentElement.lang = savedLang;
+            document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
+            const langBtn = document.getElementById('lang-toggle-btn');
+            if (langBtn) langBtn.textContent = savedLang === 'ar' ? '🇺🇸 EN' : '🇪🇬 عربي';
+            if (typeof updateUILanguage === 'function') updateUILanguage();
+        }
+        
+        function switchLanguage() {
+            const currentLang = localStorage.getItem('language') || 'ar';
+            const newLang = currentLang === 'ar' ? 'en' : 'ar';
+            localStorage.setItem('language', newLang);
+            location.reload();
+        }
+        
+        document.getElementById('lang-toggle-btn')?.addEventListener('click', switchLanguage);
+        initLanguage();
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
