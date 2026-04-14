@@ -153,7 +153,7 @@
         <h1>قوالب <span class="gold">Excel</span> والنماذج المحاسبية</h1>
         <p>أكثر من 20 قالب Excel ونموذج محاسبي احترافي - تحميل مباشر</p>
         <div class="search-excel">
-            <input type="text" id="searchInput" placeholder="ابحث عن قالب أو نموذج...">
+            <input type="text" id="searchInput" placeholder="ابحث عن قالب...">
             <button id="searchBtn"><i class="fas fa-search"></i></button>
         </div>
     </section>
@@ -183,26 +183,26 @@
 
     <script>
         const excelFiles = [
-            { id: "excel1", name: "نموذج فاتورة مبيعات Excel", category: "فواتير", description: "نموذج جاهز لفاتورة مبيعات مع حسومات وضرائب وخصومات", icon: "fas fa-file-invoice", file: "فاتورة_مبيعات.xlsx", size: "245 KB", developer: "Ramzone", version: "2.0" },
-            { id: "excel2", name: "نظام محاسبي متكامل Excel", category: "محاسبة", description: "نظام محاسبي كامل يشمل أستاذ عام، ميزانية، قائمة دخل", icon: "fas fa-chart-line", file: "نظام_محاسبي_متكامل.xlsx", size: "1.2 MB", developer: "Ramzone", version: "3.0" },
-            { id: "excel3", name: "جدول إدارة المشتريات والمخزون", category: "مخزون", description: "نظام لإدارة المشتريات والمخزون مع تقارير حركة المخزون", icon: "fas fa-boxes", file: "ادارة_المشتريات_والمخزون.xlsx", size: "856 KB", developer: "Ramzone", version: "1.5" },
-            { id: "excel4", name: "نموذج كشف رواتب الموظفين", category: "رواتب", description: "نموذج شامل لكشف رواتب الموظفين مع استقطاعات وبدلات", icon: "fas fa-users", file: "كشف_رواتب_الموظفين.xlsx", size: "320 KB", developer: "Ramzone", version: "2.1" },
-            { id: "excel5", name: "قالب تحليل مالي (نسب مالية)", category: "تحليل مالي", description: "قالب لتحليل القوائم المالية وحساب النسب المالية", icon: "fas fa-chart-pie", file: "تحليل_مالي_نسب_مالية.xlsx", size: "567 KB", developer: "Ramzone", version: "1.0" },
-            { id: "excel6", name: "نموذج تقييم المخزون (FIFO - LIFO)", category: "مخزون", description: "نموذج لتقييم المخزون بطريقة الوارد أولاً صادر أولاً والأخير أولاً صادر أولاً", icon: "fas fa-calculator", file: "تقييم_المخزون_FIFO_LIFO.xlsx", size: "412 KB", developer: "Ramzone", version: "1.2" },
-            { id: "excel7", name: "قالب ميزانية شخصية", category: "تمويل شخصي", description: "نموذج لإدارة الإيرادات والمصروفات الشخصية ومتابعة الادخار", icon: "fas fa-wallet", file: "ميزانية_شخصية.xlsx", size: "189 KB", developer: "Ramzone", version: "3.0" },
-            { id: "excel8", name: "نظام إدارة العملاء (CRM) Excel", category: "CRM", description: "نظام متكامل لإدارة بيانات العملاء والمبيعات والتقارير", icon: "fas fa-address-card", file: "CRM_Excel.xlsx", size: "980 KB", developer: "Ramzone", version: "2.0" },
-            { id: "excel9", name: "نموذج جدول استهلاك الأصول الثابتة", category: "محاسبة", description: "نموذج لحساب استهلاك الأصول الثابتة بأكثر من طريقة", icon: "fas fa-building", file: "استهلاك_الاصول_الثابتة.xlsx", size: "278 KB", developer: "Ramzone", version: "1.0" },
-            { id: "excel10", name: "قالب تسجيل المبيعات اليومية", category: "مبيعات", description: "نموذج لتسجيل المبيعات اليومية مع تحليل الإيرادات", icon: "fas fa-chart-line", file: "تسجيل_المبيعات_اليومية.xlsx", size: "234 KB", developer: "Ramzone", version: "1.5" },
-            { id: "excel11", name: "نموذج جدول السلف والعهد", category: "محاسبة", description: "نموذج لإدارة السلف والعهد للموظفين مع التسويات", icon: "fas fa-hand-holding-usd", file: "سلف_و_عهد.xlsx", size: "198 KB", developer: "Ramzone", version: "1.0" },
-            { id: "excel12", name: "قالب جدول الإهلاك (Declining Balance)", category: "محاسبة", description: "نموذج لحساب إهلاك الأصول بطريقة الرصيد المتناقص", icon: "fas fa-chart-line", file: "الاهلاك_Declining_Balance.xlsx", size: "245 KB", developer: "Ramzone", version: "1.0" },
-            { id: "excel13", name: "نظام إدارة المشاريع Excel", category: "إدارة مشاريع", description: "نظام متكامل لإدارة المشاريع والمهام والموارد", icon: "fas fa-tasks", file: "ادارة_المشاريع.xlsx", size: "1.1 MB", developer: "Ramzone", version: "2.0" },
-            { id: "excel14", name: "نموذج قائمة التدفقات النقدية", category: "تحليل مالي", description: "نموذج لقائمة التدفقات النقدية بطريقة غير مباشرة", icon: "fas fa-chart-line", file: "قائمة_التدفقات_النقدية.xlsx", size: "312 KB", developer: "Ramzone", version: "1.0" },
-            { id: "excel15", name: "قالب تحليل التعادل (Break-Even)", category: "تحليل مالي", description: "نموذج لحساب نقطة التعادل وتحليل الربحية", icon: "fas fa-chart-line", file: "تحليل_التعادل_BreakEven.xlsx", size: "267 KB", developer: "Ramzone", version: "1.0" },
-            { id: "excel16", name: "نموذج تقييم المشاريع (NPV - IRR)", category: "تحليل مالي", description: "نموذج لحساب صافي القيمة الحالية ومعدل العائد الداخلي", icon: "fas fa-chart-line", file: "تقييم_المشاريع_NPV_IRR.xlsx", size: "289 KB", developer: "Ramzone", version: "1.0" },
-            { id: "excel17", name: "نظام إدارة الفواتير (Invoicing)", category: "فواتير", description: "نظام متكامل لإدارة الفواتير والعملاء", icon: "fas fa-file-invoice", file: "نظام_الفواتير_Invoicing.xlsx", size: "567 KB", developer: "Ramzone", version: "2.0" },
-            { id: "excel18", name: "نموذج جدول الإهلاك (Sum of Years)", category: "محاسبة", description: "نموذج لحساب إهلاك الأصول بطريقة مجموع أرقام السنوات", icon: "fas fa-chart-line", file: "الاهلاك_Sum_of_Years.xlsx", size: "234 KB", developer: "Ramzone", version: "1.0" },
-            { id: "excel19", name: "قالب إدارة الوقت (Time Management)", category: "إدارة وقت", description: "نموذج لتنظيم المهام وتتبع الوقت والإنتاجية", icon: "fas fa-clock", file: "ادارة_الوقت.xlsx", size: "198 KB", developer: "Ramzone", version: "1.0" },
-            { id: "excel20", name: "نظام محاسبي للشركات الصغيرة", category: "محاسبة", description: "نظام محاسبي متكامل للشركات الصغيرة والمتوسطة", icon: "fas fa-building", file: "نظام_محاسبي_شركات_صغيرة.xlsx", size: "1.5 MB", developer: "Ramzone", version: "3.0" }
+            { id: "excel1", name: "نموذج فاتورة مبيعات Excel", category: "فواتير", description: "نموذج جاهز لفاتورة مبيعات مع حسومات وضرائب", icon: "fas fa-file-invoice", file: "فاتورة_مبيعات.xlsx", size: "245 KB" },
+            { id: "excel2", name: "نظام محاسبي متكامل Excel", category: "محاسبة", description: "نظام محاسبي كامل يشمل أستاذ عام وميزانية", icon: "fas fa-chart-line", file: "نظام_محاسبي_متكامل.xlsx", size: "1.2 MB" },
+            { id: "excel3", name: "جدول إدارة المشتريات والمخزون", category: "مخزون", description: "نظام لإدارة المشتريات والمخزون مع تقارير", icon: "fas fa-boxes", file: "ادارة_المشتريات_والمخزون.xlsx", size: "856 KB" },
+            { id: "excel4", name: "نموذج كشف رواتب الموظفين", category: "رواتب", description: "نموذج شامل لكشف رواتب الموظفين مع استقطاعات", icon: "fas fa-users", file: "كشف_رواتب_الموظفين.xlsx", size: "320 KB" },
+            { id: "excel5", name: "قالب تحليل مالي (نسب مالية)", category: "تحليل مالي", description: "قالب لتحليل القوائم المالية وحساب النسب", icon: "fas fa-chart-pie", file: "تحليل_مالي_نسب_مالية.xlsx", size: "567 KB" },
+            { id: "excel6", name: "نموذج تقييم المخزون (FIFO - LIFO)", category: "مخزون", description: "تقييم المخزون بطريقة الوارد أولاً صادر أولاً", icon: "fas fa-calculator", file: "تقييم_المخزون_FIFO_LIFO.xlsx", size: "412 KB" },
+            { id: "excel7", name: "قالب ميزانية شخصية", category: "تمويل شخصي", description: "نموذج لإدارة الإيرادات والمصروفات الشخصية", icon: "fas fa-wallet", file: "ميزانية_شخصية.xlsx", size: "189 KB" },
+            { id: "excel8", name: "نظام إدارة العملاء (CRM) Excel", category: "CRM", description: "نظام متكامل لإدارة بيانات العملاء والمبيعات", icon: "fas fa-address-card", file: "CRM_Excel.xlsx", size: "980 KB" },
+            { id: "excel9", name: "نموذج جدول استهلاك الأصول الثابتة", category: "محاسبة", description: "نموذج لحساب استهلاك الأصول الثابتة", icon: "fas fa-building", file: "استهلاك_الاصول_الثابتة.xlsx", size: "278 KB" },
+            { id: "excel10", name: "قالب تسجيل المبيعات اليومية", category: "مبيعات", description: "نموذج لتسجيل المبيعات اليومية مع تحليل الإيرادات", icon: "fas fa-chart-line", file: "تسجيل_المبيعات_اليومية.xlsx", size: "234 KB" },
+            { id: "excel11", name: "نموذج جدول السلف والعهد", category: "محاسبة", description: "نموذج لإدارة السلف والعهد للموظفين", icon: "fas fa-hand-holding-usd", file: "سلف_و_عهد.xlsx", size: "198 KB" },
+            { id: "excel12", name: "قالب جدول الإهلاك (Declining Balance)", category: "محاسبة", description: "نموذج لحساب إهلاك الأصول بطريقة الرصيد المتناقص", icon: "fas fa-chart-line", file: "الاهلاك_Declining_Balance.xlsx", size: "245 KB" },
+            { id: "excel13", name: "نظام إدارة المشاريع Excel", category: "إدارة مشاريع", description: "نظام متكامل لإدارة المشاريع والمهام", icon: "fas fa-tasks", file: "ادارة_المشاريع.xlsx", size: "1.1 MB" },
+            { id: "excel14", name: "نموذج قائمة التدفقات النقدية", category: "تحليل مالي", description: "نموذج لقائمة التدفقات النقدية", icon: "fas fa-chart-line", file: "قائمة_التدفقات_النقدية.xlsx", size: "312 KB" },
+            { id: "excel15", name: "قالب تحليل التعادل (Break-Even)", category: "تحليل مالي", description: "نموذج لحساب نقطة التعادل وتحليل الربحية", icon: "fas fa-chart-line", file: "تحليل_التعادل_BreakEven.xlsx", size: "267 KB" },
+            { id: "excel16", name: "نموذج تقييم المشاريع (NPV - IRR)", category: "تحليل مالي", description: "نموذج لحساب صافي القيمة الحالية", icon: "fas fa-chart-line", file: "تقييم_المشاريع_NPV_IRR.xlsx", size: "289 KB" },
+            { id: "excel17", name: "نظام إدارة الفواتير (Invoicing)", category: "فواتير", description: "نظام متكامل لإدارة الفواتير والعملاء", icon: "fas fa-file-invoice", file: "نظام_الفواتير_Invoicing.xlsx", size: "567 KB" },
+            { id: "excel18", name: "نموذج جدول الإهلاك (Sum of Years)", category: "محاسبة", description: "نموذج لحساب إهلاك الأصول بطريقة مجموع السنوات", icon: "fas fa-chart-line", file: "الاهلاك_Sum_of_Years.xlsx", size: "234 KB" },
+            { id: "excel19", name: "قالب إدارة الوقت (Time Management)", category: "إدارة وقت", description: "نموذج لتنظيم المهام وتتبع الوقت", icon: "fas fa-clock", file: "ادارة_الوقت.xlsx", size: "198 KB" },
+            { id: "excel20", name: "نظام محاسبي للشركات الصغيرة", category: "محاسبة", description: "نظام محاسبي متكامل للشركات الصغيرة", icon: "fas fa-building", file: "نظام_محاسبي_شركات_صغيرة.xlsx", size: "1.5 MB" }
         ];
 
         let currentSearch = "";
@@ -235,7 +235,7 @@
                         <h3 class="excel-name">${file.name}</h3>
                         <div class="excel-category"><i class="fas fa-tag"></i> ${file.category}</div>
                         <p class="excel-description">${file.description.substring(0, 80)}${file.description.length > 80 ? '...' : ''}</p>
-                        <a href="excels/${file.file}" download class="download-btn" onclick="event.stopPropagation()">
+                        <a href="#" class="download-btn" onclick="event.stopPropagation(); downloadFile('${file.file}')">
                             <i class="fas fa-download"></i> تحميل (${file.size})
                         </a>
                     </div>
@@ -243,21 +243,18 @@
             `).join('');
         }
 
+        function downloadFile(fileName) {
+            // مؤقتاً: رسالة تنبيه
+            alert(`سيتم تحميل ملف: ${fileName}\n\nلتفعيل التحميل الحقيقي، ارفع ملفات Excel في مجلد "excels" ثم عدل الرابط.`);
+            // الرابط الحقيقي (بعد رفع الملفات):
+            // window.location.href = `excels/${fileName}`;
+        }
+
         function setupSearch() {
             const searchInput = document.getElementById("searchInput");
             const searchBtn = document.getElementById("searchBtn");
-            
-            searchBtn.addEventListener("click", () => {
-                currentSearch = searchInput.value;
-                displayFiles();
-            });
-            
-            searchInput.addEventListener("keypress", (e) => {
-                if (e.key === "Enter") {
-                    currentSearch = searchInput.value;
-                    displayFiles();
-                }
-            });
+            searchBtn.addEventListener("click", () => { currentSearch = searchInput.value; displayFiles(); });
+            searchInput.addEventListener("keypress", (e) => { if (e.key === "Enter") { currentSearch = searchInput.value; displayFiles(); } });
         }
 
         function updateAuthUI() {
@@ -267,10 +264,7 @@
             const logoutBtn = document.getElementById("logoutBtn");
             if (currentUser) {
                 if (authLink) authLink.style.display = "none";
-                if (userGreeting) {
-                    userGreeting.style.display = "inline";
-                    userGreeting.textContent = `مرحباً ${currentUser.name}`;
-                }
+                if (userGreeting) { userGreeting.style.display = "inline"; userGreeting.textContent = `مرحباً ${currentUser.name}`; }
                 if (logoutBtn) logoutBtn.style.display = "inline";
             } else {
                 if (authLink) authLink.style.display = "inline";
@@ -294,11 +288,7 @@
         function setupMobileMenu() {
             const toggle = document.getElementById("mobileMenu");
             const navLinks = document.getElementById("navLinks");
-            if (toggle && navLinks) {
-                toggle.addEventListener("click", () => {
-                    navLinks.classList.toggle("active");
-                });
-            }
+            if (toggle && navLinks) toggle.addEventListener("click", () => navLinks.classList.toggle("active"));
         }
 
         setupSearch();
